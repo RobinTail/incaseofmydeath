@@ -1,0 +1,7 @@
+node_modules
+dist
+private-key.pem
+client-secret.txt
+db-secret.txt
+bot-token.txt
+yarn-error.log

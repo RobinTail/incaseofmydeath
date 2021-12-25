@@ -1,0 +1,45 @@
+{
+  "name": "incaseofmydeath",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "author": "Anna Bocharova <me@robintail.cz>",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "lint": "eslint src",
+    "build": "rm -rf dist && tsc",
+    "build:dts": "rm -rf dist && tsc -p tsconfig-dts.json",
+    "test": "yarn jest src/"
+  },
+  "dependencies": {
+    "@octokit/auth-app": "^3.6.1",
+    "@octokit/core": "^3.5.1",
+    "@tsconfig/node16": "^1.0.2",
+    "@types/express": "^4.17.13",
+    "@types/fast-memory-cache": "^2.0.0",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.10",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "eslint": "^8.3.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^16.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "express-zod-api": "^5.0.0-beta1",
+    "fast-memory-cache": "^2.0.4",
+    "jest": "^27.4.5",
+    "mongoose": "^6.0.14",
+    "prettier": "2.5.0",
+    "telegraf": "^4.4.2",
+    "ts-jest": "^27.1.2",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  }
+}
