@@ -37,7 +37,7 @@ The App does not read the contents of the repository and the workflow, but only 
 case. Moreover, you can use
 [encrypted Action Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in the GitHub
 repository settings for sensitive information. Thus, the application is blind and impartial in relation to you, your
-will and your secrets.
+will and your secrets. The App is open source, so you can check this.
 
 ## Exceptional cases warning
 

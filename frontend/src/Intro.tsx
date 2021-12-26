@@ -113,7 +113,11 @@ export const Intro = () => {
         </Link>{" "}
         in the GitHub repository settings for sensitive information. Thus, the
         application is blind and impartial in relation to you, your will and
-        your secrets.
+        your secrets. The App is{" "}
+        <Link href="https://github.com/RobinTail/incaseofmydeath">
+          open source
+        </Link>
+        , so you can check this.
       </Typography>
 
       <Typography
