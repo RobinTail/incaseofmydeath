@@ -28,7 +28,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-prettier": "^4.0.0",
-    "express-zod-api": "^5.0.0-beta1",
+    "express-zod-api": "^5.0.0",
     "fast-memory-cache": "^2.0.4",
     "jest": "^27.4.5",
     "mongoose": "^6.0.14",
