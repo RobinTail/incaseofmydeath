@@ -5,6 +5,7 @@ import {
   useTheme,
   useMediaQuery,
   Link,
+  Alert,
 } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -45,6 +46,16 @@ export const Intro = () => {
         your private repository on GitHub in case of your death. Free from bias,
         blind to your secrets, cold-blooded as machine code.
       </Typography>
+
+      <Alert severity="info">
+        The app is currently in closed beta testing. You can inform about your
+        desire to take part in testing{" "}
+        <Link href="https://github.com/RobinTail/incaseofmydeath/discussions/2">
+          here
+        </Link>
+        .
+      </Alert>
+
       {proceedButton}
 
       <Typography
