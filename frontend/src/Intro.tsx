@@ -48,7 +48,7 @@ export const Intro = () => {
       </Typography>
 
       <Alert severity="info" sx={{ mb: 2 }}>
-        The app is currently in closed beta testing. You can inform about your
+        The App is currently in closed beta testing. You can inform about your
         desire to take part in testing{" "}
         <Link href="https://github.com/RobinTail/incaseofmydeath/discussions/2">
           here

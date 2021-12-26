@@ -3,7 +3,7 @@
 The Application fulfills your last will by executing a workflow from your private repository on GitHub in case of your
 death. Free from bias, blind to your secrets, cold-blooded as machine code.
 
-**The app is currently in closed beta testing. You can inform about your desire to take part in testing
+**The App is currently in closed beta testing. You can inform about your desire to take part in testing
 [here](https://github.com/RobinTail/incaseofmydeath/discussions/2).**
 
 https://www.incaseofmy.de/
