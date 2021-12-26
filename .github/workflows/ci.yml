@@ -8,9 +8,6 @@ on:
 
 jobs:
   build:
-    defaults:
-      run:
-        working-directory: backend
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -33,9 +30,12 @@ jobs:
           path: ${{ steps.yarnCache.outputs.dir }}
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('backend/yarn.lock') }}
       - name: Install dependencies
-        run: yarn install
+        run: |
+          cd backend
+          yarn install
       - name: Test and build
         run: |
+          cd backend
           yarn lint
           yarn test
           yarn build
