@@ -47,7 +47,7 @@ export const Intro = () => {
         blind to your secrets, cold-blooded as machine code.
       </Typography>
 
-      <Alert severity="info">
+      <Alert severity="info" sx={{ mb: 2 }}>
         The app is currently in closed beta testing. You can inform about your
         desire to take part in testing{" "}
         <Link href="https://github.com/RobinTail/incaseofmydeath/discussions/2">
