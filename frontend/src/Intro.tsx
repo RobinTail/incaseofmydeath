@@ -47,6 +47,7 @@ export const Intro = () => {
         blind to your secrets, cold-blooded as machine code.
       </Typography>
 
+      {/* @todo remove after beta testing */}
       <Alert severity="info" sx={{ mb: 2 }}>
         The App is currently in closed beta testing. You can inform about your
         desire to take part in testing{" "}
