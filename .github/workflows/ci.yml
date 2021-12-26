@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    defaults:
+      run:
+        working-directory: backend
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - name: Get yarn cache dir
+        id: yarnCache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-yarn
+        with:
+          path: ${{ steps.yarnCache.outputs.dir }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('backend/yarn.lock') }}
+      - name: Install dependencies
+        run: yarn install
+      - name: Test and build
+        run: |
+          yarn lint
+          yarn test
+          yarn build
