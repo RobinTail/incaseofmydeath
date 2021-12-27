@@ -5,10 +5,7 @@ import { checkFreqToDays } from "./utils";
 
 export type ModelType<T> = T extends Model<infer R> ? R : never;
 
-export const connection =
-  process.env.ENV == "TEST"
-    ? Promise.resolve()
-    : mongoose.connect(mongo.connectionString);
+export const connection = mongoose.connect(mongo.connectionString);
 
 const defaultDeadline = 5;
 const defaultAttempts = 3;

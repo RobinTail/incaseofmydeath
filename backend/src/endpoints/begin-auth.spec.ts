@@ -1,3 +1,10 @@
+jest.mock("mongoose", () => ({
+  ...jest.requireActual("mongoose"),
+  connect: async () => ({
+    version: "1.2.3.mock",
+  }),
+}));
+
 import { testEndpoint } from "express-zod-api";
 import { beginAuthenticationEndpoint } from "./begin-auth";
 
