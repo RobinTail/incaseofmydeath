@@ -10,12 +10,14 @@ export const config = createConfig({
   },
   https: {
     options: {
-      cert: fs.existsSync(`${sslDir}/fullchain.pem`)
-        ? fs.readFileSync(`${sslDir}/fullchain.pem`, "utf-8")
-        : "",
-      key: fs.existsSync(`${sslDir}/privkey.pem`)
-        ? fs.readFileSync(`${sslDir}/privkey.pem`, "utf-8")
-        : "",
+      cert:
+        process.env.ENV === "TEST"
+          ? ""
+          : fs.readFileSync(`${sslDir}/fullchain.pem`, "utf-8"),
+      key:
+        process.env.ENV === "TEST"
+          ? ""
+          : fs.readFileSync(`${sslDir}/privkey.pem`, "utf-8"),
     },
     listen: 443,
   },
@@ -30,21 +32,29 @@ export const github = {
   appId: 155154,
   clientId: "Iv1.a3d196a34df183d3",
   clientSecret:
-    process.env.GITHUB_CLIENT_SECRET ||
-    fs.readFileSync("client-secret.txt", "utf-8").trim(),
+    process.env.ENV == "TEST"
+      ? ""
+      : process.env.GITHUB_CLIENT_SECRET ||
+        fs.readFileSync("client-secret.txt", "utf-8").trim(),
   privateKey:
-    process.env.GITHUB_PRIVATE_KEY ||
-    fs.readFileSync("private-key.pem", "utf-8"),
+    process.env.ENV == "TEST"
+      ? ""
+      : process.env.GITHUB_PRIVATE_KEY ||
+        fs.readFileSync("private-key.pem", "utf-8"),
 };
 
 export const mongo = {
   connectionString:
-    process.env.MONGO_CONNECTION_STRING ||
-    fs.readFileSync("db-secret.txt", "utf-8").trim(),
+    process.env.ENV == "TEST"
+      ? ""
+      : process.env.MONGO_CONNECTION_STRING ||
+        fs.readFileSync("db-secret.txt", "utf-8").trim(),
 };
 
 export const tgBot = {
   token:
-    process.env.TELEGRAM_BOT_TOKEN ||
-    fs.readFileSync("bot-token.txt", "utf8").trim(),
+    process.env.ENV == "TEST"
+      ? ""
+      : process.env.TELEGRAM_BOT_TOKEN ||
+        fs.readFileSync("bot-token.txt", "utf8").trim(),
 };
