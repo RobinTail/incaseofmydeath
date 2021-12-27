@@ -38,7 +38,7 @@ export const github = {
         fs.readFileSync("client-secret.txt", "utf-8").trim(),
   privateKey:
     process.env.ENV == "TEST"
-      ? ""
+      ? "TEST"
       : process.env.GITHUB_PRIVATE_KEY ||
         fs.readFileSync("private-key.pem", "utf-8"),
 };
