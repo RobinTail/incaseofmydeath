@@ -10,8 +10,12 @@ export const config = createConfig({
   },
   https: {
     options: {
-      cert: fs.readFileSync(`${sslDir}/fullchain.pem`, "utf-8"),
-      key: fs.readFileSync(`${sslDir}/privkey.pem`, "utf-8"),
+      cert: fs.existsSync(`${sslDir}/fullchain.pem`)
+        ? fs.readFileSync(`${sslDir}/fullchain.pem`, "utf-8")
+        : "",
+      key: fs.existsSync(`${sslDir}/privkey.pem`)
+        ? fs.readFileSync(`${sslDir}/privkey.pem`, "utf-8")
+        : "",
     },
     listen: 443,
   },

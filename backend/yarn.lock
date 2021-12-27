@@ -1067,7 +1067,12 @@ acorn@^7.1.1:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
-acorn@^8.2.4, acorn@^8.4.1, acorn@^8.6.0:
+acorn@^8.2.4:
+  version "8.7.0"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.7.0.tgz#90951fde0f8f09df93549481e5fc141445b791cf"
+  integrity sha512-V/LGr1APy+PXIwKebEWrkZPwoeoF+w1jiOBUmuxuiUIaOHtob8Qc9BTrYo7VuI5fR8tqsy+buA2WFooR5olqvQ==
+
+acorn@^8.4.1, acorn@^8.6.0:
   version "8.6.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.6.0.tgz#e3692ba0eb1a0c83eaa4f37f5fa7368dd7142895"
   integrity sha512-U1riIR+lBSNi3IbxtaHOIKdH8sLFv3NYfNv8sg7ZsNhcfl4HF2++BfqqrNAxoCLQW1iiylOj76ecnaUxz+z9yw==
@@ -2088,10 +2093,10 @@ express-fileupload@1.2.1:
   dependencies:
     busboy "^0.3.1"
 
-express-zod-api@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-5.0.0.tgz#60181d1d2824b246423a989a684c5201ec898678"
-  integrity sha512-nRKNaBloFsQLcPcp6GJJj/39iOjixZtDorNeYKMw4O5K2AHcMz/mSp4JT9pvoMCyqMmCtQ0tH0YjjwNavSSp3Q==
+express-zod-api@^5.1.0-beta1:
+  version "5.1.0-beta1"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-5.1.0-beta1.tgz#238a900721407a8bd0e389d4a15e73b33b5678c9"
+  integrity sha512-U49/luuUzSzDzUA+3v23WRURkCes9yMRbORIIhcwI8w8AQyO7EIcaT7lZqjJfAIc4UziQFSi1QDBZwoWbvpoag==
   dependencies:
     express "4.17.2"
     express-fileupload "1.2.1"
