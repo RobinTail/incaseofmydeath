@@ -34,6 +34,11 @@ jobs:
           cd backend
           yarn install
       - name: Test and build
+        env:
+          GITHUB_CLIENT_SECRET: TEST
+          GITHUB_PRIVATE_KEY: TEST
+          MONGO_CONNECTION_STRING: TEST
+          TELEGRAM_BOT_TOKEN: TEST
         run: |
           cd backend
           yarn lint
