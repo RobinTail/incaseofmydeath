@@ -1617,7 +1617,7 @@ debug@2.6.9, debug@^2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@4, debug@4.x, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2:
+debug@4, debug@4.x, debug@^4.1.0, debug@^4.1.1, debug@^4.3.2, debug@^4.3.3:
   version "4.3.3"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.3.tgz#04266e0b70a98d4462e6e288e38259213332b664"
   integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
@@ -3558,7 +3558,7 @@ negotiator@0.6.2:
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.2.tgz#feacf7ccf525a77ae9634436a64883ffeca346fb"
   integrity sha512-hZXc7K2e+PgeI1eDBe/10Ard4ekbfrrqG8Ep+8Jmf4JID2bNg7NvCPOZN+kfF574pFQI7mum2AUqDidoKqcTOw==
 
-node-fetch@^2.6.1:
+node-fetch@^2.6.1, node-fetch@^2.6.6:
   version "2.6.6"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.6.tgz#1751a7c01834e8e1697758732e9efb6eeadfaf89"
   integrity sha512-Z8/6vRlTUChSdIgMa51jxQ4lrw/Jy5SOW10ObaA47/RElsAN2c5Pn8bTgFGWn/ibwzXTE8qwr1Yzx28vsecXEA==
@@ -4322,20 +4322,20 @@ symbol-tree@^3.2.4:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-telegraf@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-4.4.2.tgz#dd1b99a50593de303c8f47bbe98201a93a125f31"
-  integrity sha512-OGt9w1LbxYUOsRk3htAavBnL9hqWycmJNiOmS74oARzxKFnYS/MdwW8b5CX9VLCJt537AXkm8/eBNiEYD8E7lQ==
+telegraf@^4.5.2:
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-4.5.2.tgz#1788aef6b3b5f3cfb5b831db9bf58aa550641cc2"
+  integrity sha512-OG68wQqYQQq2ldzAMv6JJUkh9XU+4mWRgHinMeJ8FoRA5ZZuA4WauqRFi8aY/OQiwJM2gTT2XWCfopN2dZWDNw==
   dependencies:
     abort-controller "^3.0.0"
-    debug "^4.3.1"
+    debug "^4.3.3"
     minimist "^1.2.5"
     module-alias "^2.2.2"
-    node-fetch "^2.6.1"
+    node-fetch "^2.6.6"
     p-timeout "^4.1.0"
     safe-compare "^1.1.4"
     sandwich-stream "^2.0.2"
-    typegram "^3.4.2"
+    typegram "^3.6.1"
 
 terminal-link@^2.0.0:
   version "2.1.1"
@@ -4522,10 +4522,10 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typegram@^3.4.2:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/typegram/-/typegram-3.5.1.tgz#802ff7d2f29c6ea6917ffab4a7d02814af29e47d"
-  integrity sha512-cDCj4KMycgpdoDihK9LbJbLBBrZdDDQskR4aeoLawyk6YS2GXmr4jncGQGvu6Wav1iNTGvSDwr4b3ipLHh1edA==
+typegram@^3.6.1:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/typegram/-/typegram-3.6.2.tgz#0c9d8692d99ea5b4f8b8b842e4ae65ee6bdaf343"
+  integrity sha512-q222XE5vFtzhY8q+x+yl4oNhVqjDSAixwvnpmzze61i+u/eaKIrimT3xz/oJrCUmSvaROH1GNZS3jqDDDNp94A==
 
 typescript@^4.5.4:
   version "4.5.4"
