@@ -10,7 +10,7 @@
     "lint": "eslint src",
     "build": "rm -rf dist && tsc",
     "build:dts": "rm -rf dist && tsc -p tsconfig-dts.json",
-    "test": "yarn jest src/"
+    "test": "ENV=TEST yarn jest src/"
   },
   "dependencies": {
     "@octokit/auth-app": "^3.6.1",
@@ -28,7 +28,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-prettier": "^4.0.0",
-    "express-zod-api": "^5.1.0-beta2",
+    "express-zod-api": "^5.1.0",
     "fast-memory-cache": "^2.0.4",
     "jest": "^27.4.5",
     "mongoose": "^6.0.14",

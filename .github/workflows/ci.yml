@@ -34,8 +34,6 @@ jobs:
           cd backend
           yarn install
       - name: Test and build
-        env:
-          ENV: TEST
         run: |
           cd backend
           yarn lint
