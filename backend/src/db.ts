@@ -1,9 +1,7 @@
-import mongoose, { Model, Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { mongo } from "./config";
 import { CheckFreqCode, checkFreqCodes, msInDay } from "./const";
 import { checkFreqToDays } from "./utils";
-
-export type ModelType<T> = T extends Model<infer R> ? R : never;
 
 export const connection = mongoose.connect(mongo.connectionString);
 
