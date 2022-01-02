@@ -11,7 +11,6 @@ import { listWorkflowsEndpoint } from "./endpoints/list-workflows";
 import { togglePublicStatusEndpoint } from "./endpoints/toggle-public-status";
 import { registerWorkflowEndpoint } from "./endpoints/register-workflow";
 import { removeRegistrationEndpoint } from "./endpoints/remove-registration";
-import { runWorkflowEndpoint } from "./endpoints/run-workflow";
 import { updateTimeSettingsEndpoint } from "./endpoints/update-time-settings";
 
 export const routing: Routing = {
@@ -42,7 +41,6 @@ export const routing: Routing = {
     },
     workflows: {
       list: listWorkflowsEndpoint,
-      run: runWorkflowEndpoint,
       register: registerWorkflowEndpoint,
     },
     status: {
