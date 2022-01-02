@@ -81,9 +81,9 @@ export const PersonalArea = () => {
     "installation",
     null
   );
-  const [registration, setRegistration] = React.useState<Registration | null>(
-    null
-  );
+  const [registration, setRegistration] = React.useState<
+    Registration | null | false
+  >(null); // null - status unknown yet, false - not registered
   const [nextRepoPage, setNextRepoPage] = React.useState<number | null>(1);
   const [repos, setRepos] = React.useState<Repo[]>([]);
   const [nextWfPage, setNextWfPage] = React.useState<number | null>(1);
@@ -103,7 +103,7 @@ export const PersonalArea = () => {
 
   const isAuthorized = auth !== null;
   const isInstalled = installation !== null;
-  const isRegistered = registration !== null;
+  const isNotRegistered = registration === false;
   const isRepoSelected = selectedRepo !== null;
   const isWorkflowSelected = selectedWorkflow !== null;
   const hasMoreRepos = nextRepoPage !== null;
@@ -175,12 +175,15 @@ export const PersonalArea = () => {
   // registration checking fn
   const registrationChecker = async () => {
     if (isAuthorized && isInstalled) {
-      setRegistration(
-        await checkRegistration({
+      try {
+        const resp = await checkRegistration({
           userId: auth.id,
           iToken: await ensureInstallationToken(),
-        })
-      );
+        });
+        setRegistration(resp);
+      } catch (e) {
+        setRegistration(false);
+      }
     }
   };
 
@@ -217,17 +220,17 @@ export const PersonalArea = () => {
 
   // !registration -> repos
   React.useEffect(() => {
-    if (isInstalled && !isRegistered) {
+    if (isInstalled && isNotRegistered) {
       runAsync(reposLoader);
     }
-  }, [isRegistered]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [registration]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // repo -> workflows
   React.useEffect(() => {
-    if (isInstalled && isRepoSelected && !isRegistered) {
+    if (isInstalled && isRepoSelected && isNotRegistered) {
       runAsync(workflowsLoader);
     }
-  }, [isRepoSelected, isRegistered]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isRepoSelected, registration]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // authorization starting button handler
   const authorize = () => {
@@ -262,7 +265,7 @@ export const PersonalArea = () => {
       {/* Avatar or GitHub logo */}
       <Person
         isAuthorized={isAuthorized}
-        isRegistered={isRegistered}
+        isRegistered={!!registration}
         avatarUrl={auth?.avatarUrl}
         login={auth?.login}
         name={auth?.name}
@@ -274,14 +277,14 @@ export const PersonalArea = () => {
         {/* Required action description */}
         <UserStatus
           isAuthorized={isAuthorized}
-          isRegistered={isRegistered}
+          isRegistered={!!registration}
           isRepoSelected={isRepoSelected}
           isWorkflowSelected={isWorkflowSelected}
           isLoading={isLoading}
-          isAlive={isRegistered && registration.isAlive}
+          isAlive={registration && registration.isAlive}
         />
 
-        {isAuthorized && isRegistered && (
+        {isAuthorized && !!registration && (
           <FormControlLabel
             control={
               <Switch
@@ -316,12 +319,12 @@ export const PersonalArea = () => {
           }}
           userId={isAuthorized && registration ? auth.id : null}
           uToken={isAuthorized && registration ? auth.uToken : null}
-          repo={isAuthorized && isRegistered ? registration.repo : null}
-          workflow={isAuthorized && isRegistered ? registration.workflow : null}
+          repo={isAuthorized && registration ? registration.repo : null}
+          workflow={isAuthorized && registration ? registration.workflow : null}
         />
 
         {/* Listing repositories */}
-        {isAuthorized && !isRegistered && !isRepoSelected && (
+        {isAuthorized && isNotRegistered && !isRepoSelected && (
           <IconicListSelector
             isLoading={isLoading}
             icon={<GitHubIcon />}
@@ -340,7 +343,7 @@ export const PersonalArea = () => {
 
         {/* Listing workflows */}
         {isAuthorized &&
-          !isRegistered &&
+          isNotRegistered &&
           isRepoSelected &&
           !isWorkflowSelected && (
             <IconicListSelector
@@ -356,22 +359,25 @@ export const PersonalArea = () => {
           )}
 
         {/* Consent */}
-        {isAuthorized && isRepoSelected && isWorkflowSelected && !isRegistered && (
-          <Consent
-            signedBy={auth.name || `GitHub user ${auth.login}`}
-            repo={`${selectedRepo.login} / ${selectedRepo.name}`}
-            workflow={selectedWorkflow.name}
-            isLoading={isLoading}
-            onAgree={register}
-            onReset={() => {
-              setSelectedWorkflow(null);
-              setSelectedRepo(null);
-            }}
-          />
-        )}
+        {isAuthorized &&
+          isRepoSelected &&
+          isWorkflowSelected &&
+          isNotRegistered && (
+            <Consent
+              signedBy={auth.name || `GitHub user ${auth.login}`}
+              repo={`${selectedRepo.login} / ${selectedRepo.name}`}
+              workflow={selectedWorkflow.name}
+              isLoading={isLoading}
+              onAgree={register}
+              onReset={() => {
+                setSelectedWorkflow(null);
+                setSelectedRepo(null);
+              }}
+            />
+          )}
 
         {/* More repos button */}
-        {isAuthorized && !isRegistered && !isRepoSelected && hasMoreRepos && (
+        {isAuthorized && isNotRegistered && !isRepoSelected && hasMoreRepos && (
           <Button
             fullWidth
             variant="outlined"
@@ -384,7 +390,7 @@ export const PersonalArea = () => {
 
         {/* More workflows button */}
         {isAuthorized &&
-          !isRegistered &&
+          isNotRegistered &&
           isRepoSelected &&
           !isWorkflowSelected &&
           hasMoreWorkflows && (
@@ -413,7 +419,7 @@ export const PersonalArea = () => {
         )}
 
         {/* Permissions button */}
-        {isAuthorized && isInstalled && !isRegistered && !isRepoSelected && (
+        {isAuthorized && isInstalled && isNotRegistered && !isRepoSelected && (
           <Button
             variant="outlined"
             fullWidth
@@ -427,7 +433,7 @@ export const PersonalArea = () => {
         {/* Repo reset button */}
         {isAuthorized &&
           isRepoSelected &&
-          !isRegistered &&
+          isNotRegistered &&
           !isWorkflowSelected && (
             <Button
               variant="outlined"
@@ -448,7 +454,7 @@ export const PersonalArea = () => {
       </Box>
 
       {/* Time interval settings */}
-      {isAuthorized && isRegistered && (
+      {isAuthorized && registration && (
         <TimeSliders
           userId={auth.id}
           uToken={auth.uToken}
@@ -459,7 +465,7 @@ export const PersonalArea = () => {
       )}
 
       {/* Channels */}
-      {isAuthorized && isRegistered && (
+      {isAuthorized && registration && (
         <Channels
           userId={auth.id}
           uToken={auth.uToken}
@@ -469,9 +475,10 @@ export const PersonalArea = () => {
       )}
 
       {/* Workflow example */}
-      {isAuthorized && isInstalled && !isRegistered && !isWorkflowSelected && (
-        <WorkflowExample mt={0} />
-      )}
+      {isAuthorized &&
+        isInstalled &&
+        isNotRegistered &&
+        !isWorkflowSelected && <WorkflowExample mt={0} />}
     </>
   );
 };
