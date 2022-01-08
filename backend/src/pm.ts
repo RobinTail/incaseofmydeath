@@ -45,9 +45,9 @@ export const createProcessManager = () => {
           return;
         }
         const send: ProcessManager["send"] = (entity, data) => {
-          if (entity.pid) {
+          if (entity.pm_id) {
             pm2.sendDataToProcessId(
-              entity.pid,
+              entity.pm_id,
               {
                 topic: true,
                 type: "process:msg",
