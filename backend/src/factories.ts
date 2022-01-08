@@ -1,4 +1,4 @@
-import { defaultEndpointsFactory, z } from "express-zod-api";
+import { defaultEndpointsFactory } from "express-zod-api";
 import { app } from "./app";
 import { github } from "./config";
 import { Users } from "./db";
