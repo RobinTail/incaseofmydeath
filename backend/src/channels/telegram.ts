@@ -8,6 +8,7 @@ import { debounce } from "../debounce";
 
 type AliveConsideringPayload = { chatId: string } | { user: UserDocument };
 const aliveConsideringThrottle = 60; // seconds
+type Logger = ReturnType<typeof createLogger>;
 
 export class TelegramChannel implements Channel {
   readonly #hook: AliveHook;
@@ -15,7 +16,7 @@ export class TelegramChannel implements Channel {
   readonly #logger: ReturnType<typeof createLogger>;
   public ready: Promise<UserFromGetMe>;
 
-  constructor(hook: AliveHook, logger: ReturnType<typeof createLogger>) {
+  constructor(hook: AliveHook, logger: Logger) {
     this.#hook = hook;
     this.#logger = logger;
     const bot = new Telegraf(tgBot.token);
