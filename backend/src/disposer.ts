@@ -109,6 +109,7 @@ const check = async () => {
 })();
 
 process.on("message", async (packet: unknown) => {
+  logger.debug("Incoming packet", packet);
   if (!isPacket(packet)) {
     logger.warn("Invalid packet received", packet);
     return;
