@@ -1,9 +1,4 @@
 import pm2 from "pm2";
-import { promisify } from "util";
-
-const connect = promisify(pm2.connect);
-const list = promisify(pm2.list);
-const sendDataToProcessId = promisify(pm2.sendDataToProcessId);
 
 const disposerProcessName = "Disposer";
 
@@ -25,23 +20,40 @@ export const isProcessMessage = (
   );
 };
 
-export const createProcessManager = async () => {
-  await connect();
-  const processList = await list();
-  const disposerProcess = processList.find(
-    (item) => item.name === disposerProcessName
-  );
-  if (!disposerProcess) {
-    throw new Error(`Can not find ${disposerProcessName} process`);
-  }
-  const send = async (entity: pm2.ProcessDescription, data: ProcessMessage) => {
-    if (entity.pid) {
-      await sendDataToProcessId(entity.pid, {
-        topic: true,
-        type: "process:msg",
-        data,
+export const createProcessManager = () => {
+  return new Promise((resolve, reject) => {
+    pm2.connect((errConnect) => {
+      if (errConnect) {
+        reject(errConnect);
+        return;
+      }
+      pm2.list((errList, processList) => {
+        if (errList) {
+          reject(errList);
+          return;
+        }
+        const disposerProcess = processList.find(
+          (item) => item.name === disposerProcessName
+        );
+        if (!disposerProcess) {
+          reject(new Error(`Can not find ${disposerProcessName} process`));
+          return;
+        }
+        const send = (entity: pm2.ProcessDescription, data: ProcessMessage) => {
+          if (entity.pid) {
+            pm2.sendDataToProcessId(
+              entity.pid,
+              {
+                topic: true,
+                type: "process:msg",
+                data,
+              },
+              () => {}
+            );
+          }
+        };
+        resolve({ disposerProcess, send });
       });
-    }
-  };
-  return { disposerProcess, send };
+    });
+  });
 };
