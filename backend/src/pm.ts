@@ -5,7 +5,7 @@ const connect = promisify(pm2.connect);
 const list = promisify(pm2.list);
 const sendDataToProcessId = promisify(pm2.sendDataToProcessId);
 
-const telegramBotProcessName = "TelegramBot";
+const disposerProcessName = "Disposer";
 
 export interface ProcessMessage {
   code: "onConnected";
@@ -28,11 +28,11 @@ export const isProcessMessage = (
 export const createProcessManager = async () => {
   await connect();
   const processList = await list();
-  const botProcess = processList.find(
-    (item) => item.name === telegramBotProcessName
+  const disposerProcess = processList.find(
+    (item) => item.name === disposerProcessName
   );
-  if (!botProcess) {
-    throw new Error(`Can not find ${telegramBotProcessName} process`);
+  if (!disposerProcess) {
+    throw new Error(`Can not find ${disposerProcessName} process`);
   }
   const send = async (entity: pm2.ProcessDescription, data: ProcessMessage) => {
     if (entity.pid) {
@@ -43,5 +43,5 @@ export const createProcessManager = async () => {
       });
     }
   };
-  return { botProcess, send };
+  return { disposerProcess, send };
 };

@@ -28,7 +28,7 @@ export const connectTelegramEndpoint = authorizedUserFactory.build({
     }
     user.telegramChatId = chatId;
     await user.save();
-    await processManager.send(processManager.botProcess, {
+    await processManager.send(processManager.disposerProcess, {
       code: "onConnected",
       channel: "telegram",
       payload: chatId,
