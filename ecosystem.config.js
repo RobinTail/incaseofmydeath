@@ -19,10 +19,20 @@ module.exports = {
       exec_mode: 'fork',
       autorestart: true,
       watch: false,
-      max_memory_restart: '500M',
+      max_memory_restart: '200M',
       env: {
         PORT: 80
       }
+    },
+    {
+      name: 'Disposer',
+      script: 'dist/disposer.js',
+      cwd: 'backend',
+      instances: 1,
+      exec_mode: 'fork',
+      autorestart: true,
+      watch: false,
+      max_memory_restart: '200M',
     },
   ],
 
