@@ -1,21 +1,24 @@
+import { createLogger } from "express-zod-api";
 import { Telegraf } from "telegraf";
 import type { UserFromGetMe } from "typegram/manage";
 import { Channel, AliveHook } from "../channel";
 import { frontendUrl, tgBot } from "../config";
 import { UserDocument, Users } from "../db";
 import { debounce } from "../debounce";
-import { disposer } from "../disposer";
 
 type AliveConsideringPayload = { chatId: string } | { user: UserDocument };
 const aliveConsideringThrottle = 60; // seconds
+type Logger = ReturnType<typeof createLogger>;
 
-class TelegramChannel implements Channel {
+export class TelegramChannel implements Channel {
   readonly #hook: AliveHook;
   readonly #bot: Telegraf;
+  readonly #logger: ReturnType<typeof createLogger>;
   public ready: Promise<UserFromGetMe>;
 
-  constructor(hook: AliveHook) {
+  constructor(hook: AliveHook, logger: Logger) {
     this.#hook = hook;
+    this.#logger = logger;
     const bot = new Telegraf(tgBot.token);
     this.ready = new Promise<UserFromGetMe>(async (resolve, reject) => {
       try {
@@ -48,7 +51,7 @@ class TelegramChannel implements Channel {
 
   #considerAlive = debounce({
     fn: async (payload: AliveConsideringPayload) => {
-      console.log("Telegram: considering alive", payload);
+      this.#logger.debug("Telegram: considering alive", payload);
       let user: UserDocument | null;
       if ("user" in payload) {
         user = payload.user;
@@ -93,5 +96,3 @@ class TelegramChannel implements Channel {
     }
   }
 }
-
-export const telegramChannel = new TelegramChannel(disposer.aliveHook);

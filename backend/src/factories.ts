@@ -5,6 +5,7 @@ import { Users } from "./db";
 import {
   authorizedUserProviderMiddleware,
   installationProviderMiddleware,
+  processManagerProviderMiddleware,
   publicUserProviderMiddleware,
 } from "./middlewares";
 
@@ -21,9 +22,9 @@ export const installationProviderFactory = endpointsFactory
     Users,
   });
 
-export const authorizedUserFactory = endpointsFactory.addMiddleware(
-  authorizedUserProviderMiddleware
-);
+export const authorizedUserFactory = endpointsFactory
+  .addMiddleware(authorizedUserProviderMiddleware)
+  .addMiddleware(processManagerProviderMiddleware);
 
 export const publicUserFactory = endpointsFactory.addMiddleware(
   publicUserProviderMiddleware
