@@ -1,5 +1,4 @@
 import { z } from "express-zod-api";
-import { telegramChannel } from "../channels/telegram";
 import { tgBot } from "../config";
 import { authorizedUserFactory } from "../factories";
 import crypto from "crypto";
@@ -17,7 +16,7 @@ export const connectTelegramEndpoint = authorizedUserFactory.build({
   }),
   handler: async ({
     input: { dataCheckString, hash, chatId },
-    options: { user },
+    options: { user, processManager },
   }) => {
     const secretKey = crypto.createHash("sha256").update(tgBot.token).digest();
     const validation = crypto
@@ -29,7 +28,11 @@ export const connectTelegramEndpoint = authorizedUserFactory.build({
     }
     user.telegramChatId = chatId;
     await user.save();
-    await telegramChannel.onConnected(user); // @todo find another approach (extract the bot from api)
+    await processManager.send(processManager.botProcess, {
+      code: "onConnected",
+      channel: "telegram",
+      payload: chatId,
+    });
     return { userId: user.id, chatId: user.telegramChatId };
   },
 });

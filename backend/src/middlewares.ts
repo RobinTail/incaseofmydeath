@@ -2,6 +2,7 @@ import { Octokit } from "@octokit/core";
 import { createMiddleware, z } from "express-zod-api";
 import { app } from "./app";
 import { Users } from "./db";
+import { createProcessManager } from "./pm";
 
 export const installationProviderMiddleware = createMiddleware({
   input: z.object({
@@ -64,4 +65,11 @@ export const authorizedUserProviderMiddleware = createMiddleware({
     }
     return { user, account };
   },
+});
+
+export const processManagerProviderMiddleware = createMiddleware({
+  input: z.object({}),
+  middleware: async () => ({
+    processManager: await createProcessManager(),
+  }),
 });
