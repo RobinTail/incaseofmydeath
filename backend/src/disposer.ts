@@ -7,7 +7,7 @@ import { config } from "./config";
 import { msInDay } from "./const";
 import { UserDocument, Users } from "./db";
 import { debounce } from "./debounce";
-import { isProcessMessage } from "./pm";
+import { isPacket, isProcessMessage } from "./pm";
 import { checkFreqToDays } from "./utils";
 
 const runFreq = 10 * 60 * 1000; // interval between runs
@@ -108,8 +108,12 @@ const check = async () => {
   setTimeout(cycleFn, runFreq);
 })();
 
-process.on("message", async (message: unknown) => {
-  logger.debug("Incoming message", message);
+process.on("message", async (packet: unknown) => {
+  if (!isPacket(packet)) {
+    logger.warn("Invalid packet received", packet);
+    return;
+  }
+  const message = packet.data;
   if (!isProcessMessage(message)) {
     logger.warn("Invalid process message", message);
     return;

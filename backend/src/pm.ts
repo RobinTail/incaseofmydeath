@@ -8,6 +8,12 @@ export interface ProcessMessage {
   payload: string;
 }
 
+export interface Packet {
+  topic: true;
+  type: "process:msg";
+  data: unknown;
+}
+
 export const isProcessMessage = (
   subject: unknown
 ): subject is ProcessMessage => {
@@ -17,6 +23,16 @@ export const isProcessMessage = (
     "code" in subject &&
     "channel" in subject &&
     "payload" in subject
+  );
+};
+
+export const isPacket = (subject: unknown): subject is Packet => {
+  return (
+    typeof subject === "object" &&
+    subject !== null &&
+    "topic" in subject &&
+    "type" in subject &&
+    "data" in subject
   );
 };
 
@@ -48,7 +64,7 @@ export const createProcessManager = () => {
           if (entity.pm_id) {
             pm2.sendDataToProcessId(
               entity.pm_id,
-              {
+              <Packet>{
                 topic: true,
                 type: "process:msg",
                 data,
