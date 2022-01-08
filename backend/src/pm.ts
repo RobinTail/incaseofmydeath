@@ -20,8 +20,13 @@ export const isProcessMessage = (
   );
 };
 
+export interface ProcessManager {
+  disposerProcess: pm2.ProcessDescription;
+  send: (entry: pm2.ProcessDescription, data: ProcessMessage) => void;
+}
+
 export const createProcessManager = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise<ProcessManager>((resolve, reject) => {
     pm2.connect((errConnect) => {
       if (errConnect) {
         reject(errConnect);
@@ -39,7 +44,7 @@ export const createProcessManager = () => {
           reject(new Error(`Can not find ${disposerProcessName} process`));
           return;
         }
-        const send = (entity: pm2.ProcessDescription, data: ProcessMessage) => {
+        const send: ProcessManager["send"] = (entity, data) => {
           if (entity.pid) {
             pm2.sendDataToProcessId(
               entity.pid,
