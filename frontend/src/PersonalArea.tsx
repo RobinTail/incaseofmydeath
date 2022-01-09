@@ -9,7 +9,6 @@ import {
   Switch,
   Tooltip,
   IconButton,
-  Input,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
@@ -322,7 +321,7 @@ export const PersonalArea = () => {
                 })
               }
             >
-              <Tooltip title="Copy URL" placement="right" arrow open>
+              <Tooltip title="Copy URL" placement="right" arrow>
                 <IconButton>
                   <ContentCopyIcon />
                 </IconButton>
