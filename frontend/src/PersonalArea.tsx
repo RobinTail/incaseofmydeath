@@ -6,11 +6,12 @@ import {
   CircularProgress,
   FormControlLabel,
   Switch,
+  Link,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import React from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link as RouterLink, useSearchParams } from "react-router-dom";
 import { useLocalStorageState } from "use-local-storage-state";
 import {
   beginAuth,
@@ -317,9 +318,11 @@ export const PersonalArea = () => {
         )}
 
         {publicStatusPath && (
-          <Link to={publicStatusPath}>
-            {`${window.location.protocol}//${window.location.host}/${publicStatusPath}`}
-          </Link>
+          <div>
+            <Link component={RouterLink} to={publicStatusPath}>
+              {`${window.location.protocol}//${window.location.host}/${publicStatusPath}`}
+            </Link>
+          </div>
         )}
 
         <SettingsDialog
