@@ -11,7 +11,7 @@ export const updateTimeSettingsEndpoint = authorizedUserFactory.build({
     attemptsCount: z.number().int().positive(),
   }),
   output: z.object({
-    nextCheck: z.date(),
+    nextCheck: z.date().transform((date) => date.toISOString()),
   }),
   handler: async ({
     input: { checkFreq, deadlineDays, attemptsCount },

@@ -12,7 +12,7 @@ export const checkRegistrationEndpoint =
       checkFreq: z.enum(checkFreqCodesArray),
       deadlineDays: z.number().int().positive(),
       attemptsCount: z.number().int().positive(),
-      nextCheck: z.date(),
+      nextCheck: z.date().transform((date) => date.toISOString()),
       repo: z.object({
         owner: z.string().nonempty(),
         name: z.string().nonempty(),

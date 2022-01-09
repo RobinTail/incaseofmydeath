@@ -61,7 +61,7 @@ const ensureInstallation = (value: unknown): Installation | null => {
       .object({
         id: z.number().int().positive(),
         iToken: z.string().nonempty(),
-        expiresAt: z.string().nonempty(), // timestamp
+        expiresAt: z.string().nonempty(),
       })
       .or(z.null())
       .parse(value);

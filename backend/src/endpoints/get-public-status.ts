@@ -9,7 +9,7 @@ export const getPublicStatusEndpoint = publicUserFactory.build({
     avatarUrl: z.string().optional(),
     name: z.string().nullable(),
     isAlive: z.boolean(),
-    lastConfirmation: z.string().nonempty(), // timestamp
+    lastConfirmation: z.date().transform((date) => date.toISOString()),
   }),
   handler: async ({ options: { user, account }, logger }) => {
     logger.debug("Account information", account);
@@ -21,7 +21,7 @@ export const getPublicStatusEndpoint = publicUserFactory.build({
       login: account.login,
       name: account.name || null,
       isAlive: user.isAlive,
-      lastConfirmation: user.lastConfirmation.toISOString(),
+      lastConfirmation: user.lastConfirmation,
     };
   },
 });
