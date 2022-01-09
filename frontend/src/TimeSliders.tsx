@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-pattern */
 import { InfoOutlined } from "@mui/icons-material";
 import {
   Slider,
