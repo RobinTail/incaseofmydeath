@@ -114,13 +114,6 @@ export const PersonalArea = () => {
   const isWorkflowSelected = selectedWorkflow !== null;
   const hasMoreRepos = nextRepoPage !== null;
   const hasMoreWorkflows = nextWfPage !== null;
-  const publicStatusUrl =
-    isAuthorized && !!registration && registration.isPublic
-      ? `${window.location.protocol}//${window.location.host}` +
-        replacePathsParams(paths.publicStatus, {
-          userId: `${auth.id}`,
-        })
-      : null;
 
   const code = params.get("code");
   const state = params.get("state"); // optional
@@ -298,35 +291,38 @@ export const PersonalArea = () => {
         />
 
         {isAuthorized && !!registration && (
-          <FormControlLabel
-            control={
-              <Switch
-                color="primary"
-                checked={registration.isPublic}
-                onChange={async () => {
-                  try {
-                    await setPublicStatus({
-                      uToken: auth.uToken,
-                      userId: auth.id,
-                      isPublic: !registration.isPublic,
-                    });
-                    setRegistration({
-                      ...registration,
-                      isPublic: !registration.isPublic,
-                    });
-                  } catch (e) {}
-                }}
-              />
-            }
-            label="Public status"
-          />
-        )}
-
-        {publicStatusUrl && (
           <Box>
-            <Input disabled value={publicStatusUrl} />
-            <CopyToClipboardButton text={publicStatusUrl}>
-              <Tooltip title="Copy URL" placement="right" arrow>
+            <FormControlLabel
+              control={
+                <Switch
+                  color="primary"
+                  checked={registration.isPublic}
+                  onChange={async () => {
+                    try {
+                      await setPublicStatus({
+                        uToken: auth.uToken,
+                        userId: auth.id,
+                        isPublic: !registration.isPublic,
+                      });
+                      setRegistration({
+                        ...registration,
+                        isPublic: !registration.isPublic,
+                      });
+                    } catch (e) {}
+                  }}
+                />
+              }
+              label="Public status"
+            />
+            <CopyToClipboardButton
+              text={
+                `${window.location.protocol}//${window.location.host}` +
+                replacePathsParams(paths.publicStatus, {
+                  userId: `${auth.id}`,
+                })
+              }
+            >
+              <Tooltip title="Copy URL" placement="right" arrow open>
                 <IconButton>
                   <ContentCopyIcon />
                 </IconButton>
