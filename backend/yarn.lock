@@ -1123,6 +1123,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.8.tgz#50d680c8a8a78fe30abe6906453b21ad8ab0ad7b"
   integrity sha512-YofkM6fGv4gDJq78g4j0mMuGMkZVxZDgtU0JRdx6FgiJDG+0fY0GKVolOV8WqVmEhLCXkQRjwDdKyPxJp/uucg==
 
+"@types/node@< 17.0.6":
+  version "17.0.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.5.tgz#57ca67ec4e57ad9e4ef5a6bab48a15387a1c83e0"
+  integrity sha512-w3mrvNXLeDYV1GKTZorGJQivK6XLCoGwpnyJFbJVK/aTBQUxOCaa/GlFAAN3OTDFcb7h5tiFG+YXCO2By+riZw==
+
 "@types/prettier@^2.1.5":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.4.2.tgz#4c62fae93eb479660c3bd93f9d24d561597a8281"
@@ -4053,11 +4058,12 @@ mongodb@4.2.2:
   optionalDependencies:
     saslprep "^1.0.3"
 
-mongoose@^6.1.4:
-  version "6.1.4"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-6.1.4.tgz#a414e64c849fae3ced99348e9de73f986c9f0551"
-  integrity sha512-RsNiMpGWo7OXFmq5xt0ZWYt2rabHLxNYr0oAiR0xDv23lHKCkXDqyDl71+sXF9rcWEe8BTHG+1IRQykiNBvaKQ==
+mongoose@^6.1.5:
+  version "6.1.5"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-6.1.5.tgz#2d249748e358ff4f3c6107d2a922c54aacb73d0a"
+  integrity sha512-0rRxTBoqMSuQF/YM3TEvbHn8Ybnd9dRjD7DItEjCXK0vwC/muLKXZ4rVCN4KAnWQAkwYzoWw2tXAy0YF6TUdEg==
   dependencies:
+    "@types/node" "< 17.0.6"
     bson "^4.2.2"
     kareem "2.3.3"
     mongodb "4.2.2"
