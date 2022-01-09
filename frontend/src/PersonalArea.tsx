@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import {
   Alert,
   Box,
@@ -6,12 +7,15 @@ import {
   CircularProgress,
   FormControlLabel,
   Switch,
-  Link,
+  Tooltip,
+  IconButton,
+  Input,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import React from "react";
-import { Link as RouterLink, useSearchParams } from "react-router-dom";
+import { CopyToClipboardButton } from "react-clipboard-button";
+import { useSearchParams } from "react-router-dom";
 import { useLocalStorageState } from "use-local-storage-state";
 import {
   beginAuth,
@@ -110,9 +114,10 @@ export const PersonalArea = () => {
   const isWorkflowSelected = selectedWorkflow !== null;
   const hasMoreRepos = nextRepoPage !== null;
   const hasMoreWorkflows = nextWfPage !== null;
-  const publicStatusPath =
+  const publicStatusUrl =
     isAuthorized && !!registration && registration.isPublic
-      ? replacePathsParams(paths.publicStatus, {
+      ? `${window.location.protocol}//${window.location.host}` +
+        replacePathsParams(paths.publicStatus, {
           userId: `${auth.id}`,
         })
       : null;
@@ -317,12 +322,17 @@ export const PersonalArea = () => {
           />
         )}
 
-        {publicStatusPath && (
-          <div>
-            <Link component={RouterLink} to={publicStatusPath}>
-              {`${window.location.protocol}//${window.location.host}${publicStatusPath}`}
-            </Link>
-          </div>
+        {publicStatusUrl && (
+          <Box>
+            <Input disabled value={publicStatusUrl} />
+            <CopyToClipboardButton text={publicStatusUrl}>
+              <Tooltip title="Copy URL" placement="right" arrow>
+                <IconButton>
+                  <ContentCopyIcon />
+                </IconButton>
+              </Tooltip>
+            </CopyToClipboardButton>
+          </Box>
         )}
 
         <SettingsDialog
