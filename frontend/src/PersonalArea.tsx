@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import {
   Alert,
   Box,
@@ -6,10 +7,13 @@ import {
   CircularProgress,
   FormControlLabel,
   Switch,
+  Tooltip,
+  IconButton,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import React from "react";
+import { CopyToClipboardButton } from "react-clipboard-button";
 import { useSearchParams } from "react-router-dom";
 import { useLocalStorageState } from "use-local-storage-state";
 import {
@@ -25,7 +29,9 @@ import {
 import { z } from "zod";
 import { Channels } from "./Channels";
 import { Consent } from "./Consent";
+import { SnackbarContext } from "./context";
 import { IconicListSelector } from "./IconicListSelector";
+import { paths, replacePathsParams } from "./paths";
 import { Person } from "./Person";
 import { UserStatus } from "./UserStatus";
 import { SettingsDialog } from "./SettingsDialog";
@@ -71,6 +77,7 @@ const ensureInstallation = (value: unknown): Installation | null => {
 };
 
 export const PersonalArea = () => {
+  const { showSnackbar } = React.useContext(SnackbarContext);
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const [_auth, setAuth, { isPersistent }] = useLocalStorageState<unknown>(
@@ -285,28 +292,50 @@ export const PersonalArea = () => {
         />
 
         {isAuthorized && !!registration && (
-          <FormControlLabel
-            control={
-              <Switch
-                color="primary"
-                checked={registration.isPublic}
-                onChange={async () => {
-                  try {
-                    await setPublicStatus({
-                      uToken: auth.uToken,
-                      userId: auth.id,
-                      isPublic: !registration.isPublic,
-                    });
-                    setRegistration({
-                      ...registration,
-                      isPublic: !registration.isPublic,
-                    });
-                  } catch (e) {}
-                }}
-              />
-            }
-            label="Public status"
-          />
+          <Box>
+            <FormControlLabel
+              control={
+                <Switch
+                  color="primary"
+                  checked={registration.isPublic}
+                  onChange={async () => {
+                    try {
+                      await setPublicStatus({
+                        uToken: auth.uToken,
+                        userId: auth.id,
+                        isPublic: !registration.isPublic,
+                      });
+                      setRegistration({
+                        ...registration,
+                        isPublic: !registration.isPublic,
+                      });
+                    } catch (e) {}
+                  }}
+                />
+              }
+              label="Public status"
+            />
+            <CopyToClipboardButton
+              text={
+                `${window.location.protocol}//${window.location.host}` +
+                replacePathsParams(paths.publicStatus, {
+                  userId: `${auth.id}`,
+                })
+              }
+              onSuccess={() =>
+                showSnackbar({ message: "Copied!", success: true })
+              }
+              onError={() =>
+                showSnackbar({ message: "Failed to copy", success: false })
+              }
+            >
+              <Tooltip title="Copy URL" placement="right" arrow>
+                <IconButton>
+                  <ContentCopyIcon />
+                </IconButton>
+              </Tooltip>
+            </CopyToClipboardButton>
+          </Box>
         )}
 
         <SettingsDialog

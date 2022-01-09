@@ -39,9 +39,11 @@ export const Person = ({
           badgeContent={
             isAuthorized &&
             isRegistered && (
-              <IconButton onClick={onSettingsClick}>
-                <BuildCircleIcon />
-              </IconButton>
+              <Tooltip title="Settings" placement="right" arrow>
+                <IconButton onClick={onSettingsClick}>
+                  <BuildCircleIcon />
+                </IconButton>
+              </Tooltip>
             )
           }
         >
