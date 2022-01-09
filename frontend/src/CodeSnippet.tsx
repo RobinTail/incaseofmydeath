@@ -1,8 +1,6 @@
 import {
-  Alert,
   IconButton,
   Paper,
-  Snackbar,
   Tooltip,
   useMediaQuery,
   useTheme,
@@ -13,6 +11,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { SnackbarContext } from "./context";
 
 interface CodeSnippetProps {
   code: string;
@@ -22,15 +21,7 @@ interface CodeSnippetProps {
 export const CodeSnippet = ({ language, code }: CodeSnippetProps) => {
   const theme = useTheme();
   const isXS = useMediaQuery(theme.breakpoints.only("xs"));
-  const [isSnackbarOpened, setSnackbarOpened] = React.useState(false);
-  const [snackbarContent, setSnackbarContent] = React.useState({
-    message: "",
-    success: true,
-  });
-
-  const closeSnackbar = () => {
-    setSnackbarOpened(false);
-  };
+  const { showSnackbar } = React.useContext(SnackbarContext);
 
   return (
     <>
@@ -48,14 +39,10 @@ export const CodeSnippet = ({ language, code }: CodeSnippetProps) => {
             top: theme.spacing(1),
             right: theme.spacing(1),
           }}
-          onSuccess={() => {
-            setSnackbarContent({ message: "Copied!", success: true });
-            setSnackbarOpened(true);
-          }}
-          onError={() => {
-            setSnackbarContent({ message: "Failed to copy", success: false });
-            setSnackbarOpened(true);
-          }}
+          onSuccess={() => showSnackbar({ message: "Copied!", success: true })}
+          onError={() =>
+            showSnackbar({ message: "Failed to copy", success: false })
+          }
         >
           <Tooltip title="Copy" placement="left" arrow>
             <IconButton>
@@ -90,21 +77,6 @@ export const CodeSnippet = ({ language, code }: CodeSnippetProps) => {
           {`\`\`\`${language}\n${code}\n\`\`\``}
         </ReactMarkdown>
       </Paper>
-      <Snackbar
-        open={isSnackbarOpened}
-        autoHideDuration={4000}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-        onClose={closeSnackbar}
-      >
-        <Alert
-          onClose={closeSnackbar}
-          severity={snackbarContent.success ? "success" : "error"}
-          variant="filled"
-          sx={{ width: "100%" }}
-        >
-          {snackbarContent.message}
-        </Alert>
-      </Snackbar>
     </>
   );
 };

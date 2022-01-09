@@ -29,6 +29,7 @@ import {
 import { z } from "zod";
 import { Channels } from "./Channels";
 import { Consent } from "./Consent";
+import { SnackbarContext } from "./context";
 import { IconicListSelector } from "./IconicListSelector";
 import { paths, replacePathsParams } from "./paths";
 import { Person } from "./Person";
@@ -76,6 +77,7 @@ const ensureInstallation = (value: unknown): Installation | null => {
 };
 
 export const PersonalArea = () => {
+  const { showSnackbar } = React.useContext(SnackbarContext);
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const [_auth, setAuth, { isPersistent }] = useLocalStorageState<unknown>(
@@ -319,6 +321,12 @@ export const PersonalArea = () => {
                 replacePathsParams(paths.publicStatus, {
                   userId: `${auth.id}`,
                 })
+              }
+              onSuccess={() =>
+                showSnackbar({ message: "Copied!", success: true })
+              }
+              onError={() =>
+                showSnackbar({ message: "Failed to copy", success: false })
               }
             >
               <Tooltip title="Copy URL" placement="right" arrow>
