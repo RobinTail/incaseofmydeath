@@ -10,7 +10,7 @@ import {
 import GitHubIcon from "@mui/icons-material/GitHub";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import React from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useLocalStorageState } from "use-local-storage-state";
 import {
   beginAuth,
@@ -26,6 +26,7 @@ import { z } from "zod";
 import { Channels } from "./Channels";
 import { Consent } from "./Consent";
 import { IconicListSelector } from "./IconicListSelector";
+import { paths, replacePathsParams } from "./paths";
 import { Person } from "./Person";
 import { UserStatus } from "./UserStatus";
 import { SettingsDialog } from "./SettingsDialog";
@@ -108,6 +109,12 @@ export const PersonalArea = () => {
   const isWorkflowSelected = selectedWorkflow !== null;
   const hasMoreRepos = nextRepoPage !== null;
   const hasMoreWorkflows = nextWfPage !== null;
+  const publicStatusPath =
+    isAuthorized && !!registration && registration.isPublic
+      ? replacePathsParams(paths.publicStatus, {
+          userId: `${auth.id}`,
+        })
+      : null;
 
   const code = params.get("code");
   const state = params.get("state"); // optional
@@ -307,6 +314,12 @@ export const PersonalArea = () => {
             }
             label="Public status"
           />
+        )}
+
+        {publicStatusPath && (
+          <Link to={publicStatusPath}>
+            {`${window.location.protocol}//${window.location.host}/${publicStatusPath}`}
+          </Link>
         )}
 
         <SettingsDialog
