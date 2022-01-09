@@ -461,6 +461,7 @@ export const PersonalArea = () => {
           checkFreqCode={registration.checkFreq}
           deadlineDays={registration.deadlineDays}
           attemptsCount={registration.attemptsCount}
+          nextCheck={new Date(registration.nextCheck)}
         />
       )}
 

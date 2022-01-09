@@ -1,10 +1,12 @@
 /* eslint-disable no-empty-pattern */
+import { Info } from "@mui/icons-material";
 import {
   Slider,
   Box,
   Typography,
   useMediaQuery,
   useTheme,
+  Tooltip,
 } from "@mui/material";
 import type { CheckFreqCode } from "../../backend/dist/const";
 import React from "react";
@@ -26,6 +28,7 @@ interface TimeSlidersOptions {
   checkFreqCode: CheckFreqCode;
   deadlineDays: number;
   attemptsCount: number;
+  nextCheck: Date;
 }
 
 const checkFreqMarks = (Object.keys(checkFreqLabels) as CheckFreqCode[]).map(
@@ -49,9 +52,10 @@ export const TimeSliders = (props: TimeSlidersOptions) => {
   });
   const [deadlineDays, setDeadlineDays] = React.useState(props.deadlineDays);
   const [attemptsCount, setAttemptsCount] = React.useState(props.attemptsCount);
+  const [nextCheck, setNextCheck] = React.useState(props.nextCheck);
 
   const handleUpdate = async () => {
-    await updateTimeSettings({
+    const resp = await updateTimeSettings({
       userId: props.userId,
       uToken: props.uToken,
       checkFreq: Object.keys(checkFreqLabels)[
@@ -60,6 +64,7 @@ export const TimeSliders = (props: TimeSlidersOptions) => {
       deadlineDays,
       attemptsCount,
     });
+    setNextCheck(new Date(resp.nextCheck));
   };
 
   return (
@@ -73,6 +78,12 @@ export const TimeSliders = (props: TimeSlidersOptions) => {
       <Typography>
         Check that I'm alive{" "}
         <strong>{Object.values(checkFreqLabels)[checkFreq]}</strong>
+        <Tooltip
+          title={`Next check: ${nextCheck.toLocaleDateString()}`}
+          placement={isXS ? "top" : "right"}
+        >
+          <Info />
+        </Tooltip>
       </Typography>
       <Slider
         value={checkFreq}
