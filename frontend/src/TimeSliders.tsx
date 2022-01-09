@@ -82,6 +82,7 @@ export const TimeSliders = (props: TimeSlidersOptions) => {
           arrow
           title={`Next check: ${nextCheck.toLocaleDateString()}`}
           placement={isXS ? "top" : "right"}
+          sx={{ ml: 1 }}
         >
           <InfoOutlined fontSize="small" />
         </Tooltip>
