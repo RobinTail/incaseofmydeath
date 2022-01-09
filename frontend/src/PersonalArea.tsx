@@ -320,7 +320,7 @@ export const PersonalArea = () => {
         {publicStatusPath && (
           <div>
             <Link component={RouterLink} to={publicStatusPath}>
-              {`${window.location.protocol}//${window.location.host}/${publicStatusPath}`}
+              {`${window.location.protocol}//${window.location.host}${publicStatusPath}`}
             </Link>
           </div>
         )}
