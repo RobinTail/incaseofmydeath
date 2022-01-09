@@ -1,5 +1,4 @@
-/* eslint-disable no-empty-pattern */
-import { Info } from "@mui/icons-material";
+import { InfoOutlined } from "@mui/icons-material";
 import {
   Slider,
   Box,
@@ -79,10 +78,11 @@ export const TimeSliders = (props: TimeSlidersOptions) => {
         Check that I'm alive{" "}
         <strong>{Object.values(checkFreqLabels)[checkFreq]}</strong>
         <Tooltip
+          arrow
           title={`Next check: ${nextCheck.toLocaleDateString()}`}
           placement={isXS ? "top" : "right"}
         >
-          <Info />
+          <InfoOutlined fontSize="small" />
         </Tooltip>
       </Typography>
       <Slider
