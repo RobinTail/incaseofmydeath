@@ -90,7 +90,7 @@ const check = async () => {
     user.lastConfirmation = new Date();
     logger.info("User is dead", user);
     const status = await runWorkflow(user);
-    logger.debug("Workflow execution request status", status);
+    logger.debug("Workflow execution request status", { status });
   }
   await user.save();
 };
