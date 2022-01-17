@@ -155,7 +155,11 @@ export const PersonalArea = () => {
   React.useEffect(() => {
     if (isAuthorized && !isInstalled) {
       runAsync(async () => {
-        setInstallation(await findInstallation(auth.uToken));
+        try {
+          setInstallation(await findInstallation(auth.uToken));
+        } catch (e) {
+          logout();
+        }
       });
     }
   }, [isAuthorized]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -170,9 +174,13 @@ export const PersonalArea = () => {
       return installation.iToken;
     }
     if (isAuthorized) {
-      const newInstallation = await findInstallation(auth.uToken);
-      setInstallation(newInstallation);
-      return newInstallation.iToken;
+      try {
+        const newInstallation = await findInstallation(auth.uToken);
+        setInstallation(newInstallation);
+        return newInstallation.iToken;
+      } catch (e) {
+        logout();
+      }
     }
     throw new Error(
       "should not call ensureInstallationToken() when !isAuthorized."
@@ -248,6 +256,12 @@ export const PersonalArea = () => {
       },
       { infinite: true }
     );
+  };
+
+  const logout = () => {
+    setRegistration(null);
+    setInstallation(null);
+    setAuth(null);
   };
 
   // consent and registration request handler
@@ -341,11 +355,7 @@ export const PersonalArea = () => {
         <SettingsDialog
           open={isSettingsOpen}
           onClose={() => setSettingsOpen(false)}
-          onRemoveRegistration={() => {
-            setRegistration(null);
-            setInstallation(null);
-            setAuth(null);
-          }}
+          onRemoveRegistration={logout}
           userId={isAuthorized && registration ? auth.id : null}
           uToken={isAuthorized && registration ? auth.uToken : null}
           repo={isAuthorized && registration ? registration.repo : null}
