@@ -5195,10 +5195,10 @@ systeminformation@^5.7:
   resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.9.17.tgz#9b0c405346fcd9ad37a95df4990eefa3d164d7a3"
   integrity sha512-hbJtPsG63PCst4PLXFq8hycbkeR5oGDquRowfLK0gNX7nJ1qx3tCbsWu83OL4GP1dkcLMKsVooLUn5x2K1Epgg==
 
-telegraf@^4.5.2:
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-4.5.2.tgz#1788aef6b3b5f3cfb5b831db9bf58aa550641cc2"
-  integrity sha512-OG68wQqYQQq2ldzAMv6JJUkh9XU+4mWRgHinMeJ8FoRA5ZZuA4WauqRFi8aY/OQiwJM2gTT2XWCfopN2dZWDNw==
+telegraf@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-4.6.0.tgz#3300d51f65a163c24426ed6e431c0d5df3729b06"
+  integrity sha512-77JqMIyEd8jN5meTp6F50ILVsqxMaVplbDZtGNfJhVr75ZsnClLYt+z3p61cOcACaPIlgOtqzQwN0wtjVjdiCg==
   dependencies:
     abort-controller "^3.0.0"
     debug "^4.3.3"
@@ -5208,7 +5208,7 @@ telegraf@^4.5.2:
     p-timeout "^4.1.0"
     safe-compare "^1.1.4"
     sandwich-stream "^2.0.2"
-    typegram "^3.6.1"
+    typegram "^3.7.0"
 
 terminal-link@^2.0.0:
   version "2.1.1"
@@ -5417,10 +5417,10 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typegram@^3.6.1:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/typegram/-/typegram-3.6.2.tgz#0c9d8692d99ea5b4f8b8b842e4ae65ee6bdaf343"
-  integrity sha512-q222XE5vFtzhY8q+x+yl4oNhVqjDSAixwvnpmzze61i+u/eaKIrimT3xz/oJrCUmSvaROH1GNZS3jqDDDNp94A==
+typegram@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/typegram/-/typegram-3.7.0.tgz#9914fd87a4e20af9e730de7975dabaaa3c9a18ec"
+  integrity sha512-IafMO+GRi5H8CtWSNihuD56Bjpmj/ISbg6G8jdTkNxldrym+FOPlo/fxtaPs/LyWnS0l1Bm18MUDwOikZSKmJw==
 
 typescript@^4.5.4:
   version "4.5.4"
