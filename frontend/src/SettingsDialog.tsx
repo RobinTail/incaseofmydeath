@@ -61,7 +61,7 @@ export const SettingsDialog = ({
               navigate(paths.root);
             }}
           >
-            Delete Account
+            Unregister workflow
           </Button>
         )}
         <Button variant="contained" onClick={onClose}>
