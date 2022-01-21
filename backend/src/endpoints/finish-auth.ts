@@ -1,10 +1,8 @@
 import { createOAuthUserAuth } from "@octokit/auth-app";
 import { Octokit } from "@octokit/core";
-import { createHttpError, z } from "express-zod-api";
+import { z } from "express-zod-api";
 import { github } from "../config";
 import { endpointsFactory } from "../factories";
-
-const betaTesters: string[] = ["RobinTail"];
 
 export const finishAuthenticationEndpoint = endpointsFactory.build({
   method: "get",
