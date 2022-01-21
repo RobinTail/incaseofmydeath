@@ -33,15 +33,6 @@ export const finishAuthenticationEndpoint = endpointsFactory.build({
     } = await kit.request("GET /user");
     logger.debug(`Authorized: ${login}`);
 
-    // @todo remove after beta testing
-    if (!betaTesters.includes(login)) {
-      throw createHttpError(
-        403,
-        "The App is currently in closed beta testing. " +
-          "Join testing here: https://github.com/RobinTail/incaseofmydeath/discussions/2"
-      );
-    }
-
     return { id, login, name, avatarUrl, uToken };
   },
 });
