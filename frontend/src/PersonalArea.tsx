@@ -298,7 +298,7 @@ export const PersonalArea = () => {
         {/* Required action description */}
         <UserStatus
           isAuthorized={isAuthorized}
-          isRegistered={!!registration}
+          isRegistered={registration ? !!registration : registration}
           isRepoSelected={isRepoSelected}
           isWorkflowSelected={isWorkflowSelected}
           isLoading={isLoading}
