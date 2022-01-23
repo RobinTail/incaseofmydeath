@@ -9,7 +9,7 @@ export const getPublicStatusEndpoint = publicUserFactory.build({
     avatarUrl: z.string().optional(),
     name: z.string().nullable(),
     isAlive: z.boolean(),
-    lastConfirmation: z.date().transform((date) => date.toISOString()),
+    lastConfirmation: z.dateOut(),
   }),
   handler: async ({ options: { user, account }, logger }) => {
     logger.debug("Account information", account);
