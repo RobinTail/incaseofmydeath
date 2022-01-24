@@ -1,10 +1,8 @@
 import { createOAuthUserAuth } from "@octokit/auth-app";
 import { Octokit } from "@octokit/core";
-import { createHttpError, z } from "express-zod-api";
+import { z } from "express-zod-api";
 import { github } from "../config";
 import { endpointsFactory } from "../factories";
-
-const betaTesters: string[] = ["RobinTail"];
 
 export const finishAuthenticationEndpoint = endpointsFactory.build({
   method: "get",
@@ -32,15 +30,6 @@ export const finishAuthenticationEndpoint = endpointsFactory.build({
       data: { id, login, avatar_url: avatarUrl, name },
     } = await kit.request("GET /user");
     logger.debug(`Authorized: ${login}`);
-
-    // @todo remove after beta testing
-    if (!betaTesters.includes(login)) {
-      throw createHttpError(
-        403,
-        "The App is currently in closed beta testing. " +
-          "Join testing here: https://github.com/RobinTail/incaseofmydeath/discussions/2"
-      );
-    }
 
     return { id, login, name, avatarUrl, uToken };
   },
