@@ -16,6 +16,7 @@ const userSchema = new Schema<{
   workflowId: number;
   isAlive: boolean;
   isPublic: boolean;
+  isCountdown: boolean;
   checkFreq: CheckFreqCode;
   deadlineDays: number;
   attemptsCount: number;
@@ -33,6 +34,7 @@ const userSchema = new Schema<{
   workflowId: { type: Schema.Types.Number },
   isAlive: { type: Schema.Types.Boolean, default: true },
   isPublic: { type: Schema.Types.Boolean, default: false },
+  isCountdown: { type: Schema.Types.Boolean, default: false },
   checkFreq: {
     type: Schema.Types.String,
     enum: Object.keys(checkFreqCodes),

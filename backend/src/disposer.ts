@@ -19,9 +19,10 @@ const aliveHook = debounce({
   fn: (async (user) => {
     logger.info(`${user.id} is alive`);
     user.isAlive = true;
+    user.isCountdown = false; // regular schedule
     user.lastConfirmation = new Date();
     user.nextCheck = new Date(
-      Date.now() + checkFreqToDays(user.checkFreq) * msInDay // regular schedule
+      Date.now() + checkFreqToDays(user.checkFreq) * msInDay
     );
     await user.save();
   }) as AliveHook,
@@ -67,8 +68,8 @@ const check = async () => {
   }
   let shouldMarkAsDead = false;
   if (
-    user.lastConfirmation.valueOf() + user.deadlineDays * msInDay <
-    Date.now()
+    user.isCountdown &&
+    user.lastConfirmation.valueOf() + user.deadlineDays * msInDay < Date.now()
   ) {
     shouldMarkAsDead = true;
   }
@@ -79,14 +80,17 @@ const check = async () => {
       await telegramChannel.rip(user);
     } else {
       await telegramChannel.ask(user);
+      // countdown schedule
+      user.isCountdown = true;
       user.nextCheck = new Date(
-        Date.now() + (user.deadlineDays * msInDay) / (user.attemptsCount + 1) // countdown schedule
+        Date.now() + (user.deadlineDays * msInDay) / (user.attemptsCount + 1)
       );
       logger.debug("Asked user to confirm the status", user);
     }
   }
   if (shouldMarkAsDead && hasChannel) {
     user.isAlive = false;
+    user.isCountdown = false;
     user.lastConfirmation = new Date();
     logger.info("User is dead", user);
     const status = await runWorkflow(user);
