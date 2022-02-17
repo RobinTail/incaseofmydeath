@@ -31,7 +31,7 @@
     "fast-memory-cache": "^2.0.4",
     "jest": "^27.5.1",
     "mongoose": "^6.2.1",
-    "pm2": "^5.1.2",
+    "pm2": "^5.2.0",
     "prettier": "2.5.1",
     "telegraf": "^4.7.0",
     "ts-jest": "^27.1.3",
