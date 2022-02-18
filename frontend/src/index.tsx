@@ -2,7 +2,7 @@ import { createTheme, PaletteMode, ThemeProvider } from "@mui/material";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { useLocalStorageState } from "use-local-storage-state";
+import useLocalStorageState from "use-local-storage-state";
 import { Intro } from "./Intro";
 import { paths } from "./paths";
 import { PersonalArea } from "./PersonalArea";
@@ -22,7 +22,7 @@ const ensureColorMode = (value: unknown): PaletteMode => {
 const App = () => {
   const [_colorMode, setColorMode] = useLocalStorageState<unknown>(
     "colorMode",
-    "dark"
+    { defaultValue: "dark" }
   );
   const colorMode = React.useMemo(
     () => ensureColorMode(_colorMode),
