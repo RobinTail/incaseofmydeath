@@ -15,7 +15,7 @@ import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import React from "react";
 import { CopyToClipboardButton } from "react-clipboard-button";
 import { useSearchParams } from "react-router-dom";
-import { useLocalStorageState } from "use-local-storage-state";
+import useLocalStorageState from "use-local-storage-state";
 import {
   beginAuth,
   checkRegistration,
@@ -82,11 +82,11 @@ export const PersonalArea = () => {
   const [error, setError] = React.useState<string | null>(null);
   const [_auth, setAuth, { isPersistent }] = useLocalStorageState<unknown>(
     "auth",
-    null
+    { defaultValue: null }
   );
   const [_installation, setInstallation] = useLocalStorageState<unknown>(
     "installation",
-    null
+    { defaultValue: null }
   );
   const [registration, setRegistration] = React.useState<
     Registration | null | false
