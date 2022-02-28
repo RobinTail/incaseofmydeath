@@ -2575,10 +2575,10 @@ express-fileupload@1.3.1:
   dependencies:
     busboy "^0.3.1"
 
-express-zod-api@^5.6.1:
-  version "5.6.1"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-5.6.1.tgz#47f1b51dd0e38232f601446f73ae718792c2c6ee"
-  integrity sha512-/8s98hHnH3/0YLYA3sVs0oHbmu9X6pjH4aGupWUR1RhM+uZFKCmXMZdq3FA4egUWfyYrw2m/q1Xu6jphI+fGOQ==
+express-zod-api@^5.7.0:
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-5.7.0.tgz#6da54dcf1c9eb70976829a798fd6b5a64fe60771"
+  integrity sha512-mqmgzljWq4w/UDF6PUu0Rs63FZrgJ2L1Zsfzt1J1kZYnS0HHoqF69FHi0tdqFc9Baopk715LiVsmAiLDV1H3gw==
   dependencies:
     "@types/compression" "^1.7.2"
     "@types/express" "^4.17.13"
@@ -2594,7 +2594,7 @@ express-zod-api@^5.6.1:
     ramda "0.28.0"
     triple-beam "1.3.0"
     winston "3.6.0"
-    zod "3.11.6"
+    zod "3.12.0"
 
 express@4.17.3:
   version "4.17.3"
@@ -5808,7 +5808,7 @@ yn@3.1.1:
   resolved "https://registry.yarnpkg.com/yn/-/yn-3.1.1.tgz#1e87401a09d767c1d5eab26a6e4c185182d2eb50"
   integrity sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==
 
-zod@3.11.6:
-  version "3.11.6"
-  resolved "https://registry.yarnpkg.com/zod/-/zod-3.11.6.tgz#e43a5e0c213ae2e02aefe7cb2b1a6fa3d7f1f483"
-  integrity sha512-daZ80A81I3/9lIydI44motWe6n59kRBfNzTuS2bfzVh1nAXi667TOTWWtatxyG+fwgNUiagSj/CWZwRRbevJIg==
+zod@3.12.0:
+  version "3.12.0"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.12.0.tgz#84ba9f6bdb7835e2483982d5f52cfffcb6a00346"
+  integrity sha512-w+mmntgEL4hDDL5NLFdN6Fq2DSzxfmlSoJqiYE1/CApO8EkOCxvJvRYEVf8Vr/lRs3i6gqoiyFM6KRcWqqdBzQ==
