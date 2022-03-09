@@ -21,7 +21,7 @@ import type {
   TogglePublicStatusEndpointRequest,
 } from "../../backend/dist/routing";
 
-const host = "https://api.incaseofmy.de:6060";
+const host = "https://api.incaseofmy.de:443";
 
 const fetchJson = async <T>(...params: Parameters<typeof fetch>) =>
   (await (await fetch(...params)).json()) as T;
