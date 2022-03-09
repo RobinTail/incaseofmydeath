@@ -21,7 +21,7 @@ module.exports = {
       watch: false,
       max_memory_restart: '200M',
       env: {
-        PORT: 80
+        PORT: 6060
       }
     },
     {
