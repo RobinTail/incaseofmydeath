@@ -67,10 +67,10 @@ const check = async () => {
     return;
   }
   let shouldMarkAsDead = false;
-  if (
-    user.isCountdown &&
-    user.lastConfirmation.valueOf() + user.deadlineDays * msInDay < Date.now()
-  ) {
+  const deadline =
+    user.lastConfirmation.valueOf() +
+    (checkFreqToDays(user.checkFreq) + user.deadlineDays) * msInDay;
+  if (user.isCountdown && deadline < Date.now()) {
     shouldMarkAsDead = true;
   }
   const hasChannel = !!user.telegramChatId; // add more here
