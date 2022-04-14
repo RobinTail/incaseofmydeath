@@ -9666,10 +9666,10 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-use-local-storage-state@^15.0.0:
-  version "15.0.0"
-  resolved "https://registry.yarnpkg.com/use-local-storage-state/-/use-local-storage-state-15.0.0.tgz#fc012654bc459798efd66c574e52414abab949d7"
-  integrity sha512-0Dh4DiqgsxpyZDa7PRNs7Mct9OHqTuuZl/V3zzPwNJaR9NVuO4HAZdKSJeelgq8h8bE83ZKMlXMLWzMRxu3ZLg==
+use-local-storage-state@^17.0.1:
+  version "17.0.1"
+  resolved "https://registry.yarnpkg.com/use-local-storage-state/-/use-local-storage-state-17.0.1.tgz#7679e08ad973205018283172b1c9bc1080aabf72"
+  integrity sha512-e0UzIgWF9SzqGv7QnFKcOSK+2oP1fN/tImN69Thj8z13g8CYfgkAEdvMWCktuiEcZ+/pTiiBXj8hSu5EHxkrsQ==
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
