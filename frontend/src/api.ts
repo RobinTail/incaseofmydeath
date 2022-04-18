@@ -7,7 +7,7 @@ const client = new ExpressZodAPIClient(async (method, path, params) => {
       (acc, key) => acc.replace(`:${key}`, params[key]),
       path
     ) + (method === "get" ? new URLSearchParams(params).toString() : "");
-  const response = await fetch(`https://example.com${pathWithParams}`, {
+  const response = await fetch(`${host}${pathWithParams}`, {
     method,
     body: method === "get" ? undefined : JSON.stringify(params),
   });
