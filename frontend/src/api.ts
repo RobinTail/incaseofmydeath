@@ -27,7 +27,10 @@ export const finishAuth = async (code: string, state: string) => {
   if (response.status === "error") {
     throw new Error(response.error.message);
   }
-  return response.data;
+  // @todo remove this hack when optionals will be fixed
+  // @see https://github.com/sachinraja/zod-to-ts/pull/10
+  return response.data as Omit<typeof response.data, "avatarUrl"> &
+    Partial<Pick<typeof response.data, "avatarUrl">>;
 };
 
 export const findInstallation = async (uToken: string) => {
