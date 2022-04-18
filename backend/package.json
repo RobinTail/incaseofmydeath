@@ -9,7 +9,7 @@
     "start": "ts-node src/index.ts",
     "lint": "eslint src",
     "build": "rm -rf dist && tsc",
-    "build:dts": "rm -rf dist && tsc -p tsconfig-dts.json",
+    "build:client": "yarn ts-node src/client.ts && yarn prettier --write ../frontend/src/api-client.ts",
     "test": "ENV=TEST yarn jest src/"
   },
   "dependencies": {
@@ -27,7 +27,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "express-zod-api": "^6.0.3",
+    "express-zod-api": "^6.1.0-beta1",
     "fast-memory-cache": "^2.0.4",
     "jest": "^27.5.1",
     "mongoose": "^6.2.10",
