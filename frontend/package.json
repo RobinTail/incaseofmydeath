@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "yarn build:dts && yarn build:app",
+    "build": "yarn build:client && yarn build:app",
     "build:client": "cd ../backend && yarn install && yarn build:client && cd ../frontend",
     "build:app": "react-scripts build",
     "lint": "eslint src && prettier --check src",
