@@ -7,6 +7,8 @@ const client = new ExpressZodAPIClient(async (method, path, params) => {
   const response = await fetch(`${host}${path}${searchParams}`, {
     method,
     body: method === "get" ? undefined : JSON.stringify(params),
+    headers:
+      method === "get" ? undefined : { "Content-Type": "application/json" },
   });
   return response.json();
 });
