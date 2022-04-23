@@ -364,14 +364,22 @@ export type Provider = <M extends Method, P extends Path>(
   params: Input[`${M} ${P}`]
 ) => Promise<Response[`${M} ${P}`]>;
 
+export type Implementation = (
+  method: Method,
+  path: string,
+  params: Record<string, any>
+) => Promise<any>;
+
 /*
-export const exampleProvider: Provider = async (method, path, params) => {
-  const pathWithParams =
-    Object.keys(params).reduce(
-      (acc, key) => acc.replace(`:${key}`, params[key]),
-      path
-    ) + (method === "get" ? `?${new URLSearchParams(params)}` : "");
-  const response = await fetch(`https://example.com${pathWithParams}`, {    method,
+export const exampleImplementation: Implementation = async (
+  method,
+  path,
+  params
+) => {
+  const searchParams =
+    method === "get" ? `?${new URLSearchParams(params)}` : "";
+  const response = await fetch(`https://example.com${path}${searchParams}`, {
+    method,
     body: method === "get" ? undefined : JSON.stringify(params),
   });
   if (`${method} ${path}` in jsonEndpoints) {
@@ -380,12 +388,18 @@ export const exampleProvider: Provider = async (method, path, params) => {
   return response.text();
 };
 
-const client = new ExpressZodAPIClient(exampleProvider);
+const client = new ExpressZodAPIClient(exampleImplementation);
 client.provide("get", "/v1/user/retrieve", { id: "10" });
 */
 export class ExpressZodAPIClient {
-  constructor(provider: Provider) {
-    this.provide = provider;
-  }
-  public readonly provide: Provider;
+  constructor(protected readonly implementation: Implementation) {}
+  public readonly provide: Provider = (method, path, params) =>
+    this.implementation(
+      method,
+      Object.keys(params).reduce(
+        (acc, key) => acc.replace(`:${key}`, params[key]),
+        path
+      ),
+      params
+    );
 }

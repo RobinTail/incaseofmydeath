@@ -2,12 +2,9 @@ import { ExpressZodAPIClient, Input } from "./api-client";
 const host = "https://api.incaseofmy.de:443";
 
 const client = new ExpressZodAPIClient(async (method, path, params) => {
-  const pathWithParams =
-    Object.keys(params).reduce(
-      (acc, key) => acc.replace(`:${key}`, params[key]),
-      path
-    ) + (method === "get" ? `?${new URLSearchParams(params)}` : "");
-  const response = await fetch(`${host}${pathWithParams}`, {
+  const searchParams =
+    method === "get" ? `?${new URLSearchParams(params)}` : "";
+  const response = await fetch(`${host}${path}${searchParams}`, {
     method,
     body: method === "get" ? undefined : JSON.stringify(params),
   });
