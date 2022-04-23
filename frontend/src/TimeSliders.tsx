@@ -8,9 +8,10 @@ import {
   useTheme,
   Tooltip,
 } from "@mui/material";
-import type { CheckFreqCode } from "../../backend/dist/const";
 import React from "react";
 import { updateTimeSettings } from "./api";
+
+type CheckFreqCode = "day" | "week" | "month" | "quarter" | "year";
 
 const checkFreqLabels: Record<CheckFreqCode, string> = {
   day: "daily",

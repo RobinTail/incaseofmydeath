@@ -3,7 +3,9 @@ import { mongo } from "./config";
 import { CheckFreqCode, checkFreqCodes, msInDay } from "./const";
 import { checkFreqToDays } from "./utils";
 
-export const connection = mongoose.connect(mongo.connectionString);
+export const connection = mongo.connectionString
+  ? mongoose.connect(mongo.connectionString)
+  : Promise.resolve(mongoose);
 
 const defaultDeadline = 5;
 const defaultAttempts = 3;

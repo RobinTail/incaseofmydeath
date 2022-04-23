@@ -1,35 +1,20 @@
-import type {
-  BeginAuthEndpointResponse,
-  FinishAuthEndpointResponse,
-  FindInstallationEndpointResponse,
-  ListReposEndpointResponse,
-  ListWorkflowsEndpointResponse,
-  RegisterWorkflowEndpointResponse,
-  RegisterWorkflowEndpointRequest,
-  CheckRegistrationEndpointRequest,
-  CheckRegistrationEndpointResponse,
-  ConnectTelegramEndpointRequest,
-  ConnectTelegramEndpointResponse,
-  UpdateTimeSettingsEndpointRequest,
-  UpdateTimeSettingsEndpointResponse,
-  DisconnectTelegramEndpointRequest,
-  DisconnectTelegramEndpointResponse,
-  RemoveRegistrationEndpointRequest,
-  RemoveRegistrationEndpointResponse,
-  GetPublicStatusEndpointResponse,
-  TogglePublicStatusEndpointResponse,
-  TogglePublicStatusEndpointRequest,
-} from "../../backend/dist/routing";
-
+import { ExpressZodAPIClient, Input } from "./api-client";
 const host = "https://api.incaseofmy.de:443";
 
-const fetchJson = async <T>(...params: Parameters<typeof fetch>) =>
-  (await (await fetch(...params)).json()) as T;
+const client = new ExpressZodAPIClient(async (method, path, params) => {
+  const searchParams =
+    method === "get" ? `?${new URLSearchParams(params)}` : "";
+  const response = await fetch(`${host}${path}${searchParams}`, {
+    method,
+    body: method === "get" ? undefined : JSON.stringify(params),
+    headers:
+      method === "get" ? undefined : { "Content-Type": "application/json" },
+  });
+  return response.json();
+});
 
 export const beginAuth = async () => {
-  const response = await fetchJson<BeginAuthEndpointResponse>(
-    `${host}/v1/auth/begin`
-  );
+  const response = await client.provide("get", "/v1/auth/begin", {});
   if (response.status === "error") {
     throw new Error(response.error.message);
   }
@@ -37,24 +22,23 @@ export const beginAuth = async () => {
 };
 
 export const finishAuth = async (code: string, state: string) => {
-  const response = await fetchJson<FinishAuthEndpointResponse>(
-    `${host}/v1/auth/finish?code=${code}&state=${state}`
-  );
+  const response = await client.provide("get", "/v1/auth/finish", {
+    code,
+    state,
+  });
   if (response.status === "error") {
     throw new Error(response.error.message);
   }
-  return response.data;
+  // @todo remove this hack when optionals will be fixed
+  // @see https://github.com/sachinraja/zod-to-ts/pull/10
+  return response.data as Omit<typeof response.data, "avatarUrl"> &
+    Partial<Pick<typeof response.data, "avatarUrl">>;
 };
 
 export const findInstallation = async (uToken: string) => {
-  const response = await fetchJson<FindInstallationEndpointResponse>(
-    `${host}/v1/installation/find`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ uToken }),
-    }
-  );
+  const response = await client.provide("post", "/v1/installation/find", {
+    uToken,
+  });
   if (response.status === "error") {
     throw new Error(response.error.message);
   }
@@ -62,9 +46,10 @@ export const findInstallation = async (uToken: string) => {
 };
 
 export const listRepos = async (iToken: string, page: number) => {
-  const response = await fetchJson<ListReposEndpointResponse>(
-    `${host}/v1/repos/list?iToken=${iToken}&page=${page}`
-  );
+  const response = await client.provide("get", "/v1/repos/list", {
+    iToken,
+    page: `${page}`,
+  });
   if (response.status === "error") {
     throw new Error(response.error.message);
   }
@@ -77,9 +62,12 @@ export const listWorkflows = async (
   repo: string,
   page: number
 ) => {
-  const response = await fetchJson<ListWorkflowsEndpointResponse>(
-    `${host}/v1/workflows/list?iToken=${iToken}&owner=${owner}&repo=${repo}&page=${page}`
-  );
+  const response = await client.provide("get", "/v1/workflows/list", {
+    iToken,
+    owner,
+    repo,
+    page: `${page}`,
+  });
   if (response.status === "error") {
     throw new Error(response.error.message);
   }
@@ -87,15 +75,12 @@ export const listWorkflows = async (
 };
 
 export const registerWorkflow = async (
-  request: RegisterWorkflowEndpointRequest
+  request: Input["post /v1/workflows/register"]
 ) => {
-  const response = await fetchJson<RegisterWorkflowEndpointResponse>(
-    `${host}/v1/workflows/register`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(request),
-    }
+  const response = await client.provide(
+    "post",
+    "/v1/workflows/register",
+    request
   );
   if (response.status === "error") {
     throw new Error(response.error.message);
@@ -106,10 +91,11 @@ export const registerWorkflow = async (
 export const checkRegistration = async ({
   userId,
   iToken,
-}: CheckRegistrationEndpointRequest) => {
-  const response = await fetchJson<CheckRegistrationEndpointResponse>(
-    `${host}/v1/registration/check?userId=${userId}&iToken=${iToken}`
-  );
+}: Input["get /v1/registration/check"]) => {
+  const response = await client.provide("get", "/v1/registration/check", {
+    userId,
+    iToken,
+  });
   if (response.status === "error") {
     throw new Error(response.error.message);
   }
@@ -117,15 +103,12 @@ export const checkRegistration = async ({
 };
 
 export const connectTelegram = async (
-  request: ConnectTelegramEndpointRequest
+  request: Input["post /v1/channels/telegram/connect"]
 ) => {
-  const response = await fetchJson<ConnectTelegramEndpointResponse>(
-    `${host}/v1/channels/telegram/connect`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(request),
-    }
+  const response = await client.provide(
+    "post",
+    "/v1/channels/telegram/connect",
+    request
   );
   if (response.status === "error") {
     throw new Error(response.error.message);
@@ -134,16 +117,9 @@ export const connectTelegram = async (
 };
 
 export const updateTimeSettings = async (
-  request: UpdateTimeSettingsEndpointRequest
+  request: Input["patch /v1/time/update"]
 ) => {
-  const response = await fetchJson<UpdateTimeSettingsEndpointResponse>(
-    `${host}/v1/time/update`,
-    {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(request),
-    }
-  );
+  const response = await client.provide("patch", "/v1/time/update", request);
   if (response.status === "error") {
     throw new Error(response.error.message);
   }
@@ -153,12 +129,11 @@ export const updateTimeSettings = async (
 export const disconnectTelegram = async ({
   userId,
   uToken,
-}: DisconnectTelegramEndpointRequest) => {
-  const response = await fetchJson<DisconnectTelegramEndpointResponse>(
-    `${host}/v1/channels/telegram/disconnect?userId=${userId}&uToken=${uToken}`,
-    {
-      method: "DELETE",
-    }
+}: Input["delete /v1/channels/telegram/disconnect"]) => {
+  const response = await client.provide(
+    "delete",
+    "/v1/channels/telegram/disconnect",
+    { userId, uToken }
   );
   if (response.status === "error") {
     throw new Error(response.error.message);
@@ -169,13 +144,11 @@ export const disconnectTelegram = async ({
 export const removeRegistration = async ({
   userId,
   uToken,
-}: RemoveRegistrationEndpointRequest) => {
-  const response = await fetchJson<RemoveRegistrationEndpointResponse>(
-    `${host}/v1/registration/remove?userId=${userId}&uToken=${uToken}`,
-    {
-      method: "DELETE",
-    }
-  );
+}: Input["delete /v1/registration/remove"]) => {
+  const response = await client.provide("delete", "/v1/registration/remove", {
+    userId,
+    uToken,
+  });
   if (response.status === "error") {
     throw new Error(response.error.message);
   }
@@ -183,9 +156,9 @@ export const removeRegistration = async ({
 };
 
 export const getPublicStatus = async (userId: number) => {
-  const response = await fetchJson<GetPublicStatusEndpointResponse>(
-    `${host}/v1/status/${userId}`
-  );
+  const response = await client.provide("get", `/v1/status/:userId`, {
+    userId,
+  });
   if (response.status === "error") {
     throw new Error(response.error.message);
   }
@@ -193,15 +166,12 @@ export const getPublicStatus = async (userId: number) => {
 };
 
 export const setPublicStatus = async (
-  request: TogglePublicStatusEndpointRequest
+  request: Input["patch /v1/registration/public"]
 ) => {
-  const response = await fetchJson<TogglePublicStatusEndpointResponse>(
-    `${host}/v1/registration/public`,
-    {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(request),
-    }
+  const response = await client.provide(
+    "patch",
+    "/v1/registration/public",
+    request
   );
   if (response.status === "error") {
     throw new Error(response.error.message);
