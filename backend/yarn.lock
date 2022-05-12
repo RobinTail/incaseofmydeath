@@ -5256,20 +5256,20 @@ systeminformation@^5.7:
   resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.9.17.tgz#9b0c405346fcd9ad37a95df4990eefa3d164d7a3"
   integrity sha512-hbJtPsG63PCst4PLXFq8hycbkeR5oGDquRowfLK0gNX7nJ1qx3tCbsWu83OL4GP1dkcLMKsVooLUn5x2K1Epgg==
 
-telegraf@^4.7.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-4.7.0.tgz#6ee8a8f98900a67472f1ca935c0aba3e8fa49f05"
-  integrity sha512-rspH4kiVHE1zpnyQvlGFj+Tzu7zN02gSOcdLUayvnkaTwww2E6xBkwne+DKkDPdaRhvQ61J+dcVhLQv9fL+FsQ==
+telegraf@^4.8.1:
+  version "4.8.1"
+  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-4.8.1.tgz#868ed1f8844973a9c45417b71805d8e6fba2ea7f"
+  integrity sha512-+76tLC2XS73Rf4Ty6jXEMW52exAP6isgHmq36XBJlnOZV00K6/QdN7mFafVYeKqR3bO/ZqgIphc5In3EwKJMyA==
   dependencies:
     abort-controller "^3.0.0"
     debug "^4.3.3"
-    minimist "^1.2.5"
+    minimist "^1.2.6"
     module-alias "^2.2.2"
     node-fetch "^2.6.7"
     p-timeout "^4.1.0"
     safe-compare "^1.1.4"
     sandwich-stream "^2.0.2"
-    typegram "^3.8.0"
+    typegram "^3.9.0"
 
 terminal-link@^2.0.0:
   version "2.1.1"
@@ -5479,10 +5479,10 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typegram@^3.8.0:
-  version "3.8.0"
-  resolved "https://registry.yarnpkg.com/typegram/-/typegram-3.8.0.tgz#6f09e1f3d27bb4659dcf6e294603550584c7b39c"
-  integrity sha512-MdlbWu0HfmgFJf4+xj6eqGYuanV2LJxBYTzLrD0kTV+woQ5dxDD2k8UVVjYnbBGkAagAyxzQevPiFZRWLFHSBw==
+typegram@^3.9.0:
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/typegram/-/typegram-3.9.1.tgz#b4ebfc83579ab01e8e95391e8f10e84abe265cdd"
+  integrity sha512-vfFr2o0iX+amnUj1h/0c49y8bCvGwt6DgdmTVD732Kf81XG26vgFwNWj+33Ol+xORC7m0cqU2hPYGRtcGinwZg==
 
 typescript@^4.6.4:
   version "4.6.4"
