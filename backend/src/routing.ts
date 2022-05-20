@@ -1,4 +1,4 @@
-import { EndpointInput, EndpointResponse, Routing } from "express-zod-api";
+import { Routing } from "express-zod-api";
 import { checkRegistrationEndpoint } from "./endpoints/check-registration";
 import { connectTelegramEndpoint } from "./endpoints/connect-telegram";
 import { disconnectTelegramEndpoint } from "./endpoints/disconnect-telegram";
@@ -48,64 +48,3 @@ export const routing: Routing = {
     },
   },
 };
-
-export type BeginAuthEndpointResponse = EndpointResponse<
-  typeof beginAuthenticationEndpoint
->;
-export type FinishAuthEndpointResponse = EndpointResponse<
-  typeof finishAuthenticationEndpoint
->;
-export type FindInstallationEndpointResponse = EndpointResponse<
-  typeof findInstallationEndpoint
->;
-export type ListReposEndpointResponse = EndpointResponse<
-  typeof listRepositoriesEndpoint
->;
-export type ListWorkflowsEndpointResponse = EndpointResponse<
-  typeof listWorkflowsEndpoint
->;
-export type RegisterWorkflowEndpointResponse = EndpointResponse<
-  typeof registerWorkflowEndpoint
->;
-export type RegisterWorkflowEndpointRequest = EndpointInput<
-  typeof registerWorkflowEndpoint
->;
-export type CheckRegistrationEndpointRequest = EndpointInput<
-  typeof checkRegistrationEndpoint
->;
-export type CheckRegistrationEndpointResponse = EndpointResponse<
-  typeof checkRegistrationEndpoint
->;
-export type ConnectTelegramEndpointRequest = EndpointInput<
-  typeof connectTelegramEndpoint
->;
-export type ConnectTelegramEndpointResponse = EndpointResponse<
-  typeof connectTelegramEndpoint
->;
-export type UpdateTimeSettingsEndpointRequest = EndpointInput<
-  typeof updateTimeSettingsEndpoint
->;
-export type UpdateTimeSettingsEndpointResponse = EndpointResponse<
-  typeof updateTimeSettingsEndpoint
->;
-export type DisconnectTelegramEndpointRequest = EndpointInput<
-  typeof disconnectTelegramEndpoint
->;
-export type DisconnectTelegramEndpointResponse = EndpointResponse<
-  typeof disconnectTelegramEndpoint
->;
-export type RemoveRegistrationEndpointRequest = EndpointInput<
-  typeof removeRegistrationEndpoint
->;
-export type RemoveRegistrationEndpointResponse = EndpointResponse<
-  typeof removeRegistrationEndpoint
->;
-export type GetPublicStatusEndpointResponse = EndpointResponse<
-  typeof getPublicStatusEndpoint
->;
-export type TogglePublicStatusEndpointRequest = EndpointInput<
-  typeof togglePublicStatusEndpoint
->;
-export type TogglePublicStatusEndpointResponse = EndpointResponse<
-  typeof togglePublicStatusEndpoint
->;
