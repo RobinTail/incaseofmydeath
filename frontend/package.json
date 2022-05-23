@@ -29,7 +29,7 @@
     "typescript": "^4.6.4",
     "use-local-storage-state": "^17.0.1",
     "web-vitals": "^2.1.4",
-    "zod": "^3.16.1"
+    "zod": "^3.17.2"
   },
   "scripts": {
     "start": "react-scripts start",
