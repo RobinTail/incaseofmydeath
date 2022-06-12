@@ -5223,10 +5223,10 @@ systeminformation@^5.7:
   resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.9.17.tgz#9b0c405346fcd9ad37a95df4990eefa3d164d7a3"
   integrity sha512-hbJtPsG63PCst4PLXFq8hycbkeR5oGDquRowfLK0gNX7nJ1qx3tCbsWu83OL4GP1dkcLMKsVooLUn5x2K1Epgg==
 
-telegraf@^4.8.2:
-  version "4.8.2"
-  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-4.8.2.tgz#6357102712be3d2472b6d5afc099be86e677ccb4"
-  integrity sha512-FFxdhFVnoAzxK6x6980rDPqadLI6AWjKhYe/dwkzd29+hmzVPzOQBKRujjkv4iVIfIJGt2QbuNtJUBukdDwBLg==
+telegraf@^4.8.5:
+  version "4.8.5"
+  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-4.8.5.tgz#0df238ae01e44f98ce28785f5d465127d712151b"
+  integrity sha512-BTnXBvQ2sRnPCuDvMCvZhMfanJxycWNmAEd+23yBliKXddqt/fFWkj/2OQMD/L3YPD1c1elK5F4WEkJUW3khQQ==
   dependencies:
     abort-controller "^3.0.0"
     debug "^4.3.3"
