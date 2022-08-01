@@ -33,7 +33,7 @@
     "mongoose": "^6.4.4",
     "pm2": "^5.2.0",
     "prettier": "2.7.1",
-    "telegraf": "^4.8.5",
+    "telegraf": "^4.8.6",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.9.1",
     "typescript": "^4.7.4"
