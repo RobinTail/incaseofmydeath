@@ -14,8 +14,8 @@ export const listRepositoriesEndpoint = installationProviderFactory.build({
   output: z.object({
     repositories: z.array(
       z.object({
-        login: z.string().nonempty(),
-        name: z.string().nonempty(),
+        login: z.string().min(1),
+        name: z.string().min(1),
         isPrivate: z.boolean(),
       })
     ),

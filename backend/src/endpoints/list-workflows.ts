@@ -6,8 +6,8 @@ const perPage = 5;
 export const listWorkflowsEndpoint = installationProviderFactory.build({
   method: "get",
   input: z.object({
-    owner: z.string().nonempty(),
-    repo: z.string().nonempty(),
+    owner: z.string().min(1),
+    repo: z.string().min(1),
     page: z
       .string()
       .regex(/\d+/)
@@ -18,7 +18,7 @@ export const listWorkflowsEndpoint = installationProviderFactory.build({
     workflows: z.array(
       z.object({
         id: z.number().int().positive(),
-        name: z.string().nonempty(),
+        name: z.string().min(1),
       })
     ),
   }),

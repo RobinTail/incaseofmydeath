@@ -14,12 +14,12 @@ export const checkRegistrationEndpoint =
       attemptsCount: z.number().int().positive(),
       nextCheck: z.dateOut(),
       repo: z.object({
-        owner: z.string().nonempty(),
-        name: z.string().nonempty(),
+        owner: z.string().min(1),
+        name: z.string().min(1),
       }),
       workflow: z.object({
         id: z.number().int().positive(),
-        name: z.string().nonempty(),
+        name: z.string().min(1),
       }),
       channels: z.object({
         telegram: z.object({

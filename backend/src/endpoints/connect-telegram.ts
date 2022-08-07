@@ -6,13 +6,13 @@ import crypto from "crypto";
 export const connectTelegramEndpoint = authorizedUserFactory.build({
   method: "post",
   input: z.object({
-    chatId: z.string().nonempty(),
-    hash: z.string().nonempty(),
-    dataCheckString: z.string().nonempty(), // @see https://core.telegram.org/widgets/login#checking-authorization
+    chatId: z.string().min(1),
+    hash: z.string().min(1),
+    dataCheckString: z.string().min(1), // @see https://core.telegram.org/widgets/login#checking-authorization
   }),
   output: z.object({
     userId: z.number().int().positive(),
-    chatId: z.string().nonempty(),
+    chatId: z.string().min(1),
   }),
   handler: async ({
     input: { dataCheckString, hash, chatId },

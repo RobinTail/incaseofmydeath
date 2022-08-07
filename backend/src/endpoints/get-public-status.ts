@@ -5,7 +5,7 @@ export const getPublicStatusEndpoint = publicUserFactory.build({
   method: "get",
   input: z.object({}),
   output: z.object({
-    login: z.string().nonempty(),
+    login: z.string().min(1),
     avatarUrl: z.string().optional(),
     name: z.string().nullable(),
     isAlive: z.boolean(),

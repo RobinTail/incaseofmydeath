@@ -5,8 +5,9 @@ import { Users } from "./db";
 import { createProcessManager } from "./pm";
 
 export const installationProviderMiddleware = createMiddleware({
+  security: { type: "input", name: "iToken" },
   input: z.object({
-    iToken: z.string().nonempty(),
+    iToken: z.string().min(1),
   }),
   middleware: async ({ input: { iToken } }) => ({
     installation: new Octokit({ auth: iToken }),
@@ -49,8 +50,9 @@ export const publicUserProviderMiddleware = createMiddleware({
 });
 
 export const authorizedUserProviderMiddleware = createMiddleware({
+  security: { type: "input", name: "uToken" },
   input: z.object({
-    uToken: z.string().nonempty(),
+    uToken: z.string().min(1),
     userId: userIdSchema,
   }),
   middleware: async ({ input: { uToken, userId } }) => {

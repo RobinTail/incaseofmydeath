@@ -8,12 +8,12 @@ const perPage = 50;
 export const findInstallationEndpoint = appProviderFactory.build({
   method: "post",
   input: z.object({
-    uToken: z.string().nonempty(),
+    uToken: z.string().min(1),
   }),
   output: z.object({
     id: z.number().int().positive(),
-    iToken: z.string().nonempty(),
-    expiresAt: z.string().nonempty(), // timestamp
+    iToken: z.string().min(1),
+    expiresAt: z.string().min(1), // timestamp
   }),
   handler: async ({ input: { uToken }, logger, options: { app, github } }) => {
     const kit = new Octokit({ auth: uToken });

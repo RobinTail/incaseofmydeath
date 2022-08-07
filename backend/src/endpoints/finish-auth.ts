@@ -7,15 +7,15 @@ import { endpointsFactory } from "../factories";
 export const finishAuthenticationEndpoint = endpointsFactory.build({
   method: "get",
   input: z.object({
-    code: z.string().nonempty(),
+    code: z.string().min(1),
     state: z.string().optional(),
   }),
   output: z.object({
     id: z.number().int().positive(),
-    login: z.string().nonempty(),
+    login: z.string().min(1),
     avatarUrl: z.string().optional(),
     name: z.string().nullable(),
-    uToken: z.string().nonempty(),
+    uToken: z.string().min(1),
   }),
   handler: async ({ input, logger }) => {
     const auth = createOAuthUserAuth({

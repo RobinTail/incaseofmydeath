@@ -5,8 +5,8 @@ export const registerWorkflowEndpoint = installationProviderFactory.build({
   method: "post",
   input: z.object({
     installationId: z.number().int().positive(),
-    owner: z.string().nonempty(),
-    repo: z.string().nonempty(),
+    owner: z.string().min(1),
+    repo: z.string().min(1),
     workflowId: z.number().int().positive(),
   }),
   output: z.object({
