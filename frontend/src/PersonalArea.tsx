@@ -49,10 +49,10 @@ const ensureAuth = (value: unknown): Auth | null => {
     return z
       .object({
         id: z.number().int().positive(),
-        login: z.string().nonempty(),
+        login: z.string().min(1),
         avatarUrl: z.string().optional(),
         name: z.string().nullable(),
-        uToken: z.string().nonempty(),
+        uToken: z.string().min(1),
       })
       .or(z.null())
       .parse(value);
@@ -66,8 +66,8 @@ const ensureInstallation = (value: unknown): Installation | null => {
     return z
       .object({
         id: z.number().int().positive(),
-        iToken: z.string().nonempty(),
-        expiresAt: z.string().nonempty(),
+        iToken: z.string().min(1),
+        expiresAt: z.string().min(1),
       })
       .or(z.null())
       .parse(value);
