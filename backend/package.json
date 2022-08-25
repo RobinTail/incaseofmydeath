@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@octokit/auth-app": "^4.0.4",
-    "@octokit/core": "^4.0.4",
+    "@octokit/core": "^4.0.5",
     "@tsconfig/node16": "^1.0.3",
     "@types/fast-memory-cache": "^2.0.0",
     "@types/jest": "^27.5.0",
