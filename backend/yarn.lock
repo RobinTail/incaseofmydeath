@@ -2357,6 +2357,11 @@ es-abstract@^1.19.0, es-abstract@^1.19.1:
     string.prototype.trimstart "^1.0.4"
     unbox-primitive "^1.0.1"
 
+es-main@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/es-main/-/es-main-1.2.0.tgz#b85954f1d9d9f542fcb08685ec19515f969bad16"
+  integrity sha512-A4tCSY43O/mH4rHjG1n0mI4DhK2BmKDr8Lk8PXK/GBB6zxGFGmIW4bbkbTQ2Gi9iNamMZ9vbGrwjZOIeiM7vMw==
+
 es-to-primitive@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/es-to-primitive/-/es-to-primitive-1.2.1.tgz#e55cd4c9cdc188bcefb03b366c736323fc5c898a"
@@ -5347,20 +5352,21 @@ systeminformation@^5.7:
   resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.9.17.tgz#9b0c405346fcd9ad37a95df4990eefa3d164d7a3"
   integrity sha512-hbJtPsG63PCst4PLXFq8hycbkeR5oGDquRowfLK0gNX7nJ1qx3tCbsWu83OL4GP1dkcLMKsVooLUn5x2K1Epgg==
 
-telegraf@^4.8.6:
-  version "4.8.6"
-  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-4.8.6.tgz#6a127be631469effbd41c782dd7fe699ae07f0c4"
-  integrity sha512-FixxnJBrS8ECk/Wmo3VXzkTOlY2A1gsdIORJ//cdh3PcVqAL7wgcvLKjkEPI0IyxdFfRqTrWQEOn9h++revQaA==
+telegraf@^4.9.0:
+  version "4.9.0"
+  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-4.9.0.tgz#30997bf6cbc941bff0bb698b13154647fc918032"
+  integrity sha512-fL+KLaYRElo4aNtrqAHmFdVsAMHHOHbmdTsAAzMJafhXJu1oYKTRMNipJ/YUvwNd5DnZY+zmGMgVVe1M/dkN4w==
   dependencies:
     abort-controller "^3.0.0"
     debug "^4.3.3"
+    es-main "^1.2.0"
     minimist "^1.2.6"
     module-alias "^2.2.2"
     node-fetch "^2.6.7"
     p-timeout "^4.1.0"
     safe-compare "^1.1.4"
     sandwich-stream "^2.0.2"
-    typegram "^3.9.0"
+    typegram "github:MKRhere/typegram#e2ba9f01f14b96c6dbb1c617e66692a3cc776cf6"
 
 terminal-link@^2.0.0:
   version "2.1.1"
@@ -5570,10 +5576,10 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typegram@^3.9.0:
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/typegram/-/typegram-3.9.1.tgz#b4ebfc83579ab01e8e95391e8f10e84abe265cdd"
-  integrity sha512-vfFr2o0iX+amnUj1h/0c49y8bCvGwt6DgdmTVD732Kf81XG26vgFwNWj+33Ol+xORC7m0cqU2hPYGRtcGinwZg==
+"typegram@github:MKRhere/typegram#e2ba9f01f14b96c6dbb1c617e66692a3cc776cf6":
+  version "3.10.0"
+  uid e2ba9f01f14b96c6dbb1c617e66692a3cc776cf6
+  resolved "https://codeload.github.com/MKRhere/typegram/tar.gz/e2ba9f01f14b96c6dbb1c617e66692a3cc776cf6"
 
 typescript@^4.7.4:
   version "4.7.4"
