@@ -30,7 +30,7 @@
     "express-zod-api": "^7.9.0",
     "fast-memory-cache": "^2.0.4",
     "jest": "^27.5.1",
-    "mongoose": "^6.5.3",
+    "mongoose": "^6.5.4",
     "pm2": "^5.2.0",
     "prettier": "2.7.1",
     "telegraf": "^4.9.0",
