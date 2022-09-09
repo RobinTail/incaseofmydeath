@@ -2634,10 +2634,10 @@ express-fileupload@1.4.0:
   dependencies:
     busboy "^1.6.0"
 
-express-zod-api@^7.9.1:
-  version "7.9.1"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-7.9.1.tgz#9d8f2d848171fb1eed0c8018a3c9f019c3274743"
-  integrity sha512-W+zB55E17XmO0mq6uh+Zpf7TbdrMPr4H1jvBAyt452PiXsnT4cr0B1Wj6u73kV/GfrzsdUEKkipGHWv0+hNGsw==
+express-zod-api@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-8.0.0.tgz#0e626a67d80144808893ea4bb936277fa0ca3f65"
+  integrity sha512-iaNgUS38bVsGlGkjJldXQVOw5/tTxGsUkADiQoUkmwmVP0kEmb+yLcKIRXckkWwf2Ky16EqH8PMWuOKNLjqk/Q==
   dependencies:
     "@types/compression" "^1.7.2"
     "@types/express" "^4.17.13"
@@ -2649,11 +2649,11 @@ express-zod-api@^7.9.1:
     express-fileupload "1.4.0"
     http-errors "2.0.0"
     mime "3.0.0"
-    openapi3-ts "2.0.2"
+    openapi3-ts "3.0.2"
     ramda "0.28.0"
     triple-beam "1.3.0"
-    winston "3.8.1"
-    zod "3.18.0"
+    winston "3.8.2"
+    zod "3.19.0"
     zod-to-ts "1.1.1"
 
 express@4.18.1:
@@ -4401,12 +4401,12 @@ onetime@^5.1.2:
   dependencies:
     mimic-fn "^2.1.0"
 
-openapi3-ts@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/openapi3-ts/-/openapi3-ts-2.0.2.tgz#a200dd838bf24c9086c8eedcfeb380b7eb31e82a"
-  integrity sha512-TxhYBMoqx9frXyOgnRHufjQfPXomTIHYKhSKJ6jHfj13kS8OEIhvmE8CTuQyKtjjWttAjX5DPxM1vmalEpo8Qw==
+openapi3-ts@3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/openapi3-ts/-/openapi3-ts-3.0.2.tgz#f32b852de33e26e4edf85be8be9c9110332b5e3d"
+  integrity sha512-KF/06OkQPFSr9A+oadYYC3cIj8TZlzonREkQYFqx8i+wLllAxm6Bp8Fizo3jWXeIxZj/7V5LKtuNN/GxueWtcw==
   dependencies:
-    yaml "^1.10.2"
+    yaml "^2.1.1"
 
 optionator@^0.8.1:
   version "0.8.3"
@@ -5753,11 +5753,12 @@ winston-transport@^4.5.0:
     readable-stream "^3.6.0"
     triple-beam "^1.3.0"
 
-winston@3.8.1:
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/winston/-/winston-3.8.1.tgz#76f15b3478cde170b780234e0c4cf805c5a7fb57"
-  integrity sha512-r+6YAiCR4uI3N8eQNOg8k3P3PqwAm20cLKlzVD9E66Ch39+LZC+VH1UKf9JemQj2B3QoUHfKD7Poewn0Pr3Y1w==
+winston@3.8.2:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/winston/-/winston-3.8.2.tgz#56e16b34022eb4cff2638196d9646d7430fdad50"
+  integrity sha512-MsE1gRx1m5jdTTO9Ld/vND4krP2To+lgDoMEHGGa4HIlAUyXJtfc7CxQcGXVyz2IBpw5hbFkj2b/AtUdQwyRew==
   dependencies:
+    "@colors/colors" "1.5.0"
     "@dabh/diagnostics" "^2.0.2"
     async "^3.2.3"
     is-stream "^2.0.0"
@@ -5838,10 +5839,10 @@ yallist@^4.0.0:
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
-yaml@^1.10.2:
-  version "1.10.2"
-  resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.2.tgz#2301c5ffbf12b467de8da2333a459e29e7920e4b"
-  integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
+yaml@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.1.1.tgz#1e06fb4ca46e60d9da07e4f786ea370ed3c3cfec"
+  integrity sha512-o96x3OPo8GjWeSLF+wOAbrPfhFOGY0W00GNaxCDv+9hkcDJEnev1yh8S7pgHF0ik6zc8sQLuL8hjHjJULZp8bw==
 
 yamljs@0.3.0:
   version "0.3.0"
@@ -5884,7 +5885,7 @@ zod-to-ts@1.1.1:
   resolved "https://registry.yarnpkg.com/zod-to-ts/-/zod-to-ts-1.1.1.tgz#3dce0454a9a4c3f1e6aa4a3c8079e9c32885c0ec"
   integrity sha512-7UGV+GnuKLUyJbJeyrkfMqCP8wk37dFkOwguIWN/jVL7kQg2e1N5o0SDPVodlfTutxeAP9IRXsWLoSlEnmetCA==
 
-zod@3.18.0:
-  version "3.18.0"
-  resolved "https://registry.yarnpkg.com/zod/-/zod-3.18.0.tgz#2eed58b3cafb8d9a67aa2fee69279702f584f3bc"
-  integrity sha512-gwTm8RfUCe8l9rDwN5r2A17DkAa8Ez4Yl4yXqc5VqeGaXaJahzYYXbTwvhroZi0SNBqTwh/bKm2N0mpCzuw4bA==
+zod@3.19.0:
+  version "3.19.0"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.19.0.tgz#a9303fcaed0950a3dc57bf35cc11f6282d4f52f2"
+  integrity sha512-Yw0qvUsCNGBe5YacikdMt5gVYeUuaEFVDIHKMfElrGSaBhwR3CQK6vOzgfAJOjTdGIhEeoaj8GtT+NDZrepZbw==
