@@ -2656,10 +2656,10 @@ express-fileupload@1.4.0:
   dependencies:
     busboy "^1.6.0"
 
-express-zod-api@^8.1.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-8.1.0.tgz#8cec9a741a1950abfcec6e0409b8c6e37c7b94fe"
-  integrity sha512-hJJeF+YczufHB5WElzc2CKunqR4lIQgF3NX1RjjwHZ0KPEaoNV15B5+ZyaimzroGhhK+B1qj67WhZYn8uc9E1w==
+express-zod-api@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-8.2.0.tgz#9bdf0bfbf9fd3903dad1ce594c5938d1faec8011"
+  integrity sha512-+hTkbuRcEDqVLhkOGgV9vqG06PxDQX/PPj5TOiHQhtN2w3P9Ix1Q/7Fzx2JeyU9T3hWE2T09zCX8ErcKMraI1A==
   dependencies:
     "@types/compression" "^1.7.2"
     "@types/express" "^4.17.13"
