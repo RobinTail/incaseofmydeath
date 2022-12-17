@@ -25,7 +25,7 @@ export const HowItWorksTimeline = () => {
   };
 
   return (
-    <Timeline position="right" sx={{ mt: 0, mb: 0, pt: 0, pb: 0 }}>
+    <Timeline position="right" sx={{ my: 0, py: 0 }} nonce={undefined} onResize={undefined} onResizeCapture={undefined}>
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
