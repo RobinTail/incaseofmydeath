@@ -1190,13 +1190,6 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@express-zod-api/zod-to-ts@1.1.6":
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/@express-zod-api/zod-to-ts/-/zod-to-ts-1.1.6.tgz#60b071f9dee6f9f5fb24098287f89cb47f7fdd1a"
-  integrity sha512-0LAWRIYkzvCWM1sCDlawBqK8WjwEmja0Zu421PrfXLh7A24YuLj6GvS00C9uQpf+HHQ04lCack1gDXiee0rjWA==
-  dependencies:
-    typescript "4.9.4"
-
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.8.tgz#03595ac2075a4dc0f191cc2131de14fbd7d410b9"
@@ -3333,12 +3326,11 @@ express-fileupload@1.4.0:
   dependencies:
     busboy "^1.6.0"
 
-express-zod-api@^8.7.0:
-  version "8.7.0"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-8.7.0.tgz#6208c6b66b4a11ac2d26202b2930c1532d1e9321"
-  integrity sha512-wEdKeTo5rxy1//RYSgkZknhUUVfxM8agPBzGKnFk6tWuP4rH4C4YK9h5yKkFe4hNy7cK6cfIMSBAJq+tPt+1FQ==
+express-zod-api@^8.8.0:
+  version "8.8.0"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-8.8.0.tgz#92daf6a1970ccd215cefa6b0640366c7bfd1bfb9"
+  integrity sha512-NXO8AS07LShVMnkKpzTGlzQAsXKxua0Wprn7KMq9tMxJ7P2bX18GRVdus3lZom8eO0AGGeN71uADxyOXoTk81g==
   dependencies:
-    "@express-zod-api/zod-to-ts" "1.1.6"
     "@types/compression" "^1.7.2"
     "@types/express" "^4.17.13"
     "@types/express-fileupload" "^1.2.2"
