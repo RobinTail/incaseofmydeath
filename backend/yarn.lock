@@ -3326,10 +3326,10 @@ express-fileupload@1.4.0:
   dependencies:
     busboy "^1.6.0"
 
-express-zod-api@^8.8.1:
-  version "8.8.1"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-8.8.1.tgz#84e76b6285231e1142b73a0bf5be09b3f9700082"
-  integrity sha512-8JJ/74XCy0pKnUwKrBdRDRmAvMGnxeK02HKsg3rqAa+GWETKPQ9DYW++VT1tcSCHn0EKNzR3DlBBNRcJA9Hn+g==
+express-zod-api@^8.8.2:
+  version "8.8.2"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-8.8.2.tgz#19666722b3dcfd15a340369fe63eb43cc6947d06"
+  integrity sha512-2QFrxDgdoHv+4/4gK1N1FLzsFFuTMZ5/eM/XApnG0qyIYPBqjn2IQGDWh/UgAZis6N22Ukho33llggYoLVNG0g==
   dependencies:
     "@types/compression" "^1.7.2"
     "@types/express" "^4.17.13"
