@@ -39,6 +39,9 @@
     "web-vitals": "^3.1.0",
     "zod": "^3.20.2"
   },
+  "resolutions": {
+    "**/@types/react":  "^17"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "yarn build:client && yarn build:app",
