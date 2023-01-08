@@ -36,7 +36,7 @@
     "@octokit/core": "^4.1.0",
     "express-zod-api": "^8.8.2",
     "fast-memory-cache": "^2.0.4",
-    "mongoose": "^6.8.2",
+    "mongoose": "^6.8.3",
     "pm2": "^5.2.2",
     "telegraf": "^4.11.2"
   },
