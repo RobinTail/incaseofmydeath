@@ -26,7 +26,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.11.0",
-    "@mui/lab": "^5.0.0-alpha.114",
+    "@mui/lab": "^5.0.0-alpha.116",
     "@mui/material": "^5.11.4",
     "react": "^17.0.2",
     "react-clipboard-button": "^0.0.7",
