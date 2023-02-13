@@ -7923,10 +7923,10 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
-react-clipboard-button@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/react-clipboard-button/-/react-clipboard-button-0.0.7.tgz#84eb5281411a1741b1dfe8e975dcd07281b4cc37"
-  integrity sha512-6O95OlkymvhTkaYCvPjs9qOTF9NMibeFWIYmyF0zS8i8qQKiDss6LgOUss4op/Nm3IMBfU8ZL1N7no+towji8g==
+react-clipboard-button@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-clipboard-button/-/react-clipboard-button-1.0.0.tgz#ea3597263a24b2c33b1ea06b23131b6ca7e3eafb"
+  integrity sha512-uAkkkWzyY66fYyR8TD5uzbX1FnXdd9PIL42WLC3lGy3pVBI0YZ+EUbxOMOT9cK9ZikpSSGTeflwEmMTcRbFffQ==
   dependencies:
     clipboard "^2.0.8"
     react "^17.0.0"
