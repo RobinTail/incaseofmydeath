@@ -3230,10 +3230,10 @@ express-fileupload@1.4.0:
   dependencies:
     busboy "^1.6.0"
 
-express-zod-api@^8.8.2:
-  version "8.9.0"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-8.9.0.tgz#882db4617fae573f9d1e9eb4794a88ba5ae62ae9"
-  integrity sha512-NDkI1dGLHehF/ujMankwI5T4hGbJwubh+aREIN0ghOcjztVWXXhtaHqNxGal2p3aAU59syOOdUPgyl0BDGNEKA==
+express-zod-api@^8.9.1:
+  version "8.9.1"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-8.9.1.tgz#fd4e47daac2fd64cded5ea47f54f88109dcc53b5"
+  integrity sha512-31ZLxgLbUGvqgklgphDZpVHoCJXCk/gmqcYyMK4IfthdPLhuJNxKB2JVP8fvw4vMd3RZLZEH77lsWUP53WqfIA==
   dependencies:
     "@types/compression" "^1.7.2"
     "@types/express" "^4.17.13"
@@ -3248,7 +3248,7 @@ express-zod-api@^8.8.2:
     openapi3-ts "3.1.2"
     ramda "0.28.0"
     triple-beam "1.3.0"
-    typescript "4.9.4"
+    typescript "4.9.5"
     winston "3.8.2"
     zod "3.20.2"
 
@@ -6124,10 +6124,10 @@ typegram@^4.1.0:
   resolved "https://registry.yarnpkg.com/typegram/-/typegram-4.2.0.tgz#c3fdb8e7575a183e1994e214440aa8f12a468d43"
   integrity sha512-rObfoGpDlmWUhmggpWd2I/4xLsdGPDvfvrLpLxV4pBTBL2BBjm+7x7IOmTwJRV6Qe4UAkWdHq0ZYoTYAAPE5YA==
 
-typescript@4.9.4, typescript@^4.9.3:
-  version "4.9.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.4.tgz#a2a3d2756c079abda241d75f149df9d561091e78"
-  integrity sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==
+typescript@4.9.5, typescript@^4.9.3:
+  version "4.9.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
+  integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
