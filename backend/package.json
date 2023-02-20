@@ -16,7 +16,7 @@
     "@tsconfig/node16": "^1.0.3",
     "@types/fast-memory-cache": "^2.0.0",
     "@types/jest": "^27.5.0",
-    "@types/node": "^18.11.18",
+    "@types/node": "^18.14.0",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
     "eslint": "^8.32.0",
