@@ -34,7 +34,7 @@
   "dependencies": {
     "@octokit/auth-app": "^4.0.9",
     "@octokit/core": "^4.2.0",
-    "express-zod-api": "^9.0.0-beta4",
+    "express-zod-api": "^9.1.0",
     "fast-memory-cache": "^2.0.4",
     "mongoose": "^6.10.0",
     "pm2": "^5.2.2",
