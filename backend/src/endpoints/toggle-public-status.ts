@@ -1,4 +1,4 @@
-import { z } from "express-zod-api";
+import { z } from "zod";
 import { authorizedUserFactory } from "../factories";
 
 export const togglePublicStatusEndpoint = authorizedUserFactory.build({

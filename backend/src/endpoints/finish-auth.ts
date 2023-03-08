@@ -1,6 +1,6 @@
 import { createOAuthUserAuth } from "@octokit/auth-app";
 import { Octokit } from "@octokit/core";
-import { z } from "express-zod-api";
+import { z } from "zod";
 import { github } from "../config";
 import { endpointsFactory } from "../factories";
 

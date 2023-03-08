@@ -1,4 +1,5 @@
-import { createHttpError, z } from "express-zod-api";
+import { createHttpError, ez } from "express-zod-api";
+import { z } from "zod";
 import { publicUserFactory } from "../factories";
 
 export const getPublicStatusEndpoint = publicUserFactory.build({
@@ -9,7 +10,7 @@ export const getPublicStatusEndpoint = publicUserFactory.build({
     avatarUrl: z.string().optional(),
     name: z.string().nullable(),
     isAlive: z.boolean(),
-    lastConfirmation: z.dateOut(),
+    lastConfirmation: ez.dateOut(),
   }),
   handler: async ({ options: { user, account }, logger }) => {
     logger.debug("Account information", account);

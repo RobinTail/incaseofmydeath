@@ -1,4 +1,4 @@
-import { z } from "express-zod-api";
+import { z } from "zod";
 import { tgBot } from "../config";
 import { authorizedUserFactory } from "../factories";
 import crypto from "crypto";

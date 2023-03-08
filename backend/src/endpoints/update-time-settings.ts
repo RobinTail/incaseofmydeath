@@ -1,4 +1,5 @@
-import { z } from "express-zod-api";
+import { ez } from "express-zod-api";
+import { z } from "zod";
 import { checkFreqCodesArray, msInDay } from "../const";
 import { authorizedUserFactory } from "../factories";
 import { checkFreqToDays } from "../utils";
@@ -11,7 +12,7 @@ export const updateTimeSettingsEndpoint = authorizedUserFactory.build({
     attemptsCount: z.number().int().positive(),
   }),
   output: z.object({
-    nextCheck: z.dateOut(),
+    nextCheck: ez.dateOut(),
   }),
   handler: async ({
     input: { checkFreq, deadlineDays, attemptsCount },

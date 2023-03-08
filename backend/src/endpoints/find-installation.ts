@@ -1,6 +1,6 @@
 import { Octokit } from "@octokit/core";
 import { components } from "@octokit/openapi-types";
-import { z } from "express-zod-api";
+import { z } from "zod";
 import { appProviderFactory } from "../factories";
 
 const perPage = 50;

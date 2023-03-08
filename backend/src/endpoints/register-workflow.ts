@@ -1,4 +1,4 @@
-import { z } from "express-zod-api";
+import { z } from "zod";
 import { installationProviderFactory } from "../factories";
 
 export const registerWorkflowEndpoint = installationProviderFactory.build({
