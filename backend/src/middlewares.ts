@@ -1,5 +1,6 @@
 import { Octokit } from "@octokit/core";
-import { createMiddleware, z } from "express-zod-api";
+import { createMiddleware } from "express-zod-api";
+import { z } from "zod";
 import { app } from "./app";
 import { Users } from "./db";
 import { createProcessManager } from "./pm";

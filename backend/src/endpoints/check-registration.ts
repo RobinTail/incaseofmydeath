@@ -1,4 +1,5 @@
-import { createHttpError, z } from "express-zod-api";
+import { createHttpError, ez } from "express-zod-api";
+import { z } from "zod";
 import { checkFreqCodesArray } from "../const";
 import { publicUserWithInstallationFactory } from "../factories";
 
@@ -12,7 +13,7 @@ export const checkRegistrationEndpoint =
       checkFreq: z.enum(checkFreqCodesArray),
       deadlineDays: z.number().int().positive(),
       attemptsCount: z.number().int().positive(),
-      nextCheck: z.dateOut(),
+      nextCheck: ez.dateOut(),
       repo: z.object({
         owner: z.string().min(1),
         name: z.string().min(1),

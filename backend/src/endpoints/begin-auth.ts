@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { z } from "express-zod-api";
+import { z } from "zod";
 import { appProviderFactory } from "../factories";
 
 export const beginAuthenticationEndpoint = appProviderFactory.build({
