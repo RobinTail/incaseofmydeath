@@ -44,15 +44,13 @@ module.exports = {
       repo: 'git@github.com:RobinTail/incaseofmydeath.git',
       path: secrets.path,
       'pre-deploy-local': [
+        'yarn --cwd ./backend install',
+        'yarn --cwd ./backend build',
         `rsync -a -v --delete secrets.json ${secrets.user}@${secrets.host}:${secrets.path}/source/`,
-        `rsync -a -v --delete backend/*.txt backend/*.pem ${secrets.user}@${secrets.host}:${secrets.path}/source/backend/`
+        `rsync -a -v --delete backend/*.txt backend/*.pem backend/dist ${secrets.user}@${secrets.host}:${secrets.path}/source/backend/`,
       ].join(' && '),
       'post-deploy' : [
         'source ~/.zshrc',
-        'cd backend',
-        'yarn install',
-        'yarn build',
-        'cd ..',
         'pm2 reload ecosystem.config.js'
       ].join(' && ')
     }
