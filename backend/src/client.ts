@@ -4,6 +4,6 @@ import fs from "fs";
 
 fs.writeFileSync(
   "../frontend/src/api-client.ts",
-  new Client(routing).print(),
+  new Client({ routing }).print(),
   "utf-8"
 );
