@@ -3,6 +3,8 @@ import { mongo } from "./config";
 import { CheckFreqCode, checkFreqCodes, msInDay } from "./const";
 import { checkFreqToDays } from "./utils";
 
+mongoose.set("strictQuery", true);
+
 export const connection = mongo.connectionString
   ? mongoose.connect(mongo.connectionString)
   : Promise.resolve(mongoose);
@@ -52,7 +54,6 @@ const userSchema = new Schema<{
   lastConfirmation: { type: Schema.Types.Date, default: () => new Date() },
   telegramChatId: { type: Schema.Types.String },
 })
-  .set("strictQuery", true)
   .index({ isAlive: 1, nextCheck: 1 })
   .index({ telegramChatId: 1 });
 
