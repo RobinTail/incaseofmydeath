@@ -52,6 +52,7 @@ const userSchema = new Schema<{
   lastConfirmation: { type: Schema.Types.Date, default: () => new Date() },
   telegramChatId: { type: Schema.Types.String },
 })
+  .set("strictQuery", true)
   .index({ isAlive: 1, nextCheck: 1 })
   .index({ telegramChatId: 1 });
 
