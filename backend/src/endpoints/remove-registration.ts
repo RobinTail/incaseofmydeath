@@ -6,8 +6,12 @@ export const removeRegistrationEndpoint = authorizedUserFactory.build({
   method: "delete",
   input: z.object({}),
   output: z.object({}),
-  handler: async ({ options: { user } }) => {
-    await Users.deleteOne({ _id: user._id }).exec();
+  handler: async ({
+    options: {
+      user: { _id },
+    },
+  }) => {
+    await Users.deleteOne({ _id }).exec();
     return {};
   },
 });
