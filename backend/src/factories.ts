@@ -18,13 +18,12 @@ export const appProviderFactory = endpointsFactory.addOptions({
 
 export const installationProviderFactory = endpointsFactory
   .addMiddleware(installationProviderMiddleware)
-  .addOptions({
-    Users,
-  });
+  .addOptions({ Users });
 
 export const authorizedUserFactory = endpointsFactory
   .addMiddleware(authorizedUserProviderMiddleware)
-  .addMiddleware(processManagerProviderMiddleware);
+  .addMiddleware(processManagerProviderMiddleware)
+  .addOptions({ Users });
 
 export const publicUserFactory = endpointsFactory.addMiddleware(
   publicUserProviderMiddleware
