@@ -22,10 +22,10 @@ export class TelegramChannel implements Channel {
     const bot = new Telegraf(tgBot.token);
     this.ready = new Promise<UserFromGetMe>(async (resolve, reject) => {
       try {
-        logger.debug("Starting telegram bot...");
-        await bot.launch();
         logger.debug("Acquiring the bot information...");
         bot.botInfo = await bot.telegram.getMe();
+        logger.debug("Starting telegram bot...");
+        bot.launch(); // https://github.com/telegraf/telegraf/issues/1749#issuecomment-1327203219
         resolve(bot.botInfo);
       } catch (e) {
         reject(e);
