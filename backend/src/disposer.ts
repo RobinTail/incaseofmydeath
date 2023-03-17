@@ -59,13 +59,16 @@ const runWorkflow = async (user: UserDocument) => {
 };
 
 const check = async () => {
+  logger.debug("Running the check cycle...");
   const user = await Users.findOne({
     isAlive: true,
     nextCheck: { $lte: new Date() },
   }).exec();
   if (!user) {
+    logger.debug("All clear");
     return;
   }
+  logger.debug(`Checking user: ${user.id}`);
   let shouldMarkAsDead = false;
   const deadline =
     user.lastConfirmation.valueOf() +
@@ -100,8 +103,13 @@ const check = async () => {
 };
 
 (async () => {
-  const botInfo = await telegramChannel.ready;
-  logger.info("Telegram bot", botInfo);
+  logger.info("Disposer");
+  try {
+    const botInfo = await telegramChannel.ready;
+    logger.info("Telegram bot", botInfo);
+  } catch (e) {
+    logger.error("Failed to start Telegram bot", e);
+  }
 
   let queue = Promise.resolve();
   const cycleFn = () => {
