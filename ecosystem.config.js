@@ -51,6 +51,9 @@ module.exports = {
       ].join(' && '),
       'post-deploy' : [
         'source ~/.zshrc',
+        'cd backend',
+        'yarn install',
+        'cd ..',
         'pm2 reload ecosystem.config.js'
       ].join(' && ')
     }
