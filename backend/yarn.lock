@@ -2471,10 +2471,10 @@ express-fileupload@1.4.0:
   dependencies:
     busboy "^1.6.0"
 
-express-zod-api@^10.1.3:
-  version "10.1.3"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-10.1.3.tgz#6c1ceab61a42267c187dafd22fc313461fcd5dd7"
-  integrity sha512-240o0R7iBHygvOAbVrAqeBUgu2tA+DIXMmvY9bv6PWKoXZoIaLxux7YgqU+uE0VBG2JLo1RVSQLbLkUZHyc1Gg==
+express-zod-api@^10.2.0:
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-10.2.0.tgz#28f3ef0d1fea1bf905e7beb36d470ab97f4473bf"
+  integrity sha512-OBIEA7NcdKH/cqdedCl3NBhy9YRyEiCZPp2MMHr0rmSpVNJfRhc/MLlCKnuHYEN4xQdOTFT8Lvmn1PgOOQdTmQ==
   dependencies:
     "@types/compression" "^1.7.2"
     "@types/express-fileupload" "^1.2.2"
@@ -2484,10 +2484,10 @@ express-zod-api@^10.1.3:
     express-fileupload "1.4.0"
     http-errors "2.0.0"
     mime "3.0.0"
-    openapi3-ts "^4.0.2"
     ramda "0.29.0"
     triple-beam "1.3.0"
     winston "3.8.2"
+    yaml "^2.2.1"
 
 express@^4.18.2:
   version "4.18.2"
@@ -4222,13 +4222,6 @@ onetime@^5.1.2:
   integrity sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==
   dependencies:
     mimic-fn "^2.1.0"
-
-openapi3-ts@^4.0.2:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/openapi3-ts/-/openapi3-ts-4.1.1.tgz#2d1a661a9299498075f20a5c40d391a1d5c50486"
-  integrity sha512-QJv7FyXNh40Z4bAFI1HZQWBln1EgPv5072noV1YniAsr951sKdIv6npdvdF4GNrfa7RB+kANN+IqjN3bIT3aDA==
-  dependencies:
-    yaml "^2.2.1"
 
 optionator@^0.8.1:
   version "0.8.3"
