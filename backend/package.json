@@ -13,7 +13,7 @@
     "test": "ENV=TEST yarn jest src/"
   },
   "devDependencies": {
-    "@tsconfig/node16": "^1.0.3",
+    "@tsconfig/node16": "^1.0.4",
     "@types/fast-memory-cache": "^2.0.0",
     "@types/jest": "^29.5.1",
     "@types/node": "^18.16.3",
