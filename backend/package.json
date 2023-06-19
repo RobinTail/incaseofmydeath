@@ -32,7 +32,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@octokit/auth-app": "^4.0.13",
+    "@octokit/auth-app": "^5.0.5",
     "@octokit/core": "^4.2.1",
     "express": "^4.18.2",
     "express-zod-api": "^10.8.1",
