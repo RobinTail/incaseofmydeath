@@ -2583,10 +2583,10 @@ express-fileupload@1.4.0:
   dependencies:
     busboy "^1.6.0"
 
-express-zod-api@^10.8.1:
-  version "10.8.1"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-10.8.1.tgz#878bcfcae2e91955d085505fea37e858c9c88390"
-  integrity sha512-bkpBwNeCL2i9x71Q0tEqdBjtRaRenxkFwecVRjMYkZyAbk+5H9yrySLIWNqKYYr//cfh5hN2BVhn6z3lYBECPw==
+express-zod-api@^11.0.0-beta1:
+  version "11.0.0-beta1"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-11.0.0-beta1.tgz#74263077e54ebfc2ff3f28ca99665bc8ca3bdda6"
+  integrity sha512-xDplbnfjXkTqj65qMOJfpLCuRzhd2N3qv4kOau9s3oOz2RKBYPlKdfneCw2ZDdBcNW15AljZ7ml09w/VixLrRA==
   dependencies:
     "@types/compression" "^1.7.2"
     "@types/express-fileupload" "^1.2.2"
@@ -2599,7 +2599,7 @@ express-zod-api@^10.8.1:
     openapi3-ts "^4.1.2"
     ramda "0.29.0"
     triple-beam "1.3.0"
-    winston "3.8.2"
+    winston "3.9.0"
 
 express@^4.18.2:
   version "4.18.2"
@@ -5455,10 +5455,10 @@ winston-transport@^4.5.0:
     readable-stream "^3.6.0"
     triple-beam "^1.3.0"
 
-winston@3.8.2:
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/winston/-/winston-3.8.2.tgz#56e16b34022eb4cff2638196d9646d7430fdad50"
-  integrity sha512-MsE1gRx1m5jdTTO9Ld/vND4krP2To+lgDoMEHGGa4HIlAUyXJtfc7CxQcGXVyz2IBpw5hbFkj2b/AtUdQwyRew==
+winston@3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/winston/-/winston-3.9.0.tgz#2bbdeb8167a75fac6d9a0c6d002890cd908016c2"
+  integrity sha512-jW51iW/X95BCW6MMtZWr2jKQBP4hV5bIDq9QrIjfDk6Q9QuxvTKEAlpUNAzP+HYHFFCeENhph16s0zEunu4uuQ==
   dependencies:
     "@colors/colors" "1.5.0"
     "@dabh/diagnostics" "^2.0.2"
