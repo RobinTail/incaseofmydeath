@@ -61,7 +61,7 @@ export const WorkflowExample = ({ mt }: WorkflowExampleProps) => {
         in case you do not have one yet.
       </Typography>
       <Typography gutterBottom>
-        Commit the file{" "}
+        Commit a file{" "}
         <code
           style={{
             fontSize: "0.85rem",
@@ -72,7 +72,12 @@ export const WorkflowExample = ({ mt }: WorkflowExampleProps) => {
         >
           .github/workflows/my-last-will.yml
         </code>{" "}
-        to the repository with a following content:
+        to the repository with a content similar to the following.
+      </Typography>
+      <Typography gutterBottom>
+        <strong>Please note</strong>: the email sending action is shown below
+        for demonstration purposes. You should choose your own steps and actions
+        according to your goals and concerns.
       </Typography>
 
       <CodeSnippet code={exampleWorkflow} language="yaml" />

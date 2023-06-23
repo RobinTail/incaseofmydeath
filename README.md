@@ -51,7 +51,10 @@ for the official transfer of property and inheritance rights.
 
 [Create a new private repository on GitHub](https://github.com/new) in case you do not have one yet.
 
-Commit the file `.github/workflows/my-last-will.yml` to the repository with a following content:
+Commit a file `.github/workflows/my-last-will.yml` to the repository with a content similar to the following.
+
+**Please note**: the email sending action is shown below for demonstration purposes. 
+You should choose your own steps and actions according to your goals and concerns.
 
 ```yaml
 name: Last will
