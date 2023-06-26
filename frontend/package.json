@@ -32,7 +32,7 @@
     "react-clipboard-button": "^1.0.0",
     "react-dom": "^17.0.2",
     "react-markdown": "^6.0.0",
-    "react-router-dom": "^6.11.2",
+    "react-router-dom": "^6.14.0",
     "react-syntax-highlighter": "^15.5.0",
     "react-telegram-auth": "^1.0.3",
     "use-local-storage-state": "^17.3.0",
