@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "@babel/core": "^7.22.5",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-syntax-flow": "^7.22.5",
     "@babel/plugin-transform-react-jsx": "^7.22.5",
     "@testing-library/dom": "^9.3.1",
