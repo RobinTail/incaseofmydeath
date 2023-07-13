@@ -22,11 +22,11 @@ const ensureColorMode = (value: unknown): PaletteMode => {
 const App = () => {
   const [_colorMode, setColorMode] = useLocalStorageState<unknown>(
     "colorMode",
-    { defaultValue: "dark" }
+    { defaultValue: "dark" },
   );
   const colorMode = React.useMemo(
     () => ensureColorMode(_colorMode),
-    [_colorMode]
+    [_colorMode],
   );
 
   const colorContext = React.useMemo<
@@ -35,11 +35,11 @@ const App = () => {
     () => ({
       toggle: () => {
         setColorMode((prevMode: PaletteMode) =>
-          prevMode === "light" ? "dark" : "light"
+          prevMode === "light" ? "dark" : "light",
         );
       },
     }),
-    [] // eslint-disable-line react-hooks/exhaustive-deps
+    [], // eslint-disable-line react-hooks/exhaustive-deps
   );
 
   const theme = React.useMemo(
@@ -49,7 +49,7 @@ const App = () => {
           mode: colorMode,
         },
       }),
-    [colorMode]
+    [colorMode],
   );
 
   return (
@@ -73,7 +73,7 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById("root"),
 );
 
 // If you want to start measuring performance in your app, pass a function

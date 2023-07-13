@@ -36,7 +36,7 @@ const checkFreqMarks = (Object.keys(checkFreqLabels) as CheckFreqCode[]).map(
   (key, index) => ({
     value: index,
     label: checkFreqLabels[key],
-  })
+  }),
 );
 
 export const TimeSliders = (props: TimeSlidersOptions) => {
@@ -44,7 +44,7 @@ export const TimeSliders = (props: TimeSlidersOptions) => {
   const isXS = useMediaQuery(theme.breakpoints.only("xs"));
   const [checkFreq, setCheckFreq] = React.useState(() => {
     const foundIndex = Object.keys(checkFreqLabels).indexOf(
-      props.checkFreqCode
+      props.checkFreqCode,
     );
     if (foundIndex === -1) {
       return Object.keys(checkFreqLabels).indexOf(defaultCheckFreqCode);

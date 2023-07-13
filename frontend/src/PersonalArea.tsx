@@ -82,11 +82,11 @@ export const PersonalArea = () => {
   const [error, setError] = React.useState<string | null>(null);
   const [_auth, setAuth, { isPersistent }] = useLocalStorageState<unknown>(
     "auth",
-    { defaultValue: null }
+    { defaultValue: null },
   );
   const [_installation, setInstallation] = useLocalStorageState<unknown>(
     "installation",
-    { defaultValue: null }
+    { defaultValue: null },
   );
   const [registration, setRegistration] = React.useState<
     Registration | null | false
@@ -105,7 +105,7 @@ export const PersonalArea = () => {
   const auth = React.useMemo(() => ensureAuth(_auth), [_auth]);
   const installation = React.useMemo(
     () => ensureInstallation(_installation),
-    [_installation]
+    [_installation],
   );
 
   const isAuthorized = auth !== null;
@@ -121,7 +121,7 @@ export const PersonalArea = () => {
 
   const runAsync = (
     cb: () => Promise<void>,
-    options?: { infinite: boolean }
+    options?: { infinite: boolean },
   ) => {
     setIsLoading(true);
     (async () => {
@@ -183,7 +183,7 @@ export const PersonalArea = () => {
       }
     }
     throw new Error(
-      "should not call ensureInstallationToken() when !isAuthorized."
+      "should not call ensureInstallationToken() when !isAuthorized.",
     );
   };
 
@@ -219,7 +219,7 @@ export const PersonalArea = () => {
       await ensureInstallationToken(),
       selectedRepo.login,
       selectedRepo.name,
-      nextWfPage
+      nextWfPage,
     );
     setWorkflows(workflows.concat(resp.workflows));
     setNextWfPage(resp.hasMore ? nextWfPage + 1 : null);
@@ -230,7 +230,7 @@ export const PersonalArea = () => {
     () => {
       runAsync(registrationChecker);
     },
-    [isInstalled] // eslint-disable-line react-hooks/exhaustive-deps
+    [isInstalled], // eslint-disable-line react-hooks/exhaustive-deps
   );
 
   // !registration -> repos
@@ -254,7 +254,7 @@ export const PersonalArea = () => {
       async () => {
         window.location.href = await beginAuth();
       },
-      { infinite: true }
+      { infinite: true },
     );
   };
 

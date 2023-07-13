@@ -29,7 +29,7 @@ export const updateTimeSettingsEndpoint = authorizedUserFactory.build({
     user.isCountdown = false;
     user.lastConfirmation = new Date();
     user.nextCheck = new Date(
-      Date.now() + checkFreqToDays(checkFreq) * msInDay
+      Date.now() + checkFreqToDays(checkFreq) * msInDay,
     );
     await user.save();
     return {

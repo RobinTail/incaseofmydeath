@@ -5,5 +5,5 @@ import fs from "fs";
 fs.writeFileSync(
   "../frontend/src/api-client.ts",
   new Integration({ routing }).print(),
-  "utf-8"
+  "utf-8",
 );

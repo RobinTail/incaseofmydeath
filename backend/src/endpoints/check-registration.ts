@@ -40,7 +40,7 @@ export const checkRegistrationEndpoint =
           owner: user.repo.owner,
           repo: user.repo.name,
           workflow_id: user.workflowId,
-        }
+        },
       );
       return {
         isAlive: user.isAlive,

@@ -17,7 +17,7 @@ export const listRepositoriesEndpoint = installationProviderFactory.build({
         login: z.string().min(1),
         name: z.string().min(1),
         isPrivate: z.boolean(),
-      })
+      }),
     ),
     hasMore: z.boolean(),
   }),

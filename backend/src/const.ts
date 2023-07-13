@@ -12,5 +12,5 @@ export type CheckFreqCode = keyof typeof checkFreqCodes;
 
 export const checkFreqCodesArray = Object.keys(checkFreqCodes) as [
   CheckFreqCode,
-  ...CheckFreqCode[]
+  ...CheckFreqCode[],
 ];

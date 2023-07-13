@@ -83,8 +83,8 @@ export const Consent = ({
                 onChange={(event) => {
                   setConsent(
                     consent.map((entry, offset) =>
-                      offset === index ? event.target.checked : entry
-                    )
+                      offset === index ? event.target.checked : entry,
+                    ),
                   );
                 }}
               />

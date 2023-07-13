@@ -34,19 +34,19 @@ export class TelegramChannel implements Channel {
     bot.start((ctx) => {
       ctx.reply(
         `Please go to the [application website](${frontendUrl}) for registration and setup`,
-        { parse_mode: "MarkdownV2" }
+        { parse_mode: "MarkdownV2" },
       );
       return this.#considerAlive({ chatId: String(ctx.from.id) });
     });
     bot.help((ctx) => {
       ctx.reply(
         `You may find all information on the [application website](${frontendUrl})`,
-        { parse_mode: "MarkdownV2" }
+        { parse_mode: "MarkdownV2" },
       );
       return this.#considerAlive({ chatId: String(ctx.from.id) });
     });
     bot.on("message", (ctx) =>
-      this.#considerAlive({ chatId: String(ctx.from.id) })
+      this.#considerAlive({ chatId: String(ctx.from.id) }),
     );
     this.#bot = bot;
   }
@@ -75,7 +75,7 @@ export class TelegramChannel implements Channel {
     if (user.telegramChatId) {
       await this.#bot.telegram.sendMessage(
         user.telegramChatId,
-        "Done! The communication channel is established."
+        "Done! The communication channel is established.",
       );
     }
   }
@@ -84,7 +84,7 @@ export class TelegramChannel implements Channel {
     if (user.telegramChatId) {
       await this.#bot.telegram.sendMessage(
         user.telegramChatId,
-        "Are you alive? Please send me any message to confirm."
+        "Are you alive? Please send me any message to confirm.",
       );
     }
   }
@@ -93,7 +93,7 @@ export class TelegramChannel implements Channel {
     if (user.telegramChatId) {
       await this.#bot.telegram.sendMessage(
         user.telegramChatId,
-        "According to our agreement I consider you dead."
+        "According to our agreement I consider you dead.",
       );
     }
   }
