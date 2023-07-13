@@ -24,7 +24,7 @@ export const Wrapper = ({ children }: { children: React.ReactNode }) => {
     {
       message: "",
       success: true,
-    }
+    },
   );
 
   const navigate = useNavigate();

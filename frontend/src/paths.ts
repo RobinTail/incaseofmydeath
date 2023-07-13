@@ -6,7 +6,7 @@ export const paths = {
 
 export const replacePathsParams = (
   path: string,
-  params: Record<string, string>
+  params: Record<string, string>,
 ) => {
   let result = `${path}`;
   Object.keys(params).forEach((key) => {

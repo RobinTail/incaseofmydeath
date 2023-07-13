@@ -7,7 +7,7 @@ const client = new ExpressZodAPIClient(async (method, path, params) => {
   const response = await fetch(`${host}${path}${searchParams}`, {
     method: method.toUpperCase(),
     body: hasBody ? JSON.stringify(params) : undefined,
-    headers: hasBody ? {"Content-Type": "application/json"} : undefined,
+    headers: hasBody ? { "Content-Type": "application/json" } : undefined,
   });
   return response.json();
 });
@@ -56,7 +56,7 @@ export const listWorkflows = async (
   iToken: string,
   owner: string,
   repo: string,
-  page: number
+  page: number,
 ) => {
   const response = await client.provide("get", "/v1/workflows/list", {
     iToken,
@@ -71,12 +71,12 @@ export const listWorkflows = async (
 };
 
 export const registerWorkflow = async (
-  request: Input["post /v1/workflows/register"]
+  request: Input["post /v1/workflows/register"],
 ) => {
   const response = await client.provide(
     "post",
     "/v1/workflows/register",
-    request
+    request,
   );
   if (response.status === "error") {
     throw new Error(response.error.message);
@@ -99,12 +99,12 @@ export const checkRegistration = async ({
 };
 
 export const connectTelegram = async (
-  request: Input["post /v1/channels/telegram/connect"]
+  request: Input["post /v1/channels/telegram/connect"],
 ) => {
   const response = await client.provide(
     "post",
     "/v1/channels/telegram/connect",
-    request
+    request,
   );
   if (response.status === "error") {
     throw new Error(response.error.message);
@@ -113,7 +113,7 @@ export const connectTelegram = async (
 };
 
 export const updateTimeSettings = async (
-  request: Input["patch /v1/time/update"]
+  request: Input["patch /v1/time/update"],
 ) => {
   const response = await client.provide("patch", "/v1/time/update", request);
   if (response.status === "error") {
@@ -129,7 +129,7 @@ export const disconnectTelegram = async ({
   const response = await client.provide(
     "delete",
     "/v1/channels/telegram/disconnect",
-    { userId, uToken }
+    { userId, uToken },
   );
   if (response.status === "error") {
     throw new Error(response.error.message);
@@ -162,12 +162,12 @@ export const getPublicStatus = async (userId: number) => {
 };
 
 export const setPublicStatus = async (
-  request: Input["patch /v1/registration/public"]
+  request: Input["patch /v1/registration/public"],
 ) => {
   const response = await client.provide(
     "patch",
     "/v1/registration/public",
-    request
+    request,
   );
   if (response.status === "error") {
     throw new Error(response.error.message);
