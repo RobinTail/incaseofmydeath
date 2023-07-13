@@ -19,7 +19,7 @@ export const listWorkflowsEndpoint = installationProviderFactory.build({
       z.object({
         id: z.number().int().positive(),
         name: z.string().min(1),
-      })
+      }),
     ),
   }),
   handler: async ({
@@ -36,7 +36,7 @@ export const listWorkflowsEndpoint = installationProviderFactory.build({
         repo,
         per_page: perPage,
         page,
-      }
+      },
     );
     logger.debug(`Total workflows: ${totalCount}`);
     return {

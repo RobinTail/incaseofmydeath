@@ -15,7 +15,7 @@ export interface Packet {
 }
 
 export const isProcessMessage = (
-  subject: unknown
+  subject: unknown,
 ): subject is ProcessMessage => {
   return (
     typeof subject === "object" &&
@@ -54,7 +54,7 @@ export const createProcessManager = () => {
           return;
         }
         const disposerProcess = processList.find(
-          (item) => item.name === disposerProcessName
+          (item) => item.name === disposerProcessName,
         );
         if (!disposerProcess) {
           reject(new Error(`Can not find ${disposerProcessName} process`));
@@ -69,7 +69,7 @@ export const createProcessManager = () => {
                 type: "process:msg",
                 data,
               },
-              () => {}
+              () => {},
             );
           }
         };

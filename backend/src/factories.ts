@@ -26,7 +26,7 @@ export const authorizedUserFactory = endpointsFactory
   .addOptions({ Users });
 
 export const publicUserFactory = endpointsFactory.addMiddleware(
-  publicUserProviderMiddleware
+  publicUserProviderMiddleware,
 );
 
 export const publicUserWithInstallationFactory =
