@@ -33,7 +33,7 @@ export const registerWorkflowEndpoint = installationProviderFactory.build({
         owner,
         repo,
         workflow_id: workflowId,
-      }
+      },
     );
     const user = new Users({
       id: userId,

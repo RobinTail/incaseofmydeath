@@ -22,7 +22,7 @@ const aliveHook = debounce({
     user.isCountdown = false; // regular schedule
     user.lastConfirmation = new Date();
     user.nextCheck = new Date(
-      Date.now() + checkFreqToDays(user.checkFreq) * msInDay
+      Date.now() + checkFreqToDays(user.checkFreq) * msInDay,
     );
     await user.save();
   }) as AliveHook,
@@ -39,7 +39,7 @@ const runWorkflow = async (user: UserDocument) => {
       data: { token: iToken },
     } = await app.request(
       "POST /app/installations/{installation_id}/access_tokens",
-      { installation_id: user.installationId }
+      { installation_id: user.installationId },
     );
     const installation = new Octokit({ auth: iToken });
     const { status } = await installation.request(
@@ -49,7 +49,7 @@ const runWorkflow = async (user: UserDocument) => {
         repo: user.repo.name,
         workflow_id: user.workflowId,
         ref: user.repo.branch,
-      }
+      },
     );
     return status;
   } catch (e) {
@@ -86,7 +86,7 @@ const check = async () => {
       // countdown schedule
       user.isCountdown = true;
       user.nextCheck = new Date(
-        Date.now() + (user.deadlineDays * msInDay) / (user.attemptsCount + 1)
+        Date.now() + (user.deadlineDays * msInDay) / (user.attemptsCount + 1),
       );
       logger.debug("Asked user to confirm the status", user);
     }

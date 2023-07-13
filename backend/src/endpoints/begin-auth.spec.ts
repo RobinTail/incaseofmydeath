@@ -16,7 +16,7 @@ describe("beginAuthenticationEndpoint", () => {
     expect(responseMock.json).toHaveBeenCalledWith({
       data: {
         url: expect.stringContaining(
-          "https://github.com/login/oauth/authorize?client_id=Iv1.a3d196a34df183d3&state="
+          "https://github.com/login/oauth/authorize?client_id=Iv1.a3d196a34df183d3&state=",
         ),
       },
       status: "success",

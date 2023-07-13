@@ -23,7 +23,7 @@ const userIdSchema = z
     z
       .string()
       .regex(/\d+/)
-      .transform((v) => parseInt(v, 10))
+      .transform((v) => parseInt(v, 10)),
   );
 
 export const publicUserProviderMiddleware = createMiddleware({

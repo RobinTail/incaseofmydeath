@@ -30,7 +30,7 @@ export const findInstallationEndpoint = appProviderFactory.build({
       hasMore = page * perPage < totalCount;
       logger.debug(`Total installations: ${totalCount}`);
       installation = installations.find(
-        (entry) => entry.app_id === github.appId
+        (entry) => entry.app_id === github.appId,
       );
     } while (!installation && hasMore);
     if (!installation) {
@@ -40,7 +40,7 @@ export const findInstallationEndpoint = appProviderFactory.build({
       data: { token: iToken, expires_at: expiresAt },
     } = await app.request(
       "POST /app/installations/{installation_id}/access_tokens",
-      { installation_id: installation.id }
+      { installation_id: installation.id },
     );
     return { id: installation.id, iToken, expiresAt };
   },
