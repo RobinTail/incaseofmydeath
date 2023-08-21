@@ -43,6 +43,9 @@ export const publicUserProviderMiddleware = createMiddleware({
     if (!account) {
       throw new Error("No account in response");
     }
+    if (!("login" in account)) {
+      throw new Error("Enterprise accounts are not supported");
+    }
     if (userId !== account.id) {
       throw new Error("Invalid userId");
     }
@@ -65,6 +68,9 @@ export const authorizedUserProviderMiddleware = createMiddleware({
     const { data: account } = await kit.request("GET /user");
     if (account.id !== userId) {
       throw new Error("Invalid userId");
+    }
+    if (!("login" in account)) {
+      throw new Error("Enterprise accounts are not supported");
     }
     return { user, account };
   },
