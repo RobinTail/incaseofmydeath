@@ -18,7 +18,7 @@
     "@types/react-syntax-highlighter": "^13.5.2",
     "autoprefixer": "^10.4.15",
     "postcss": "^8.4.27",
-    "prettier": "3.0.0",
+    "prettier": "3.0.2",
     "react-scripts": "5.0.1",
     "typescript": "^5.1.6"
   },
