@@ -75,10 +75,10 @@ type GetV1RegistrationCheckResponse =
       };
     };
 
-type DeleteV1RegistrationRemoveInput = ({
+type DeleteV1RegistrationRemoveInput = (({
   uToken: string;
   userId: number | string;
-} & {}) & {};
+} & {}) & {}) & {};
 
 type DeleteV1RegistrationRemoveResponse =
   | {
@@ -92,10 +92,10 @@ type DeleteV1RegistrationRemoveResponse =
       };
     };
 
-type PatchV1RegistrationPublicInput = ({
+type PatchV1RegistrationPublicInput = (({
   uToken: string;
   userId: number | string;
-} & {}) & {
+} & {}) & {}) & {
   isPublic: boolean;
 };
 
@@ -111,10 +111,10 @@ type PatchV1RegistrationPublicResponse =
       };
     };
 
-type PatchV1TimeUpdateInput = ({
+type PatchV1TimeUpdateInput = (({
   uToken: string;
   userId: number | string;
-} & {}) & {
+} & {}) & {}) & {
   checkFreq: "day" | "week" | "month" | "quarter" | "year";
   deadlineDays: number;
   attemptsCount: number;
@@ -134,10 +134,10 @@ type PatchV1TimeUpdateResponse =
       };
     };
 
-type PostV1ChannelsTelegramConnectInput = ({
+type PostV1ChannelsTelegramConnectInput = (({
   uToken: string;
   userId: number | string;
-} & {}) & {
+} & {}) & {}) & {
   chatId: string;
   hash: string;
   dataCheckString: string;
@@ -158,10 +158,10 @@ type PostV1ChannelsTelegramConnectResponse =
       };
     };
 
-type DeleteV1ChannelsTelegramDisconnectInput = ({
+type DeleteV1ChannelsTelegramDisconnectInput = (({
   uToken: string;
   userId: number | string;
-} & {}) & {};
+} & {}) & {}) & {};
 
 type DeleteV1ChannelsTelegramDisconnectResponse =
   | {
@@ -358,6 +358,22 @@ export const jsonEndpoints = {
   "get /v1/status/:userId": true,
 };
 
+export const endpointTags = {
+  "get /v1/auth/begin": [],
+  "get /v1/auth/finish": [],
+  "get /v1/registration/check": [],
+  "delete /v1/registration/remove": [],
+  "patch /v1/registration/public": [],
+  "patch /v1/time/update": [],
+  "post /v1/channels/telegram/connect": [],
+  "delete /v1/channels/telegram/disconnect": [],
+  "post /v1/installation/find": [],
+  "get /v1/repos/list": [],
+  "get /v1/workflows/list": [],
+  "post /v1/workflows/register": [],
+  "get /v1/status/:userId": [],
+};
+
 export type Provider = <M extends Method, P extends Path>(
   method: M,
   path: P,
@@ -376,13 +392,12 @@ export const exampleImplementation: Implementation = async (
   path,
   params
 ) => {
-  const searchParams =
-    method === "get" ? `?${new URLSearchParams(params)}` : "";
+  const hasBody = !["get", "delete"].includes(method);
+  const searchParams = hasBody ? "" : `?${new URLSearchParams(params)}`;
   const response = await fetch(`https://example.com${path}${searchParams}`, {
     method: method.toUpperCase(),
-    headers:
-      method === "get" ? undefined : { "Content-Type": "application/json" },
-    body: method === "get" ? undefined : JSON.stringify(params),
+    headers: hasBody ? { "Content-Type": "application/json" } : undefined,
+    body: hasBody ? JSON.stringify(params) : undefined,
   });
   if (`${method} ${path}` in jsonEndpoints) {
     return response.json();
@@ -395,7 +410,7 @@ client.provide("get", "/v1/user/retrieve", { id: "10" });
 */
 export class ExpressZodAPIClient {
   constructor(protected readonly implementation: Implementation) {}
-  public readonly provide: Provider = (method, path, params) =>
+  public readonly provide: Provider = async (method, path, params) =>
     this.implementation(
       method,
       Object.keys(params).reduce(
