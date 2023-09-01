@@ -21,4 +21,11 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
+  overrides: [{
+    files: ["src/api-client.ts"],
+    rules: {
+      "@typescript-eslint/ban-types": "off",
+      "@typescript-eslint/no-explicit-any": "off"
+    }
+  }]
 }
