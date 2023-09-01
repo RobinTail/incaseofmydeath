@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import React from "react";
 import { TLoginButton, TLoginButtonSize } from "react-telegram-auth";
 import { connectTelegram, disconnectTelegram } from "./api";
 

@@ -14,7 +14,6 @@ import {
   TimelineSeparator,
 } from "@mui/lab";
 import { Typography, useMediaQuery, useTheme } from "@mui/material";
-import React from "react";
 
 export const HowItWorksTimeline = () => {
   const theme = useTheme();
