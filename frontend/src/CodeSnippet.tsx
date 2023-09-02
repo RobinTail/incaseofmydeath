@@ -2,6 +2,7 @@
 import {
   IconButton,
   Paper,
+  Skeleton,
   Tooltip,
   useMediaQuery,
   useTheme,
@@ -13,9 +14,12 @@ import React from "react";
 import { CopyToClipboardButton } from "react-clipboard-button";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import ReactMarkdown from "react-markdown";
-import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { SnackbarContext } from "./context";
+
+const SyntaxHighlighter = React.lazy(
+  () => import("react-syntax-highlighter/dist/esm/prism"),
+);
 
 interface CodeSnippetProps {
   code: string;
@@ -54,31 +58,42 @@ export const CodeSnippet = ({ language, code }: CodeSnippetProps) => {
             </IconButton>
           </Tooltip>
         </CopyToClipboardButton>
-        <ReactMarkdown
-          components={{
-            pre({ children }) {
-              return children;
-            },
-            code({ node, inline, className, children, style, ...props }) {
-              const match = /language-(\w+)/.exec(className || "");
-              return !inline && match ? (
-                <SyntaxHighlighter
-                  style={theme.palette.mode === "dark" ? atomDark : undefined}
-                  language={match[1]}
-                  PreTag="div"
-                  children={String(children).replace(/\n$/, "")}
-                  {...props}
-                />
-              ) : (
-                <code className={className} {...props}>
-                  {children}
-                </code>
-              );
-            },
-          }}
+        <React.Suspense
+          fallback={
+            <Skeleton
+              width="100%"
+              height={`${code.split("\n").length}em`}
+              variant="rounded"
+              animation="wave"
+            />
+          }
         >
-          {`\`\`\`${language}\n${code}\n\`\`\``}
-        </ReactMarkdown>
+          <ReactMarkdown
+            components={{
+              pre({ children }) {
+                return children;
+              },
+              code({ node, inline, className, children, style, ...props }) {
+                const match = /language-(\w+)/.exec(className || "");
+                return !inline && match ? (
+                  <SyntaxHighlighter
+                    style={theme.palette.mode === "dark" ? atomDark : undefined}
+                    language={match[1]}
+                    PreTag="div"
+                    children={String(children).replace(/\n$/, "")}
+                    {...props}
+                  />
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                );
+              },
+            }}
+          >
+            {`\`\`\`${language}\n${code}\n\`\`\``}
+          </ReactMarkdown>
+        </React.Suspense>
       </Paper>
     </>
   );
