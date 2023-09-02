@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   IconButton,
   Paper,
@@ -6,11 +7,14 @@ import {
   useTheme,
 } from "@mui/material";
 import React from "react";
+// @todo fix the the module issue resolved
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { CopyToClipboardButton } from "react-clipboard-button";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import ReactMarkdown from "react-markdown";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism";
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { SnackbarContext } from "./context";
 
 interface CodeSnippetProps {
@@ -55,11 +59,10 @@ export const CodeSnippet = ({ language, code }: CodeSnippetProps) => {
             pre({ children }) {
               return children;
             },
-            code({ node, inline, className, children, ref, ...props }) {
+            code({ node, inline, className, children, style, ...props }) {
               const match = /language-(\w+)/.exec(className || "");
               return !inline && match ? (
                 <SyntaxHighlighter
-                  ref={ref as React.LegacyRef<SyntaxHighlighter>}
                   style={theme.palette.mode === "dark" ? atomDark : undefined}
                   language={match[1]}
                   PreTag="div"

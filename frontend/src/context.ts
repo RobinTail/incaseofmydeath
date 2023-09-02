@@ -7,6 +7,8 @@ export interface SnackbarContent {
   success: boolean;
 }
 
-export const SnackbarContext = React.createContext({
-  showSnackbar: (content: SnackbarContent) => {},
+export const SnackbarContext = React.createContext<{
+  showSnackbar: (content: SnackbarContent) => void;
+}>({
+  showSnackbar: () => {},
 });

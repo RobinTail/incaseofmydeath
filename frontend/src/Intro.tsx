@@ -6,7 +6,6 @@ import {
   useMediaQuery,
   Link,
 } from "@mui/material";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { HowItWorksTimeline } from "./HowItWorksTimeline";
 import { paths } from "./paths";

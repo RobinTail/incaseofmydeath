@@ -9,7 +9,6 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import React from "react";
 
 interface PersonProps {
   isAuthorized: boolean;

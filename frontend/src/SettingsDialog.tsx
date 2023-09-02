@@ -6,7 +6,6 @@ import {
   DialogTitle,
   Typography,
 } from "@mui/material";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { removeRegistration } from "./api";
 import { paths } from "./paths";
