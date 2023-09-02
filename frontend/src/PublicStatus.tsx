@@ -6,7 +6,7 @@ import { getPublicStatus } from "./api";
 
 type Status = Awaited<ReturnType<typeof getPublicStatus>> | null;
 
-export const PublicStatus = () => {
+const PublicStatus = () => {
   const { userId } = useParams();
   const theme = useTheme();
   const [isLoading, setIsLoading] = React.useState(false);
@@ -68,3 +68,5 @@ export const PublicStatus = () => {
     </>
   );
 };
+
+export default PublicStatus;

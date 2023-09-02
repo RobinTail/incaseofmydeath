@@ -78,7 +78,7 @@ const ensureInstallation = (value: unknown): Installation | null => {
   }
 };
 
-export const PersonalArea = () => {
+const PersonalArea = () => {
   const { showSnackbar } = React.useContext(SnackbarContext);
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
@@ -528,3 +528,5 @@ export const PersonalArea = () => {
     </>
   );
 };
+
+export default PersonalArea;
