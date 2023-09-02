@@ -12,9 +12,6 @@ import {
 import GitHubIcon from "@mui/icons-material/GitHub";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import React from "react";
-// @todo fix the the module issue resolved
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { CopyToClipboardButton } from "react-clipboard-button";
 import { useSearchParams } from "react-router-dom";
 import useLocalStorageState from "use-local-storage-state";
