@@ -7,15 +7,18 @@ import {
   useTheme,
 } from "@mui/material";
 import React from "react";
-// @todo fix the the module issue resolved
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { CopyToClipboardButton } from "react-clipboard-button";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import ReactMarkdown from "react-markdown";
-import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism";
-import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import {
+  atomDark,
+  prism,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
+import yaml from "react-syntax-highlighter/dist/esm/languages/prism/yaml";
 import { SnackbarContext } from "./context";
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-light";
+
+SyntaxHighlighter.registerLanguage("yaml", yaml);
 
 interface CodeSnippetProps {
   code: string;
@@ -63,7 +66,7 @@ export const CodeSnippet = ({ language, code }: CodeSnippetProps) => {
               const match = /language-(\w+)/.exec(className || "");
               return !inline && match ? (
                 <SyntaxHighlighter
-                  style={theme.palette.mode === "dark" ? atomDark : undefined}
+                  style={theme.palette.mode === "dark" ? atomDark : prism}
                   language={match[1]}
                   PreTag="div"
                   children={String(children).replace(/\n$/, "")}

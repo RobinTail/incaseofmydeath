@@ -11,7 +11,7 @@ import { HowItWorksTimeline } from "./HowItWorksTimeline";
 import { paths } from "./paths";
 import { WorkflowExample } from "./WorkflowExample";
 
-export const Intro = () => {
+const Intro = () => {
   const navigate = useNavigate();
   const theme = useTheme();
   const isXS = useMediaQuery(theme.breakpoints.only("xs"));
@@ -164,3 +164,5 @@ export const Intro = () => {
     </Box>
   );
 };
+
+export default Intro;
