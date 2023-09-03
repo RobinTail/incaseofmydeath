@@ -1,10 +1,10 @@
 import { createLogger } from "express-zod-api";
 import { Telegraf } from "telegraf";
-import type { UserFromGetMe } from "typegram/manage";
 import { Channel, AliveHook } from "../channel";
 import { frontendUrl, tgBot } from "../config";
 import { UserDocument, Users } from "../db";
 import { debounce } from "../debounce";
+import type { UserFromGetMe } from "telegraf/types";
 
 type AliveConsideringPayload = { chatId: string } | { user: UserDocument };
 const aliveConsideringThrottle = 60; // seconds
