@@ -26,12 +26,31 @@ const userIdSchema = z
       .transform((v) => parseInt(v, 10)),
   );
 
+const loginSchema = z
+  .string()
+  .regex(/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i);
+
 export const publicUserProviderMiddleware = createMiddleware({
-  input: z.object({
-    userId: userIdSchema,
-  }),
-  middleware: async ({ input: { userId } }) => {
-    const user = await Users.findOne({ id: userId }).exec();
+  input: z
+    .object({
+      userId: userIdSchema,
+    })
+    .or(
+      z.object({
+        login: loginSchema,
+      }),
+    ),
+  middleware: async ({ input }) => {
+    const user = await Users.findOne(
+      "userId" in input ? { id: input.userId } : { "repo.owner": input.login },
+      undefined,
+      {
+        collation:
+          "login" in input
+            ? { locale: "en_US", strength: 1, caseLevel: false }
+            : undefined,
+      },
+    ).exec();
     if (!user) {
       return { user: null, account: null };
     }
@@ -46,7 +65,7 @@ export const publicUserProviderMiddleware = createMiddleware({
     if (!("login" in account)) {
       throw new Error("Enterprise accounts are not supported");
     }
-    if (userId !== account.id) {
+    if (user.id !== account.id) {
       throw new Error("Invalid userId");
     }
     return { user, account };
