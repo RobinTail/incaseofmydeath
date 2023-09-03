@@ -7,18 +7,18 @@ import { getPublicStatus } from "./api";
 type Status = Awaited<ReturnType<typeof getPublicStatus>> | null;
 
 const PublicStatus = () => {
-  const { userId } = useParams();
+  const { login } = useParams();
   const theme = useTheme();
   const [isLoading, setIsLoading] = React.useState(false);
   const [status, setStatus] = React.useState<Status>(null);
   const [error, setError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    if (userId) {
+    if (login) {
       setIsLoading(true);
       (async () => {
         try {
-          setStatus(await getPublicStatus(parseInt(userId, 10)));
+          setStatus(await getPublicStatus(login));
         } catch (e) {
           if (e instanceof Error) {
             setError(e.message);
@@ -27,10 +27,10 @@ const PublicStatus = () => {
         setIsLoading(false);
       })();
     }
-  }, [userId]);
+  }, [login]);
 
-  if (!userId) {
-    return <Alert severity="error">User ID is not supplied</Alert>;
+  if (!login) {
+    return <Alert severity="error">GitHub login is not supplied</Alert>;
   }
 
   if (error) {
