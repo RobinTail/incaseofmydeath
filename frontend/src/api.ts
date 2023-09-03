@@ -151,9 +151,9 @@ export const removeRegistration = async ({
   return response.data;
 };
 
-export const getPublicStatus = async (userId: number) => {
-  const response = await client.provide("get", `/v1/status/:userId`, {
-    userId,
+export const getPublicStatus = async (login: string) => {
+  const response = await client.provide("get", `/v2/status/:login`, {
+    login,
   });
   if (response.status === "error") {
     throw new Error(response.error.message);

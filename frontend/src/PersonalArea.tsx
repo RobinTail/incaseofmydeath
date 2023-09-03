@@ -336,7 +336,7 @@ const PersonalArea = () => {
               text={
                 `${window.location.protocol}//${window.location.host}` +
                 replacePathsParams(paths.publicStatus, {
-                  userId: `${auth.id}`,
+                  login: `${auth.login}`,
                 })
               }
               onSuccess={() =>
