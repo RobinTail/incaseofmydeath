@@ -1,7 +1,7 @@
 export const paths = {
   root: "/",
   personalArea: "/personal",
-  publicStatus: "/status/:userId",
+  publicStatus: "/status/:login",
 };
 
 export const replacePathsParams = (
