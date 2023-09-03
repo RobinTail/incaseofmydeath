@@ -22,7 +22,7 @@ module.exports = {
     ],
   },
   overrides: [{
-    files: ["src/api-client.ts"],
+    files: ["src/generated/*"],
     rules: {
       "@typescript-eslint/ban-types": "off",
       "@typescript-eslint/no-explicit-any": "off"
