@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 dist
+src/generated/api-client.ts
 dist-ssr
 *.local
 

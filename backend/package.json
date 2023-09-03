@@ -9,7 +9,7 @@
     "start": "ts-node src/index.ts",
     "lint": "eslint src",
     "build": "rm -rf dist && tsc",
-    "build:client": "ENV=TEST yarn ts-node src/client.ts && yarn prettier --write ../frontend/src/api-client.ts",
+    "build:client": "ENV=TEST yarn ts-node src/client.ts && yarn prettier --write ../frontend/src/generated/api-client.ts",
     "test": "ENV=TEST yarn jest src/"
   },
   "devDependencies": {
