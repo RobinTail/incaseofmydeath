@@ -291,6 +291,28 @@ type GetV1StatusUseridResponse =
       };
     };
 
+type GetV2StatusLoginInput = {
+  login: string;
+} & {};
+
+type GetV2StatusLoginResponse =
+  | {
+      status: "success";
+      data: {
+        login: string;
+        avatarUrl?: string | undefined;
+        name: string | null;
+        isAlive: boolean;
+        lastConfirmation: string;
+      };
+    }
+  | {
+      status: "error";
+      error: {
+        message: string;
+      };
+    };
+
 export type Path =
   | "/v1/auth/begin"
   | "/v1/auth/finish"
@@ -304,7 +326,8 @@ export type Path =
   | "/v1/repos/list"
   | "/v1/workflows/list"
   | "/v1/workflows/register"
-  | "/v1/status/:userId";
+  | "/v1/status/:userId"
+  | "/v2/status/:login";
 
 export type Method = "get" | "post" | "put" | "delete" | "patch";
 
@@ -324,6 +347,7 @@ export interface Input extends Record<MethodPath, any> {
   "get /v1/workflows/list": GetV1WorkflowsListInput;
   "post /v1/workflows/register": PostV1WorkflowsRegisterInput;
   "get /v1/status/:userId": GetV1StatusUseridInput;
+  "get /v2/status/:login": GetV2StatusLoginInput;
 }
 
 export interface Response extends Record<MethodPath, any> {
@@ -340,6 +364,7 @@ export interface Response extends Record<MethodPath, any> {
   "get /v1/workflows/list": GetV1WorkflowsListResponse;
   "post /v1/workflows/register": PostV1WorkflowsRegisterResponse;
   "get /v1/status/:userId": GetV1StatusUseridResponse;
+  "get /v2/status/:login": GetV2StatusLoginResponse;
 }
 
 export const jsonEndpoints = {
@@ -356,6 +381,7 @@ export const jsonEndpoints = {
   "get /v1/workflows/list": true,
   "post /v1/workflows/register": true,
   "get /v1/status/:userId": true,
+  "get /v2/status/:login": true,
 };
 
 export const endpointTags = {
@@ -372,6 +398,7 @@ export const endpointTags = {
   "get /v1/workflows/list": [],
   "post /v1/workflows/register": [],
   "get /v1/status/:userId": [],
+  "get /v2/status/:login": [],
 };
 
 export type Provider = <M extends Method, P extends Path>(

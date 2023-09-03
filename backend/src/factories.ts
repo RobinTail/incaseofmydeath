@@ -6,7 +6,8 @@ import {
   authorizedUserProviderMiddleware,
   installationProviderMiddleware,
   processManagerProviderMiddleware,
-  publicUserProviderMiddleware,
+  publicUserProviderByIdMiddleware,
+  publicUserProviderByLoginMiddleware,
 } from "./middlewares";
 
 export const endpointsFactory = defaultEndpointsFactory;
@@ -25,9 +26,13 @@ export const authorizedUserFactory = endpointsFactory
   .addMiddleware(processManagerProviderMiddleware)
   .addOptions({ Users });
 
-export const publicUserFactory = endpointsFactory.addMiddleware(
-  publicUserProviderMiddleware,
+export const publicUserByIdFactory = endpointsFactory.addMiddleware(
+  publicUserProviderByIdMiddleware,
+);
+
+export const publicUserByLoginFactory = endpointsFactory.addMiddleware(
+  publicUserProviderByLoginMiddleware,
 );
 
 export const publicUserWithInstallationFactory =
-  publicUserFactory.addMiddleware(installationProviderMiddleware);
+  publicUserByIdFactory.addMiddleware(installationProviderMiddleware);

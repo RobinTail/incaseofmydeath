@@ -2,7 +2,7 @@ import { Octokit } from "@octokit/core";
 import { createMiddleware } from "express-zod-api";
 import { z } from "zod";
 import { app } from "./app";
-import { Users } from "./db";
+import { UserDocument, Users } from "./db";
 import { createProcessManager } from "./pm";
 
 export const installationProviderMiddleware = createMiddleware({
@@ -26,7 +26,29 @@ const userIdSchema = z
       .transform((v) => parseInt(v, 10)),
   );
 
-export const publicUserProviderMiddleware = createMiddleware({
+const loginSchema = z
+  .string()
+  .regex(/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i);
+
+const getUserAccount = async (user: UserDocument) => {
+  const {
+    data: { account },
+  } = await app.request("GET /app/installations/{installation_id}", {
+    installation_id: user.installationId,
+  });
+  if (!account) {
+    throw new Error("No account in response");
+  }
+  if (!("login" in account)) {
+    throw new Error("Enterprise accounts are not supported");
+  }
+  if (user.id !== account.id) {
+    throw new Error("Invalid userId");
+  }
+  return account;
+};
+
+export const publicUserProviderByIdMiddleware = createMiddleware({
   input: z.object({
     userId: userIdSchema,
   }),
@@ -35,21 +57,22 @@ export const publicUserProviderMiddleware = createMiddleware({
     if (!user) {
       return { user: null, account: null };
     }
-    const {
-      data: { account },
-    } = await app.request("GET /app/installations/{installation_id}", {
-      installation_id: user.installationId,
+    return { user, account: await getUserAccount(user) };
+  },
+});
+
+export const publicUserProviderByLoginMiddleware = createMiddleware({
+  input: z.object({
+    login: loginSchema,
+  }),
+  middleware: async ({ input: { login } }) => {
+    const user = await Users.findOne({ "repo.owner": login }, undefined, {
+      collation: { locale: "en_US", strength: 1, caseLevel: false },
     });
-    if (!account) {
-      throw new Error("No account in response");
+    if (!user) {
+      return { user: null, account: null };
     }
-    if (!("login" in account)) {
-      throw new Error("Enterprise accounts are not supported");
-    }
-    if (userId !== account.id) {
-      throw new Error("Invalid userId");
-    }
-    return { user, account };
+    return { user, account: await getUserAccount(user) };
   },
 });
 

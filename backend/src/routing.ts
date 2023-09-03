@@ -5,7 +5,10 @@ import { disconnectTelegramEndpoint } from "./endpoints/disconnect-telegram";
 import { findInstallationEndpoint } from "./endpoints/find-installation";
 import { finishAuthenticationEndpoint } from "./endpoints/finish-auth";
 import { beginAuthenticationEndpoint } from "./endpoints/begin-auth";
-import { getPublicStatusEndpoint } from "./endpoints/get-public-status";
+import {
+  getPublicStatusByIdEndpoint,
+  getPublicStatusByLoginEndpoint,
+} from "./endpoints/get-public-status";
 import { listRepositoriesEndpoint } from "./endpoints/list-repositories";
 import { listWorkflowsEndpoint } from "./endpoints/list-workflows";
 import { togglePublicStatusEndpoint } from "./endpoints/toggle-public-status";
@@ -44,7 +47,13 @@ export const routing: Routing = {
       register: registerWorkflowEndpoint,
     },
     status: {
-      ":userId": getPublicStatusEndpoint,
+      /** @deprecated use /v2/status/:login instead */
+      ":userId": getPublicStatusByIdEndpoint,
+    },
+  },
+  v2: {
+    status: {
+      ":login": getPublicStatusByLoginEndpoint,
     },
   },
 };
