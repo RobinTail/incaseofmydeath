@@ -1,8 +1,8 @@
 import { createHttpError, ez } from "express-zod-api";
 import { z } from "zod";
-import { publicUserFactory } from "../factories";
+import { publicUserByIdFactory } from "../factories";
 
-export const getPublicStatusEndpoint = publicUserFactory.build({
+export const getPublicStatusEndpoint = publicUserByIdFactory.build({
   method: "get",
   input: z.object({}),
   output: z.object({
