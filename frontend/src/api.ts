@@ -1,4 +1,4 @@
-import { ExpressZodAPIClient, Input } from "./api-client";
+import { ExpressZodAPIClient, Input } from "./generated/api-client.ts";
 const host = "https://api.incaseofmy.de:443";
 
 const client = new ExpressZodAPIClient(async (method, path, params) => {

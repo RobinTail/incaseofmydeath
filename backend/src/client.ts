@@ -3,7 +3,7 @@ import { routing } from "./routing";
 import fs from "fs";
 
 fs.writeFileSync(
-  "../frontend/src/api-client.ts",
+  "../frontend/src/generated/api-client.ts",
   new Integration({ routing }).print(),
   "utf-8",
 );
