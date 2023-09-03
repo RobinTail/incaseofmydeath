@@ -269,28 +269,6 @@ type PostV1WorkflowsRegisterResponse =
       };
     };
 
-type GetV1StatusUseridInput = {
-  userId: number | string;
-} & {};
-
-type GetV1StatusUseridResponse =
-  | {
-      status: "success";
-      data: {
-        login: string;
-        avatarUrl?: string | undefined;
-        name: string | null;
-        isAlive: boolean;
-        lastConfirmation: string;
-      };
-    }
-  | {
-      status: "error";
-      error: {
-        message: string;
-      };
-    };
-
 type GetV2StatusLoginInput = {
   login: string;
 } & {};
@@ -326,7 +304,6 @@ export type Path =
   | "/v1/repos/list"
   | "/v1/workflows/list"
   | "/v1/workflows/register"
-  | "/v1/status/:userId"
   | "/v2/status/:login";
 
 export type Method = "get" | "post" | "put" | "delete" | "patch";
@@ -346,7 +323,6 @@ export interface Input extends Record<MethodPath, any> {
   "get /v1/repos/list": GetV1ReposListInput;
   "get /v1/workflows/list": GetV1WorkflowsListInput;
   "post /v1/workflows/register": PostV1WorkflowsRegisterInput;
-  "get /v1/status/:userId": GetV1StatusUseridInput;
   "get /v2/status/:login": GetV2StatusLoginInput;
 }
 
@@ -363,7 +339,6 @@ export interface Response extends Record<MethodPath, any> {
   "get /v1/repos/list": GetV1ReposListResponse;
   "get /v1/workflows/list": GetV1WorkflowsListResponse;
   "post /v1/workflows/register": PostV1WorkflowsRegisterResponse;
-  "get /v1/status/:userId": GetV1StatusUseridResponse;
   "get /v2/status/:login": GetV2StatusLoginResponse;
 }
 
@@ -380,7 +355,6 @@ export const jsonEndpoints = {
   "get /v1/repos/list": true,
   "get /v1/workflows/list": true,
   "post /v1/workflows/register": true,
-  "get /v1/status/:userId": true,
   "get /v2/status/:login": true,
 };
 
@@ -397,7 +371,6 @@ export const endpointTags = {
   "get /v1/repos/list": [],
   "get /v1/workflows/list": [],
   "post /v1/workflows/register": [],
-  "get /v1/status/:userId": [],
   "get /v2/status/:login": [],
 };
 
