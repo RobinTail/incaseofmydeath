@@ -6,7 +6,7 @@ import {
   authorizedUserProviderMiddleware,
   installationProviderMiddleware,
   processManagerProviderMiddleware,
-  publicUserProviderMiddleware,
+  publicUserProviderByIdMiddleware,
 } from "./middlewares";
 
 export const endpointsFactory = defaultEndpointsFactory;
@@ -26,7 +26,7 @@ export const authorizedUserFactory = endpointsFactory
   .addOptions({ Users });
 
 export const publicUserFactory = endpointsFactory.addMiddleware(
-  publicUserProviderMiddleware,
+  publicUserProviderByIdMiddleware,
 );
 
 export const publicUserWithInstallationFactory =
