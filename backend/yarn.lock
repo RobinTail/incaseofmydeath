@@ -986,10 +986,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/compression@^1.7.2":
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/@types/compression/-/compression-1.7.2.tgz#7cc1cdb01b4730eea284615a68fc70a2cdfd5e71"
-  integrity sha512-lwEL4M/uAGWngWFLSG87ZDr2kLrbuR8p7X+QZB1OQlT+qkHsCPDVFnHPyXf4Vyl4yDDorNY+mAhosxkCvppatg==
+"@types/compression@^1.7.3":
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/@types/compression/-/compression-1.7.3.tgz#2dd34648fc3b71c95aacd63b3098b2192da33929"
+  integrity sha512-rKquEGjebqizyHNMOpaE/4FdYR5VQiWFeesqYfvJU0seSEyB4625UGhNOO/qIkH10S3wftiV7oefc8WdLZ/gCQ==
   dependencies:
     "@types/express" "*"
 
@@ -2528,12 +2528,12 @@ express-fileupload@1.4.0:
   dependencies:
     busboy "^1.6.0"
 
-express-zod-api@^12.0.0-beta3:
-  version "12.0.0-beta3"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-12.0.0-beta3.tgz#0dd9221a127a1d0aefda276d08887fa23da67efc"
-  integrity sha512-U5tP4r9iY3hgngVMZ76L7cAviCCACvCywcxwGw3pnmrUgaM2XPMF0+RmVje/d0De/LGF4d6JAH2QWK5JOz6Kog==
+express-zod-api@^12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-12.0.0.tgz#8fcf54b346acb16ffde350c948a522ebc74de4fe"
+  integrity sha512-hcW8j5axVEzZKcWuof0AF7MPtxNo8Pw1DpseRYH/jFBUaYR76GrMz45y7/lnOVqhL7t+aQO17Y3IxvkQ43kw3w==
   dependencies:
-    "@types/compression" "^1.7.2"
+    "@types/compression" "^1.7.3"
     "@types/express-fileupload" "^1.4.1"
     "@types/http-errors" "^2.0.1"
     "@types/node" "*"
