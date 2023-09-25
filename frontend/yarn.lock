@@ -2430,10 +2430,10 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-use-local-storage-state@^19.0.4:
-  version "19.0.4"
-  resolved "https://registry.yarnpkg.com/use-local-storage-state/-/use-local-storage-state-19.0.4.tgz#3d205b039b7771b731508f3331143d39c971d5f1"
-  integrity sha512-NfJmA/VOFTmYHSCO8AzMBoGl70ZFFwBNw0sYM05N7TPHL7e7AZn8kjAk9KiUlNl01vKJldOCB4Fv42dTXJa4Fg==
+use-local-storage-state@^19.1.0:
+  version "19.1.0"
+  resolved "https://registry.yarnpkg.com/use-local-storage-state/-/use-local-storage-state-19.1.0.tgz#9424981fd95dd37d253aad982f0a959ef5542fe2"
+  integrity sha512-3Ea6uRtRaSwpZYD9maZPKoEEGRuHmVA7zGrV/Uh9s5NTj9K1x/MB4IOQoywjUesQyhXmJq6bqjC5cAqlsXoOTw==
 
 uvu@^0.5.0:
   version "0.5.6"
