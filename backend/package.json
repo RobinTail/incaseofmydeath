@@ -39,7 +39,7 @@
     "fast-memory-cache": "^2.0.4",
     "mongoose": "^7.5.2",
     "pm2": "^5.3.0",
-    "telegraf": "^4.13.1",
+    "telegraf": "^4.14.0",
     "winston": "^3.10.0",
     "zod": "^3.22.2"
   },
