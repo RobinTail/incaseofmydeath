@@ -60,16 +60,17 @@ export const CodeSnippet = ({ language, code }: CodeSnippetProps) => {
         <ReactMarkdown
           components={{
             pre({ children }) {
-              return children;
+              return <>{children}</>;
             },
-            code({ node, inline, className, children, style, ...props }) {
+            code({ node, className, children, style, ref, ...props }) {
               const match = /language-(\w+)/.exec(className || "");
-              return !inline && match ? (
+              return match ? (
                 <SyntaxHighlighter
                   style={theme.palette.mode === "dark" ? atomDark : prism}
                   language={match[1]}
                   PreTag="div"
                   children={String(children).replace(/\n$/, "")}
+                  ref={ref as React.LegacyRef<SyntaxHighlighter>}
                   {...props}
                 />
               ) : (
