@@ -1,4 +1,5 @@
-import { createHttpError, ez } from "express-zod-api";
+import { ez } from "express-zod-api";
+import createHttpError from "http-errors";
 import { z } from "zod";
 import { publicUserByLoginFactory } from "../factories";
 
