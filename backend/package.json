@@ -37,7 +37,7 @@
     "@octokit/auth-app": "^6.0.1",
     "@octokit/core": "^5.0.1",
     "express": "^4.18.2",
-    "express-zod-api": "^14.0.0-beta2",
+    "express-zod-api": "^14.0.0",
     "fast-memory-cache": "^2.0.4",
     "http-errors": "^2.0.0",
     "mongoose": "^7.6.0",
