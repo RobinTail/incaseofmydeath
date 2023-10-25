@@ -15,7 +15,7 @@
   "devDependencies": {
     "@tsconfig/node18": "^18.2.2",
     "@types/express": "^4.17.19",
-    "@types/fast-memory-cache": "^2.0.0",
+    "@types/fast-memory-cache": "^2.0.1",
     "@types/http-errors": "^2.0.2",
     "@types/jest": "^29.5.5",
     "@types/node": "^20.8.6",
