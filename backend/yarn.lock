@@ -949,7 +949,7 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
-"@telegraf/types@^6.9.0":
+"@telegraf/types@^6.9.1":
   version "6.9.1"
   resolved "https://registry.yarnpkg.com/@telegraf/types/-/types-6.9.1.tgz#ee2d335164f582db55337d77cc440c1faeadd510"
   integrity sha512-bzqwhicZq401T0e09tu8b1KvGfJObPmzKU/iKCT5V466AsAZZWQrBYQ5edbmD1VZuHLEwopoOVY5wPP4HaLtug==
@@ -5214,12 +5214,12 @@ systeminformation@^5.7:
   resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.21.8.tgz#18395187e5983698619ed07ca8640ae48ec232b2"
   integrity sha512-Xf1KDMUTQHLOT9Z7MjpSpsbaICOHcm4OZ9c9qqpkCoXuxq5MoyDrgu5GIQYpoiralXNPrqxDz3ND8MdllpXeQA==
 
-telegraf@^4.14.0:
-  version "4.14.0"
-  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-4.14.0.tgz#4cba12ea79e52e6e288e40801d663c9b04319966"
-  integrity sha512-Nn2EBsuar/Mf3SD6O9tHmJ0FyJWnwAi4rewkJMmzd/O1xWYKglEuzSnCuHHRY7oD5NJ6WNPsavta5DbED8tG3w==
+telegraf@^4.15.0:
+  version "4.15.0"
+  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-4.15.0.tgz#37863ecb37b8e487170073f76e45e1fbcb9a4cbf"
+  integrity sha512-jOQhpMZxZ7gTD1/pIQkXHv0BNVRMfn0xtRHnxHv6GQdeISMErzzAe82rMm78ZPSwwKCS4vVu3n/c2LMY8UFiKg==
   dependencies:
-    "@telegraf/types" "^6.9.0"
+    "@telegraf/types" "^6.9.1"
     abort-controller "^3.0.0"
     debug "^4.3.4"
     mri "^1.2.0"
