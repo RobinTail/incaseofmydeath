@@ -1079,10 +1079,10 @@
     "@types/qs" "*"
     "@types/serve-static" "*"
 
-"@types/fast-memory-cache@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@types/fast-memory-cache/-/fast-memory-cache-2.0.1.tgz#85fa6958d9fbeea913a6246f2ee34906a19e454e"
-  integrity sha512-LaraFI2atnWxV1YhhwzcumO6fgCRMYS2+nHtpX6qeiPiBTOd3Sm1r5QkXOgTIT20vmHfDU03obL9a49+MX+TYw==
+"@types/fast-memory-cache@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@types/fast-memory-cache/-/fast-memory-cache-2.0.2.tgz#cc99ce6317bd26c24f4e5730e901063515260039"
+  integrity sha512-zBxRZXZuUk3E/dDqBYlXCQGfZau8JVTAmvfdaUc5LuOdnGk9SV7U9hvzblHDQWzYGIHlaYy45dubiSbN7/z33w==
 
 "@types/graceful-fs@^4.1.3":
   version "4.1.6"
