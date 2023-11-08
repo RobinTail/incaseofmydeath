@@ -2594,22 +2594,22 @@ expect@^29.0.0, expect@^29.7.0:
     jest-message-util "^29.7.0"
     jest-util "^29.7.0"
 
-express-fileupload@~1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/express-fileupload/-/express-fileupload-1.4.1.tgz#b14b9678a8c445bd5b3d1ba253567243472e7741"
-  integrity sha512-9F6SkbxbEOA9cYOBZ8tnn238jL+bGfacQuUO/JqPWp5t+piUcoDcESvKwAXsQV7IHGxmI5bMj3QxMWOKOIsMCg==
+express-fileupload@~1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/express-fileupload/-/express-fileupload-1.4.2.tgz#59f8ab14f9d12c4b53dfc29e56face4313ca0b59"
+  integrity sha512-vk+9cK595jP03T+YgoYPAebynVCZuUBtW1JkyJnitQnWzlONHdxdAIm9yo99V4viTEftq7MUfzuqmWyqWGzMIg==
   dependencies:
     busboy "^1.6.0"
 
-express-zod-api@^14.1.0:
-  version "14.1.0"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-14.1.0.tgz#b56574bafb6b2473ed333381e254ef7ddc86b434"
-  integrity sha512-fczGoT8VDO0c+AbYP3EIW56rnnaXtImOAyjC4ISZsHndhuE0TC9AxE7Dl38diicefTjgdB+LPY33nUemtApMNg==
+express-zod-api@^14.2.0:
+  version "14.2.0"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-14.2.0.tgz#e7802cdb7908e7c4d1c201b0e40ae8bf2f546106"
+  integrity sha512-OyIQvGrkqnQdV6UqWV8pWk3Me9zuooS9eoKL5vIvPoubiUIIrOFX4hpZW9QtBrq5TTjIxD2WmQ/nH9i4TnG00g==
   dependencies:
     "@types/compression" "^1.7.3"
     "@types/express-fileupload" "^1.4.2"
     compression "~1.7.4"
-    express-fileupload "~1.4.1"
+    express-fileupload "~1.4.2"
     openapi3-ts "^4.1.2"
     ramda "~0.29.1"
 
