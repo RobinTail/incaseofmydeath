@@ -1,9 +1,8 @@
 import { Octokit } from "@octokit/core";
-import { createLogger } from "express-zod-api";
 import { app } from "./app";
 import { AliveHook } from "./channel";
 import { TelegramChannel } from "./channels/telegram";
-import { config } from "./config";
+import { logger } from "./config";
 import { msInDay } from "./const";
 import { UserDocument, Users } from "./db";
 import { debounce } from "./debounce";
@@ -12,8 +11,6 @@ import { checkFreqToDays } from "./utils";
 
 const runFreq = 10 * 60 * 1000; // interval between runs
 const aliveHookThrottle = 60; // seconds
-
-const logger = createLogger(config.logger);
 
 const aliveHook = debounce({
   fn: (async (user) => {
