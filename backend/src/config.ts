@@ -1,8 +1,13 @@
-import { createConfig } from "express-zod-api";
+import { createConfig, createLogger } from "express-zod-api";
 import fs from "fs";
 
 export const frontendUrl = "https://www.incaseofmy.de/";
 const sslDir = "/etc/letsencrypt/live/api.incaseofmy.de";
+
+export const logger = createLogger({
+  level: "debug",
+  color: true,
+});
 
 export const config = createConfig({
   server: {
@@ -22,10 +27,7 @@ export const config = createConfig({
     listen: 443,
   },
   cors: true,
-  logger: {
-    level: "debug",
-    color: true,
-  },
+  logger,
 });
 
 export const github = {
