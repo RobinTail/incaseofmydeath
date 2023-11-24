@@ -1,6 +1,6 @@
 import { createConfig } from "express-zod-api";
 import fs from "fs";
-import winston from "winston";
+import { Logger } from "winston";
 
 export const frontendUrl = "https://www.incaseofmy.de/";
 const sslDir = "/etc/letsencrypt/live/api.incaseofmy.de";
@@ -26,10 +26,10 @@ export const config = createConfig({
   logger: { level: "debug", color: true },
 });
 
-export const logger = config.logger as winston.Logger;
+export const logger = config.logger as Logger;
 
 declare module "express-zod-api" {
-  interface LoggerOverrides extends winston.Logger {}
+  interface LoggerOverrides extends Logger {}
 }
 
 export const github = {
