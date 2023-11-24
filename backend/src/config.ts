@@ -1,13 +1,9 @@
-import { createConfig, createLogger } from "express-zod-api";
+import { createConfig } from "express-zod-api";
 import fs from "fs";
+import winston from "winston";
 
 export const frontendUrl = "https://www.incaseofmy.de/";
 const sslDir = "/etc/letsencrypt/live/api.incaseofmy.de";
-
-export const logger = createLogger({
-  level: "debug",
-  color: true,
-});
 
 export const config = createConfig({
   server: {
@@ -27,8 +23,14 @@ export const config = createConfig({
     listen: 443,
   },
   cors: true,
-  logger,
+  logger: { level: "debug", color: true },
 });
+
+export const logger = config.logger as winston.Logger;
+
+declare module "express-zod-api" {
+  interface LoggerOverrides extends winston.Logger {}
+}
 
 export const github = {
   appId: 155154,
