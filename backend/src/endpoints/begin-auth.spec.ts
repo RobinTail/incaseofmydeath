@@ -12,7 +12,6 @@ describe("beginAuthenticationEndpoint", () => {
   test("should respond with oAuth URL", async () => {
     const { responseMock } = await testEndpoint({
       endpoint: beginAuthenticationEndpoint,
-      fnMethod: jest.fn,
     });
     expect(responseMock.json).toHaveBeenCalledWith({
       data: {

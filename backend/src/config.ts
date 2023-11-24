@@ -30,6 +30,7 @@ export const logger = config.logger as Logger;
 
 declare module "express-zod-api" {
   interface LoggerOverrides extends Logger {}
+  interface MockOverrides extends jest.Mock {}
 }
 
 export const github = {
