@@ -1,5 +1,6 @@
 import { createConfig } from "express-zod-api";
 import fs from "fs";
+import type { Mock } from "vitest";
 import { Logger } from "winston";
 
 export const frontendUrl = "https://www.incaseofmy.de/";
@@ -30,7 +31,7 @@ export const logger = config.logger as Logger;
 
 declare module "express-zod-api" {
   interface LoggerOverrides extends Logger {}
-  interface MockOverrides extends jest.Mock {}
+  interface MockOverrides extends Mock {}
 }
 
 export const github = {
