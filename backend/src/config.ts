@@ -1,11 +1,17 @@
 import { createConfig } from "express-zod-api";
 import fs from "fs";
-import { createLogger, Logger } from "winston";
+import { createLogger, format, Logger, transports } from "winston";
 
 export const frontendUrl = "https://www.incaseofmy.de/";
 const sslDir = "/etc/letsencrypt/live/api.incaseofmy.de";
 
-export const logger = createLogger();
+export const logger = createLogger({
+  level: "debug",
+  transports: new transports.Console({
+    handleExceptions: true,
+    format: format.simple(),
+  }),
+});
 
 export const config = createConfig({
   server: {
