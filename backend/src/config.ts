@@ -16,6 +16,7 @@ export const logger = createLogger({
 export const config = createConfig({
   server: {
     listen: process.env.PORT || 6060,
+    compression: true,
   },
   https: {
     options: {
