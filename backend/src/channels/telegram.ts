@@ -1,5 +1,5 @@
-import { createLogger } from "express-zod-api";
 import { Telegraf } from "telegraf";
+import { Logger } from "winston";
 import { Channel, AliveHook } from "../channel";
 import { frontendUrl, tgBot } from "../config";
 import { UserDocument, Users } from "../db";
@@ -8,12 +8,11 @@ import type { UserFromGetMe } from "telegraf/types";
 
 type AliveConsideringPayload = { chatId: string } | { user: UserDocument };
 const aliveConsideringThrottle = 60; // seconds
-type Logger = ReturnType<typeof createLogger>;
 
 export class TelegramChannel implements Channel {
   readonly #hook: AliveHook;
   readonly #bot: Telegraf;
-  readonly #logger: ReturnType<typeof createLogger>;
+  readonly #logger: Logger;
   public ready: Promise<UserFromGetMe>;
 
   constructor(hook: AliveHook, logger: Logger) {
