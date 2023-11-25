@@ -10,5 +10,5 @@ import { routing } from "./routing";
   logger.info(`Mongo ${db.version}`);
   const { data: appInfo } = await app.request("GET /app");
   logger.info("GitHub Application", appInfo);
-  await createServer(config, routing);
+  createServer({ ...config, logger }, routing);
 })();
