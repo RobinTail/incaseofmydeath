@@ -1,7 +1,5 @@
-import { vi, describe, test, expect } from "vitest";
-
-vi.mock("mongoose", async () => ({
-  ...((await vi.importActual("mongoose")) as any).default,
+jest.mock("mongoose", () => ({
+  ...jest.requireActual("mongoose"),
   connect: async () => ({
     version: "1.2.3.mock",
   }),
