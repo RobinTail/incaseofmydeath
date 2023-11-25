@@ -24,7 +24,7 @@
     "@mui/lab": "^5.0.0-alpha.153",
     "@mui/material": "^5.14.17",
     "react-clipboard-button": "^2.0.0",
-    "react-markdown": "^9.0.0",
+    "react-markdown": "^9.0.1",
     "react-router-dom": "^6.19.0",
     "react-syntax-highlighter": "^15.5.0",
     "react-telegram-auth": "^1.0.3",
