@@ -2,6 +2,7 @@
   "name": "incaseofmydeath",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "devDependencies": {
     "@types/node": "^20.10.0",
     "@types/react-syntax-highlighter": "^15.5.7",
