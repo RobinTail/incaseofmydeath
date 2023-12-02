@@ -5167,10 +5167,10 @@ systeminformation@^5.7:
   resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.21.8.tgz#18395187e5983698619ed07ca8640ae48ec232b2"
   integrity sha512-Xf1KDMUTQHLOT9Z7MjpSpsbaICOHcm4OZ9c9qqpkCoXuxq5MoyDrgu5GIQYpoiralXNPrqxDz3ND8MdllpXeQA==
 
-telegraf@^4.15.0:
-  version "4.15.0"
-  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-4.15.0.tgz#37863ecb37b8e487170073f76e45e1fbcb9a4cbf"
-  integrity sha512-jOQhpMZxZ7gTD1/pIQkXHv0BNVRMfn0xtRHnxHv6GQdeISMErzzAe82rMm78ZPSwwKCS4vVu3n/c2LMY8UFiKg==
+telegraf@^4.15.2:
+  version "4.15.2"
+  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-4.15.2.tgz#fb8d6714665c859361393f2ae906881b4135341b"
+  integrity sha512-HNsf4NFx9h5RAeNiAVmZUCor4Y+IKjysekfIpk10CO0jhVUo0eYKrJ91lDBw70g0skWKsu11gZTMAwbXorcnwQ==
   dependencies:
     "@telegraf/types" "^6.9.1"
     abort-controller "^3.0.0"
