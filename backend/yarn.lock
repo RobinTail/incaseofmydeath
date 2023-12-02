@@ -2565,10 +2565,10 @@ expect@^29.0.0, expect@^29.7.0:
     jest-message-util "^29.7.0"
     jest-util "^29.7.0"
 
-express-zod-api@^15.0.0-beta6:
-  version "15.0.0-beta6"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-15.0.0-beta6.tgz#919fcffb1d322f6d97d516947eef0eae475dfc1a"
-  integrity sha512-qUA1ercQGCWX1/cReuDpOUhlAGFusQaeEhUPiV/RC6HUGmJ/hFIiPvSsHRDfo7P8EixUi5OHXRSE2d3jVrhBzg==
+express-zod-api@^15.0.0-beta7:
+  version "15.0.0-beta7"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-15.0.0-beta7.tgz#0261ec4ae8a7290730bd9567cc2504a8d0f436fc"
+  integrity sha512-Xdm3JavpPSeP8mKwUfEGMruFNcqLHbhfOFh8g+AEbr7e91EYD0fYYpQyoWdYMHp7+8JaxyKrmUnUTvwKd7uJUw==
   dependencies:
     openapi3-ts "^4.1.2"
     ramda "^0.29.1"
