@@ -10,7 +10,7 @@
     "lint": "eslint src",
     "build": "rm -rf dist && tsc",
     "build:client": "ENV=TEST yarn ts-node src/client.ts && yarn prettier --write ../frontend/src/generated/api-client.ts",
-    "test": "ENV=TEST vitest run"
+    "test": "tsc --noEmit && ENV=TEST vitest run"
   },
   "devDependencies": {
     "@tsconfig/node18": "^18.2.2",
