@@ -1,6 +1,7 @@
 import { createConfig, createLogger } from "express-zod-api";
 import fs from "fs";
 import winston from "winston";
+import type { Mock } from "vitest";
 
 export const frontendUrl = "https://www.incaseofmy.de/";
 const sslDir = "/etc/letsencrypt/live/api.incaseofmy.de";
@@ -35,7 +36,7 @@ export const config = createConfig({
 
 declare module "express-zod-api" {
   interface LoggerOverrides extends winston.Logger {}
-  interface MockOverrides extends jest.Mock {}
+  interface MockOverrides extends Mock {}
 }
 
 export const github = {
