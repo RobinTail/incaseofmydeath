@@ -1,9 +1,11 @@
 import { Integration } from "express-zod-api";
 import { routing } from "./routing";
-import fs from "fs";
+import fs from "node:fs/promises";
 
-fs.writeFileSync(
-  "../frontend/src/generated/api-client.ts",
-  new Integration({ routing }).print(),
-  "utf-8",
-);
+const client = new Integration({ routing });
+
+client
+  .printFormatted()
+  .then((text) =>
+    fs.writeFile("../frontend/src/generated/api-client.ts", text, "utf-8"),
+  );

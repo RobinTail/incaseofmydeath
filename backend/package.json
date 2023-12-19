@@ -9,7 +9,7 @@
     "start": "tsx src/index.ts",
     "lint": "eslint src",
     "build": "rm -rf dist && tsc",
-    "build:client": "ENV=TEST tsx src/client.ts && yarn prettier --write ../frontend/src/generated/api-client.ts",
+    "build:client": "ENV=TEST tsx src/client.ts",
     "test": "tsc --noEmit && ENV=TEST vitest run"
   },
   "devDependencies": {
@@ -36,7 +36,7 @@
     "@octokit/core": "^5.0.2",
     "compression": "^1.7.4",
     "express": "^4.18.2",
-    "express-zod-api": "^15.2.0",
+    "express-zod-api": "^16.0.0-beta1",
     "fast-memory-cache": "^2.0.4",
     "http-errors": "^2.0.0",
     "mongoose": "^8.0.3",

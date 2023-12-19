@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { tgBot } from "../config";
 import { authorizedUserFactory } from "../factories";
-import crypto from "crypto";
+import crypto from "node:crypto";
 
 export const connectTelegramEndpoint = authorizedUserFactory.build({
   method: "post",
