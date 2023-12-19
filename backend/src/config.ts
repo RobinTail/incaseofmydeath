@@ -1,5 +1,5 @@
 import { createConfig, createLogger } from "express-zod-api";
-import fs from "fs";
+import fs from "node:fs";
 import winston from "winston";
 import type { Mock } from "vitest";
 
