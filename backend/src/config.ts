@@ -33,8 +33,8 @@ export const config = createConfig({
   },
   cors: true,
   logger,
-  childLoggerProvider: ({ logger: current }) =>
-    current.child({ requestId: randomUUID() }),
+  childLoggerProvider: ({ parent }) =>
+    parent.child({ requestId: randomUUID() }),
 });
 
 declare module "express-zod-api" {
