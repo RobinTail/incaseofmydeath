@@ -1,4 +1,5 @@
 import { createConfig, createLogger } from "express-zod-api";
+import { randomUUID } from "node:crypto";
 import fs from "node:fs";
 import winston from "winston";
 import type { Mock } from "vitest";
@@ -32,6 +33,8 @@ export const config = createConfig({
   },
   cors: true,
   logger,
+  childLoggerProvider: ({ logger: current }) =>
+    current.child({ requestId: randomUUID() }),
 });
 
 declare module "express-zod-api" {
