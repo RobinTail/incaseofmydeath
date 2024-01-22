@@ -26,7 +26,7 @@
     "@mui/material": "^5.15.4",
     "react-clipboard-button": "^2.0.0",
     "react-markdown": "^9.0.1",
-    "react-router-dom": "^6.21.2",
+    "react-router-dom": "^6.21.3",
     "react-syntax-highlighter": "^15.5.0",
     "react-telegram-auth": "^1.0.3",
     "use-local-storage-state": "^19.1.0",
