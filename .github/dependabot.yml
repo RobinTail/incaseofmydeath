@@ -10,8 +10,16 @@ updates:
     directory: "/backend" # Location of package manifests
     schedule:
       interval: "weekly"
+    groups:
+      typescript-eslint:
+        patterns:
+          - "@typescript-eslint/*"
   - package-ecosystem: "npm" # See documentation for possible values
     open-pull-requests-limit: 10
     directory: "/frontend" # Location of package manifests
     schedule:
       interval: "weekly"
+    groups:
+      typescript-eslint:
+        patterns:
+          - "@typescript-eslint/*"
