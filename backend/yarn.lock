@@ -1831,10 +1831,10 @@ execa@^8.0.1:
     signal-exit "^4.1.0"
     strip-final-newline "^3.0.0"
 
-express-zod-api@^17.0.1:
-  version "17.0.1"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-17.0.1.tgz#f839d7cdba26aee7f9242e7ccee315b0320173cc"
-  integrity sha512-WRP9/J9PV8PC7t5GQxvSOok+yu1Slt1P/LWWQsLVG3a2GP4D6yeyCtrc9jUjjQqbX/R99UxipiL67Vdm7o/Y/Q==
+express-zod-api@^17.2.0:
+  version "17.2.0"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-17.2.0.tgz#1dadb6f07dafcf432106b5208ffd14b9f5dec5f8"
+  integrity sha512-7FKMZAkirglnYBsSFE5GP1PlrexXGIK3AeiDpQ/QgGR6aDi4goXQ3JjhKoOt9HT0P5DWfH5UFXHK4iC86TRJGw==
   dependencies:
     openapi3-ts "^4.2.1"
     ramda "^0.29.1"
