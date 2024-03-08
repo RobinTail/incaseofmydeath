@@ -1,8 +1,8 @@
 import createHttpError from "http-errors";
 import { ez } from "express-zod-api";
 import { z } from "zod";
-import { checkFreqCodesArray } from "../const";
-import { publicUserWithInstallationFactory } from "../factories";
+import { checkFreqCodesArray } from "../const.js";
+import { publicUserWithInstallationFactory } from "../factories.js";
 
 export const checkRegistrationEndpoint =
   publicUserWithInstallationFactory.build({

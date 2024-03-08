@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
-import { mongo } from "./config";
-import { CheckFreqCode, checkFreqCodes, msInDay } from "./const";
-import { checkFreqToDays } from "./utils";
+import { mongo } from "./config.js";
+import { CheckFreqCode, checkFreqCodes, msInDay } from "./const.js";
+import { checkFreqToDays } from "./utils.js";
 
 mongoose.set("strictQuery", true);
 

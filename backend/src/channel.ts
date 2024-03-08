@@ -1,4 +1,4 @@
-import { UserDocument } from "./db";
+import { UserDocument } from "./db.js";
 
 export type AliveHook = (user: UserDocument) => Promise<void>;
 

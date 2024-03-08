@@ -1,13 +1,13 @@
 import { Octokit } from "@octokit/core";
-import { app } from "./app";
-import { AliveHook } from "./channel";
-import { TelegramChannel } from "./channels/telegram";
-import { logger } from "./config";
-import { msInDay } from "./const";
-import { UserDocument, Users } from "./db";
-import { debounce } from "./debounce";
-import { isPacket, isProcessMessage } from "./pm";
-import { checkFreqToDays } from "./utils";
+import { app } from "./app.js";
+import { AliveHook } from "./channel.js";
+import { TelegramChannel } from "./channels/telegram.js";
+import { logger } from "./config.js";
+import { msInDay } from "./const.js";
+import { UserDocument, Users } from "./db.js";
+import { debounce } from "./debounce.js";
+import { isPacket, isProcessMessage } from "./pm.js";
+import { checkFreqToDays } from "./utils.js";
 
 const runFreq = 10 * 60 * 1000; // interval between runs
 const aliveHookThrottle = 60; // seconds

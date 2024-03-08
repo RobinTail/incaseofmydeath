@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { debounce } from "./debounce";
+import { debounce } from "./debounce.js";
 
 describe("Debounce", () => {
   const returns: number[] = [];

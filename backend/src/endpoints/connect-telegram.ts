@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { tgBot } from "../config";
-import { authorizedUserFactory } from "../factories";
+import { tgBot } from "../config.js";
+import { authorizedUserFactory } from "../factories.js";
 import crypto from "node:crypto";
 
 export const connectTelegramEndpoint = authorizedUserFactory.build({

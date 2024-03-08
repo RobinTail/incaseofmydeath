@@ -1,5 +1,5 @@
 import { Integration } from "express-zod-api";
-import { routing } from "./routing";
+import { routing } from "./routing.js";
 import fs from "node:fs/promises";
 
 const client = new Integration({ routing });

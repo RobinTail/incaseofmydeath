@@ -1,8 +1,8 @@
 import { createServer } from "express-zod-api";
-import { app } from "./app";
-import { logger, config } from "./config";
-import { connection, Users } from "./db";
-import { routing } from "./routing";
+import { app } from "./app.js";
+import { logger, config } from "./config.js";
+import { connection, Users } from "./db.js";
+import { routing } from "./routing.js";
 
 (async () => {
   const db = await connection;

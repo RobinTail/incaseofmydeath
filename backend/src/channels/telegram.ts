@@ -1,9 +1,9 @@
 import { Telegraf } from "telegraf";
 import { Logger } from "winston";
-import { Channel, AliveHook } from "../channel";
-import { frontendUrl, tgBot } from "../config";
-import { UserDocument, Users } from "../db";
-import { debounce } from "../debounce";
+import { Channel, AliveHook } from "../channel.js";
+import { frontendUrl, tgBot } from "../config.js";
+import { UserDocument, Users } from "../db.js";
+import { debounce } from "../debounce.js";
 import type { UserFromGetMe } from "telegraf/types";
 
 type AliveConsideringPayload = { chatId: string } | { user: UserDocument };
