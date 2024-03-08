@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { installationProviderFactory } from "../factories";
+import { installationProviderFactory } from "../factories.js";
 
 export const registerWorkflowEndpoint = installationProviderFactory.build({
   method: "post",

@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
 import { z } from "zod";
-import { appProviderFactory } from "../factories";
+import { appProviderFactory } from "../factories.js";
 
 export const beginAuthenticationEndpoint = appProviderFactory.build({
   method: "get",

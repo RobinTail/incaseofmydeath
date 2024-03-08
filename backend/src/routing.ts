@@ -1,17 +1,17 @@
 import { Routing } from "express-zod-api";
-import { checkRegistrationEndpoint } from "./endpoints/check-registration";
-import { connectTelegramEndpoint } from "./endpoints/connect-telegram";
-import { disconnectTelegramEndpoint } from "./endpoints/disconnect-telegram";
-import { findInstallationEndpoint } from "./endpoints/find-installation";
-import { finishAuthenticationEndpoint } from "./endpoints/finish-auth";
-import { beginAuthenticationEndpoint } from "./endpoints/begin-auth";
-import { getPublicStatusByLoginEndpoint } from "./endpoints/get-public-status";
-import { listRepositoriesEndpoint } from "./endpoints/list-repositories";
-import { listWorkflowsEndpoint } from "./endpoints/list-workflows";
-import { togglePublicStatusEndpoint } from "./endpoints/toggle-public-status";
-import { registerWorkflowEndpoint } from "./endpoints/register-workflow";
-import { removeRegistrationEndpoint } from "./endpoints/remove-registration";
-import { updateTimeSettingsEndpoint } from "./endpoints/update-time-settings";
+import { checkRegistrationEndpoint } from "./endpoints/check-registration.js";
+import { connectTelegramEndpoint } from "./endpoints/connect-telegram.js";
+import { disconnectTelegramEndpoint } from "./endpoints/disconnect-telegram.js";
+import { findInstallationEndpoint } from "./endpoints/find-installation.js";
+import { finishAuthenticationEndpoint } from "./endpoints/finish-auth.js";
+import { beginAuthenticationEndpoint } from "./endpoints/begin-auth.js";
+import { getPublicStatusByLoginEndpoint } from "./endpoints/get-public-status.js";
+import { listRepositoriesEndpoint } from "./endpoints/list-repositories.js";
+import { listWorkflowsEndpoint } from "./endpoints/list-workflows.js";
+import { togglePublicStatusEndpoint } from "./endpoints/toggle-public-status.js";
+import { registerWorkflowEndpoint } from "./endpoints/register-workflow.js";
+import { removeRegistrationEndpoint } from "./endpoints/remove-registration.js";
+import { updateTimeSettingsEndpoint } from "./endpoints/update-time-settings.js";
 
 export const routing: Routing = {
   v1: {

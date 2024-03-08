@@ -1,9 +1,9 @@
 import { Octokit } from "@octokit/core";
 import { createMiddleware } from "express-zod-api";
 import { z } from "zod";
-import { app } from "./app";
-import { UserDocument, Users } from "./db";
-import { createProcessManager } from "./pm";
+import { app } from "./app.js";
+import { UserDocument, Users } from "./db.js";
+import { createProcessManager } from "./pm.js";
 
 export const installationProviderMiddleware = createMiddleware({
   security: { type: "input", name: "iToken" },

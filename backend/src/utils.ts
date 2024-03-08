@@ -1,4 +1,4 @@
-import { CheckFreqCode } from "./const";
+import { CheckFreqCode } from "./const.js";
 
 export const checkFreqToDays = (checkFreq: CheckFreqCode): number => {
   switch (checkFreq) {

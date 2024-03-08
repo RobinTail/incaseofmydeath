@@ -1,14 +1,14 @@
 import { defaultEndpointsFactory } from "express-zod-api";
-import { app } from "./app";
-import { github } from "./config";
-import { Users } from "./db";
+import { app } from "./app.js";
+import { github } from "./config.js";
+import { Users } from "./db.js";
 import {
   authorizedUserProviderMiddleware,
   installationProviderMiddleware,
   processManagerProviderMiddleware,
   publicUserProviderByIdMiddleware,
   publicUserProviderByLoginMiddleware,
-} from "./middlewares";
+} from "./middlewares.js";
 
 export const endpointsFactory = defaultEndpointsFactory;
 

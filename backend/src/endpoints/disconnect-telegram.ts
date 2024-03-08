@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { authorizedUserFactory } from "../factories";
+import { authorizedUserFactory } from "../factories.js";
 
 export const disconnectTelegramEndpoint = authorizedUserFactory.build({
   method: "delete",

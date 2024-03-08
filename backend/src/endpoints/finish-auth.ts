@@ -1,8 +1,8 @@
 import { createOAuthUserAuth } from "@octokit/auth-app";
 import { Octokit } from "@octokit/core";
 import { z } from "zod";
-import { github } from "../config";
-import { endpointsFactory } from "../factories";
+import { github } from "../config.js";
+import { endpointsFactory } from "../factories.js";
 
 export const finishAuthenticationEndpoint = endpointsFactory.build({
   method: "get",

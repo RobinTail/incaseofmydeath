@@ -1,7 +1,7 @@
 import { ez } from "express-zod-api";
 import createHttpError from "http-errors";
 import { z } from "zod";
-import { publicUserByLoginFactory } from "../factories";
+import { publicUserByLoginFactory } from "../factories.js";
 
 export const getPublicStatusByLoginEndpoint = publicUserByLoginFactory.build({
   method: "get",

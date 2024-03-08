@@ -1,8 +1,8 @@
 import { ez } from "express-zod-api";
 import { z } from "zod";
-import { checkFreqCodesArray, msInDay } from "../const";
-import { authorizedUserFactory } from "../factories";
-import { checkFreqToDays } from "../utils";
+import { checkFreqCodesArray, msInDay } from "../const.js";
+import { authorizedUserFactory } from "../factories.js";
+import { checkFreqToDays } from "../utils.js";
 
 export const updateTimeSettingsEndpoint = authorizedUserFactory.build({
   method: "patch",

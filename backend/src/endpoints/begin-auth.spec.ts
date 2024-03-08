@@ -8,7 +8,7 @@ vi.mock("mongoose", async () => ({
 }));
 
 import { testEndpoint } from "express-zod-api";
-import { beginAuthenticationEndpoint } from "./begin-auth";
+import { beginAuthenticationEndpoint } from "./begin-auth.js";
 
 describe("beginAuthenticationEndpoint", () => {
   test("should respond with oAuth URL", async () => {

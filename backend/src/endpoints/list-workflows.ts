@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { installationProviderFactory } from "../factories";
+import { installationProviderFactory } from "../factories.js";
 
 const perPage = 5;
 
