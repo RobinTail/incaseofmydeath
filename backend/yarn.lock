@@ -397,16 +397,16 @@
   resolved "https://registry.yarnpkg.com/@octokit/auth-token/-/auth-token-5.0.1.tgz#1b882a54587d9e58b7aebb5ae5b9a08522c822f0"
   integrity sha512-RTmWsLfig8SBoiSdgvCht4BXl1CHU89Co5xiQ5JF19my/sIRDFCQ1RPrmK0exgqUZuNm39C/bV8+/83+MJEjGg==
 
-"@octokit/core@^6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@octokit/core/-/core-6.0.1.tgz#4213915398c8722cfd2f9c43bcf35dd99bc06ca8"
-  integrity sha512-MIpPQXu8Y8GjHwXM81JLveiV+DHJZtLMcB5nKekBGOl3iAtk0HT3i12Xl8Biybu+bCS1+k4qbuKEq5d0RxNRnQ==
+"@octokit/core@^6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@octokit/core/-/core-6.1.1.tgz#c1c18a2cc755358b3c76d3520704e9d9836bee0d"
+  integrity sha512-uVypPdnZV7YoEa69Ky2kTSw3neFLGT0PZ54OwUMDph7w6TmhF0ZnoVcvb/kYnjDHCFo2mfoeRDYifLKhLNasUg==
   dependencies:
     "@octokit/auth-token" "^5.0.0"
     "@octokit/graphql" "^8.0.0"
     "@octokit/request" "^9.0.0"
     "@octokit/request-error" "^6.0.1"
-    "@octokit/types" "^12.0.0"
+    "@octokit/types" "^13.0.0"
     before-after-hook "^3.0.2"
     universal-user-agent "^7.0.0"
 
@@ -456,6 +456,11 @@
   resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-19.1.0.tgz#75ec7e64743870fc73e1ab4bc6ec252ecdd624dc"
   integrity sha512-6G+ywGClliGQwRsjvqVYpklIfa7oRPA0vyhPQG/1Feh+B+wU0vGH1JiJ5T25d3g1JZYBHzR2qefLi9x8Gt+cpw==
 
+"@octokit/openapi-types@^22.0.0":
+  version "22.0.0"
+  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-22.0.0.tgz#5f9bdad4be329c61f2d0f99f06c0bc8364649add"
+  integrity sha512-kWzSxSIBjCtwrT8/O/A/nrSjmHvR5I9GGTHPyBU19VuEae+QZfaPnnfLwXgV56n51xHN3U2dYy8zh/kO9/39ig==
+
 "@octokit/request-error@^5.0.0":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@octokit/request-error/-/request-error-5.0.1.tgz#277e3ce3b540b41525e07ba24c5ef5e868a72db9"
@@ -498,6 +503,13 @@
   integrity sha512-FLWs/AvZllw/AGVs+nJ+ELCDZZJk+kY0zMen118xhL2zD0s1etIUHm1odgjP7epxYU1ln7SZxEUWYop5bhsdgQ==
   dependencies:
     "@octokit/openapi-types" "^19.1.0"
+
+"@octokit/types@^13.0.0":
+  version "13.2.0"
+  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-13.2.0.tgz#e0620e0d84b1a0f505147b2b0462db4719d6a3f2"
+  integrity sha512-K4rpfbIQLe4UimS/PWZAcImhZUC80lhe2f1NpAaaTulPJXv54QIAFFCQEEbdQdqTV/745QDmdvp8NI49LaI00A==
+  dependencies:
+    "@octokit/openapi-types" "^22.0.0"
 
 "@opencensus/core@0.0.9":
   version "0.0.9"
