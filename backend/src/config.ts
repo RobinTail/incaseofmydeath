@@ -1,6 +1,5 @@
 import { createConfig, createLogger } from "express-zod-api";
 import fs from "node:fs";
-import winston from "winston";
 import type { Mock } from "vitest";
 
 export const frontendUrl = "https://www.incaseofmy.de/";
@@ -9,7 +8,6 @@ const sslDir = "/etc/letsencrypt/live/api.incaseofmy.de";
 export const logger = createLogger({
   level: "debug",
   color: true,
-  winston,
 });
 
 export const config = createConfig({
@@ -35,7 +33,6 @@ export const config = createConfig({
 });
 
 declare module "express-zod-api" {
-  interface LoggerOverrides extends winston.Logger {}
   interface MockOverrides extends Mock {}
 }
 

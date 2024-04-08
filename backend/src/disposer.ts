@@ -28,7 +28,7 @@ const aliveHook = debounce({
   mapper: (user: UserDocument) => `${user.id}`,
 });
 
-const telegramChannel = new TelegramChannel(aliveHook, logger);
+const telegramChannel = new TelegramChannel(aliveHook);
 
 const runWorkflow = async (user: UserDocument) => {
   try {
