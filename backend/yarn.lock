@@ -1029,10 +1029,10 @@ ansi-styles@^5.0.0:
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-5.2.0.tgz#07449690ad45777d1924ac2abb2fc8895dba836b"
   integrity sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==
 
-ansis@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/ansis/-/ansis-3.0.2.tgz#3fbbcc9c9e21e059ad519259006b3fa58e43f31c"
-  integrity sha512-FmEmVkR4C96sZ0tTsKPrnuxxvNKhmobgi2sCqITwQ9JsGB/0eU7ZVl8D5eyDjJ++ht+JYHbtcHwsYU7QdRRfJQ==
+ansis@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/ansis/-/ansis-3.1.0.tgz#5a2f0dc6e92b2523d8e5701fba60eb50a80efe05"
+  integrity sha512-lJSwmr6876sEj5JvmVbOF+QJwfRR9YZArXtaesQjs8aI0EPX6MrMi11d4htHqH1XtSmsjMSS04E2uYYlvkmbrg==
 
 anymatch@~3.1.2:
   version "3.1.3"
@@ -1967,12 +1967,12 @@ execa@^8.0.1:
     signal-exit "^4.1.0"
     strip-final-newline "^3.0.0"
 
-express-zod-api@^18.0.0-beta1:
-  version "18.0.0-beta1"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-18.0.0-beta1.tgz#bb12562e882c78f8207a40c745cd0c58c580a406"
-  integrity sha512-Cz8vy83sul47comyRSGryF3sHmPFfOTYSDY21NKIV6nGN6kiDucaoBdl9DOIla6VRI70XzPjhsCM6KVYIMHc7A==
+express-zod-api@^18.0.0-beta2:
+  version "18.0.0-beta2"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-18.0.0-beta2.tgz#63d2e773037ff7f4ca25708ba0b3a63ddcfa2c95"
+  integrity sha512-vjwt444zTuC3iChguHuB0Ud8EaEjlgrWPfDoqNP6izsFTRO1G0utvzRTssVSqT1fjG1oCTU4S5NQLD4Y36BLIA==
   dependencies:
-    ansis "^3.0.2"
+    ansis "^3.1.0"
     openapi3-ts "^4.2.1"
     ramda "^0.29.1"
 
