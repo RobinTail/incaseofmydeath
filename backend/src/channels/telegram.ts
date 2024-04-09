@@ -1,7 +1,6 @@
 import { Telegraf } from "telegraf";
-import { Logger } from "winston";
 import { Channel, AliveHook } from "../channel.js";
-import { frontendUrl, tgBot } from "../config.js";
+import { frontendUrl, tgBot, logger } from "../config.js";
 import { UserDocument, Users } from "../db.js";
 import { debounce } from "../debounce.js";
 import type { UserFromGetMe } from "telegraf/types";
@@ -12,12 +11,10 @@ const aliveConsideringThrottle = 60; // seconds
 export class TelegramChannel implements Channel {
   readonly #hook: AliveHook;
   readonly #bot: Telegraf;
-  readonly #logger: Logger;
   public ready: Promise<UserFromGetMe>;
 
-  constructor(hook: AliveHook, logger: Logger) {
+  constructor(hook: AliveHook) {
     this.#hook = hook;
-    this.#logger = logger;
     const bot = new Telegraf(tgBot.token);
     this.ready = new Promise<UserFromGetMe>(async (resolve, reject) => {
       try {
@@ -52,7 +49,7 @@ export class TelegramChannel implements Channel {
 
   #considerAlive = debounce({
     fn: async (payload: AliveConsideringPayload) => {
-      this.#logger.debug("Telegram: considering alive", payload);
+      logger.debug("Telegram: considering alive", payload);
       let user: UserDocument | null;
       if ("user" in payload) {
         user = payload.user;
