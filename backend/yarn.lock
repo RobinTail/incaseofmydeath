@@ -383,10 +383,10 @@
   resolved "https://registry.yarnpkg.com/@octokit/auth-token/-/auth-token-5.0.1.tgz#1b882a54587d9e58b7aebb5ae5b9a08522c822f0"
   integrity sha512-RTmWsLfig8SBoiSdgvCht4BXl1CHU89Co5xiQ5JF19my/sIRDFCQ1RPrmK0exgqUZuNm39C/bV8+/83+MJEjGg==
 
-"@octokit/core@^6.1.1":
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/@octokit/core/-/core-6.1.1.tgz#c1c18a2cc755358b3c76d3520704e9d9836bee0d"
-  integrity sha512-uVypPdnZV7YoEa69Ky2kTSw3neFLGT0PZ54OwUMDph7w6TmhF0ZnoVcvb/kYnjDHCFo2mfoeRDYifLKhLNasUg==
+"@octokit/core@^6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@octokit/core/-/core-6.1.2.tgz#20442d0a97c411612da206411e356014d1d1bd17"
+  integrity sha512-hEb7Ma4cGJGEUNOAVmyfdB/3WirWMg5hDuNFVejGEDFqupeOysLc2sG6HJxY2etBp5YQu5Wtxwi020jS9xlUwg==
   dependencies:
     "@octokit/auth-token" "^5.0.0"
     "@octokit/graphql" "^8.0.0"
