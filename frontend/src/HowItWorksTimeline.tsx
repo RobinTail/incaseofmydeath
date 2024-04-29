@@ -5,15 +5,18 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import PlayCircleOutlineOutlinedIcon from "@mui/icons-material/PlayCircleOutlineOutlined";
 import RingVolumeIcon from "@mui/icons-material/RingVolume";
 import SignalWifiLost from "@mui/icons-material/SignalWifiStatusbarConnectedNoInternet4";
-import {
-  Timeline,
-  TimelineConnector,
-  TimelineContent,
-  TimelineDot,
-  TimelineItem,
-  TimelineSeparator,
-} from "@mui/lab";
-import { Typography, useMediaQuery, useTheme } from "@mui/material";
+import Timeline, {TimelineProps} from "@mui/lab/Timeline";
+import TimelineItem from "@mui/lab/TimelineItem";
+import Typography from "@mui/material/Typography";
+import {useTheme} from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import TimelineSeparator from "@mui/lab/TimelineSeparator";
+import TimelineDot from "@mui/lab/TimelineDot";
+import TimelineConnector from "@mui/lab/TimelineConnector";
+import TimelineContent from "@mui/lab/TimelineContent";
+import React from "react";
+
+const FixedTL = Timeline as React.FC<TimelineProps>;
 
 export const HowItWorksTimeline = () => {
   const theme = useTheme();
@@ -24,7 +27,7 @@ export const HowItWorksTimeline = () => {
   };
 
   return (
-    <Timeline position="right" sx={{ my: 0, py: 0 }}>
+    <FixedTL position="right" sx={{ my: 0, py: 0 }}>
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
@@ -130,6 +133,6 @@ export const HowItWorksTimeline = () => {
           </Typography>
         </TimelineContent>
       </TimelineItem>
-    </Timeline>
+    </FixedTL>
   );
 };
