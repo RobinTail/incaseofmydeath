@@ -36,9 +36,10 @@
     "zod": "^3.23.4"
   },
   "resolutions": {
-    "**/react": "^18",
-    "**/react-dom": "^18",
-    "**/@types/react": "^18"
+    "**/react": "^18.3.1",
+    "**/react-dom": "^18.3.1",
+    "**/@types/react": "^18.3.1",
+    "**/@types/react-dom": "^18.3.0"
   },
   "scripts": {
     "build": "yarn build:client && yarn build:app",
