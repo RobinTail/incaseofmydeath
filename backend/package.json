@@ -30,7 +30,7 @@
     "prettier": "3.2.5",
     "tsx": "^4.7.3",
     "typescript": "^5.4.5",
-    "vitest": "^1.5.2"
+    "vitest": "^1.6.0"
   },
   "dependencies": {
     "@octokit/auth-app": "^6.1.1",
