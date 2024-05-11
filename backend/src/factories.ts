@@ -1,6 +1,4 @@
 import { defaultEndpointsFactory } from "express-zod-api";
-import { app } from "./app.js";
-import { github } from "./config.js";
 import {
   authorizedUserProviderMiddleware,
   installationProviderMiddleware,
@@ -10,11 +8,6 @@ import {
 } from "./middlewares.js";
 
 export const endpointsFactory = defaultEndpointsFactory;
-
-export const appProviderFactory = endpointsFactory.addOptions(async () => ({
-  app,
-  github,
-}));
 
 export const installationProviderFactory = endpointsFactory.addMiddleware(
   installationProviderMiddleware,
