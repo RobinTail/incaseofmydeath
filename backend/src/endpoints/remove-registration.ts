@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { Users } from "../db.js";
 import { authorizedUserFactory } from "../factories.js";
 
 export const removeRegistrationEndpoint = authorizedUserFactory.build({
@@ -8,7 +9,6 @@ export const removeRegistrationEndpoint = authorizedUserFactory.build({
   handler: async ({
     options: {
       user: { _id },
-      Users,
     },
   }) => {
     await Users.deleteOne({ _id }).exec();

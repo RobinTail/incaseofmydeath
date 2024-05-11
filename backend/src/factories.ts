@@ -1,7 +1,6 @@
 import { defaultEndpointsFactory } from "express-zod-api";
 import { app } from "./app.js";
 import { github } from "./config.js";
-import { Users } from "./db.js";
 import {
   authorizedUserProviderMiddleware,
   installationProviderMiddleware,
@@ -12,19 +11,18 @@ import {
 
 export const endpointsFactory = defaultEndpointsFactory;
 
-export const appProviderFactory = endpointsFactory.addOptions({
+export const appProviderFactory = endpointsFactory.addOptions(async () => ({
   app,
   github,
-});
+}));
 
-export const installationProviderFactory = endpointsFactory
-  .addMiddleware(installationProviderMiddleware)
-  .addOptions({ Users });
+export const installationProviderFactory = endpointsFactory.addMiddleware(
+  installationProviderMiddleware,
+);
 
 export const authorizedUserFactory = endpointsFactory
   .addMiddleware(authorizedUserProviderMiddleware)
-  .addMiddleware(processManagerProviderMiddleware)
-  .addOptions({ Users });
+  .addMiddleware(processManagerProviderMiddleware);
 
 export const publicUserByIdFactory = endpointsFactory.addMiddleware(
   publicUserProviderByIdMiddleware,

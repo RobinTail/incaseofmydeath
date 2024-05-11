@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { Users } from "../db.js";
 import { installationProviderFactory } from "../factories.js";
 
 export const registerWorkflowEndpoint = installationProviderFactory.build({
@@ -14,7 +15,7 @@ export const registerWorkflowEndpoint = installationProviderFactory.build({
   }),
   handler: async ({
     input: { owner, repo, workflowId, installationId },
-    options: { installation, Users },
+    options: { installation },
   }) => {
     // check the repo and owner
     const {
