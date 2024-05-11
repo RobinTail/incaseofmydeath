@@ -1,11 +1,13 @@
 import { Octokit } from "@octokit/core";
 import { components } from "@octokit/openapi-types";
+import { defaultEndpointsFactory } from "express-zod-api";
 import { z } from "zod";
-import { appProviderFactory } from "../factories.js";
+import { app } from "../app.js";
+import { github } from "../config.js";
 
 const perPage = 50;
 
-export const findInstallationEndpoint = appProviderFactory.build({
+export const findInstallationEndpoint = defaultEndpointsFactory.build({
   method: "post",
   input: z.object({
     uToken: z.string().min(1),
@@ -15,7 +17,7 @@ export const findInstallationEndpoint = appProviderFactory.build({
     iToken: z.string().min(1),
     expiresAt: z.string().min(1), // timestamp
   }),
-  handler: async ({ input: { uToken }, logger, options: { app, github } }) => {
+  handler: async ({ input: { uToken }, logger }) => {
     const kit = new Octokit({ auth: uToken });
     let page = 1;
     let hasMore = false;
