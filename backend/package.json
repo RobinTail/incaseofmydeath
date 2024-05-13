@@ -33,7 +33,7 @@
     "vitest": "^1.6.0"
   },
   "dependencies": {
-    "@octokit/auth-app": "^7.0.0",
+    "@octokit/auth-app": "^7.1.0",
     "@octokit/core": "^6.1.2",
     "compression": "^1.7.4",
     "express": "^4.19.2",
