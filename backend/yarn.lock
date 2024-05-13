@@ -213,10 +213,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@octokit/auth-app@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@octokit/auth-app/-/auth-app-7.0.0.tgz#1dd8d779d41bf76acfbb80defc4a0f0b42119a7c"
-  integrity sha512-2MKylF29sWO72KNI1aUMDJ/ZMOwWjePGz1VnS1B9xdY+SOGvGRUAnufH6SDWGZuwQ7WyvwkCYc0eG2IekglWwQ==
+"@octokit/auth-app@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@octokit/auth-app/-/auth-app-7.1.0.tgz#55a3d3b3b3607b9d375abbe946163dca3a25c2c9"
+  integrity sha512-cazGaJPSgeZ8NkVYeM/C5l/6IQ5vZnsI8p1aMucadCkt/bndI+q+VqwrlnWbASRmenjOkf1t1RpCKrif53U8gw==
   dependencies:
     "@octokit/auth-oauth-app" "^8.1.0"
     "@octokit/auth-oauth-user" "^5.1.0"
@@ -224,7 +224,7 @@
     "@octokit/request-error" "^6.1.1"
     "@octokit/types" "^13.4.1"
     lru-cache "^10.0.0"
-    universal-github-app-jwt "^2.0.6"
+    universal-github-app-jwt "^2.2.0"
     universal-user-agent "^7.0.0"
 
 "@octokit/auth-oauth-app@^8.1.0":
@@ -3811,7 +3811,7 @@ undici-types@~5.26.4:
   resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-5.26.5.tgz#bcd539893d00b56e964fd2657a4866b221a65617"
   integrity sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==
 
-universal-github-app-jwt@^2.0.6:
+universal-github-app-jwt@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/universal-github-app-jwt/-/universal-github-app-jwt-2.2.0.tgz#dc6c8929e76f1996a766ba2a08fb420f73365d77"
   integrity sha512-G5o6f95b5BggDGuUfKDApKaCgNYy2x7OdHY0zSMF081O0EJobw+1130VONhrA7ezGSV2FNOGyM+KQpQZAr9bIQ==
