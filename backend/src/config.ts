@@ -1,11 +1,11 @@
-import { createConfig, createLogger } from "express-zod-api";
+import { createConfig, BuiltinLogger } from "express-zod-api";
 import fs from "node:fs";
 import type { Mock } from "vitest";
 
 export const frontendUrl = "https://www.incaseofmy.de/";
 const sslDir = "/etc/letsencrypt/live/api.incaseofmy.de";
 
-export const logger = createLogger({
+export const logger = new BuiltinLogger({
   level: "debug",
   color: true,
 });

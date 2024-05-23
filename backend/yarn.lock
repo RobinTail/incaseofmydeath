@@ -1742,10 +1742,10 @@ execa@^8.0.1:
     signal-exit "^4.1.0"
     strip-final-newline "^3.0.0"
 
-express-zod-api@^19.1.2:
-  version "19.1.2"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-19.1.2.tgz#426a3f54ee1106f597c595145992a9a5169f1d42"
-  integrity sha512-7+OZJtLV7byrkh4T3zVsAn84TO2bYDl0OcWn0Z5nhcMpdbu7GNX4pw9psrYt0C+cIv8DkwU6Zfqh0u0xU5ZLtA==
+express-zod-api@^19.2.0:
+  version "19.2.0"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-19.2.0.tgz#9117a3d7c4ddc2edf4739157992800700b28e230"
+  integrity sha512-4ZANKJobXFDHaISHIROBKXFdrkr5Wri1xQIg+XunJlsKdkBQTu3XW0ZC++49AIB3F+x/SCWSI4ycmE3gELvYxQ==
   dependencies:
     ansis "^3.1.0"
     openapi3-ts "^4.2.1"
