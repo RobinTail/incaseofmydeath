@@ -6,7 +6,24 @@ import prettierRules from "eslint-plugin-prettier/recommended";
 import importPlugin from "eslint-plugin-import-x";
 
 export default [
-  { languageOptions: { globals: globals.browser } },
+  {
+    languageOptions: { globals: globals.browser },
+    plugins: {
+      "import-x": importPlugin,
+    },
+  },
   jsPlugin.configs.recommended,
   ...tsPlugin.configs.recommended,
+  prettierOverrides,
+  prettierRules,
+  // Things to turn off globally
+  { ignores: ["dist/"] },
+  // Things to turn on globally
+  {
+    rules: {
+      "import-x/named": "error",
+      "import-x/export": "error",
+      "import-x/no-duplicates": "warn",
+    },
+  },
 ];
