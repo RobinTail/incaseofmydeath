@@ -16,17 +16,18 @@ export class TelegramChannel implements Channel {
   constructor(hook: AliveHook) {
     this.#hook = hook;
     const bot = new Telegraf(tgBot.token);
-    this.ready = new Promise<UserFromGetMe>(async (resolve, reject) => {
-      try {
-        logger.debug("Acquiring the bot information...");
-        bot.botInfo = await bot.telegram.getMe();
+    logger.debug("Acquiring the bot information...");
+    this.ready = bot.telegram
+      .getMe()
+      .then((info) => {
+        bot.botInfo = info;
         logger.debug("Starting telegram bot...");
         bot.launch(); // https://github.com/telegraf/telegraf/issues/1749#issuecomment-1327203219
-        resolve(bot.botInfo);
-      } catch (e) {
-        reject(e);
-      }
-    });
+        return info;
+      })
+      .catch((e) => {
+        throw e;
+      });
     bot.start((ctx) => {
       ctx.reply(
         `Please go to the [application website](${frontendUrl}) for registration and setup`,

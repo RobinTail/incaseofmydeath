@@ -19,10 +19,11 @@ export const findInstallationEndpoint = defaultEndpointsFactory.build({
   }),
   handler: async ({ input: { uToken }, logger }) => {
     const kit = new Octokit({ auth: uToken });
-    let page = 1;
+    let page = 0;
     let hasMore = false;
     let installation: components["schemas"]["installation"] | undefined;
     do {
+      page++;
       const {
         data: { total_count: totalCount, installations },
       } = await kit.request("GET /user/installations", {
