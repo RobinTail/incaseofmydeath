@@ -55,7 +55,7 @@ const ensureAuth = (value: unknown): Auth | null => {
       })
       .or(z.null())
       .parse(value);
-  } catch (e) {
+  } catch {
     return null;
   }
 };
@@ -70,7 +70,7 @@ const ensureInstallation = (value: unknown): Installation | null => {
       })
       .or(z.null())
       .parse(value);
-  } catch (e) {
+  } catch {
     return null;
   }
 };
@@ -148,7 +148,7 @@ const PersonalArea = () => {
         setParams({}, { replace: true });
       });
     }
-  }, [code]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [code]);
 
   // auth -> installation
   React.useEffect(() => {
@@ -156,12 +156,12 @@ const PersonalArea = () => {
       runAsync(async () => {
         try {
           setInstallation(await findInstallation(auth.uToken));
-        } catch (e) {
+        } catch {
           logout();
         }
       });
     }
-  }, [isAuthorized]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isAuthorized]);
 
   // installation.iToken actualization fn
   const ensureInstallationToken = async () => {
@@ -177,7 +177,7 @@ const PersonalArea = () => {
         const newInstallation = await findInstallation(auth.uToken);
         setInstallation(newInstallation);
         return newInstallation.iToken;
-      } catch (e) {
+      } catch {
         logout();
       }
     }
@@ -195,7 +195,7 @@ const PersonalArea = () => {
           iToken: await ensureInstallationToken(),
         });
         setRegistration(resp);
-      } catch (e) {
+      } catch {
         setRegistration(false);
       }
     }
@@ -225,26 +225,23 @@ const PersonalArea = () => {
   };
 
   // installation -> registration
-  React.useEffect(
-    () => {
-      runAsync(registrationChecker);
-    },
-    [isInstalled], // eslint-disable-line react-hooks/exhaustive-deps
-  );
+  React.useEffect(() => {
+    runAsync(registrationChecker);
+  }, [isInstalled]);
 
   // !registration -> repos
   React.useEffect(() => {
     if (isInstalled && isNotRegistered) {
       runAsync(reposLoader);
     }
-  }, [registration]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [registration]);
 
   // repo -> workflows
   React.useEffect(() => {
     if (isInstalled && isRepoSelected && isNotRegistered) {
       runAsync(workflowsLoader);
     }
-  }, [isRepoSelected, registration]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isRepoSelected, registration]);
 
   // authorization starting button handler
   const authorize = () => {

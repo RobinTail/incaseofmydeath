@@ -8,7 +8,7 @@ import SignalWifiLost from "@mui/icons-material/SignalWifiStatusbarConnectedNoIn
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem from "@mui/lab/TimelineItem";
 import Typography from "@mui/material/Typography";
-import {useTheme} from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import TimelineDot from "@mui/lab/TimelineDot";

@@ -43,7 +43,7 @@ export const App = () => {
         );
       },
     }),
-    [], // eslint-disable-line react-hooks/exhaustive-deps
+    [],
   );
 
   const theme = React.useMemo(

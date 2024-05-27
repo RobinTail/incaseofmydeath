@@ -2,14 +2,15 @@ import MemoryCache from "fast-memory-cache";
 
 const cache = new MemoryCache();
 
-type AnyFn = (...params: any) => any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- ment to be any for compatibility
+type AnyFn = (...params: any[]) => any;
 
 interface DebounceProps<T extends AnyFn> {
   name: string;
   seconds: number;
   fn: T;
   mapper: (...params: Parameters<T>) => string;
-  thisRef?: any;
+  thisRef?: unknown;
 }
 
 export function debounce<T extends AnyFn>({
