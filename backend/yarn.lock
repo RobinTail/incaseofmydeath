@@ -1742,13 +1742,13 @@ execa@^8.0.1:
     signal-exit "^4.1.0"
     strip-final-newline "^3.0.0"
 
-express-zod-api@^19.2.0:
-  version "19.2.0"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-19.2.0.tgz#9117a3d7c4ddc2edf4739157992800700b28e230"
-  integrity sha512-4ZANKJobXFDHaISHIROBKXFdrkr5Wri1xQIg+XunJlsKdkBQTu3XW0ZC++49AIB3F+x/SCWSI4ycmE3gELvYxQ==
+express-zod-api@^19.2.1:
+  version "19.2.1"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-19.2.1.tgz#29cfd926a1cd9074fad1a2699fc293699933f72c"
+  integrity sha512-NfvbKxBZGCphew83RpvYZrLnjCUDhLoZpjlMuyOvdNcnLhMhTzZaYOkNyamqHF6by6qDb9srsx7T7XYlE0Gs5Q==
   dependencies:
     ansis "^3.1.0"
-    openapi3-ts "^4.2.1"
+    openapi3-ts "^4.3.2"
     ramda "^0.30.0"
 
 express@^4.19.2:
@@ -2816,12 +2816,12 @@ onetime@^6.0.0:
   dependencies:
     mimic-fn "^4.0.0"
 
-openapi3-ts@^4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/openapi3-ts/-/openapi3-ts-4.2.1.tgz#ee9b3cdeec12c21b8dcc9cd66d83f1e126dfecca"
-  integrity sha512-KL1mKwkZii5ce+tb24KCUmQHyWB/oanG5fzUY35UB+wenWJv4Kr/IWBntpn5R8ODiJcxx13ZDophcpHnLGeIOw==
+openapi3-ts@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/openapi3-ts/-/openapi3-ts-4.3.2.tgz#a1a11eb5e0bc557210a4ec9b627711af8fb19b41"
+  integrity sha512-IvKNb3hPHwfuyVJnseTsFvZ0DO2EODpitYMsLcmfVwJ2p41zAHh2VDConzLLEB5h5YFbne9vv1zZxCeUICYZ8A==
   dependencies:
-    yaml "^2.3.4"
+    yaml "^2.4.2"
 
 optionator@^0.9.3:
   version "0.9.3"
@@ -3979,10 +3979,10 @@ yallist@^4.0.0:
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
-yaml@^2.3.4:
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.3.4.tgz#53fc1d514be80aabf386dc6001eb29bf3b7523b2"
-  integrity sha512-8aAvwVUSHpfEqTQ4w/KMlf3HcRdt50E5ODIQJBw1fQ5RL34xabzxtUlzTXVqc4rkZsPbvrXKWnABCD7kWSmocA==
+yaml@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.4.2.tgz#7a2b30f2243a5fc299e1f14ca58d475ed4bc5362"
+  integrity sha512-B3VqDZ+JAg1nZpaEmWtTXUlBneoGx6CPM9b0TENK6aoSu5t73dItudwdgmi6tHlIZZId4dZ9skcAQ2UbcyAeVA==
 
 yamljs@0.3.0:
   version "0.3.0"
