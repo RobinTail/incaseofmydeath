@@ -26,4 +26,22 @@ export default [
       "import-x/no-duplicates": "warn",
     },
   },
+  // For the sources
+  {
+    files: ["src/*.ts"],
+    rules: {
+      "import-x/no-extraneous-dependencies": "error",
+    },
+  },
+  // Special needs of the generated code
+  {
+    files: ["src/generated/*.ts"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-empty-object-type": [
+        "error",
+        { allowObjectTypes: "always" },
+      ],
+    },
+  },
 ];

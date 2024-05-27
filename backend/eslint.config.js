@@ -29,4 +29,18 @@ export default [
       "import-x/no-duplicates": "warn",
     },
   },
+  // For the sources
+  {
+    files: ["src/*.ts"],
+    rules: {
+      "import-x/no-extraneous-dependencies": "error",
+    },
+  },
+  // For tests
+  {
+    files: ["**/*.spec.ts"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+    },
+  },
 ];
