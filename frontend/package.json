@@ -4,13 +4,17 @@
   "private": true,
   "type": "module",
   "devDependencies": {
+    "@eslint/js": "^9.3.0",
     "@types/node": "^20.12.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-syntax-highlighter": "^15.5.7",
     "@vitejs/plugin-react-swc": "^3.7.0",
+    "eslint": "9.x",
+    "globals": "^15.3.0",
     "prettier": "3.2.5",
     "typescript": "^5.4.5",
+    "typescript-eslint": "^8.0.0-alpha.18",
     "vite": "^5.2.11"
   },
   "dependencies": {
