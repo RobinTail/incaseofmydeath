@@ -4,12 +4,14 @@ import tsPlugin from "typescript-eslint";
 import prettierOverrides from "eslint-config-prettier";
 import prettierRules from "eslint-plugin-prettier/recommended";
 import importPlugin from "eslint-plugin-import-x";
+import hooksPlugin from "eslint-plugin-react-hooks";
 
 export default [
   {
     languageOptions: { globals: globals.browser },
     plugins: {
       "import-x": importPlugin,
+      "react-hooks": hooksPlugin,
     },
   },
   jsPlugin.configs.recommended,
@@ -31,6 +33,8 @@ export default [
     files: ["src/*.ts"],
     rules: {
       "import-x/no-extraneous-dependencies": "error",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
     },
   },
   // Special needs of the generated code
