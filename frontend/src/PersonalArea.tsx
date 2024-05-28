@@ -148,6 +148,7 @@ const PersonalArea = () => {
         setParams({}, { replace: true });
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [code]);
 
   // auth -> installation
@@ -161,6 +162,7 @@ const PersonalArea = () => {
         }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthorized]);
 
   // installation.iToken actualization fn
@@ -227,6 +229,7 @@ const PersonalArea = () => {
   // installation -> registration
   React.useEffect(() => {
     runAsync(registrationChecker);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInstalled]);
 
   // !registration -> repos
@@ -234,6 +237,7 @@ const PersonalArea = () => {
     if (isInstalled && isNotRegistered) {
       runAsync(reposLoader);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [registration]);
 
   // repo -> workflows
@@ -241,6 +245,7 @@ const PersonalArea = () => {
     if (isInstalled && isRepoSelected && isNotRegistered) {
       runAsync(workflowsLoader);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isRepoSelected, registration]);
 
   // authorization starting button handler
