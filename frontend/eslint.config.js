@@ -30,7 +30,7 @@ export default [
   },
   // For the sources
   {
-    files: ["src/*.ts"],
+    files: ["src/*.+(ts|tsx)"],
     rules: {
       "import-x/no-extraneous-dependencies": "error",
       "react-hooks/rules-of-hooks": "error",
@@ -39,7 +39,7 @@ export default [
   },
   // Special needs of the generated code
   {
-    files: ["src/generated/*.ts"],
+    files: ["src/generated/*.+(ts|tsx)"],
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-empty-object-type": [
