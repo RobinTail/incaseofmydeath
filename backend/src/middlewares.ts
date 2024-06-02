@@ -1,16 +1,16 @@
 import { Octokit } from "@octokit/core";
-import { createMiddleware } from "express-zod-api";
+import { Middleware } from "express-zod-api";
 import { z } from "zod";
 import { app } from "./app.js";
 import { UserDocument, Users } from "./db.js";
 import { createProcessManager } from "./pm.js";
 
-export const installationProviderMiddleware = createMiddleware({
+export const installationProviderMiddleware = new Middleware({
   security: { type: "input", name: "iToken" },
   input: z.object({
     iToken: z.string().min(1),
   }),
-  middleware: async ({ input: { iToken } }) => ({
+  handler: async ({ input: { iToken } }) => ({
     installation: new Octokit({ auth: iToken }),
   }),
 });
@@ -48,11 +48,11 @@ const getUserAccount = async (user: UserDocument) => {
   return account;
 };
 
-export const publicUserProviderByIdMiddleware = createMiddleware({
+export const publicUserProviderByIdMiddleware = new Middleware({
   input: z.object({
     userId: userIdSchema,
   }),
-  middleware: async ({ input: { userId } }) => {
+  handler: async ({ input: { userId } }) => {
     const user = await Users.findOne({ id: userId }).exec();
     if (!user) {
       return { user: null, account: null };
@@ -61,11 +61,11 @@ export const publicUserProviderByIdMiddleware = createMiddleware({
   },
 });
 
-export const publicUserProviderByLoginMiddleware = createMiddleware({
+export const publicUserProviderByLoginMiddleware = new Middleware({
   input: z.object({
     login: loginSchema,
   }),
-  middleware: async ({ input: { login } }) => {
+  handler: async ({ input: { login } }) => {
     const user = await Users.findOne({ "repo.owner": login }, undefined, {
       collation: { locale: "en_US", strength: 1, caseLevel: false },
     });
@@ -76,13 +76,13 @@ export const publicUserProviderByLoginMiddleware = createMiddleware({
   },
 });
 
-export const authorizedUserProviderMiddleware = createMiddleware({
+export const authorizedUserProviderMiddleware = new Middleware({
   security: { type: "input", name: "uToken" },
   input: z.object({
     uToken: z.string().min(1),
     userId: userIdSchema,
   }),
-  middleware: async ({ input: { uToken, userId } }) => {
+  handler: async ({ input: { uToken, userId } }) => {
     const user = await Users.findOne({ id: userId }).exec();
     if (!user) {
       throw new Error("User not found");
@@ -99,9 +99,9 @@ export const authorizedUserProviderMiddleware = createMiddleware({
   },
 });
 
-export const processManagerProviderMiddleware = createMiddleware({
+export const processManagerProviderMiddleware = new Middleware({
   input: z.object({}),
-  middleware: async () => ({
+  handler: async () => ({
     processManager: await createProcessManager(),
   }),
 });

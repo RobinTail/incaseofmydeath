@@ -34,10 +34,6 @@ export default [
     files: ["src/*.ts"],
     rules: {
       "import-x/no-extraneous-dependencies": "error",
-      "@typescript-eslint/no-empty-object-type": [
-        "error",
-        { allowWithName: "MockOverrides" },
-      ],
     },
   },
   // For tests
