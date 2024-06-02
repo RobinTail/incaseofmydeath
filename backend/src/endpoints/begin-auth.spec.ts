@@ -15,13 +15,13 @@ describe("beginAuthenticationEndpoint", () => {
     const { responseMock } = await testEndpoint({
       endpoint: beginAuthenticationEndpoint,
     });
-    expect(responseMock.json).toHaveBeenCalledWith({
+    expect(JSON.parse(responseMock._getData())).toEqual({
+      status: "success",
       data: {
         url: expect.stringContaining(
           "https://github.com/login/oauth/authorize?client_id=Iv1.a3d196a34df183d3&state=",
         ),
       },
-      status: "success",
     });
   });
 });
