@@ -43,7 +43,7 @@
     "express-zod-api": "^20.0.0-beta.1",
     "fast-memory-cache": "^2.0.4",
     "http-errors": "^2.0.0",
-    "mongoose": "^8.4.0",
+    "mongoose": "^8.4.1",
     "pm2": "^5.4.0",
     "telegraf": "^4.16.3",
     "zod": "^3.23.8"
