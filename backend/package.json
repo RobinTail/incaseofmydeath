@@ -29,7 +29,7 @@
     "prettier": "3.3.0",
     "tsx": "^4.11.2",
     "typescript": "^5.4.5",
-    "typescript-eslint": "^8.0.0-alpha.18",
+    "typescript-eslint": "^8.0.0-alpha.29",
     "vitest": "^1.6.0"
   },
   "resolutions": {
