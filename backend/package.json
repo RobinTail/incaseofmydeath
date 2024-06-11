@@ -27,7 +27,7 @@
     "eslint-plugin-unicorn": "^53.0.0",
     "globals": "^15.3.0",
     "prettier": "3.3.0",
-    "tsx": "^4.11.2",
+    "tsx": "^4.15.1",
     "typescript": "^5.4.5",
     "typescript-eslint": "^8.0.0-alpha.18",
     "vitest": "^1.6.0"
