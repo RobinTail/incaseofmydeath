@@ -29,11 +29,11 @@
     "prettier": "3.3.2",
     "tsx": "^4.15.5",
     "typescript": "^5.4.5",
-    "typescript-eslint": "^8.0.0-alpha.18",
+    "typescript-eslint": "^8.0.0-alpha.30",
     "vitest": "^1.6.0"
   },
   "resolutions": {
-    "**/@typescript-eslint/utils": "^8.0.0-alpha.18"
+    "**/@typescript-eslint/utils": "^8.0.0-alpha.30"
   },
   "dependencies": {
     "@octokit/auth-app": "^7.1.0",
