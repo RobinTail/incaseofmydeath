@@ -1194,9 +1194,9 @@ eslint-plugin-prettier@^5.1.3:
     synckit "^0.8.6"
 
 eslint-plugin-react-hooks@next:
-  version "5.1.0-rc-935180c7e0-20240524"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-5.1.0-rc-935180c7e0-20240524.tgz#8b91590d17c04b63f44652c84586d3d16a32f120"
-  integrity sha512-7HYYmdGtDR53jBBZZbn/+d4LKYlSfAA6O7sHA0IJ+tywAH9C7dqICfFsSc5ItRzzh+PAcim0AzHCyx1UTSlxYA==
+  version "5.1.0-rc-3563387fe3-20240621"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-5.1.0-rc-3563387fe3-20240621.tgz#7ef8ebe973901b88da5b328300dd1da53b598eaa"
+  integrity sha512-I09RXd7fI4lm0Pzu1doKNj2v0wMi1w2+6XyTI5aJGB1XLKrsdD0VM+ylVJa/4Qqfw/+ApSoqGJZnQQ4SAjGLIA==
 
 eslint-scope@^8.0.1:
   version "8.0.1"
