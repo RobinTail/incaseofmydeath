@@ -4,13 +4,12 @@
   "private": true,
   "type": "module",
   "devDependencies": {
-    "@eslint/js": "^9.5.0",
     "@types/node": "^20.14.9",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-syntax-highlighter": "^15.5.7",
     "@vitejs/plugin-react-swc": "^3.7.0",
-    "eslint": "9.x",
+    "eslint": "^9.6.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "https://registry.npmjs.org/eslint-plugin-import-x/-/eslint-plugin-import-x-0.5.2.tgz",
@@ -19,7 +18,7 @@
     "globals": "^15.7.0",
     "prettier": "3.3.2",
     "typescript": "^5.5.2",
-    "typescript-eslint": "^8.0.0-alpha.34",
+    "typescript-eslint": "^8.0.0-alpha.38",
     "vite": "^5.3.2"
   },
   "dependencies": {
@@ -43,7 +42,7 @@
     "**/react-dom": "^18.3.1",
     "**/@types/react": "^18.3.1",
     "**/@types/react-dom": "^18.3.0",
-    "**/@typescript-eslint/utils": "^8.0.0-alpha.34"
+    "**/@typescript-eslint/utils": "^8.0.0-alpha.38"
   },
   "scripts": {
     "build": "yarn build:client && yarn build:app",
