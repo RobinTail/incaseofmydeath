@@ -30,7 +30,7 @@
     "prettier": "3.3.2",
     "tsx": "^4.15.8",
     "typescript": "^5.4.5",
-    "typescript-eslint": "^8.0.0-alpha.34",
+    "typescript-eslint": "^8.0.0-alpha.38",
     "vitest": "^1.6.0"
   },
   "resolutions": {
