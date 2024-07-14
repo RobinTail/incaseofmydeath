@@ -30,7 +30,7 @@
     "tsx": "^4.16.2",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.0-alpha.38",
-    "vitest": "^1.6.0"
+    "vitest": "^2.0.2"
   },
   "resolutions": {
     "**/@typescript-eslint/utils": "^8.0.0-alpha.38"
