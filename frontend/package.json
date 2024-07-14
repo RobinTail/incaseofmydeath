@@ -9,7 +9,7 @@
     "@types/react-dom": "^18.3.0",
     "@types/react-syntax-highlighter": "^15.5.7",
     "@vitejs/plugin-react-swc": "^3.7.0",
-    "eslint": "^9.6.0",
+    "eslint": "^9.7.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "https://registry.npmjs.org/eslint-plugin-import-x/-/eslint-plugin-import-x-0.5.2.tgz",
