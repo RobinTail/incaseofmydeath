@@ -33,7 +33,7 @@
     "vitest": "^2.0.2"
   },
   "resolutions": {
-    "**/@typescript-eslint/utils": "^8.0.0-alpha.38"
+    "**/@typescript-eslint/utils": "^8.0.0-alpha.44"
   },
   "dependencies": {
     "@octokit/auth-app": "^7.1.0",
