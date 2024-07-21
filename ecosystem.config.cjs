@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports -- CJS
 const fs = require("node:fs");
 
 let secrets = {
