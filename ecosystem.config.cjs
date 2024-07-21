@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-require-imports
 const fs = require("node:fs");
 
 let secrets = {
@@ -53,7 +52,7 @@ module.exports = {
       "post-deploy": [
         "source ~/.zshrc",
         "yarn workspace backend install",
-        "pm2 reload ecosystem.config.js",
+        "pm2 reload ecosystem.config.cjs",
       ].join(" && "),
     },
   },
