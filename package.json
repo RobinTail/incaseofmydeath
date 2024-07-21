@@ -4,6 +4,7 @@
   "license": "MIT",
   "private": true,
   "workspaces": ["backend", "frontend"],
+  "type": "module",
   "devDependencies": {
     "@tsconfig/node18": "^18.2.4",
     "@types/express": "^4.17.21",
