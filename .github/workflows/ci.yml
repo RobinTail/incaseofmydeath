@@ -27,12 +27,9 @@ jobs:
           path: ${{ steps.yarnCache.outputs.dir }}
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('backend/yarn.lock') }}
       - name: Install dependencies
-        run: |
-          cd backend
-          yarn install
+        run: yarn workspace backend install
       - name: Test and build
         run: |
-          cd backend
-          yarn lint
-          yarn test
-          yarn build
+          yarn workspace backend lint
+          yarn workspace backend test
+          yarn workspace backend build
