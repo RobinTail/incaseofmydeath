@@ -25,7 +25,7 @@
   },
   "scripts": {
     "build": "yarn build:client && yarn build:app",
-    "build:client": "cd ../backend && yarn install && yarn build:client && cd ../frontend",
+    "build:client": "yarn workspace backend install && yarn workspace backend build:client",
     "dev": "vite --open",
     "build:app": "tsc && vite build",
     "lint": "eslint",

@@ -7,7 +7,6 @@
   "author": "Anna Bocharova <me@robintail.cz>",
   "license": "MIT",
   "scripts": {
-    "start": "tsx src/index.ts",
     "lint": "eslint",
     "build": "rm -rf dist && tsc",
     "build:client": "ENV=TEST tsx src/client.ts",
