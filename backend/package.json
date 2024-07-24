@@ -25,7 +25,7 @@
     "@octokit/core": "^6.1.2",
     "compression": "^1.7.4",
     "express": "^4.19.2",
-    "express-zod-api": "^20.3.2",
+    "express-zod-api": "^20.4.1",
     "fast-memory-cache": "^2.0.4",
     "http-errors": "^2.0.0",
     "mongoose": "^8.5.1",
