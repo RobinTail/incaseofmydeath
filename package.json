@@ -1,0 +1,25 @@
+{
+  "name": "incaseofmydeath",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "workspaces": ["backend", "frontend"],
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "eslint": "^9.7.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "npm:eslint-plugin-import-x@^3.0.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react-hooks": "next",
+    "eslint-plugin-unicorn": "^54.0.0",
+    "globals": "^15.8.0",
+    "prettier": "3.3.3",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.0.0-alpha.52"
+  },
+  "resolutions": {
+    "**/@typescript-eslint/utils": "^8.0.0-alpha.52"
+  }
+}

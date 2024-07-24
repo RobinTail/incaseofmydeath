@@ -1,6 +1,7 @@
 import { vi, describe, test, expect } from "vitest";
 
 vi.mock("mongoose", async () => ({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ...((await vi.importActual("mongoose")) as any).default,
   connect: async () => ({
     version: "1.2.3.mock",
