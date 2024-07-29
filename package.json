@@ -20,6 +20,6 @@
     "typescript-eslint": "^8.0.0-alpha.55"
   },
   "resolutions": {
-    "**/@typescript-eslint/utils": "^8.0.0-alpha.52"
+    "**/@typescript-eslint/utils": "^8.0.0-alpha.55"
   }
 }
