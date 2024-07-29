@@ -6,7 +6,7 @@
   "workspaces": ["backend", "frontend"],
   "type": "module",
   "devDependencies": {
-    "@types/node": "^20.14.12",
+    "@types/node": "^22.0.0",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
