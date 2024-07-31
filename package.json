@@ -17,7 +17,7 @@
     "globals": "^15.8.0",
     "prettier": "3.3.3",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^8.0.0-alpha.58"
+    "typescript-eslint": "^8.0.0"
   },
   "resolutions": {
     "**/@typescript-eslint/utils": "^8.0.0-alpha.58"
