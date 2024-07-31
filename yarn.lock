@@ -1069,7 +1069,7 @@
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.34.tgz#10964ba0dee6ac4cd462e2795b6bebd407303433"
   integrity sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==
 
-"@types/node@*", "@types/node@^20.10.6", "@types/node@^20.14.12":
+"@types/node@*", "@types/node@^20.14.12":
   version "20.14.12"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.14.12.tgz#129d7c3a822cb49fc7ff661235f19cfefd422b49"
   integrity sha512-r7wNXakLeSsGT0H1AU863vS2wa5wBOK4bWMjZz2wj+8nBx+m5PeIn0k8AloSLpRuiwdRQZwarZqHE4FNArPuJQ==
@@ -2341,13 +2341,13 @@ execa@^8.0.1:
     signal-exit "^4.1.0"
     strip-final-newline "^3.0.0"
 
-express-zod-api@^20.5.0:
-  version "20.5.0"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-20.5.0.tgz#8149f11f3f6c47d83a8aa47c2a2512f42afd4261"
-  integrity sha512-l8yV7VsZeKvvBmF3k7rXK5E8JXeK/O5BRftZH4sFujTT76ONUeBOb554vr+aRqD1YGuDCsfw/4pBLwBNKEJEsA==
+express-zod-api@^20.6.1:
+  version "20.6.1"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-20.6.1.tgz#33d16c5a63078e321a49de14a748cc00268e1a97"
+  integrity sha512-QtP651dLGXXoQwsMUa08oJ1HfUO3/XhGsgpynkZ4ejco0assHplklfoEwzc/u2uduBwcYZIq5rFaRanSELLs3g==
   dependencies:
     ansis "^3.2.0"
-    node-mocks-http "^1.15.0"
+    node-mocks-http "^1.15.1"
     openapi3-ts "^4.3.3"
     ramda "^0.30.1"
 
@@ -3654,13 +3654,13 @@ node-fetch@^2.7.0:
   dependencies:
     whatwg-url "^5.0.0"
 
-node-mocks-http@^1.15.0:
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/node-mocks-http/-/node-mocks-http-1.15.0.tgz#fe7bb1efa4ab395739f4097b44f745440326a1b3"
-  integrity sha512-3orGBAxXrnwz3ixU8AZpa0x8srAvVSHvbWanAqd5F0zVCVA2QstxaVcTSarFcjz4+pFSnR1zm28MsV83s/BtmA==
+node-mocks-http@^1.15.1:
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/node-mocks-http/-/node-mocks-http-1.15.1.tgz#668591d5fd5af6d927e3c8bed0e2214a8d9f8d47"
+  integrity sha512-X/GpUpNNiPDYUeUD183W8V4OW6OHYWI29w/QDyb+c/GzOfVEAlo6HjbW9++eXT2aV2lGg+uS+XqTD2q0pNREQA==
   dependencies:
     "@types/express" "^4.17.21"
-    "@types/node" "^20.10.6"
+    "@types/node" "*"
     accepts "^1.3.7"
     content-disposition "^0.5.3"
     depd "^1.1.0"
