@@ -1,6 +1,5 @@
 import globals from "globals";
 import jsPlugin from "@eslint/js";
-import { readFileSync } from "node:fs";
 import tsPlugin from "typescript-eslint";
 import prettierOverrides from "eslint-config-prettier";
 import prettierRules from "eslint-plugin-prettier/recommended";
