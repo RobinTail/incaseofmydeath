@@ -4,21 +4,18 @@ import tsPlugin from "typescript-eslint";
 import prettierOverrides from "eslint-config-prettier";
 import prettierRules from "eslint-plugin-prettier/recommended";
 import unicornPlugin from "eslint-plugin-unicorn";
-import importPlugin from "eslint-plugin-import";
 import hooksPlugin from "eslint-plugin-react-hooks";
+import allowedDepsPlugin from "eslint-plugin-allowed-dependencies";
+import backendJson from "./backend/package.json" assert { type: "json" };
+import frontendJson from "./frontend/package.json" assert { type: "json" };
 
 export default [
   {
     languageOptions: { globals: { ...globals.node, ...globals.browser } },
     plugins: {
       unicorn: unicornPlugin,
-      import: importPlugin,
+      allowed: allowedDepsPlugin,
       "react-hooks": hooksPlugin,
-    },
-    settings: {
-      // "import-x" plugin installed as "import", in order to suppress the warning from the typescript resolver
-      // @link https://github.com/import-js/eslint-import-resolver-typescript/issues/293
-      "import-x/resolver": { typescript: true, node: true },
     },
   },
   jsPlugin.configs.recommended,
@@ -31,22 +28,19 @@ export default [
   {
     rules: {
       "unicorn/prefer-node-protocol": "error",
-      "import/named": "error",
-      "import/export": "error",
-      "import/no-duplicates": "warn",
     },
   },
   // For the sources
   {
     files: ["backend/src/*.ts"],
     rules: {
-      "import/no-extraneous-dependencies": "error",
+      "allowed/dependencies": ["error", { manifest: backendJson }],
     },
   },
   {
     files: ["frontend/src/*.+(ts|tsx)"],
     rules: {
-      "import/no-extraneous-dependencies": "error",
+      "allowed/dependencies": ["error", { manifest: frontendJson }],
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
     },
@@ -56,7 +50,7 @@ export default [
     files: ["backend/src/*.spec.ts"],
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
-      "import/no-extraneous-dependencies": "off",
+      "allowed/dependencies": "off",
     },
   },
   // Special needs of the generated code
