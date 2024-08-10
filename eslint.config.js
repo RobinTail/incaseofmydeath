@@ -6,8 +6,10 @@ import prettierRules from "eslint-plugin-prettier/recommended";
 import unicornPlugin from "eslint-plugin-unicorn";
 import hooksPlugin from "eslint-plugin-react-hooks";
 import allowedDepsPlugin from "eslint-plugin-allowed-dependencies";
-import backendJson from "./backend/package.json" assert { type: "json" };
-import frontendJson from "./frontend/package.json" assert { type: "json" };
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const dirName = dirname(fileURLToPath(import.meta.url));
 
 export default [
   {
@@ -34,13 +36,19 @@ export default [
   {
     files: ["backend/src/*.ts"],
     rules: {
-      "allowed/dependencies": ["error", { manifest: backendJson }],
+      "allowed/dependencies": [
+        "error",
+        { packageDir: join(dirName, "backend") },
+      ],
     },
   },
   {
     files: ["frontend/src/*.+(ts|tsx)"],
     rules: {
-      "allowed/dependencies": ["error", { manifest: frontendJson }],
+      "allowed/dependencies": [
+        "error",
+        { packageDir: join(dirName, "frontend") },
+      ],
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
     },
