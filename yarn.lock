@@ -2432,10 +2432,10 @@ execa@^8.0.1:
     signal-exit "^4.1.0"
     strip-final-newline "^3.0.0"
 
-express-zod-api@^20.7.0:
-  version "20.7.0"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-20.7.0.tgz#740e98b952cadebddade8773d60879c607772757"
-  integrity sha512-1s7+O5MkjKqZOzyK83osZhs4IBdWa5FMaZHJsnPch87swTk2Ej2m3iBz3a/AeA6U7zcLNrfA41cWcirZ0ToLPA==
+express-zod-api@^20.7.1:
+  version "20.7.1"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-20.7.1.tgz#dbcba6e3c9f3562be6fe61a36b2b451ac6f17b08"
+  integrity sha512-ijkvAiTRnflVzJujRsM1Vh1Sfx4dFsgU0EZ84BcyNjutXvFJ6itylqMpzOhlhhRB0P+qA2eS/zK/dA4davC9Zw==
   dependencies:
     ansis "^3.2.0"
     node-mocks-http "^1.15.1"
