@@ -1,5 +1,6 @@
 import { createConfig, BuiltinLogger } from "express-zod-api";
 import fs from "node:fs";
+import { randomUUID } from "node:crypto";
 
 export const frontendUrl = "https://www.incaseofmy.de/";
 const sslDir = "/etc/letsencrypt/live/api.incaseofmy.de";
@@ -8,6 +9,11 @@ export const logger = new BuiltinLogger({
   level: "debug",
   color: true,
 });
+
+declare module "express-zod-api" {
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type -- augmentation
+  interface LoggerOverrides extends BuiltinLogger {}
+}
 
 export const config = createConfig({
   server: {
@@ -29,6 +35,8 @@ export const config = createConfig({
   },
   cors: true,
   logger,
+  childLoggerProvider: ({ parent }) =>
+    parent.child({ requestId: randomUUID() }),
 });
 
 export const github = {
