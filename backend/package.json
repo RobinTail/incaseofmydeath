@@ -18,7 +18,7 @@
     "@types/fast-memory-cache": "^2.0.2",
     "@types/http-errors": "^2.0.4",
     "tsx": "^4.19.0",
-    "vitest": "^2.0.5"
+    "vitest": "^2.1.1"
   },
   "dependencies": {
     "@octokit/auth-app": "^7.1.1",
