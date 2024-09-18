@@ -35,6 +35,7 @@ export const config = createConfig({
   },
   cors: true,
   logger,
+  gracefulShutdown: true,
   childLoggerProvider: ({ parent }) =>
     parent.child({ requestId: randomUUID() }),
 });
