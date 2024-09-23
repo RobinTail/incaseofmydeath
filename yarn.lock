@@ -2445,10 +2445,10 @@ eventemitter2@~0.4.14:
   resolved "https://registry.yarnpkg.com/eventemitter2/-/eventemitter2-0.4.14.tgz#8f61b75cde012b2e9eb284d4545583b5643b61ab"
   integrity sha512-K7J4xq5xAD5jHsGM5ReWXRTFa3JRGofHiMcVgQ8PRwgWxzjHpMWCIzsmyf60+mh8KLsqYPcjUMa0AC4hd6lPyQ==
 
-express-zod-api@^20.12.0-beta.1:
-  version "20.12.0-beta.1"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-20.12.0-beta.1.tgz#60af9c04e1ba7982b22e3876533d8495858c44f3"
-  integrity sha512-7PEIhRlsbHSGkVw/AkVAMLKEcmxpjOKB/V7m8gg3+j1x4mUu6doo0DPKIta4gfQ3Pf4H+iDjnLeoqT5RcpvBaA==
+express-zod-api@^20.12.0:
+  version "20.12.0"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-20.12.0.tgz#bac406652e6f1ac5c3b2462d5118e61b9ec70b04"
+  integrity sha512-wDr7k1Cag7e1TMDemx1kxJCocc+sZeu5RH4xI96HhU6lG1VTlKUzXIRyVtJB1arGJ6oL2e3iXAHDlqQCGIKutg==
   dependencies:
     ansis "^3.2.0"
     node-mocks-http "^1.16.0"
