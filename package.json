@@ -7,7 +7,7 @@
   "type": "module",
   "devDependencies": {
     "@types/node": "^22.5.5",
-    "eslint": "^9.11.0",
+    "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-allowed-dependencies": "^1.0.0",
     "eslint-plugin-prettier": "^5.1.3",
