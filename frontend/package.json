@@ -23,7 +23,7 @@
     "react-router-dom": "^6.26.2",
     "react-syntax-highlighter": "^15.5.0",
     "react-telegram-auth": "^1.0.3",
-    "use-local-storage-state": "^19.4.0",
+    "use-local-storage-state": "^19.4.1",
     "zod": "^3.23.8"
   },
   "resolutions": {
