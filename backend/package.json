@@ -9,8 +9,8 @@
   "scripts": {
     "lint": "eslint",
     "build": "rm -rf dist && tsc",
-    "build:client": "ENV=TEST tsx src/client.ts",
-    "test": "tsc --noEmit && ENV=TEST vitest run"
+    "build:client": "NODE_ENV=test tsx src/client.ts",
+    "test": "tsc --noEmit && NODE_ENV=test vitest run"
   },
   "devDependencies": {
     "@tsconfig/node18": "^18.2.4",
