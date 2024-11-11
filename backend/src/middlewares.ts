@@ -100,7 +100,6 @@ export const authorizedUserProviderMiddleware = new Middleware({
 });
 
 export const processManagerProviderMiddleware = new Middleware({
-  input: z.object({}),
   handler: async () => ({
     processManager: await createProcessManager(),
   }),

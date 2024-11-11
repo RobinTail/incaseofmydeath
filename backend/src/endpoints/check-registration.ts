@@ -7,7 +7,6 @@ import { publicUserWithInstallationFactory } from "../factories.js";
 export const checkRegistrationEndpoint =
   publicUserWithInstallationFactory.build({
     method: "get",
-    input: z.object({}),
     output: z.object({
       isAlive: z.boolean(),
       isPublic: z.boolean(),

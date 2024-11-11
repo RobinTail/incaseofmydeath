@@ -5,7 +5,6 @@ import { github } from "../config.js";
 
 export const beginAuthenticationEndpoint = defaultEndpointsFactory.build({
   method: "get",
-  input: z.object({}),
   output: z.object({
     url: z.string(),
   }),
