@@ -8,7 +8,6 @@ import hooksPlugin from "eslint-plugin-react-hooks";
 import allowedDepsPlugin from "eslint-plugin-allowed-dependencies";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import migration from "express-zod-api/migration";
 
 const dirName = dirname(fileURLToPath(import.meta.url));
 
@@ -19,7 +18,6 @@ export default [
       unicorn: unicornPlugin,
       allowed: allowedDepsPlugin,
       "react-hooks": hooksPlugin,
-      migration,
     },
   },
   jsPlugin.configs.recommended,
@@ -32,7 +30,6 @@ export default [
   {
     rules: {
       "unicorn/prefer-node-protocol": "error",
-      "migration/v21": "error",
     },
   },
   // For the sources
