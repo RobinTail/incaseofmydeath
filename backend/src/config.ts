@@ -16,11 +16,9 @@ declare module "express-zod-api" {
 }
 
 export const config = createConfig({
-  server: {
-    listen: process.env.PORT || 6060,
-    compression: true,
-  },
+  http: { listen: process.env.PORT || 6060 },
   https: {
+    listen: 443,
     options: {
       cert:
         process.env.NODE_ENV === "test"
@@ -31,8 +29,8 @@ export const config = createConfig({
           ? ""
           : fs.readFileSync(`${sslDir}/privkey.pem`, "utf-8"),
     },
-    listen: 443,
   },
+  compression: true,
   cors: true,
   logger,
   gracefulShutdown: true,
