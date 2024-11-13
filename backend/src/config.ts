@@ -16,7 +16,6 @@ declare module "express-zod-api" {
 }
 
 export const config = createConfig({
-  http: { listen: process.env.PORT || 6060 },
   https: {
     listen: 443,
     options: {
