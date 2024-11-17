@@ -5,7 +5,6 @@ import { github } from "../config.js";
 import { endpointsFactory } from "../factories.js";
 
 export const finishAuthenticationEndpoint = endpointsFactory.build({
-  method: "get",
   input: z.object({
     code: z.string().min(1),
     state: z.string().optional(),

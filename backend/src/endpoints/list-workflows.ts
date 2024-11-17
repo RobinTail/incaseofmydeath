@@ -4,7 +4,6 @@ import { installationProviderFactory } from "../factories.js";
 const perPage = 5;
 
 export const listWorkflowsEndpoint = installationProviderFactory.build({
-  method: "get",
   input: z.object({
     owner: z.string().min(1),
     repo: z.string().min(1),

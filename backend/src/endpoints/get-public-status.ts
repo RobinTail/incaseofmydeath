@@ -4,7 +4,6 @@ import { z } from "zod";
 import { publicUserByLoginFactory } from "../factories.js";
 
 export const getPublicStatusByLoginEndpoint = publicUserByLoginFactory.build({
-  method: "get",
   output: z.object({
     login: z.string().min(1),
     avatarUrl: z.string().optional(),

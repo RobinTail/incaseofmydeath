@@ -4,10 +4,7 @@ import { z } from "zod";
 import { github } from "../config.js";
 
 export const beginAuthenticationEndpoint = defaultEndpointsFactory.build({
-  method: "get",
-  output: z.object({
-    url: z.string(),
-  }),
+  output: z.object({ url: z.string() }),
   handler: async () => {
     const hash = crypto
       .createHash("sha1")

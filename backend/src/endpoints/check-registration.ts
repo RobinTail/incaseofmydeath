@@ -6,7 +6,6 @@ import { publicUserWithInstallationFactory } from "../factories.js";
 
 export const checkRegistrationEndpoint =
   publicUserWithInstallationFactory.build({
-    method: "get",
     output: z.object({
       isAlive: z.boolean(),
       isPublic: z.boolean(),
@@ -23,9 +22,7 @@ export const checkRegistrationEndpoint =
         name: z.string().min(1),
       }),
       channels: z.object({
-        telegram: z.object({
-          connected: z.boolean(),
-        }),
+        telegram: z.object({ connected: z.boolean() }),
       }),
     }),
     handler: async ({ options: { user, installation } }) => {

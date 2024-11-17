@@ -4,7 +4,6 @@ import { installationProviderFactory } from "../factories.js";
 const perPage = 5;
 
 export const listRepositoriesEndpoint = installationProviderFactory.build({
-  method: "get",
   input: z.object({
     page: z
       .string()

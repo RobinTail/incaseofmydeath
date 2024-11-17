@@ -9,9 +9,7 @@ const perPage = 50;
 
 export const findInstallationEndpoint = defaultEndpointsFactory.build({
   method: "post",
-  input: z.object({
-    uToken: z.string().min(1),
-  }),
+  input: z.object({ uToken: z.string().min(1) }),
   output: z.object({
     id: z.number().int().positive(),
     iToken: z.string().min(1),
