@@ -52,7 +52,7 @@ module.exports = {
       ].join(" && "),
       "post-deploy": [
         "source ~/.zshrc",
-        "yarn workspace backend install --production --frozen-lockfile",
+        "yarn workspace backend install --production --frozen-lockfile --verbose",
         "pm2 reload ecosystem.config.cjs",
       ].join(" && "),
     },
