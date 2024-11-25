@@ -13,7 +13,7 @@ const client = new ExpressZodAPIClient(async (method, path, params) => {
 });
 
 export const beginAuth = async () => {
-  const response = await client.provide("get", "/v1/auth/begin", {});
+  const response = await client.provide("get /v1/auth/begin", {});
   if (response.status === "error") {
     throw new Error(response.error.message);
   }
@@ -21,7 +21,7 @@ export const beginAuth = async () => {
 };
 
 export const finishAuth = async (code: string, state: string) => {
-  const response = await client.provide("get", "/v1/auth/finish", {
+  const response = await client.provide("get /v1/auth/finish", {
     code,
     state,
   });
@@ -32,7 +32,7 @@ export const finishAuth = async (code: string, state: string) => {
 };
 
 export const findInstallation = async (uToken: string) => {
-  const response = await client.provide("post", "/v1/installation/find", {
+  const response = await client.provide("post /v1/installation/find", {
     uToken,
   });
   if (response.status === "error") {
@@ -42,7 +42,7 @@ export const findInstallation = async (uToken: string) => {
 };
 
 export const listRepos = async (iToken: string, page: number) => {
-  const response = await client.provide("get", "/v1/repos/list", {
+  const response = await client.provide("get /v1/repos/list", {
     iToken,
     page: `${page}`,
   });
@@ -58,7 +58,7 @@ export const listWorkflows = async (
   repo: string,
   page: number,
 ) => {
-  const response = await client.provide("get", "/v1/workflows/list", {
+  const response = await client.provide("get /v1/workflows/list", {
     iToken,
     owner,
     repo,
@@ -73,11 +73,7 @@ export const listWorkflows = async (
 export const registerWorkflow = async (
   request: Input["post /v1/workflows/register"],
 ) => {
-  const response = await client.provide(
-    "post",
-    "/v1/workflows/register",
-    request,
-  );
+  const response = await client.provide("post /v1/workflows/register", request);
   if (response.status === "error") {
     throw new Error(response.error.message);
   }
@@ -88,7 +84,7 @@ export const checkRegistration = async ({
   userId,
   iToken,
 }: Input["get /v1/registration/check"]) => {
-  const response = await client.provide("get", "/v1/registration/check", {
+  const response = await client.provide("get /v1/registration/check", {
     userId,
     iToken,
   });
@@ -102,8 +98,7 @@ export const connectTelegram = async (
   request: Input["post /v1/channels/telegram/connect"],
 ) => {
   const response = await client.provide(
-    "post",
-    "/v1/channels/telegram/connect",
+    "post /v1/channels/telegram/connect",
     request,
   );
   if (response.status === "error") {
@@ -115,7 +110,7 @@ export const connectTelegram = async (
 export const updateTimeSettings = async (
   request: Input["patch /v1/time/update"],
 ) => {
-  const response = await client.provide("patch", "/v1/time/update", request);
+  const response = await client.provide("patch /v1/time/update", request);
   if (response.status === "error") {
     throw new Error(response.error.message);
   }
@@ -127,8 +122,7 @@ export const disconnectTelegram = async ({
   uToken,
 }: Input["delete /v1/channels/telegram/disconnect"]) => {
   const response = await client.provide(
-    "delete",
-    "/v1/channels/telegram/disconnect",
+    "delete /v1/channels/telegram/disconnect",
     { userId, uToken },
   );
   if (response.status === "error") {
@@ -141,7 +135,7 @@ export const removeRegistration = async ({
   userId,
   uToken,
 }: Input["delete /v1/registration/remove"]) => {
-  const response = await client.provide("delete", "/v1/registration/remove", {
+  const response = await client.provide("delete /v1/registration/remove", {
     userId,
     uToken,
   });
@@ -152,7 +146,7 @@ export const removeRegistration = async ({
 };
 
 export const getPublicStatus = async (login: string) => {
-  const response = await client.provide("get", `/v2/status/:login`, {
+  const response = await client.provide("get /v2/status/:login", {
     login,
   });
   if (response.status === "error") {
@@ -165,8 +159,7 @@ export const setPublicStatus = async (
   request: Input["patch /v1/registration/public"],
 ) => {
   const response = await client.provide(
-    "patch",
-    "/v1/registration/public",
+    "patch /v1/registration/public",
     request,
   );
   if (response.status === "error") {
