@@ -11,7 +11,7 @@ import { fileURLToPath } from "node:url";
 
 const dirName = dirname(fileURLToPath(import.meta.url));
 
-export default [
+export default tsPlugin.config(
   {
     languageOptions: { globals: { ...globals.node, ...globals.browser } },
     plugins: {
@@ -21,7 +21,7 @@ export default [
     },
   },
   jsPlugin.configs.recommended,
-  ...tsPlugin.configs.recommended,
+  tsPlugin.configs.recommended,
   prettierOverrides,
   prettierRules,
   // Things to turn off globally
@@ -72,4 +72,4 @@ export default [
       ],
     },
   },
-];
+);
