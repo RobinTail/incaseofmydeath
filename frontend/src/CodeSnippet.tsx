@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
+  Icon,
   IconButton,
   Paper,
   Tooltip,
@@ -8,7 +9,6 @@ import {
 } from "@mui/material";
 import React from "react";
 import { CopyToClipboardButton } from "react-clipboard-button";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import ReactMarkdown from "react-markdown";
 import {
   atomDark,
@@ -53,7 +53,7 @@ export const CodeSnippet = ({ language, code }: CodeSnippetProps) => {
         >
           <Tooltip title="Copy" placement="left" arrow>
             <IconButton>
-              <ContentCopyIcon />
+              <Icon className="material-symbols-outlined">content_copy</Icon>
             </IconButton>
           </Tooltip>
         </CopyToClipboardButton>

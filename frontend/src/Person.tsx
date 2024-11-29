@@ -1,6 +1,3 @@
-import { InfoOutlined } from "@mui/icons-material";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 import {
   Avatar,
   Badge,
@@ -9,6 +6,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import Icon from "@mui/material/Icon";
 
 interface PersonProps {
   isAuthorized: boolean;
@@ -40,7 +38,9 @@ export const Person = ({
             isRegistered && (
               <Tooltip title="Settings" placement="right" arrow>
                 <IconButton onClick={onSettingsClick}>
-                  <BuildCircleIcon />
+                  <Icon className="material-symbols-outlined">
+                    build_circle
+                  </Icon>
                 </IconButton>
               </Tooltip>
             )
@@ -51,15 +51,20 @@ export const Person = ({
           </Avatar>
         </Badge>
       ) : (
-        <GitHubIcon
+        <Icon
+          className="material-symbols-outlined"
           sx={{ m: 1, color: theme.palette.text.primary, fontSize: 100 }}
-        />
+        >
+          conversion_path
+        </Icon>
       )}
       <Typography component="h1" variant="h5">
         {isAuthorized ? name || login : "Authorize on GitHub"}
         {isAuthorized && !isPersistent && (
           <Tooltip title="Please enable Local Storage in your browser settings to preserve your authentication">
-            <InfoOutlined color="error" />
+            <Icon className="material-symbols-outlined" color="error">
+              info
+            </Icon>
           </Tooltip>
         )}
       </Typography>

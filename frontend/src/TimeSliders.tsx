@@ -1,5 +1,4 @@
 /* eslint-disable no-empty-pattern */
-import { InfoOutlined } from "@mui/icons-material";
 import {
   Slider,
   Box,
@@ -8,6 +7,7 @@ import {
   useTheme,
   Tooltip,
 } from "@mui/material";
+import Icon from "@mui/material/Icon";
 import React from "react";
 import { updateTimeSettings } from "./api";
 
@@ -85,7 +85,9 @@ export const TimeSliders = (props: TimeSlidersOptions) => {
           placement={isXS ? "top" : "right"}
           sx={{ ml: 1 }}
         >
-          <InfoOutlined fontSize="small" />
+          <Icon className="material-symbols-outlined" fontSize="small">
+            info
+          </Icon>
         </Tooltip>
       </Typography>
       <Slider

@@ -8,8 +8,7 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import TelegramIcon from "@mui/icons-material/Telegram";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import Icon from "@mui/material/Icon";
 import { TLoginButton, TLoginButtonSize } from "react-telegram-auth";
 import { connectTelegram, disconnectTelegram } from "./api";
 
@@ -73,7 +72,7 @@ export const Channels = ({
                   await onChange();
                 }}
               >
-                <RemoveCircleOutlineIcon />
+                <Icon className="material-symbols-outlined">delete</Icon>
               </IconButton>
             ) : (
               tgLoginButton
@@ -82,7 +81,7 @@ export const Channels = ({
         >
           <ListItemAvatar>
             <Avatar>
-              <TelegramIcon />
+              <Icon className="material-symbols-outlined">send</Icon>
             </Avatar>
           </ListItemAvatar>
           <ListItemText
