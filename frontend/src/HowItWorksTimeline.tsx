@@ -1,12 +1,6 @@
-import ChatIcon from "@mui/icons-material/Chat";
-import CommentIcon from "@mui/icons-material/Comment";
-import FactCheckIcon from "@mui/icons-material/FactCheck";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import PlayCircleOutlineOutlinedIcon from "@mui/icons-material/PlayCircleOutlineOutlined";
-import RingVolumeIcon from "@mui/icons-material/RingVolume";
-import SignalWifiLost from "@mui/icons-material/SignalWifiStatusbarConnectedNoInternet4";
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem from "@mui/lab/TimelineItem";
+import Icon from "@mui/material/Icon";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -28,7 +22,12 @@ export const HowItWorksTimeline = () => {
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
-            <GitHubIcon htmlColor={theme.palette.background.default} />
+            <Icon
+              className="material-symbols-outlined"
+              sx={{ color: "background.default" }}
+            >
+              conversion_path
+            </Icon>
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
@@ -43,7 +42,12 @@ export const HowItWorksTimeline = () => {
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
-            <FactCheckIcon htmlColor={theme.palette.background.default} />
+            <Icon
+              className="material-symbols-outlined"
+              sx={{ color: "background.default" }}
+            >
+              fact_check
+            </Icon>
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
@@ -58,7 +62,12 @@ export const HowItWorksTimeline = () => {
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
-            <RingVolumeIcon htmlColor={theme.palette.background.default} />
+            <Icon
+              className="material-symbols-outlined"
+              sx={{ color: "background.default" }}
+            >
+              ring_volume
+            </Icon>
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
@@ -73,7 +82,12 @@ export const HowItWorksTimeline = () => {
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
-            <ChatIcon htmlColor={theme.palette.background.default} />
+            <Icon
+              className="material-symbols-outlined"
+              sx={{ color: "background.default" }}
+            >
+              chat
+            </Icon>
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
@@ -88,7 +102,12 @@ export const HowItWorksTimeline = () => {
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
-            <CommentIcon htmlColor={theme.palette.background.default} />
+            <Icon
+              className="material-symbols-outlined"
+              sx={{ color: "background.default" }}
+            >
+              comment
+            </Icon>
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
@@ -103,7 +122,12 @@ export const HowItWorksTimeline = () => {
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
-            <SignalWifiLost htmlColor={theme.palette.background.default} />
+            <Icon
+              className="material-symbols-outlined"
+              sx={{ color: "background.default" }}
+            >
+              wifi_off
+            </Icon>
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
@@ -118,9 +142,12 @@ export const HowItWorksTimeline = () => {
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
-            <PlayCircleOutlineOutlinedIcon
-              htmlColor={theme.palette.background.default}
-            />
+            <Icon
+              className="material-symbols-outlined"
+              sx={{ color: "background.default" }}
+            >
+              play_circle
+            </Icon>
           </TimelineDot>
         </TimelineSeparator>
         <TimelineContent>

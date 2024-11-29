@@ -3,14 +3,12 @@ import {
   Box,
   Container,
   CssBaseline,
+  Icon,
   IconButton,
   Snackbar,
   Tooltip,
   useTheme,
 } from "@mui/material";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
-import HomeIcon from "@mui/icons-material/Home";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ColorModeContext, SnackbarContent, SnackbarContext } from "./context";
@@ -58,7 +56,7 @@ export const Wrapper = ({ children }: { children: React.ReactNode }) => {
               }}
               onClick={() => navigate(paths.root)}
             >
-              <HomeIcon />
+              <Icon className="material-symbols-outlined">home</Icon>
             </IconButton>
           </Tooltip>
         )}
@@ -80,9 +78,9 @@ export const Wrapper = ({ children }: { children: React.ReactNode }) => {
             color="inherit"
           >
             {theme.palette.mode === "dark" ? (
-              <Brightness7Icon />
+              <Icon className="material-symbols-outlined">brightness_7</Icon>
             ) : (
-              <Brightness4Icon />
+              <Icon className="material-symbols-outlined">brightness_4</Icon>
             )}
           </IconButton>
         </Tooltip>

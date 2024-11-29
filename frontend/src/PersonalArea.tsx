@@ -1,4 +1,3 @@
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import {
   Alert,
   Box,
@@ -9,8 +8,7 @@ import {
   Tooltip,
   IconButton,
 } from "@mui/material";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import Icon from "@mui/material/Icon";
 import React from "react";
 import { CopyToClipboardButton } from "react-clipboard-button";
 import { useSearchParams } from "react-router-dom";
@@ -350,7 +348,9 @@ const PersonalArea = () => {
             >
               <Tooltip title="Copy URL" placement="right" arrow>
                 <IconButton>
-                  <ContentCopyIcon />
+                  <Icon className="material-symbols-outlined">
+                    content_copy
+                  </Icon>
                 </IconButton>
               </Tooltip>
             </CopyToClipboardButton>
@@ -371,7 +371,9 @@ const PersonalArea = () => {
         {isAuthorized && isNotRegistered && !isRepoSelected && (
           <IconicListSelector
             isLoading={isLoading}
-            icon={<GitHubIcon />}
+            icon={
+              <Icon className="material-symbols-outlined">conversion_path</Icon>
+            }
             items={repos.map((repo) => ({
               key: `${repo.login}/${repo.name}`,
               badge: {
@@ -392,7 +394,9 @@ const PersonalArea = () => {
           !isWorkflowSelected && (
             <IconicListSelector
               isLoading={isLoading}
-              icon={<PlayCircleOutlineIcon />}
+              icon={
+                <Icon className="material-symbols-outlined">play_circle</Icon>
+              }
               items={workflows.map((workflow) => ({
                 key: workflow.id,
                 primary: workflow.name,

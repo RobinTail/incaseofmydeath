@@ -1,5 +1,5 @@
-import GitHubIcon from "@mui/icons-material/GitHub";
 import { Alert, Avatar, Chip, Typography, useTheme } from "@mui/material";
+import Icon from "@mui/material/Icon";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { getPublicStatus } from "./api";
@@ -50,9 +50,12 @@ const PublicStatus = () => {
           {status.name || status.login}
         </Avatar>
       ) : (
-        <GitHubIcon
+        <Icon
+          className="material-symbols-outlined"
           sx={{ m: 1, color: theme.palette.text.primary, fontSize: 100 }}
-        />
+        >
+          account_circle
+        </Icon>
       )}
       <Typography component="h1" variant="h5" gutterBottom>
         {status.name || status.login}
