@@ -1,5 +1,6 @@
 import {
   createTheme,
+  CssBaseline,
   PaletteMode,
   Skeleton,
   ThemeProvider,
@@ -60,6 +61,7 @@ export const App = () => {
   return (
     <ColorModeContext.Provider value={colorContext}>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <BrowserRouter>
           <Wrapper>
             <React.Suspense

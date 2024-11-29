@@ -2,7 +2,6 @@ import {
   Alert,
   Box,
   Container,
-  CssBaseline,
   Icon,
   IconButton,
   Snackbar,
@@ -36,7 +35,6 @@ export const Wrapper = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
       <Box
         sx={{
           mt: 8,
