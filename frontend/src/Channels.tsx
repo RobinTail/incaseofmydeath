@@ -72,7 +72,7 @@ export const Channels = ({
                   await onChange();
                 }}
               >
-                <Icon className="material-symbols-outlined">delete</Icon>
+                <Icon>delete</Icon>
               </IconButton>
             ) : (
               tgLoginButton
@@ -81,7 +81,7 @@ export const Channels = ({
         >
           <ListItemAvatar>
             <Avatar>
-              <Icon className="material-symbols-outlined">send</Icon>
+              <Icon>send</Icon>
             </Avatar>
           </ListItemAvatar>
           <ListItemText

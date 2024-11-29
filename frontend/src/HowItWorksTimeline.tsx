@@ -22,12 +22,7 @@ export const HowItWorksTimeline = () => {
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
-            <Icon
-              className="material-symbols-outlined"
-              sx={{ color: "background.default" }}
-            >
-              conversion_path
-            </Icon>
+            <Icon sx={{ color: "background.default" }}>conversion_path</Icon>
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
@@ -42,12 +37,7 @@ export const HowItWorksTimeline = () => {
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
-            <Icon
-              className="material-symbols-outlined"
-              sx={{ color: "background.default" }}
-            >
-              fact_check
-            </Icon>
+            <Icon sx={{ color: "background.default" }}>fact_check</Icon>
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
@@ -62,12 +52,7 @@ export const HowItWorksTimeline = () => {
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
-            <Icon
-              className="material-symbols-outlined"
-              sx={{ color: "background.default" }}
-            >
-              ring_volume
-            </Icon>
+            <Icon sx={{ color: "background.default" }}>ring_volume</Icon>
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
@@ -82,12 +67,7 @@ export const HowItWorksTimeline = () => {
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
-            <Icon
-              className="material-symbols-outlined"
-              sx={{ color: "background.default" }}
-            >
-              chat
-            </Icon>
+            <Icon sx={{ color: "background.default" }}>chat</Icon>
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
@@ -102,12 +82,7 @@ export const HowItWorksTimeline = () => {
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
-            <Icon
-              className="material-symbols-outlined"
-              sx={{ color: "background.default" }}
-            >
-              comment
-            </Icon>
+            <Icon sx={{ color: "background.default" }}>comment</Icon>
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
@@ -122,12 +97,7 @@ export const HowItWorksTimeline = () => {
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
-            <Icon
-              className="material-symbols-outlined"
-              sx={{ color: "background.default" }}
-            >
-              wifi_off
-            </Icon>
+            <Icon sx={{ color: "background.default" }}>wifi_off</Icon>
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
@@ -142,12 +112,7 @@ export const HowItWorksTimeline = () => {
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
-            <Icon
-              className="material-symbols-outlined"
-              sx={{ color: "background.default" }}
-            >
-              play_circle
-            </Icon>
+            <Icon sx={{ color: "background.default" }}>play_circle</Icon>
           </TimelineDot>
         </TimelineSeparator>
         <TimelineContent>

@@ -53,7 +53,7 @@ export const CodeSnippet = ({ language, code }: CodeSnippetProps) => {
         >
           <Tooltip title="Copy" placement="left" arrow>
             <IconButton>
-              <Icon className="material-symbols-outlined">content_copy</Icon>
+              <Icon>content_copy</Icon>
             </IconButton>
           </Tooltip>
         </CopyToClipboardButton>

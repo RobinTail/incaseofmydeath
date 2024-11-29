@@ -54,6 +54,13 @@ export const App = () => {
         palette: {
           mode: colorMode,
         },
+        components: {
+          MuiIcon: {
+            defaultProps: {
+              className: "material-symbols-outlined",
+            },
+          },
+        },
       }),
     [colorMode],
   );

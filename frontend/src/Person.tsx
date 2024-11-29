@@ -38,9 +38,7 @@ export const Person = ({
             isRegistered && (
               <Tooltip title="Settings" placement="right" arrow>
                 <IconButton onClick={onSettingsClick}>
-                  <Icon className="material-symbols-outlined">
-                    build_circle
-                  </Icon>
+                  <Icon>build_circle</Icon>
                 </IconButton>
               </Tooltip>
             )
@@ -51,10 +49,7 @@ export const Person = ({
           </Avatar>
         </Badge>
       ) : (
-        <Icon
-          className="material-symbols-outlined"
-          sx={{ m: 1, color: theme.palette.text.primary, fontSize: 100 }}
-        >
+        <Icon sx={{ m: 1, color: theme.palette.text.primary, fontSize: 100 }}>
           conversion_path
         </Icon>
       )}
@@ -62,9 +57,7 @@ export const Person = ({
         {isAuthorized ? name || login : "Authorize on GitHub"}
         {isAuthorized && !isPersistent && (
           <Tooltip title="Please enable Local Storage in your browser settings to preserve your authentication">
-            <Icon className="material-symbols-outlined" color="error">
-              info
-            </Icon>
+            <Icon color="error">info</Icon>
           </Tooltip>
         )}
       </Typography>
