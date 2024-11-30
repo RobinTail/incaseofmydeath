@@ -33,7 +33,6 @@ export const HowItWorksTimeline = () => {
           </Typography>
         </TimelineContent>
       </TimelineItem>
-
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
@@ -48,7 +47,6 @@ export const HowItWorksTimeline = () => {
           </Typography>
         </TimelineContent>
       </TimelineItem>
-
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
@@ -63,7 +61,6 @@ export const HowItWorksTimeline = () => {
           </Typography>
         </TimelineContent>
       </TimelineItem>
-
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
@@ -78,7 +75,6 @@ export const HowItWorksTimeline = () => {
           </Typography>
         </TimelineContent>
       </TimelineItem>
-
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
@@ -93,7 +89,6 @@ export const HowItWorksTimeline = () => {
           </Typography>
         </TimelineContent>
       </TimelineItem>
-
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
@@ -108,7 +103,6 @@ export const HowItWorksTimeline = () => {
           </Typography>
         </TimelineContent>
       </TimelineItem>
-
       <TimelineItem sx={listItemSx}>
         <TimelineSeparator>
           <TimelineDot>
