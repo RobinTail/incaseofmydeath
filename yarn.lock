@@ -1128,13 +1128,6 @@
   dependencies:
     "@types/ms" "*"
 
-"@types/esquery@^1.5.4":
-  version "1.5.4"
-  resolved "https://registry.yarnpkg.com/@types/esquery/-/esquery-1.5.4.tgz#ebfd3a3bca6db50446688ba5592d18bb9b807e91"
-  integrity sha512-yYO4Q8H+KJHKW1rEeSzHxcZi90durqYgWVfnh5K6ZADVBjBv2e1NEveYX5yT2bffgN7RqzH3k9930m+i2yBoMA==
-  dependencies:
-    "@types/estree" "*"
-
 "@types/estree-jsx@^1.0.0":
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@types/estree-jsx/-/estree-jsx-1.0.5.tgz#858a88ea20f34fe65111f005a689fa1ebf70dc18"
@@ -5201,6 +5194,13 @@ vite-node@2.1.5:
     es-module-lexer "^1.5.4"
     pathe "^1.1.2"
     vite "^5.0.0"
+
+vite-plugin-material-symbols@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/vite-plugin-material-symbols/-/vite-plugin-material-symbols-0.0.2.tgz#0b6b8bf49e08c212436c471b255341f5b38f72a8"
+  integrity sha512-rgTzH/HMstt+dL62/NWm9aSgjXXFnhlYvOio8Nl8sqFmkp//QvOH7o9MRRTLo+xbPyCRT8zSrMPfkIjOlC+dWQ==
+  dependencies:
+    esquery "^1.6.0"
 
 vite@^5.0.0, vite@^5.4.11:
   version "5.4.11"
