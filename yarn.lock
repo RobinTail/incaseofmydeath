@@ -5195,10 +5195,10 @@ vite-node@2.1.5:
     pathe "^1.1.2"
     vite "^5.0.0"
 
-vite-plugin-material-symbols@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/vite-plugin-material-symbols/-/vite-plugin-material-symbols-0.0.2.tgz#0b6b8bf49e08c212436c471b255341f5b38f72a8"
-  integrity sha512-rgTzH/HMstt+dL62/NWm9aSgjXXFnhlYvOio8Nl8sqFmkp//QvOH7o9MRRTLo+xbPyCRT8zSrMPfkIjOlC+dWQ==
+vite-plugin-material-symbols@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/vite-plugin-material-symbols/-/vite-plugin-material-symbols-0.1.1.tgz#e1d8cc16e50184b6078503b1e5c4c1d83c06f345"
+  integrity sha512-/DncdLrVOkEzITWKP5PPGkpAG2guWpPNsrqA7mK2fWc7BDIXjQHeIzLOxTu1rGL1N8oAqkgoL+vWECdj9bK8Eg==
   dependencies:
     esquery "^1.6.0"
 
