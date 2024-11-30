@@ -69,13 +69,7 @@ export const TimeSliders = (props: TimeSlidersOptions) => {
   };
 
   return (
-    <Box
-      sx={{
-        minWidth: isXS ? undefined : "300px",
-        ml: isXS ? 1 : undefined,
-        mr: isXS ? 1 : undefined,
-      }}
-    >
+    <Box sx={[!isXS && { minWidth: "300px" }, isXS && { ml: 1, mr: 1 }]}>
       <Typography>
         Check that I'm alive{" "}
         <strong>{Object.values(checkFreqLabels)[checkFreq]}</strong>
@@ -102,7 +96,6 @@ export const TimeSliders = (props: TimeSlidersOptions) => {
         onChangeCommitted={handleUpdate}
         valueLabelDisplay="off"
       />
-
       <Typography mt={2}>
         Consider me dead after <strong>{deadlineDays}</strong> day
         {deadlineDays > 1 ? "s " : " "}
@@ -122,7 +115,6 @@ export const TimeSliders = (props: TimeSlidersOptions) => {
         onChangeCommitted={handleUpdate}
         valueLabelDisplay="off"
       />
-
       <Typography mt={2}>
         Make <strong>{attemptsCount}</strong> attempt
         {attemptsCount > 1 ? "s" : ""} during {deadlineDays} day

@@ -35,11 +35,12 @@ export const CodeSnippet = ({ language, code }: CodeSnippetProps) => {
   return (
     <>
       <Paper
-        sx={{
-          position: "relative",
-          maxWidth: isXS ? `calc(100vw - ${theme.spacing(4)});` : "400px",
-          fontSize: theme.typography.caption.fontSize,
-        }}
+        sx={[
+          { position: "relative", fontSize: theme.typography.caption.fontSize },
+          isXS
+            ? { maxWidth: `calc(100vw - ${theme.spacing(4)});` }
+            : { maxWidth: "400px" },
+        ]}
       >
         <CopyToClipboardButton
           text={code}
