@@ -6,16 +6,17 @@ import {
   IconButton,
   Snackbar,
   Tooltip,
+  useColorScheme,
   useTheme,
 } from "@mui/material";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ColorModeContext, SnackbarContent, SnackbarContext } from "./context";
+import { SnackbarContent, SnackbarContext } from "./context";
 import { paths } from "./paths";
 
 export const Wrapper = ({ children }: { children: React.ReactNode }) => {
   const theme = useTheme();
-  const colorContext = React.useContext(ColorModeContext);
+  const { mode, setMode } = useColorScheme();
   const [isSnackbarOpened, setSnackbarOpened] = React.useState(false);
   const [snackbarContent, setSnackbarContent] = React.useState<SnackbarContent>(
     {
@@ -70,9 +71,7 @@ export const Wrapper = ({ children }: { children: React.ReactNode }) => {
               top: theme.spacing(2),
               right: theme.spacing(2),
             }}
-            onClick={() => {
-              colorContext.toggle();
-            }}
+            onClick={() => setMode(mode === "light" ? "dark" : "light")}
             color="inherit"
           >
             <Icon>
