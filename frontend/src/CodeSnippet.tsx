@@ -4,6 +4,7 @@ import {
   IconButton,
   Paper,
   Tooltip,
+  useColorScheme,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
@@ -29,6 +30,7 @@ export const CodeSnippet = ({ language, code }: CodeSnippetProps) => {
   const theme = useTheme();
   const isXS = useMediaQuery(theme.breakpoints.only("xs"));
   const { showSnackbar } = React.useContext(SnackbarContext);
+  const { mode, systemMode } = useColorScheme();
 
   return (
     <>
@@ -66,7 +68,12 @@ export const CodeSnippet = ({ language, code }: CodeSnippetProps) => {
               const match = /language-(\w+)/.exec(className || "");
               return match ? (
                 <SyntaxHighlighter
-                  style={theme.palette.mode === "dark" ? atomDark : prism}
+                  style={
+                    mode === "dark" ||
+                    (mode === "system" && systemMode === "dark")
+                      ? atomDark
+                      : prism
+                  }
                   language={match[1]}
                   PreTag="div"
                   children={String(children).replace(/\n$/, "")}

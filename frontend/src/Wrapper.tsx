@@ -16,7 +16,11 @@ import { paths } from "./paths";
 
 export const Wrapper = ({ children }: { children: React.ReactNode }) => {
   const theme = useTheme();
-  const { mode, setMode } = useColorScheme();
+  const { mode, systemMode, setMode } = useColorScheme();
+  const isDark = React.useMemo(
+    () => mode === "dark" || (mode === "system" && systemMode === "dark"),
+    [mode, systemMode],
+  );
   const [isSnackbarOpened, setSnackbarOpened] = React.useState(false);
   const [snackbarContent, setSnackbarContent] = React.useState<SnackbarContent>(
     {
@@ -61,7 +65,7 @@ export const Wrapper = ({ children }: { children: React.ReactNode }) => {
         )}
 
         <Tooltip
-          title={theme.palette.mode === "dark" ? "Light mode" : "Dark mode"}
+          title={isDark ? "Light mode" : "Dark mode"}
           placement="left"
           arrow={true}
         >
@@ -71,12 +75,10 @@ export const Wrapper = ({ children }: { children: React.ReactNode }) => {
               top: theme.spacing(2),
               right: theme.spacing(2),
             }}
-            onClick={() => setMode(mode === "light" ? "dark" : "light")}
+            onClick={() => setMode(isDark ? "light" : "dark")}
             color="inherit"
           >
-            <Icon>
-              {theme.palette.mode === "dark" ? "brightness_7" : "brightness_4"}
-            </Icon>
+            <Icon>{isDark ? "brightness_7" : "brightness_4"}</Icon>
           </IconButton>
         </Tooltip>
         <SnackbarContext.Provider value={{ showSnackbar }}>
