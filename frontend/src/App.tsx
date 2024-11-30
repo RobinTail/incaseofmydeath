@@ -1,5 +1,6 @@
 import {
   createTheme,
+  CssBaseline,
   PaletteMode,
   Skeleton,
   ThemeProvider,
@@ -53,6 +54,13 @@ export const App = () => {
         palette: {
           mode: colorMode,
         },
+        components: {
+          MuiIcon: {
+            defaultProps: {
+              className: "material-symbols-outlined",
+            },
+          },
+        },
       }),
     [colorMode],
   );
@@ -60,6 +68,7 @@ export const App = () => {
   return (
     <ColorModeContext.Provider value={colorContext}>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <BrowserRouter>
           <Wrapper>
             <React.Suspense

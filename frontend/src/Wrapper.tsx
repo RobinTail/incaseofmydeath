@@ -2,7 +2,6 @@ import {
   Alert,
   Box,
   Container,
-  CssBaseline,
   Icon,
   IconButton,
   Snackbar,
@@ -36,7 +35,6 @@ export const Wrapper = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
       <Box
         sx={{
           mt: 8,
@@ -56,7 +54,7 @@ export const Wrapper = ({ children }: { children: React.ReactNode }) => {
               }}
               onClick={() => navigate(paths.root)}
             >
-              <Icon className="material-symbols-outlined">home</Icon>
+              <Icon>home</Icon>
             </IconButton>
           </Tooltip>
         )}
@@ -77,11 +75,9 @@ export const Wrapper = ({ children }: { children: React.ReactNode }) => {
             }}
             color="inherit"
           >
-            {theme.palette.mode === "dark" ? (
-              <Icon className="material-symbols-outlined">brightness_7</Icon>
-            ) : (
-              <Icon className="material-symbols-outlined">brightness_4</Icon>
-            )}
+            <Icon>
+              {theme.palette.mode === "dark" ? "brightness_7" : "brightness_4"}
+            </Icon>
           </IconButton>
         </Tooltip>
         <SnackbarContext.Provider value={{ showSnackbar }}>

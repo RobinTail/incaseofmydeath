@@ -348,9 +348,7 @@ const PersonalArea = () => {
             >
               <Tooltip title="Copy URL" placement="right" arrow>
                 <IconButton>
-                  <Icon className="material-symbols-outlined">
-                    content_copy
-                  </Icon>
+                  <Icon>content_copy</Icon>
                 </IconButton>
               </Tooltip>
             </CopyToClipboardButton>
@@ -371,9 +369,7 @@ const PersonalArea = () => {
         {isAuthorized && isNotRegistered && !isRepoSelected && (
           <IconicListSelector
             isLoading={isLoading}
-            icon={
-              <Icon className="material-symbols-outlined">conversion_path</Icon>
-            }
+            icon={<Icon>conversion_path</Icon>}
             items={repos.map((repo) => ({
               key: `${repo.login}/${repo.name}`,
               badge: {
@@ -394,9 +390,7 @@ const PersonalArea = () => {
           !isWorkflowSelected && (
             <IconicListSelector
               isLoading={isLoading}
-              icon={
-                <Icon className="material-symbols-outlined">play_circle</Icon>
-              }
+              icon={<Icon>play_circle</Icon>}
               items={workflows.map((workflow) => ({
                 key: workflow.id,
                 primary: workflow.name,

@@ -50,10 +50,7 @@ const PublicStatus = () => {
           {status.name || status.login}
         </Avatar>
       ) : (
-        <Icon
-          className="material-symbols-outlined"
-          sx={{ m: 1, color: theme.palette.text.primary, fontSize: 100 }}
-        >
+        <Icon sx={{ m: 1, color: theme.palette.text.primary, fontSize: 100 }}>
           account_circle
         </Icon>
       )}
