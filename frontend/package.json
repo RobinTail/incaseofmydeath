@@ -9,7 +9,7 @@
     "@types/react-syntax-highlighter": "^15.5.7",
     "@vitejs/plugin-react-swc": "^3.7.2",
     "vite": "^6.0.1",
-    "vite-plugin-material-symbols": "^0.2.1"
+    "vite-plugin-material-symbols": "^0.2.2"
   },
   "dependencies": {
     "@emotion/react": "^11.13.5",
