@@ -2489,13 +2489,13 @@ expect-type@^1.1.0:
   resolved "https://registry.yarnpkg.com/expect-type/-/expect-type-1.1.0.tgz#a146e414250d13dfc49eafcfd1344a4060fa4c75"
   integrity sha512-bFi65yM+xZgk+u/KRIpekdSYkTB5W1pEf0Lt8Q8Msh7b+eQ7LXVtIB1Bkm4fvclDEL1b2CZkMhv2mOeF8tMdkA==
 
-express-zod-api@^21.3.0:
-  version "21.3.0"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-21.3.0.tgz#6f0b07de129e07aa3b9ca362020c0c21a198b227"
-  integrity sha512-uoFvyW9a0CKgrhZ850j0Pu9Zyf/VS4zWQDpml9HecaXnwreyQi51rCwqY8habAfmcgv2hepFIH300d3DDCyUiw==
+express-zod-api@^21.7.0-beta.1:
+  version "21.7.0-beta.1"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-21.7.0-beta.1.tgz#aa65a874fb398022dfbacc9701cb54d0901076bf"
+  integrity sha512-Rbb+9QQPCWHULHAHwzi17YAIawaDGPJUxZX2zEWhFvHNl/jyH+FDMM+lbiwy55HyeW2LHjFavAMYjjKXmEKE3g==
   dependencies:
     ansis "^3.2.0"
-    node-mocks-http "^1.16.1"
+    node-mocks-http "^1.16.2"
     openapi3-ts "^4.4.0"
     ramda "^0.30.1"
 
@@ -3812,10 +3812,10 @@ node-fetch@^2.7.0:
   dependencies:
     whatwg-url "^5.0.0"
 
-node-mocks-http@^1.16.1:
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/node-mocks-http/-/node-mocks-http-1.16.1.tgz#9efb1d0ae5817106f256a672dabff11d99d8d8c7"
-  integrity sha512-Q2m5bmIE1KFeeKI6OsSn+c4XDara5NWnUJgzqnIkhiCNukYX+fqu0ADSeKOlpWtbCwgRnJ69F+7RUiQltzTKXA==
+node-mocks-http@^1.16.2:
+  version "1.16.2"
+  resolved "https://registry.yarnpkg.com/node-mocks-http/-/node-mocks-http-1.16.2.tgz#63e4c95f958f7adc71d69b9c839b29cbbe60273d"
+  integrity sha512-2Sh6YItRp1oqewZNlck3LaFp5vbyW2u51HX2p1VLxQ9U/bG90XV8JY9O7Nk+HDd6OOn/oV3nA5Tx5k4Rki0qlg==
   dependencies:
     accepts "^1.3.7"
     content-disposition "^0.5.3"
