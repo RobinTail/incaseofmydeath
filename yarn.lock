@@ -1273,9 +1273,9 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^18.3.1", "@types/react@^18.3.11":
-  version "18.3.16"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.16.tgz#5326789125fac98b718d586ad157442ceb44ff28"
-  integrity sha512-oh8AMIC4Y2ciKufU8hnKgs+ufgbA/dhPTACaZPM86AbwX9QwnFtSoPWEeRUj8fge+v6kFt78BXcDhAU1SrrAsw==
+  version "18.3.17"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.17.tgz#d86ca0e081c7a5e979b7db175f9515a41038cea7"
+  integrity sha512-opAQ5no6LqJNo9TqnxBKsgnkIYHozW9KSTlFVoSUJYh1Fl/sswkEoqIugRSm7tbh6pABtYjGAjW+GOS23j8qbw==
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
@@ -2487,10 +2487,10 @@ expect-type@^1.1.0:
   resolved "https://registry.yarnpkg.com/expect-type/-/expect-type-1.1.0.tgz#a146e414250d13dfc49eafcfd1344a4060fa4c75"
   integrity sha512-bFi65yM+xZgk+u/KRIpekdSYkTB5W1pEf0Lt8Q8Msh7b+eQ7LXVtIB1Bkm4fvclDEL1b2CZkMhv2mOeF8tMdkA==
 
-express-zod-api@^21.7.0-beta.1:
-  version "21.7.0-beta.1"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-21.7.0-beta.1.tgz#aa65a874fb398022dfbacc9701cb54d0901076bf"
-  integrity sha512-Rbb+9QQPCWHULHAHwzi17YAIawaDGPJUxZX2zEWhFvHNl/jyH+FDMM+lbiwy55HyeW2LHjFavAMYjjKXmEKE3g==
+express-zod-api@^21.7.0:
+  version "21.7.0"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-21.7.0.tgz#e955f2d9bc115615a66cb87c6460001eed0c3e99"
+  integrity sha512-8qDkD8cQieIcgyg5laVt2GeAdc+y/zLqEiQ/dUcOab/8nxTtgUZLVibVAdSjSCBzVuDUHsT6J0E1Lw2Q3oU9yQ==
   dependencies:
     ansis "^3.2.0"
     node-mocks-http "^1.16.2"
