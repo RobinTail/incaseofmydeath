@@ -12,8 +12,8 @@
     "vite-plugin-material-symbols": "^0.2.2"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.5",
-    "@emotion/styled": "^11.13.5",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@mui/lab": "^6.0.0-beta.17",
     "@mui/material": "^6.2.0",
     "react": "^18.3.1",
@@ -24,7 +24,7 @@
     "react-syntax-highlighter": "^15.6.1",
     "react-telegram-auth": "^1.0.3",
     "use-local-storage-state": "^19.5.0",
-    "zod": "^3.23.8"
+    "zod": "^3.24.1"
   },
   "scripts": {
     "build": "yarn build:client && yarn build:app",
