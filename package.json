@@ -16,7 +16,7 @@
     "globals": "^15.13.0",
     "prettier": "3.4.2",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.18.0"
+    "typescript-eslint": "^8.18.1"
   },
   "resolutions": {
     "**/vite": "^6",
