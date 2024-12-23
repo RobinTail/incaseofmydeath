@@ -1273,9 +1273,9 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^18.3.1", "@types/react@^18.3.11":
-  version "18.3.17"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.17.tgz#d86ca0e081c7a5e979b7db175f9515a41038cea7"
-  integrity sha512-opAQ5no6LqJNo9TqnxBKsgnkIYHozW9KSTlFVoSUJYh1Fl/sswkEoqIugRSm7tbh6pABtYjGAjW+GOS23j8qbw==
+  version "18.3.18"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.18.tgz#9b382c4cd32e13e463f97df07c2ee3bbcd26904b"
+  integrity sha512-t4yC+vtgnkYjNSKlFx1jkAhH8LgTo2N/7Qvi83kdEaUtMDiwpbLAktKDaAMlRcJ5eSxZkH74eEGt1ky31d7kfQ==
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
@@ -2211,7 +2211,7 @@ es-module-lexer@^1.5.4:
   resolved "https://registry.yarnpkg.com/es-module-lexer/-/es-module-lexer-1.5.4.tgz#a8efec3a3da991e60efa6b633a7cad6ab8d26b78"
   integrity sha512-MVNK56NiMrOwitFB7cqDwq0CQutbw+0BvLshJSse0MUNU+y1FC3bUS/AQg7oUng+/wKrrki7JfmwtVHkVfPLlw==
 
-esbuild@^0.24.0:
+esbuild@0.24.0:
   version "0.24.0"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.24.0.tgz#f2d470596885fcb2e91c21eb3da3b3c89c0b55e7"
   integrity sha512-FuLPevChGDshgSicjisSooU0cemp/sGXR841D5LHMB7mTVOmsEHcAxaH3irL53+8YDIeVNQEySh4DaYU/iuPqQ==
@@ -3714,10 +3714,10 @@ mongodb@~6.12.0:
     bson "^6.10.1"
     mongodb-connection-string-url "^3.0.0"
 
-mongoose@^8.9.0:
-  version "8.9.0"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-8.9.0.tgz#d98c7d7e899dd5d3a1db020d340306b02db44049"
-  integrity sha512-b58zY3PLNBcoz6ZXFckr0leJcVVBMAOBvD+7Bj2ZjghAwntXmNnqwlDixTKQU3UYoQIGTv+AQx/0ThsvaeVrCA==
+mongoose@^8.9.2:
+  version "8.9.2"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-8.9.2.tgz#af5145ff8b247110d53b87cdf9acac2b6216784c"
+  integrity sha512-mLWynmZS1v8HTeMxyLhskQncS1SkrjW1eLNuFDYGQMQ/5QrFrxTLNwWXeCRZeKT2lXyaxW8bnJC9AKPT9jYMkw==
   dependencies:
     bson "^6.10.1"
     kareem "2.6.3"
@@ -5212,11 +5212,11 @@ vite-plugin-material-symbols@^0.2.2:
     esquery "^1.6.0"
 
 vite@^5.0.0, vite@^6, vite@^6.0.3:
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-6.0.3.tgz#cc01f403e326a9fc1e064235df8a6de084c8a491"
-  integrity sha512-Cmuo5P0ENTN6HxLSo6IHsjCLn/81Vgrp81oaiFFMRa8gGDj5xEjIcEpf2ZymZtZR8oU0P2JX5WuUp/rlXcHkAw==
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-6.0.5.tgz#1d0fbdb3ffe61e944089abeddb7d2c509420acfd"
+  integrity sha512-akD5IAH/ID5imgue2DYhzsEwCi0/4VKY31uhMLEYJwPP4TiUp8pL5PIK+Wo7H8qT8JY9i+pVfPydcFPYD1EL7g==
   dependencies:
-    esbuild "^0.24.0"
+    esbuild "0.24.0"
     postcss "^8.4.49"
     rollup "^4.23.0"
   optionalDependencies:
