@@ -79,7 +79,9 @@ export const TimeSliders = (props: TimeSlidersOptions) => {
           placement={isXS ? "top" : "right"}
           sx={{ ml: 1 }}
         >
-          <Icon>info</Icon>
+          <Icon fontSize="small" className="material-symbols-outlined">
+            info
+          </Icon>
         </Tooltip>
       </Typography>
       <Slider
