@@ -4,5 +4,5 @@ import materialSymbols from "vite-plugin-material-symbols";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), materialSymbols()],
+  plugins: [react(), materialSymbols({ preload: true })],
 });
