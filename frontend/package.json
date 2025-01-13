@@ -19,7 +19,7 @@
     "react": "^18.3.1",
     "react-clipboard-button": "^2.0.0",
     "react-dom": "^18.3.1",
-    "react-markdown": "^9.0.1",
+    "react-markdown": "^9.0.3",
     "react-router-dom": "^7.1.1",
     "react-syntax-highlighter": "^15.6.1",
     "react-telegram-auth": "^1.0.3",
