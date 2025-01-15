@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
-  "workspaces": ["backend", "frontend"],
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
   "type": "module",
   "devDependencies": {
     "@types/node": "^22.10.5",
@@ -24,5 +27,6 @@
     "**/react-dom": "^18.3.1",
     "**/@types/react": "^18.3.1",
     "**/@types/react-dom": "^18.3.0"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
