@@ -1,7 +1,7 @@
-import { ExpressZodAPIClient, Input } from "./generated/api-client.ts";
+import { Client, Input } from "./generated/api-client.ts";
 const host = "https://api.incaseofmy.de:443";
 
-const client = new ExpressZodAPIClient(async (method, path, params) => {
+const client = new Client(async (method, path, params) => {
   const hasBody = !["get", "delete"].includes(method);
   const searchParams = hasBody ? "" : `?${new URLSearchParams(params)}`;
   const response = await fetch(`${host}${path}${searchParams}`, {
