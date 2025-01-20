@@ -22,7 +22,6 @@
     "typescript-eslint": "^8.19.1"
   },
   "resolutions": {
-    "**/vite": "^6",
     "**/react": "^18.3.1",
     "**/react-dom": "^18.3.1",
     "**/@types/react": "^18.3.1",
