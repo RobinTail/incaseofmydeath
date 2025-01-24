@@ -13,7 +13,7 @@
     "test": "tsc --noEmit && NODE_ENV=test vitest run"
   },
   "devDependencies": {
-    "@tsconfig/node18": "^18.2.4",
+    "@tsconfig/node20": "^20.1.4",
     "@types/express": "^5.0.0",
     "@types/fast-memory-cache": "^2.0.2",
     "@types/http-errors": "^2.0.4",
