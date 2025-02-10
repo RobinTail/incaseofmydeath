@@ -2507,10 +2507,10 @@ expect-type@^1.1.0:
   resolved "https://registry.yarnpkg.com/expect-type/-/expect-type-1.1.0.tgz#a146e414250d13dfc49eafcfd1344a4060fa4c75"
   integrity sha512-bFi65yM+xZgk+u/KRIpekdSYkTB5W1pEf0Lt8Q8Msh7b+eQ7LXVtIB1Bkm4fvclDEL1b2CZkMhv2mOeF8tMdkA==
 
-express-zod-api@^22.7.0-beta.0:
-  version "22.7.0-beta.0"
-  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-22.7.0-beta.0.tgz#f7441aedd144da77be77eefdca2db84d3ed7043e"
-  integrity sha512-AqIEgX9qlyPORZ4Fcm5T4Wks4PTQUGKCbrWhYXCR6Qk7OsWD8OhCFJsAQdgyxNrjNQjl3YZPXybX2y1hjw0/tg==
+express-zod-api@^22.7.0:
+  version "22.7.0"
+  resolved "https://registry.yarnpkg.com/express-zod-api/-/express-zod-api-22.7.0.tgz#58cfff2860cb9f8c2abcb00e0ad10ad216f3595d"
+  integrity sha512-6K/dqZShRQ4XUTB3wt91ojFBtMTqoX2g+WDLOXjcPFxvzLjPTteAeG1GheW96YF1vVVGj2tzKdHzi+WCxAgidA==
   dependencies:
     ansis "^3.2.0"
     node-mocks-http "^1.16.2"
