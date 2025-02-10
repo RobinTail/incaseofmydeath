@@ -9,7 +9,7 @@
   ],
   "type": "module",
   "devDependencies": {
-    "@types/node": "^22.13.0",
+    "@types/node": "^22.13.1",
     "eslint": "^9.19.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-allowed-dependencies": "^1.0.1",
