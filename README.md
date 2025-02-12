@@ -3,8 +3,6 @@
 The Application fulfills your last will by executing a workflow from your private repository on GitHub in case of your
 death. Free from bias, blind to your secrets, cold-blooded as machine code.
 
-https://www.incaseofmy.de/
-
 ## Who is it for
 
 The App is intended primarily for programmers and software engineers who have an account on GitHub. Recently, the
