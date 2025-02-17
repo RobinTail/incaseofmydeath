@@ -21,7 +21,7 @@
     "vitest": "^3.0.5"
   },
   "dependencies": {
-    "@octokit/auth-app": "^7.1.4",
+    "@octokit/auth-app": "^7.1.5",
     "@octokit/core": "^6.1.4",
     "compression": "^1.8.0",
     "express": "^5.0.1",
