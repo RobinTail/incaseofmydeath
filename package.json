@@ -19,7 +19,7 @@
     "globals": "^15.15.0",
     "prettier": "3.5.1",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.23.0"
+    "typescript-eslint": "^8.24.0"
   },
   "resolutions": {
     "**/react": "^18.3.1",
