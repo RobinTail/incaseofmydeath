@@ -23,7 +23,7 @@
   "dependencies": {
     "@octokit/auth-app": "^7.1.4",
     "@octokit/core": "^6.1.4",
-    "compression": "^1.7.5",
+    "compression": "^1.8.0",
     "express": "^5.0.1",
     "express-zod-api": "^22.9.1",
     "fast-memory-cache": "^2.0.4",
