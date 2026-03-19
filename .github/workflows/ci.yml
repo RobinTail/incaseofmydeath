@@ -2,34 +2,28 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [main]
   pull_request:
-    branches: [ master ]
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Get yarn cache dir
-        id: yarnCache
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install Node.js ${{ matrix.node-version }}
+
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x
-      - name: Cache node modules
-        uses: actions/cache@v4
-        env:
-          cache-name: cache-yarn
-        with:
-          path: ${{ steps.yarnCache.outputs.dir }}
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('backend/yarn.lock') }}
+          node-version: "20"
+          cache: "pnpm"
+
       - name: Install dependencies
-        run: yarn workspace backend install
-      - name: Test and build
-        run: |
-          yarn workspace backend lint
-          yarn workspace backend test
-          yarn workspace backend build
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Build
+        run: pnpm build

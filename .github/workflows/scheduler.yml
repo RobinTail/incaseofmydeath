@@ -1,0 +1,46 @@
+name: Daily Scheduler
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (don't send messages or trigger workflows)"
+        required: false
+        default: "false"
+
+env:
+  TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  GITHUB_APP_ID: ${{ vars.GITHUB_APP_ID }}
+  GITHUB_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma Client
+        run: pnpm prisma generate
+
+      - name: Run scheduler check
+        env:
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+        run: pnpm tsx scripts/scheduler.ts
+
+      - name: Report completion
+        run: echo "Scheduler check completed at $(date)"

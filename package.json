@@ -1,31 +1,40 @@
 {
   "name": "incaseofmydeath",
   "version": "1.0.0",
-  "license": "MIT",
   "private": true,
-  "workspaces": [
-    "backend",
-    "frontend"
-  ],
-  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio"
+  },
+  "dependencies": {
+    "@octokit/auth-app": "^8.2.0",
+    "@octokit/core": "^7.0.6",
+    "@prisma/adapter-pg": "^7.5.0",
+    "@prisma/client": "^7.5.0",
+    "next": "^16.2.0",
+    "pg": "^8.20.0",
+    "prisma": "^7.5.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "telegraf": "^4.16.3",
+    "zod": "^4.3.6"
+  },
   "devDependencies": {
-    "@types/node": "^22.13.1",
-    "eslint": "^9.20.1",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-allowed-dependencies": "^1.0.1",
-    "eslint-plugin-prettier": "^5.2.3",
-    "eslint-plugin-react-hooks": "^5.1.0",
-    "eslint-plugin-unicorn": "^56.0.1",
-    "globals": "^15.15.0",
-    "prettier": "3.5.1",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.24.0"
+    "@next/eslint-plugin-next": "^16.2.0",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^16.2.0",
+    "eslint-plugin-import": "^2.32.0",
+    "tsx": "^4.21.0"
   },
-  "resolutions": {
-    "**/react": "^18.3.1",
-    "**/react-dom": "^18.3.1",
-    "**/@types/react": "^18.3.1",
-    "**/@types/react-dom": "^18.3.0"
-  },
-  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+  "prisma": {
+    "schema": "prisma/schema.prisma"
+  }
 }

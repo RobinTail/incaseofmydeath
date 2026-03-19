@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id              Int       @id
+  installationId  Int
+  repoOwner       String
+  repoName        String
+  repoBranch      String    @default("main")
+  workflowId      Int
+  isAlive         Boolean   @default(true)
+  isPublic        Boolean   @default(false)
+  isCountdown     Boolean   @default(false)
+  checkFreq       String    @default("month")
+  deadlineDays    Int       @default(5)
+  attemptsCount   Int       @default(3)
+  nextCheck       DateTime
+  lastConfirmation DateTime
+  telegramChatId  String?   @unique
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([isAlive, nextCheck])
+  @@index([repoOwner])
+}
