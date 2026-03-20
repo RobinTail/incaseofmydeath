@@ -13,6 +13,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { HowItWorksTimeline } from "@/components/HowItWorksTimeline";
+import { WorkflowExample } from "@/components/WorkflowExample";
 
 function ErrorBanner() {
   const searchParams = useSearchParams();
@@ -210,6 +211,8 @@ export default function Home() {
         >
           Let&apos;s start
         </Button>
+
+        <WorkflowExample mt={4} />
 
         <Suspense fallback={null}>
           <ErrorBanner />
