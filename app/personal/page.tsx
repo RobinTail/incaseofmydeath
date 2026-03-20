@@ -18,7 +18,7 @@ import {
   Typography,
 } from "@mui/material";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Person } from "@/components/Person";
@@ -74,6 +74,61 @@ export default function PersonalPage() {
   const [deadlineDays, setDeadlineDays] = useState(5);
   const [attemptsCount, setAttemptsCount] = useState(3);
 
+  const fetchRepos = useCallback(async (t: string) => {
+    try {
+      const res = await fetch("/api/repos/list", {
+        headers: { Authorization: `Bearer ${t}` },
+      });
+      const data = await res.json();
+      setRepos(data.repos || []);
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  const fetchWorkflows = useCallback(
+    async (t: string, owner: string, repo: string) => {
+      try {
+        const res = await fetch(
+          `/api/workflows/list?owner=${owner}&repo=${repo}`,
+          {
+            headers: { Authorization: `Bearer ${t}` },
+          },
+        );
+        const data = await res.json();
+        setWorkflows(data.workflows || []);
+      } catch {
+        // ignore
+      }
+    },
+    [],
+  );
+
+  const fetchStatus = useCallback(
+    async (t: string) => {
+      try {
+        const res = await fetch("/api/registration/check", {
+          headers: { Authorization: `Bearer ${t}` },
+        });
+        if (!res.ok) throw new Error("Failed to fetch status");
+        const data = await res.json();
+        setStatus(data);
+        if (data.isRegistered) {
+          setCheckFreq(data.checkFreq);
+          setDeadlineDays(data.deadlineDays);
+          setAttemptsCount(data.attemptsCount);
+        } else {
+          fetchRepos(t);
+        }
+      } catch (e) {
+        setError(e instanceof Error ? e.message : "Unknown error");
+      } finally {
+        setLoading(false);
+      }
+    },
+    [fetchRepos],
+  );
+
   useEffect(() => {
     const cookies = document.cookie.split("; ");
     const authCookie = cookies.find((row) => row.startsWith("auth_token="));
@@ -98,56 +153,7 @@ export default function PersonalPage() {
     setToken(tokenValue);
     setAuth(authData);
     fetchStatus(tokenValue);
-  }, [router]);
-
-  async function fetchStatus(t: string) {
-    try {
-      const res = await fetch("/api/registration/check", {
-        headers: { Authorization: `Bearer ${t}` },
-      });
-      if (!res.ok) throw new Error("Failed to fetch status");
-      const data = await res.json();
-      setStatus(data);
-      if (data.isRegistered) {
-        setCheckFreq(data.checkFreq);
-        setDeadlineDays(data.deadlineDays);
-        setAttemptsCount(data.attemptsCount);
-      } else {
-        fetchRepos(t);
-      }
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Unknown error");
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function fetchRepos(t: string) {
-    try {
-      const res = await fetch("/api/repos/list", {
-        headers: { Authorization: `Bearer ${t}` },
-      });
-      const data = await res.json();
-      setRepos(data.repos || []);
-    } catch {
-      // ignore
-    }
-  }
-
-  async function fetchWorkflows(t: string, owner: string, repo: string) {
-    try {
-      const res = await fetch(
-        `/api/workflows/list?owner=${owner}&repo=${repo}`,
-        {
-          headers: { Authorization: `Bearer ${t}` },
-        },
-      );
-      const data = await res.json();
-      setWorkflows(data.workflows || []);
-    } catch {
-      // ignore
-    }
-  }
+  }, [router, fetchStatus]);
 
   async function handleRegister() {
     if (!token || !selectedRepo || !selectedWorkflow) return;
