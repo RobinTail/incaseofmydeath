@@ -14,6 +14,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@fontsource/material-symbols-outlined": "^5.2.38",
     "@mui/lab": "7.0.1-beta.23",
     "@mui/material": "^7.3.9",
     "@octokit/auth-app": "^8.2.0",
