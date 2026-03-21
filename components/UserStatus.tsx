@@ -19,7 +19,9 @@ export function UserStatus({ isAlive, loading }: UserStatusProps) {
 
   return (
     <Chip
-      icon={<Icon>{isAlive ? "favorite" : "heart_broken"}</Icon>}
+      icon={<Icon className='material-symbols-outlined'>
+        {isAlive ? "favorite" : "heart_broken"}
+      </Icon>}
       label={isAlive ? "Alive" : "Dead"}
       color={isAlive ? "success" : "error"}
       variant="outlined"
