@@ -3,6 +3,7 @@ import {
   getOAuthAccessToken,
   getGitHubUser,
   findAppInstallation,
+  getAppSlug,
 } from "@/lib/github";
 import { createUserToken } from "@/lib/auth";
 import { getDefaultNextCheck } from "@/lib/utils";
@@ -33,9 +34,8 @@ export async function GET(request: NextRequest) {
       const installation = await findAppInstallation(accessToken);
 
       if (!installation) {
-        return NextResponse.redirect(
-          `${process.env.FRONTEND_URL}/?error=no_installation`,
-        );
+        const installUrl = `https://github.com/apps/${getAppSlug()}/installations/new`;
+        return NextResponse.redirect(installUrl);
       }
 
       user = await db.user.create({

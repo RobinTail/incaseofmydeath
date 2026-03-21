@@ -19,6 +19,12 @@ function getClientId() {
   return id;
 }
 
+export function getAppSlug() {
+  const slug = process.env.GITHUB_APP_SLUG;
+  if (!slug) throw new Error("GITHUB_APP_SLUG is not set");
+  return slug;
+}
+
 function getClientSecret() {
   const secret = process.env.GITHUB_CLIENT_SECRET;
   if (!secret) throw new Error("GITHUB_CLIENT_SECRET is not set");
