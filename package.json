@@ -23,6 +23,7 @@
     "@octokit/core": "^7.0.6",
     "@prisma/adapter-pg": "^7.5.0",
     "@prisma/client": "^7.5.0",
+    "dotenv": "^17.3.1",
     "next": "^16.2.0",
     "pg": "^8.20.0",
     "prisma": "^7.5.0",
