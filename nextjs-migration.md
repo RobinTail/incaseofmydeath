@@ -45,7 +45,7 @@ incaseofmydeath/
 ├── app/
 │   ├── api/
 │   │   ├── auth/begin/route.ts
-│   │   ├── auth/finish/route.ts
+│   │   ├── auth/callback/route.ts
 │   │   ├── registration/check/route.ts
 │   │   ├── registration/remove/route.ts
 │   │   ├── registration/public/route.ts
@@ -127,7 +127,7 @@ Implement all endpoints as Next.js Route Handlers:
 | Old Endpoint                              | New Location                                    | Purpose                           |
 | ----------------------------------------- | ----------------------------------------------- | --------------------------------- |
 | `GET /v1/auth/begin`                      | `app/api/auth/begin/route.ts`                   | Start GitHub OAuth                |
-| `POST /v1/auth/finish`                    | `app/api/auth/finish/route.ts`                  | Complete OAuth, return user token |
+| `POST /v1/auth/callback`                  | `app/api/auth/callback/route.ts`                  | Complete OAuth, return user token |
 | `GET /v1/registration/check`              | `app/api/registration/check/route.ts`           | Check registration status         |
 | `DELETE /v1/registration/remove`          | `app/api/registration/remove/route.ts`          | Delete registration               |
 | `PATCH /v1/registration/public`           | `app/api/registration/public/route.ts`          | Toggle public status              |
