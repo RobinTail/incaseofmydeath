@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Paper, IconButton, Tooltip, Box } from "@mui/material";
 import Icon from "@mui/material/Icon";
+import { useColorScheme } from "@mui/material/styles";
 
 interface CodeSnippetProps {
   code: string;
@@ -12,20 +13,22 @@ interface CodeSnippetProps {
 export function CodeSnippet({ code, language }: CodeSnippetProps) {
   const [highlighted, setHighlighted] = useState<string>("");
   const [copied, setCopied] = useState(false);
+  const { mode } = useColorScheme();
+  const theme = mode === "dark" ? "github-dark" : "github-light";
 
   useEffect(() => {
     import("shiki").then(async ({ createHighlighter }) => {
       const highlighter = await createHighlighter({
-        themes: ["github-dark"],
+        themes: [theme],
         langs: [language],
       });
       const html = highlighter.codeToHtml(code, {
         lang: language,
-        theme: "github-dark",
+        theme: theme,
       });
       setHighlighted(html);
     });
-  }, [code, language]);
+  }, [code, language, theme]);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(code);
@@ -55,8 +58,8 @@ export function CodeSnippet({ code, language }: CodeSnippetProps) {
           onClick={handleCopy}
           sx={{
             position: "absolute",
-            top: 1,
-            right: 1,
+            top: ({spacing}) => spacing(1),
+            right: ({spacing}) => spacing(1),
             backgroundColor: "background.paper",
           }}
           size="small"
