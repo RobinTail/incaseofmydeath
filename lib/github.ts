@@ -10,7 +10,7 @@ function getPrivateKey() {
 function getAppId() {
   const id = process.env.GITHUB_APP_ID;
   if (!id) throw new Error("GITHUB_APP_ID is not set");
-  return id;
+  return parseInt(id);
 }
 
 function getClientId() {
@@ -30,11 +30,13 @@ export function getUserOctokit(token: string) {
 }
 
 export function getAppOctokit() {
-  const auth = createAppAuth({
-    appId: getAppId(),
-    privateKey: getPrivateKey(),
+  return new Octokit({
+    authStrategy: createAppAuth,
+    auth: {
+      appId: getAppId(),
+      privateKey: getPrivateKey(),
+    },
   });
-  return new Octokit({ auth });
 }
 
 export async function getInstallationToken(installationId: number) {
@@ -79,7 +81,7 @@ export async function findAppInstallation(token: string) {
   const octokit = getUserOctokit(token);
   const { data } = await octokit.request("GET /user/installations");
   const installation = data.installations?.find(
-    (i: { app_id: number }) => i.app_id === parseInt(getAppId()),
+    (i: { app_id: number }) => i.app_id === getAppId(),
   );
   if (!installation) {
     return null;
