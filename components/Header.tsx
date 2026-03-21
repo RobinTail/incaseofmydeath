@@ -3,6 +3,7 @@
 import { Icon, IconButton, Tooltip } from "@mui/material";
 import { usePathname, useRouter } from "next/navigation";
 import { useColorScheme } from "@mui/material/styles";
+import { useEffect } from "react";
 
 interface HeaderProps {
   showHomeButton?: boolean;
@@ -14,6 +15,17 @@ export function Header({ showHomeButton = true }: HeaderProps) {
   const isRoot = pathname === "/";
   const { mode, setMode } = useColorScheme();
   const isDark = mode === "dark";
+
+  useEffect(() => {
+    const html = document.documentElement;
+    if (isDark) {
+      html.classList.add("dark");
+      html.classList.remove("light");
+    } else {
+      html.classList.add("light");
+      html.classList.remove("dark");
+    }
+  }, [isDark]);
 
   return (
     <>
@@ -38,7 +50,9 @@ export function Header({ showHomeButton = true }: HeaderProps) {
         arrow
       >
         <IconButton
-          onClick={() => setMode(isDark ? "light" : "dark")}
+          onClick={() => {
+              setMode(isDark ? "light" : "dark");
+          }}
           sx={{
             position: "fixed",
             top: 16,
