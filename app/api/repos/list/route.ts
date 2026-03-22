@@ -26,8 +26,12 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
 
-  const iToken = await getInstallationTokenForUser(user.installationId);
-  const octokit = getUserOctokit(iToken);
+  const githubToken = request.cookies.get("github_token")?.value;
+  if (!githubToken) {
+    return NextResponse.json({ error: "GitHub token not found, please re-authenticate" }, { status: 401 });
+  }
+
+  const octokit = getUserOctokit(githubToken);
 
   try {
     const { data } = await octokit.request(
@@ -59,9 +63,4 @@ export async function GET(request: NextRequest) {
       { status: 500 },
     );
   }
-}
-
-async function getInstallationTokenForUser(installationId: number) {
-  const { getInstallationToken } = await import("@/lib/github");
-  return getInstallationToken(installationId);
 }

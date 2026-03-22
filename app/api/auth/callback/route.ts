@@ -76,6 +76,12 @@ export async function GET(request: NextRequest) {
       sameSite: "lax",
       maxAge: 60 * 60 * 24 * 30,
     });
+    response.cookies.set("github_token", accessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 30,
+    });
 
     return response;
   } catch (error) {
