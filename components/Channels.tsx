@@ -24,7 +24,7 @@ export function Channels({
   onDisconnectTelegram,
 }: ChannelsProps) {
   return (
-    <Box sx={{ mt: 2, mb: 4 }} textAlign="center">
+    <Box textAlign="center">
       <Typography component="h2" variant="h5">
         Communication Channels
       </Typography>
