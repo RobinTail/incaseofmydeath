@@ -492,7 +492,7 @@ export default function PersonalPage() {
                   {status.channels.telegram.connected ? (
                     <>
                       <Chip
-                        icon={<Icon>check_circle</Icon>}
+                        icon={<Icon className='material-symbols-outlined'>check_circle</Icon>}
                         label="Connected"
                         color="success"
                         sx={{ mb: 1 }}
@@ -510,7 +510,7 @@ export default function PersonalPage() {
                   ) : (
                     <>
                       <Chip
-                        icon={<Icon>cancel</Icon>}
+                        icon={<Icon className='material-symbols-outlined'>cancel</Icon>}
                         label="Not connected"
                         color="default"
                         sx={{ mb: 1 }}
