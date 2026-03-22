@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { Box, Link, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { CodeSnippet } from "./CodeSnippet";
+import { Box, Link, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { CodeSnippet } from './CodeSnippet'
 
 const exampleWorkflow = `name: Last will
 on: workflow_dispatch
@@ -33,58 +33,52 @@ jobs:
           find in a drawer in my office. Do not
           be discouraged for too long and find
           for yourself someone alive, because
-          you deserve to be happy anyway.`;
+          you deserve to be happy anyway.`
 
 interface WorkflowExampleProps {
-  mt?: number;
+  mt?: number
 }
 
 export function WorkflowExample({ mt = 0 }: WorkflowExampleProps) {
-  const theme = useTheme();
-  const isXS = useMediaQuery(theme.breakpoints.only("xs"));
+  const theme = useTheme()
+  const isXS = useMediaQuery(theme.breakpoints.only('xs'))
 
   return (
     <Box mt={mt}>
-      <Typography
-        variant={isXS ? "h6" : "h5"}
-        component="h2"
-        align="center"
-        gutterBottom
-      >
+      <Typography variant={isXS ? 'h6' : 'h5'} component="h2" align="center" gutterBottom>
         How to create the workflow
       </Typography>
 
       <Typography gutterBottom align="center">
         <Link href="https://github.com/new" target="_blank" rel="noopener">
           Create a new private repository on GitHub
-        </Link>{" "}
+        </Link>{' '}
         in case you do not have one yet.
       </Typography>
 
       <Typography gutterBottom align="center">
-        Commit a file{" "}
+        Commit a file{' '}
         <code
           style={{
-            fontSize: "0.85rem",
+            fontSize: '0.85rem',
             padding: `${theme.spacing(0.25)} ${theme.spacing(0.75)}`,
             backgroundColor: theme.palette.divider,
             borderRadius: theme.shape.borderRadius,
           }}
         >
           .github/workflows/my-last-will.yml
-        </code>{" "}
+        </code>{' '}
         to the repository with a content similar to the following.
       </Typography>
 
       <Typography gutterBottom align="center">
-        <strong>Please note</strong>: the email sending action is shown below
-        for demonstration purposes. You should choose your own steps and actions
-        according to your goals and concerns.
+        <strong>Please note</strong>: the email sending action is shown below for demonstration
+        purposes. You should choose your own steps and actions according to your goals and concerns.
       </Typography>
 
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <CodeSnippet code={exampleWorkflow} language="yaml" />
       </Box>
     </Box>
-  );
+  )
 }

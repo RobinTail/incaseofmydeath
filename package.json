@@ -7,6 +7,7 @@
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint .",
+    "format": "prettier --write .",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:studio": "prisma studio"
@@ -41,6 +42,7 @@
     "eslint": "^9.0.0",
     "eslint-config-next": "^16.2.0",
     "eslint-plugin-import": "^2.32.0",
+    "prettier": "^3.8.1",
     "tsx": "^4.21.0"
   },
   "prisma": {

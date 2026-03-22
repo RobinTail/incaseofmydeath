@@ -127,7 +127,7 @@ Implement all endpoints as Next.js Route Handlers:
 | Old Endpoint                              | New Location                                    | Purpose                           |
 | ----------------------------------------- | ----------------------------------------------- | --------------------------------- |
 | `GET /v1/auth/begin`                      | `app/api/auth/begin/route.ts`                   | Start GitHub OAuth                |
-| `POST /v1/auth/callback`                  | `app/api/auth/callback/route.ts`                  | Complete OAuth, return user token |
+| `POST /v1/auth/callback`                  | `app/api/auth/callback/route.ts`                | Complete OAuth, return user token |
 | `GET /v1/registration/check`              | `app/api/registration/check/route.ts`           | Check registration status         |
 | `DELETE /v1/registration/remove`          | `app/api/registration/remove/route.ts`          | Delete registration               |
 | `PATCH /v1/registration/public`           | `app/api/registration/public/route.ts`          | Toggle public status              |
@@ -155,9 +155,9 @@ Create `app/api/telegram/route.ts`:
 
 ```typescript
 // Validate secret token
-const token = request.headers.get("x-telegram-bot-api-secret-token");
+const token = request.headers.get('x-telegram-bot-api-secret-token')
 if (token !== process.env.TELEGRAM_SECRET_TOKEN) {
-  return new Response("Unauthorized", { status: 401 });
+  return new Response('Unauthorized', { status: 401 })
 }
 ```
 
@@ -169,7 +169,7 @@ Create `.github/workflows/scheduler.yml`:
 name: Daily Scheduler
 on:
   schedule:
-    - cron: "0 12 * * *" # Daily at noon UTC
+    - cron: '0 12 * * *' # Daily at noon UTC
   workflow_dispatch: {}
 
 jobs:

@@ -51,7 +51,7 @@ for the official transfer of property and inheritance rights.
 
 Commit a file `.github/workflows/my-last-will.yml` to the repository with a content similar to the following.
 
-**Please note**: the email sending action is shown below for demonstration purposes. 
+**Please note**: the email sending action is shown below for demonstration purposes.
 You should choose your own steps and actions according to your goals and concerns.
 
 ```yaml
@@ -61,29 +61,29 @@ jobs:
   lastWill:
     runs-on: ubuntu-latest
     steps:
-    - name: Tell my wife I love her
-      uses: dawidd6/action-send-mail@v3.6.0
-      with:
-        server_address: smtp.mail.mail
-        server_port: 465
-        username: ${{ secrets.SMTP_LOGIN }}
-        password: ${{ secrets.SMTP_PASSWORD }}
-        from: Jane Doe <janedoe@mail.mail>
-        to: mywife@mail.mail
-        subject: My last will
-        body: |
-          Hello my darling. If you are reading
-          these lines, I am most likely dead. In
-          this regard, I want to inform you that 
-          the years I lived with you were the
-          happiest in my life. I love you more
-          than schnitzel and potatoes. I am just
-          kidding, sorry. To support you in this
-          difficult moment, I leave you some
-          money between the pages of The Hobbit
-          book by J.R.R. Tolkien, which you will
-          find in a drawer in my office. Do not
-          be discouraged for too long and find
-          for yourself someone alive, because
-          you deserve to be happy anyway.
+      - name: Tell my wife I love her
+        uses: dawidd6/action-send-mail@v3.6.0
+        with:
+          server_address: smtp.mail.mail
+          server_port: 465
+          username: ${{ secrets.SMTP_LOGIN }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          from: Jane Doe <janedoe@mail.mail>
+          to: mywife@mail.mail
+          subject: My last will
+          body: |
+            Hello my darling. If you are reading
+            these lines, I am most likely dead. In
+            this regard, I want to inform you that 
+            the years I lived with you were the
+            happiest in my life. I love you more
+            than schnitzel and potatoes. I am just
+            kidding, sorry. To support you in this
+            difficult moment, I leave you some
+            money between the pages of The Hobbit
+            book by J.R.R. Tolkien, which you will
+            find in a drawer in my office. Do not
+            be discouraged for too long and find
+            for yourself someone alive, because
+            you deserve to be happy anyway.
 ```

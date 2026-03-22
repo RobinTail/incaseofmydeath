@@ -2,13 +2,13 @@ name: Daily Scheduler
 
 on:
   schedule:
-    - cron: "0 12 * * *"
+    - cron: '0 12 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
         description: "Dry run (don't send messages or trigger workflows)"
         required: false
-        default: "false"
+        default: 'false'
 
 env:
   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -28,8 +28,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "pnpm"
+          node-version: '20'
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
