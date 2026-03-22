@@ -6,7 +6,6 @@ import {
   Button,
   Card,
   CardContent,
-  Chip,
   CircularProgress,
   Container,
   FormControlLabel,
@@ -28,6 +27,7 @@ import { UserStatus } from '@/components/UserStatus'
 import { Consent } from '@/components/Consent'
 import { TimeSliders } from '@/components/TimeSliders'
 import { SettingsDialog } from '@/components/SettingsDialog'
+import { Channels } from '@/components/Channels'
 
 interface AuthData {
   id: number
@@ -482,51 +482,13 @@ export default function PersonalPage() {
                 onUpdate={handleUpdateSettings}
               />
 
-              <Card sx={{ width: '100%' }}>
-                <CardContent>
-                  <Typography variant="h6" gutterBottom>
-                    Telegram Channel
-                  </Typography>
-                  {status.channels.telegram.connected ? (
-                    <>
-                      <Chip
-                        icon={<Icon className="material-symbols-outlined">check_circle</Icon>}
-                        label="Connected"
-                        color="success"
-                        sx={{ mb: 1 }}
-                      />
-                      <Button
-                        variant="outlined"
-                        color="error"
-                        onClick={handleDisconnectTelegram}
-                        disabled={saving}
-                        fullWidth
-                      >
-                        Disconnect
-                      </Button>
-                    </>
-                  ) : (
-                    <>
-                      <Chip
-                        icon={<Icon className="material-symbols-outlined">cancel</Icon>}
-                        label="Not connected"
-                        color="default"
-                        sx={{ mb: 1 }}
-                      />
-                      <Button
-                        variant="contained"
-                        component={Link}
-                        href="https://t.me/YourBot"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        fullWidth
-                      >
-                        Connect Telegram
-                      </Button>
-                    </>
-                  )}
-                </CardContent>
-              </Card>
+              <Channels
+                telegramConnected={status.channels.telegram.connected}
+                onConnectTelegram={() => {
+                  window.open('https://t.me/YourBot', '_blank')
+                }}
+                onDisconnectTelegram={handleDisconnectTelegram}
+              />
 
               <Card sx={{ width: '100%' }}>
                 <CardContent>
