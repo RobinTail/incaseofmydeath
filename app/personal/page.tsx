@@ -23,6 +23,7 @@ import { useRouter } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Person } from "@/components/Person";
 import { UserStatus } from "@/components/UserStatus";
+import { Consent } from "@/components/Consent";
 
 interface AuthData {
   id: number;
@@ -73,6 +74,13 @@ export default function PersonalPage() {
   const [checkFreq, setCheckFreq] = useState("month");
   const [deadlineDays, setDeadlineDays] = useState(5);
   const [attemptsCount, setAttemptsCount] = useState(3);
+  const [showConsent, setShowConsent] = useState(false);
+  const [pendingRegistration, setPendingRegistration] = useState<{
+    owner: string;
+    name: string;
+    workflowId: number;
+    workflowName: string;
+  } | null>(null);
 
   const fetchRepos = useCallback(async (t: string) => {
     try {
@@ -134,14 +142,15 @@ export default function PersonalPage() {
     const authCookie = cookies.find((row) => row.startsWith("auth_token="));
     const authDataCookie = cookies.find((row) => row.startsWith("auth_data="));
 
-    const tokenValue = authCookie?.split("=")[1];
+    const tokenValue = authCookie?.split("=").slice(1).join("=");
     let authData: AuthData | null = null;
 
     if (authDataCookie) {
       try {
-        authData = JSON.parse(decodeURIComponent(authDataCookie.split("=")[1]));
-      } catch {
-        // ignore parse errors
+        const value = authDataCookie.split("=").slice(1).join("=");
+        authData = JSON.parse(atob(value));
+      } catch (e) {
+        console.error("Failed to parse auth_data cookie", e);
       }
     }
 
@@ -156,10 +165,9 @@ export default function PersonalPage() {
   }, [router, fetchStatus]);
 
   async function handleRegister() {
-    if (!token || !selectedRepo || !selectedWorkflow) return;
+    if (!token || !pendingRegistration) return;
     setSaving(true);
 
-    const [owner, name] = selectedRepo.split("/");
     try {
       const res = await fetch("/api/workflows/register", {
         method: "POST",
@@ -168,12 +176,17 @@ export default function PersonalPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          owner,
-          repo: name,
-          workflowId: selectedWorkflow,
+          owner: pendingRegistration.owner,
+          repo: pendingRegistration.name,
+          workflowId: pendingRegistration.workflowId,
         }),
       });
       if (!res.ok) throw new Error("Failed to register");
+      setShowConsent(false);
+      setPendingRegistration(null);
+      setSelectedRepo("");
+      setSelectedWorkflow(null);
+      setWorkflows([]);
       await fetchStatus(token);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to register");
@@ -246,11 +259,28 @@ export default function PersonalPage() {
     }
   }
 
+  async function handleUnregister() {
+    if (!token) return;
+    setSaving(true);
+    try {
+      const res = await fetch("/api/registration/remove", {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!res.ok) throw new Error("Failed to unregister");
+      await fetchStatus(token);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Failed to unregister");
+    } finally {
+      setSaving(false);
+    }
+  }
+
   async function handleLogout() {
     document.cookie =
       "auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie =
-      "auth_data=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      "github_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     router.push("/");
   }
 
@@ -379,15 +409,61 @@ export default function PersonalPage() {
                 </Select>
               </Box>
 
-              <Button
-                variant="contained"
-                onClick={handleRegister}
-                disabled={!selectedRepo || !selectedWorkflow || saving}
-                fullWidth
-                sx={{ mb: 2 }}
-              >
-                {saving ? <CircularProgress size={24} /> : "Register Workflow"}
-              </Button>
+              {!showConsent ? (
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    if (selectedRepo && selectedWorkflow) {
+                      const [owner, name] = selectedRepo.split("/");
+                      const workflow = workflows.find(
+                        (w) => w.id === selectedWorkflow,
+                      );
+                      setPendingRegistration({
+                        owner,
+                        name,
+                        workflowId: selectedWorkflow,
+                        workflowName: workflow?.name || "Unknown",
+                      });
+                      setShowConsent(true);
+                    }
+                  }}
+                  disabled={!selectedRepo || !selectedWorkflow || saving}
+                  fullWidth
+                  sx={{ mb: 2 }}
+                >
+                  Continue to Consent
+                </Button>
+              ) : (
+                <>
+                  <Button
+                    variant="outlined"
+                    onClick={() => {
+                      setShowConsent(false);
+                      setPendingRegistration(null);
+                    }}
+                    fullWidth
+                    sx={{ mb: 2 }}
+                  >
+                    Back
+                  </Button>
+                  {pendingRegistration && (
+                    <Consent
+                      signedBy={auth?.name || auth?.login || "User"}
+                      repo={`${pendingRegistration.owner}/${pendingRegistration.name}`}
+                      workflow={pendingRegistration.workflowName}
+                      isLoading={saving}
+                      onAgree={handleRegister}
+                      onReset={() => {
+                        setShowConsent(false);
+                        setPendingRegistration(null);
+                        setSelectedRepo("");
+                        setSelectedWorkflow(null);
+                        setWorkflows([]);
+                      }}
+                    />
+                  )}
+                </>
+              )}
             </>
           )}
 
@@ -414,6 +490,17 @@ export default function PersonalPage() {
                     Next Check:{" "}
                     {new Date(status.nextCheck).toLocaleDateString()}
                   </Typography>
+                  <Button
+                    variant="outlined"
+                    color="error"
+                    size="small"
+                    onClick={handleUnregister}
+                    disabled={saving}
+                    sx={{ mt: 2 }}
+                    fullWidth
+                  >
+                    {saving ? <CircularProgress size={24} /> : "Unregister Workflow"}
+                  </Button>
                 </CardContent>
               </Card>
 

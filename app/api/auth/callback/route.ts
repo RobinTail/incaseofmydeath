@@ -68,10 +68,23 @@ export async function GET(request: NextRequest) {
 
     const token = createUserToken(user.id);
 
+    const authData = {
+      id: githubUser.id,
+      login: githubUser.login,
+      avatarUrl: githubUser.avatar_url,
+      name: githubUser.name,
+    };
+
     const response = NextResponse.redirect(`${frontendUrl}/personal`);
     response.cookies.delete("oauth_state");
     response.cookies.set("auth_token", token, {
       httpOnly: false, // @todo use a server component for reading this instead
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 30,
+    });
+    response.cookies.set("auth_data", Buffer.from(JSON.stringify(authData)).toString("base64"), {
+      httpOnly: false,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
       maxAge: 60 * 60 * 24 * 30,

@@ -14,8 +14,13 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ error: "Invalid token" }, { status: 401 });
   }
 
-  await db.user.delete({
+  await db.user.update({
     where: { id: decoded.userId },
+    data: {
+      repoOwner: "",
+      repoName: "",
+      workflowId: 0,
+    },
   });
 
   return NextResponse.json({ success: true });
