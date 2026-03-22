@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import {
   Button,
+  CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
@@ -12,8 +14,7 @@ import {
 interface SettingsDialogProps {
   open: boolean;
   onClose: () => void;
-  onUnregister: () => void;
-  isLoading: boolean;
+  onUnregister: () => Promise<void>;
   repo: { owner: string; name: string } | null;
   workflow: { name: string } | null;
 }
@@ -22,10 +23,21 @@ export function SettingsDialog({
   open,
   onClose,
   onUnregister,
-  isLoading,
   repo,
   workflow,
 }: SettingsDialogProps) {
+  const [loading, setLoading] = useState(false);
+
+  const handleUnregister = async () => {
+    setLoading(true);
+    try {
+      await onUnregister();
+    } finally {
+      setLoading(false);
+    }
+    onClose();
+  };
+
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>Settings</DialogTitle>
@@ -46,10 +58,10 @@ export function SettingsDialog({
           <Button
             variant="outlined"
             color="error"
-            onClick={onUnregister}
-            disabled={isLoading}
+            onClick={handleUnregister}
+            disabled={loading}
           >
-            Unregister workflow
+            {loading ? <CircularProgress size={24} /> : "Unregister workflow"}
           </Button>
         )}
         <Button variant="contained" onClick={onClose}>

@@ -589,7 +589,6 @@ export default function PersonalPage() {
         open={settingsOpen}
         onClose={() => setSettingsOpen(false)}
         onUnregister={handleUnregister}
-        isLoading={saving}
         repo={status?.repo || null}
         workflow={status?.workflow || null}
       />
