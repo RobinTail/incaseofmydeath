@@ -33,7 +33,6 @@ export function Person({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        mb: 3,
       }}
     >
       {isAuthorized ? (

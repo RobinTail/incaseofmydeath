@@ -17,6 +17,7 @@ import {
   Switch,
   Tooltip,
   Typography,
+  Stack,
 } from "@mui/material";
 import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
@@ -340,11 +341,10 @@ export default function PersonalPage() {
     <>
       <Header />
       <Container component="main" maxWidth="xs" sx={{ mt: 8, mb: 8 }}>
-        <Box
+        <Stack
           sx={{
-            display: "flex",
-            flexDirection: "column",
             alignItems: "center",
+            gap: 3
           }}
         >
           {error && (
@@ -496,7 +496,7 @@ export default function PersonalPage() {
                 onUpdate={handleUpdateSettings}
               />
 
-              <Card sx={{ width: "100%", mb: 2 }}>
+              <Card sx={{ width: "100%" }}>
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
                     Telegram Channel
@@ -542,7 +542,7 @@ export default function PersonalPage() {
                 </CardContent>
               </Card>
 
-              <Card sx={{ width: "100%", mb: 2 }}>
+              <Card sx={{ width: "100%" }}>
                 <CardContent>
                   <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                     <Typography variant="h6" gutterBottom sx={{ mb: 0 }}>
@@ -582,7 +582,7 @@ export default function PersonalPage() {
           <Button variant="text" onClick={handleLogout} sx={{ mt: 2 }}>
             Logout
           </Button>
-        </Box>
+        </Stack>
       </Container>
 
       <SettingsDialog
