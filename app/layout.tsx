@@ -1,17 +1,17 @@
-import type { Metadata, Viewport } from 'next'
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter'
-import { ThemeProvider } from '@mui/material/styles'
-import CssBaseline from '@mui/material/CssBaseline'
-import theme from '../theme'
-import '@fontsource/material-symbols-outlined'
-import './globals.css'
+import type { Metadata, Viewport } from 'next';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import theme from '../theme';
+import '@fontsource/material-symbols-outlined';
+import './globals.css';
 
 export const viewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
     { media: '(prefers-color-scheme: dark)', color: '#000000' },
   ],
-}
+};
 
 export const metadata: Metadata = {
   title: 'In Case of My Death',
@@ -31,12 +31,12 @@ export const metadata: Metadata = {
       },
     ],
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -49,5 +49,5 @@ export default function RootLayout({
         </AppRouterCacheProvider>
       </body>
     </html>
-  )
+  );
 }

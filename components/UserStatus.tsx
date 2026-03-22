@@ -1,20 +1,20 @@
-'use client'
+'use client';
 
-import { Chip, CircularProgress } from '@mui/material'
-import Icon from '@mui/material/Icon'
+import { Chip, CircularProgress } from '@mui/material';
+import Icon from '@mui/material/Icon';
 
 interface UserStatusProps {
-  isAlive: boolean | null
-  loading?: boolean
+  isAlive: boolean | null;
+  loading?: boolean;
 }
 
 export function UserStatus({ isAlive, loading }: UserStatusProps) {
   if (loading) {
-    return <CircularProgress size={24} />
+    return <CircularProgress size={24} />;
   }
 
   if (isAlive === null) {
-    return null
+    return null;
   }
 
   return (
@@ -26,5 +26,5 @@ export function UserStatus({ isAlive, loading }: UserStatusProps) {
       color={isAlive ? 'success' : 'error'}
       variant="outlined"
     />
-  )
+  );
 }

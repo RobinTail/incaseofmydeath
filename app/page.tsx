@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import {
   Box,
@@ -8,17 +8,17 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-} from '@mui/material'
-import Link from 'next/link'
-import { Suspense } from 'react'
-import { useSearchParams } from 'next/navigation'
-import { HowItWorksTimeline } from '@/components/HowItWorksTimeline'
-import { WorkflowExample } from '@/components/WorkflowExample'
-import { Header } from '@/components/Header'
+} from '@mui/material';
+import Link from 'next/link';
+import { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { HowItWorksTimeline } from '@/components/HowItWorksTimeline';
+import { WorkflowExample } from '@/components/WorkflowExample';
+import { Header } from '@/components/Header';
 
 function ErrorBanner() {
-  const searchParams = useSearchParams()
-  const errorParam = searchParams.get('error')
+  const searchParams = useSearchParams();
+  const errorParam = searchParams.get('error');
 
   const errorMessage =
     errorParam === 'invalid_state'
@@ -27,9 +27,9 @@ function ErrorBanner() {
         ? 'Please install the GitHub App first.'
         : errorParam === 'oauth_failed'
           ? 'OAuth authentication failed. Please try again.'
-          : null
+          : null;
 
-  if (!errorMessage) return null
+  if (!errorMessage) return null;
 
   return (
     <Box
@@ -44,12 +44,12 @@ function ErrorBanner() {
     >
       {errorMessage}
     </Box>
-  )
+  );
 }
 
 export default function Home() {
-  const theme = useTheme()
-  const isXS = useMediaQuery(theme.breakpoints.only('xs'))
+  const theme = useTheme();
+  const isXS = useMediaQuery(theme.breakpoints.only('xs'));
 
   return (
     <>
@@ -202,5 +202,5 @@ export default function Home() {
         </Box>
       </Container>
     </>
-  )
+  );
 }

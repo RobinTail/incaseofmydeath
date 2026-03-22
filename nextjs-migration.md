@@ -155,9 +155,9 @@ Create `app/api/telegram/route.ts`:
 
 ```typescript
 // Validate secret token
-const token = request.headers.get('x-telegram-bot-api-secret-token')
+const token = request.headers.get('x-telegram-bot-api-secret-token');
 if (token !== process.env.TELEGRAM_SECRET_TOKEN) {
-  return new Response('Unauthorized', { status: 401 })
+  return new Response('Unauthorized', { status: 401 });
 }
 ```
 

@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import { Box, Link, Typography, useMediaQuery, useTheme } from '@mui/material'
-import { CodeSnippet } from './CodeSnippet'
+import { Box, Link, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { CodeSnippet } from './CodeSnippet';
 
 const exampleWorkflow = `name: Last will
 on: workflow_dispatch
@@ -33,15 +33,15 @@ jobs:
           find in a drawer in my office. Do not
           be discouraged for too long and find
           for yourself someone alive, because
-          you deserve to be happy anyway.`
+          you deserve to be happy anyway.`;
 
 interface WorkflowExampleProps {
-  mt?: number
+  mt?: number;
 }
 
 export function WorkflowExample({ mt = 0 }: WorkflowExampleProps) {
-  const theme = useTheme()
-  const isXS = useMediaQuery(theme.breakpoints.only('xs'))
+  const theme = useTheme();
+  const isXS = useMediaQuery(theme.breakpoints.only('xs'));
 
   return (
     <Box mt={mt}>
@@ -80,5 +80,5 @@ export function WorkflowExample({ mt = 0 }: WorkflowExampleProps) {
         <CodeSnippet code={exampleWorkflow} language="yaml" />
       </Box>
     </Box>
-  )
+  );
 }

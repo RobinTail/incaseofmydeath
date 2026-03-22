@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
-import { Box, Slider, Typography, Tooltip, useTheme, useMediaQuery } from '@mui/material'
-import Icon from '@mui/material/Icon'
-import { useState } from 'react'
+import { Box, Slider, Typography, Tooltip, useTheme, useMediaQuery } from '@mui/material';
+import Icon from '@mui/material/Icon';
+import { useState } from 'react';
 
-type CheckFreqCode = 'day' | 'week' | 'month' | 'quarter' | 'year'
+type CheckFreqCode = 'day' | 'week' | 'month' | 'quarter' | 'year';
 
 const checkFreqLabels: Record<CheckFreqCode, string> = {
   day: 'daily',
@@ -12,23 +12,23 @@ const checkFreqLabels: Record<CheckFreqCode, string> = {
   month: 'monthly',
   quarter: 'quarterly',
   year: 'yearly',
-}
+};
 
 const checkFreqMarks = (['day', 'week', 'month', 'quarter', 'year'] as CheckFreqCode[]).map(
   (key, index) => ({
     value: index,
     label: checkFreqLabels[key],
   })
-)
+);
 
-const defaultCheckFreqIndex = 2
+const defaultCheckFreqIndex = 2;
 
 interface TimeSlidersProps {
-  checkFreqCode: CheckFreqCode
-  deadlineDays: number
-  attemptsCount: number
-  nextCheck: Date
-  onUpdate: (checkFreq: CheckFreqCode, deadlineDays: number, attemptsCount: number) => void
+  checkFreqCode: CheckFreqCode;
+  deadlineDays: number;
+  attemptsCount: number;
+  nextCheck: Date;
+  onUpdate: (checkFreq: CheckFreqCode, deadlineDays: number, attemptsCount: number) => void;
 }
 
 export function TimeSliders({
@@ -38,23 +38,23 @@ export function TimeSliders({
   nextCheck,
   onUpdate,
 }: TimeSlidersProps) {
-  const theme = useTheme()
-  const isXS = useMediaQuery(theme.breakpoints.only('xs'))
+  const theme = useTheme();
+  const isXS = useMediaQuery(theme.breakpoints.only('xs'));
 
   const initialIndex = (Object.keys(checkFreqLabels) as CheckFreqCode[]).indexOf(
     initialCheckFreqCode
-  )
+  );
   const [checkFreqIndex, setCheckFreqIndex] = useState(
     initialIndex >= 0 ? initialIndex : defaultCheckFreqIndex
-  )
-  const [deadlineDays, setDeadlineDays] = useState(initialDeadlineDays)
-  const [attemptsCount, setAttemptsCount] = useState(initialAttemptsCount)
+  );
+  const [deadlineDays, setDeadlineDays] = useState(initialDeadlineDays);
+  const [attemptsCount, setAttemptsCount] = useState(initialAttemptsCount);
 
-  const checkFreqCode = (Object.keys(checkFreqLabels) as CheckFreqCode[])[checkFreqIndex]
+  const checkFreqCode = (Object.keys(checkFreqLabels) as CheckFreqCode[])[checkFreqIndex];
 
   const handleUpdate = () => {
-    onUpdate(checkFreqCode, deadlineDays, attemptsCount)
-  }
+    onUpdate(checkFreqCode, deadlineDays, attemptsCount);
+  };
 
   return (
     <Box sx={[!isXS && { minWidth: '300px' }, isXS && { ml: 1, mr: 1 }]}>
@@ -79,7 +79,7 @@ export function TimeSliders({
         marks={checkFreqMarks}
         onChange={(_, value) => {
           if (typeof value === 'number') {
-            setCheckFreqIndex(value)
+            setCheckFreqIndex(value);
           }
         }}
         onChangeCommitted={handleUpdate}
@@ -98,7 +98,7 @@ export function TimeSliders({
         marks
         onChange={(_, value) => {
           if (typeof value === 'number') {
-            setDeadlineDays(value)
+            setDeadlineDays(value);
           }
         }}
         onChangeCommitted={handleUpdate}
@@ -117,12 +117,12 @@ export function TimeSliders({
         marks
         onChange={(_, value) => {
           if (typeof value === 'number') {
-            setAttemptsCount(value)
+            setAttemptsCount(value);
           }
         }}
         onChangeCommitted={handleUpdate}
         valueLabelDisplay="off"
       />
     </Box>
-  )
+  );
 }

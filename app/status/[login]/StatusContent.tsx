@@ -1,14 +1,14 @@
-'use client'
+'use client';
 
-import { Alert, Box, Card, CardContent, Container, Typography } from '@mui/material'
-import Icon from '@mui/material/Icon'
-import Link from 'next/link'
-import { Header } from '@/components/Header'
+import { Alert, Box, Card, CardContent, Container, Typography } from '@mui/material';
+import Icon from '@mui/material/Icon';
+import Link from 'next/link';
+import { Header } from '@/components/Header';
 
 interface StatusContentProps {
-  login: string
-  isAlive: boolean
-  lastConfirmation: Date
+  login: string;
+  isAlive: boolean;
+  lastConfirmation: Date;
 }
 
 export function StatusContent({ login, isAlive, lastConfirmation }: StatusContentProps) {
@@ -64,5 +64,5 @@ export function StatusContent({ login, isAlive, lastConfirmation }: StatusConten
         </Box>
       </Container>
     </>
-  )
+  );
 }

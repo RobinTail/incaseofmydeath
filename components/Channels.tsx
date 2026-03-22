@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import {
   Avatar,
@@ -9,14 +9,14 @@ import {
   ListItemAvatar,
   ListItemText,
   Typography,
-} from '@mui/material'
-import Icon from '@mui/material/Icon'
-import { TLoginButton, TLoginButtonSize, TUser } from 'react-telegram-auth'
+} from '@mui/material';
+import Icon from '@mui/material/Icon';
+import { TLoginButton, TLoginButtonSize, TUser } from 'react-telegram-auth';
 
 interface ChannelsProps {
-  telegramConnected: boolean
-  onConnectTelegram: (user: { id: number; hash: string; dataCheckString: string }) => void
-  onDisconnectTelegram: () => void
+  telegramConnected: boolean;
+  onConnectTelegram: (user: { id: number; hash: string; dataCheckString: string }) => void;
+  onDisconnectTelegram: () => void;
 }
 
 export function Channels({
@@ -25,17 +25,17 @@ export function Channels({
   onDisconnectTelegram,
 }: ChannelsProps) {
   const handleTelegramAuth = async (user: TUser) => {
-    const { hash, ...rest } = user
+    const { hash, ...rest } = user;
     const dataCheckString = Object.keys(rest)
       .sort()
       .map((key) => `${key}=${rest[key as keyof typeof rest]}`)
-      .join('\n')
+      .join('\n');
     onConnectTelegram({
       id: user.id,
       hash: hash,
       dataCheckString,
-    })
-  }
+    });
+  };
 
   return (
     <Box textAlign="center">
@@ -71,5 +71,5 @@ export function Channels({
         </ListItem>
       </List>
     </Box>
-  )
+  );
 }

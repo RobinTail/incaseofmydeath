@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import { Avatar, Badge, Box, IconButton, Tooltip, Typography } from '@mui/material'
-import Icon from '@mui/material/Icon'
+import { Avatar, Badge, Box, IconButton, Tooltip, Typography } from '@mui/material';
+import Icon from '@mui/material/Icon';
 
 interface PersonProps {
-  isAuthorized: boolean
-  isRegistered: boolean
-  avatarUrl?: string
-  login?: string
-  name?: string | null
-  onSettingsClick?: () => void
+  isAuthorized: boolean;
+  isRegistered: boolean;
+  avatarUrl?: string;
+  login?: string;
+  name?: string | null;
+  onSettingsClick?: () => void;
 }
 
 export function Person({
@@ -53,5 +53,5 @@ export function Person({
         {isAuthorized ? name || login : 'Authorize on GitHub'}
       </Typography>
     </Box>
-  )
+  );
 }

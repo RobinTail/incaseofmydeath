@@ -1,40 +1,40 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { Paper, IconButton, Tooltip, Box } from '@mui/material'
-import Icon from '@mui/material/Icon'
-import { useColorScheme } from '@mui/material/styles'
+import { useState, useEffect } from 'react';
+import { Paper, IconButton, Tooltip, Box } from '@mui/material';
+import Icon from '@mui/material/Icon';
+import { useColorScheme } from '@mui/material/styles';
 
 interface CodeSnippetProps {
-  code: string
-  language: string
+  code: string;
+  language: string;
 }
 
 export function CodeSnippet({ code, language }: CodeSnippetProps) {
-  const [highlighted, setHighlighted] = useState<string>('')
-  const [copied, setCopied] = useState(false)
-  const { mode } = useColorScheme()
-  const theme = mode === 'dark' ? 'github-dark' : 'github-light'
+  const [highlighted, setHighlighted] = useState<string>('');
+  const [copied, setCopied] = useState(false);
+  const { mode } = useColorScheme();
+  const theme = mode === 'dark' ? 'github-dark' : 'github-light';
 
   useEffect(() => {
     import('shiki').then(async ({ createHighlighter }) => {
       const highlighter = await createHighlighter({
         themes: [theme],
         langs: [language],
-      })
+      });
       const html = highlighter.codeToHtml(code, {
         lang: language,
         theme: theme,
-      })
-      setHighlighted(html)
-    })
-  }, [code, language, theme])
+      });
+      setHighlighted(html);
+    });
+  }, [code, language, theme]);
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(code)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
+    await navigator.clipboard.writeText(code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <Paper
@@ -69,5 +69,5 @@ export function CodeSnippet({ code, language }: CodeSnippetProps) {
       </Tooltip>
       <Box dangerouslySetInnerHTML={{ __html: highlighted }} />
     </Paper>
-  )
+  );
 }

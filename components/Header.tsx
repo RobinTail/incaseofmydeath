@@ -1,31 +1,31 @@
-'use client'
+'use client';
 
-import { Icon, IconButton, Tooltip } from '@mui/material'
-import { usePathname, useRouter } from 'next/navigation'
-import { useColorScheme } from '@mui/material/styles'
-import { useEffect } from 'react'
+import { Icon, IconButton, Tooltip } from '@mui/material';
+import { usePathname, useRouter } from 'next/navigation';
+import { useColorScheme } from '@mui/material/styles';
+import { useEffect } from 'react';
 
 interface HeaderProps {
-  showHomeButton?: boolean
+  showHomeButton?: boolean;
 }
 
 export function Header({ showHomeButton = true }: HeaderProps) {
-  const pathname = usePathname()
-  const router = useRouter()
-  const isRoot = pathname === '/'
-  const { mode, setMode } = useColorScheme()
-  const isDark = mode === 'dark'
+  const pathname = usePathname();
+  const router = useRouter();
+  const isRoot = pathname === '/';
+  const { mode, setMode } = useColorScheme();
+  const isDark = mode === 'dark';
 
   useEffect(() => {
-    const html = document.documentElement
+    const html = document.documentElement;
     if (isDark) {
-      html.classList.add('dark')
-      html.classList.remove('light')
+      html.classList.add('dark');
+      html.classList.remove('light');
     } else {
-      html.classList.add('light')
-      html.classList.remove('dark')
+      html.classList.add('light');
+      html.classList.remove('dark');
     }
-  }, [isDark])
+  }, [isDark]);
 
   return (
     <>
@@ -47,7 +47,7 @@ export function Header({ showHomeButton = true }: HeaderProps) {
       <Tooltip title={isDark ? 'Light mode' : 'Dark mode'} placement="left" arrow>
         <IconButton
           onClick={() => {
-            setMode(isDark ? 'light' : 'dark')
+            setMode(isDark ? 'light' : 'dark');
           }}
           sx={{
             position: 'fixed',
@@ -59,5 +59,5 @@ export function Header({ showHomeButton = true }: HeaderProps) {
         </IconButton>
       </Tooltip>
     </>
-  )
+  );
 }

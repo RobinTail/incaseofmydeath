@@ -4,3 +4,4 @@ build
 dist
 prisma/*.prisma
 *.min.js
+pnpm-lock.yaml

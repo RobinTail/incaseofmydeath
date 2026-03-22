@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import {
   Button,
@@ -7,16 +7,16 @@ import {
   FormControlLabel,
   Paper,
   Typography,
-} from '@mui/material'
-import { ReactElement, useState } from 'react'
+} from '@mui/material';
+import { ReactElement, useState } from 'react';
 
 interface ConsentProps {
-  signedBy: string
-  repo: string
-  workflow: string
-  isLoading: boolean
-  onAgree: () => void
-  onReset: () => void
+  signedBy: string;
+  repo: string;
+  workflow: string;
+  isLoading: boolean;
+  onAgree: () => void;
+  onReset: () => void;
 }
 
 const consentLabels: ReactElement[] = [
@@ -42,15 +42,15 @@ const consentLabels: ReactElement[] = [
     other people and organizations, does not violate the laws of my country and the Federal Republic
     of Germany.
   </span>,
-]
-const noConsent: false[] = consentLabels.map(() => false)
+];
+const noConsent: false[] = consentLabels.map(() => false);
 
 export function Consent({ signedBy, workflow, repo, isLoading, onAgree, onReset }: ConsentProps) {
-  const [consent, setConsent] = useState<boolean[]>(noConsent)
+  const [consent, setConsent] = useState<boolean[]>(noConsent);
 
-  const today = new Date()
-  const lastConsentIndex = consent.lastIndexOf(true)
-  const hasConsent = consent.reduce((carry, entry) => carry && entry, true)
+  const today = new Date();
+  const lastConsentIndex = consent.lastIndexOf(true);
+  const hasConsent = consent.reduce((carry, entry) => carry && entry, true);
 
   return (
     <>
@@ -76,7 +76,7 @@ export function Consent({ signedBy, workflow, repo, isLoading, onAgree, onReset 
                     consent.map((entry, offset) =>
                       offset === index ? event.target.checked : entry
                     )
-                  )
+                  );
                 }}
               />
             }
@@ -106,12 +106,12 @@ export function Consent({ signedBy, workflow, repo, isLoading, onAgree, onReset 
         variant="outlined"
         sx={{ mt: 2, mb: 2 }}
         onClick={() => {
-          setConsent(noConsent)
-          onReset()
+          setConsent(noConsent);
+          onReset();
         }}
       >
         Reset
       </Button>
     </>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import {
   Alert,
@@ -15,155 +15,155 @@ import {
   Tooltip,
   Typography,
   Stack,
-} from '@mui/material'
-import { useState, useEffect, useCallback } from 'react'
-import { useRouter } from 'next/navigation'
-import { Header } from '@/components/Header'
-import { Person } from '@/components/Person'
-import { UserStatus } from '@/components/UserStatus'
-import { Consent } from '@/components/Consent'
-import { TimeSliders } from '@/components/TimeSliders'
-import { SettingsDialog } from '@/components/SettingsDialog'
-import { Channels } from '@/components/Channels'
+} from '@mui/material';
+import { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
+import { Header } from '@/components/Header';
+import { Person } from '@/components/Person';
+import { UserStatus } from '@/components/UserStatus';
+import { Consent } from '@/components/Consent';
+import { TimeSliders } from '@/components/TimeSliders';
+import { SettingsDialog } from '@/components/SettingsDialog';
+import { Channels } from '@/components/Channels';
 
 interface AuthData {
-  id: number
-  login: string
-  avatarUrl?: string
-  name?: string | null
+  id: number;
+  login: string;
+  avatarUrl?: string;
+  name?: string | null;
 }
 
 interface RegistrationStatus {
-  isRegistered: boolean
-  isAlive: boolean
-  isPublic: boolean
-  checkFreq: string
-  deadlineDays: number
-  attemptsCount: number
-  nextCheck: string
-  repo: { owner: string; name: string } | null
-  workflow: { id: number; name: string } | null
-  channels: { telegram: { connected: boolean } }
+  isRegistered: boolean;
+  isAlive: boolean;
+  isPublic: boolean;
+  checkFreq: string;
+  deadlineDays: number;
+  attemptsCount: number;
+  nextCheck: string;
+  repo: { owner: string; name: string } | null;
+  workflow: { id: number; name: string } | null;
+  channels: { telegram: { connected: boolean } };
 }
 
 interface Repo {
-  owner: string
-  name: string
-  private: boolean
+  owner: string;
+  name: string;
+  private: boolean;
 }
 
 interface Workflow {
-  id: number
-  name: string
+  id: number;
+  name: string;
 }
 
 export default function PersonalPage() {
-  const router = useRouter()
+  const router = useRouter();
 
-  const [token, setToken] = useState<string | null>(null)
-  const [auth, setAuth] = useState<AuthData | null>(null)
-  const [status, setStatus] = useState<RegistrationStatus | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [token, setToken] = useState<string | null>(null);
+  const [auth, setAuth] = useState<AuthData | null>(null);
+  const [status, setStatus] = useState<RegistrationStatus | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const [repos, setRepos] = useState<Repo[]>([])
-  const [workflows, setWorkflows] = useState<Workflow[]>([])
-  const [selectedRepo, setSelectedRepo] = useState<string>('')
-  const [selectedWorkflow, setSelectedWorkflow] = useState<number | null>(null)
-  const [saving, setSaving] = useState(false)
+  const [repos, setRepos] = useState<Repo[]>([]);
+  const [workflows, setWorkflows] = useState<Workflow[]>([]);
+  const [selectedRepo, setSelectedRepo] = useState<string>('');
+  const [selectedWorkflow, setSelectedWorkflow] = useState<number | null>(null);
+  const [saving, setSaving] = useState(false);
 
-  const [checkFreq, setCheckFreq] = useState('month')
-  const [deadlineDays, setDeadlineDays] = useState(5)
-  const [attemptsCount, setAttemptsCount] = useState(3)
-  const [showConsent, setShowConsent] = useState(false)
-  const [settingsOpen, setSettingsOpen] = useState(false)
-  const [urlCopied, setUrlCopied] = useState(false)
+  const [checkFreq, setCheckFreq] = useState('month');
+  const [deadlineDays, setDeadlineDays] = useState(5);
+  const [attemptsCount, setAttemptsCount] = useState(3);
+  const [showConsent, setShowConsent] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [urlCopied, setUrlCopied] = useState(false);
   const [pendingRegistration, setPendingRegistration] = useState<{
-    owner: string
-    name: string
-    workflowId: number
-    workflowName: string
-  } | null>(null)
+    owner: string;
+    name: string;
+    workflowId: number;
+    workflowName: string;
+  } | null>(null);
 
   const fetchRepos = useCallback(async (t: string) => {
     try {
       const res = await fetch('/api/repos/list', {
         headers: { Authorization: `Bearer ${t}` },
-      })
-      const data = await res.json()
-      setRepos(data.repos || [])
+      });
+      const data = await res.json();
+      setRepos(data.repos || []);
     } catch {
       // ignore
     }
-  }, [])
+  }, []);
 
   const fetchWorkflows = useCallback(async (t: string, owner: string, repo: string) => {
     try {
       const res = await fetch(`/api/workflows/list?owner=${owner}&repo=${repo}`, {
         headers: { Authorization: `Bearer ${t}` },
-      })
-      const data = await res.json()
-      setWorkflows(data.workflows || [])
+      });
+      const data = await res.json();
+      setWorkflows(data.workflows || []);
     } catch {
       // ignore
     }
-  }, [])
+  }, []);
 
   const fetchStatus = useCallback(
     async (t: string) => {
       try {
         const res = await fetch('/api/registration/check', {
           headers: { Authorization: `Bearer ${t}` },
-        })
-        if (!res.ok) throw new Error('Failed to fetch status')
-        const data = await res.json()
-        setStatus(data)
+        });
+        if (!res.ok) throw new Error('Failed to fetch status');
+        const data = await res.json();
+        setStatus(data);
         if (data.isRegistered) {
-          setCheckFreq(data.checkFreq)
-          setDeadlineDays(data.deadlineDays)
-          setAttemptsCount(data.attemptsCount)
+          setCheckFreq(data.checkFreq);
+          setDeadlineDays(data.deadlineDays);
+          setAttemptsCount(data.attemptsCount);
         } else {
-          fetchRepos(t)
+          fetchRepos(t);
         }
       } catch (e) {
-        setError(e instanceof Error ? e.message : 'Unknown error')
+        setError(e instanceof Error ? e.message : 'Unknown error');
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     },
     [fetchRepos]
-  )
+  );
 
   useEffect(() => {
-    const cookies = document.cookie.split('; ')
-    const authCookie = cookies.find((row) => row.startsWith('auth_token='))
-    const authDataCookie = cookies.find((row) => row.startsWith('auth_data='))
+    const cookies = document.cookie.split('; ');
+    const authCookie = cookies.find((row) => row.startsWith('auth_token='));
+    const authDataCookie = cookies.find((row) => row.startsWith('auth_data='));
 
-    const tokenValue = authCookie?.split('=').slice(1).join('=')
-    let authData: AuthData | null = null
+    const tokenValue = authCookie?.split('=').slice(1).join('=');
+    let authData: AuthData | null = null;
 
     if (authDataCookie) {
       try {
-        const value = authDataCookie.split('=').slice(1).join('=')
-        authData = JSON.parse(atob(value))
+        const value = authDataCookie.split('=').slice(1).join('=');
+        authData = JSON.parse(atob(value));
       } catch (e) {
-        console.error('Failed to parse auth_data cookie', e)
+        console.error('Failed to parse auth_data cookie', e);
       }
     }
 
     if (!tokenValue) {
-      router.push('/')
-      return
+      router.push('/');
+      return;
     }
 
-    setToken(tokenValue)
-    setAuth(authData)
-    fetchStatus(tokenValue)
-  }, [router, fetchStatus])
+    setToken(tokenValue);
+    setAuth(authData);
+    fetchStatus(tokenValue);
+  }, [router, fetchStatus]);
 
   async function handleRegister() {
-    if (!token || !pendingRegistration) return
-    setSaving(true)
+    if (!token || !pendingRegistration) return;
+    setSaving(true);
 
     try {
       const res = await fetch('/api/workflows/register', {
@@ -178,24 +178,24 @@ export default function PersonalPage() {
           workflowId: pendingRegistration.workflowId,
           workflowName: pendingRegistration.workflowName,
         }),
-      })
-      if (!res.ok) throw new Error('Failed to register')
-      setShowConsent(false)
-      setPendingRegistration(null)
-      setSelectedRepo('')
-      setSelectedWorkflow(null)
-      setWorkflows([])
-      await fetchStatus(token)
+      });
+      if (!res.ok) throw new Error('Failed to register');
+      setShowConsent(false);
+      setPendingRegistration(null);
+      setSelectedRepo('');
+      setSelectedWorkflow(null);
+      setWorkflows([]);
+      await fetchStatus(token);
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to register')
+      setError(e instanceof Error ? e.message : 'Failed to register');
     } finally {
-      setSaving(false)
+      setSaving(false);
     }
   }
 
   async function handleTogglePublic() {
-    if (!token || !status) return
-    setSaving(true)
+    if (!token || !status) return;
+    setSaving(true);
     try {
       await fetch('/api/registration/public', {
         method: 'PATCH',
@@ -204,39 +204,43 @@ export default function PersonalPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ isPublic: !status.isPublic }),
-      })
-      setStatus({ ...status, isPublic: !status.isPublic })
+      });
+      setStatus({ ...status, isPublic: !status.isPublic });
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to update')
+      setError(e instanceof Error ? e.message : 'Failed to update');
     } finally {
-      setSaving(false)
+      setSaving(false);
     }
   }
 
   async function handleDisconnectTelegram() {
-    if (!token) return
-    setSaving(true)
+    if (!token) return;
+    setSaving(true);
     try {
       await fetch('/api/channels/telegram/disconnect', {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
-      })
+      });
       if (status) {
         setStatus({
           ...status,
           channels: { telegram: { connected: false } },
-        })
+        });
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to disconnect')
+      setError(e instanceof Error ? e.message : 'Failed to disconnect');
     } finally {
-      setSaving(false)
+      setSaving(false);
     }
   }
 
-  async function handleConnectTelegram(user: { id: number; hash: string; dataCheckString: string }) {
-    if (!token) return
-    setSaving(true)
+  async function handleConnectTelegram(user: {
+    id: number;
+    hash: string;
+    dataCheckString: string;
+  }) {
+    if (!token) return;
+    setSaving(true);
     try {
       await fetch('/api/channels/telegram/connect', {
         method: 'POST',
@@ -249,17 +253,17 @@ export default function PersonalPage() {
           hash: user.hash,
           dataCheckString: user.dataCheckString,
         }),
-      })
+      });
       if (status) {
         setStatus({
           ...status,
           channels: { telegram: { connected: true } },
-        })
+        });
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to connect')
+      setError(e instanceof Error ? e.message : 'Failed to connect');
     } finally {
-      setSaving(false)
+      setSaving(false);
     }
   }
 
@@ -268,7 +272,7 @@ export default function PersonalPage() {
     newDeadlineDays: number,
     newAttemptsCount: number
   ) {
-    if (!token) return
+    if (!token) return;
     try {
       await fetch('/api/time', {
         method: 'PATCH',
@@ -281,48 +285,48 @@ export default function PersonalPage() {
           deadlineDays: newDeadlineDays,
           attemptsCount: newAttemptsCount,
         }),
-      })
-      setCheckFreq(newCheckFreq)
-      setDeadlineDays(newDeadlineDays)
-      setAttemptsCount(newAttemptsCount)
+      });
+      setCheckFreq(newCheckFreq);
+      setDeadlineDays(newDeadlineDays);
+      setAttemptsCount(newAttemptsCount);
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to update settings')
+      setError(e instanceof Error ? e.message : 'Failed to update settings');
     }
   }
 
   async function handleUnregister() {
-    if (!token) return
-    setSaving(true)
+    if (!token) return;
+    setSaving(true);
     try {
       const res = await fetch('/api/registration/remove', {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
-      })
-      if (!res.ok) throw new Error('Failed to unregister')
-      await fetchStatus(token)
+      });
+      if (!res.ok) throw new Error('Failed to unregister');
+      await fetchStatus(token);
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to unregister')
+      setError(e instanceof Error ? e.message : 'Failed to unregister');
     } finally {
-      setSaving(false)
+      setSaving(false);
     }
   }
 
   async function handleLogout() {
-    document.cookie = 'auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
-    document.cookie = 'github_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
-    router.push('/')
+    document.cookie = 'auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'github_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    router.push('/');
   }
 
   const handleCopyUrl = async () => {
-    const url = `${window.location.origin}/status/${auth?.login}`
+    const url = `${window.location.origin}/status/${auth?.login}`;
     try {
-      await navigator.clipboard.writeText(url)
-      setUrlCopied(true)
-      setTimeout(() => setUrlCopied(false), 2000)
+      await navigator.clipboard.writeText(url);
+      setUrlCopied(true);
+      setTimeout(() => setUrlCopied(false), 2000);
     } catch {
       // ignore
     }
-  }
+  };
 
   if (loading) {
     return (
@@ -337,7 +341,7 @@ export default function PersonalPage() {
           <CircularProgress />
         </Box>
       </Container>
-    )
+    );
   }
 
   if (error && !status) {
@@ -353,10 +357,10 @@ export default function PersonalPage() {
           <Alert severity="error">{error}</Alert>
         </Box>
       </Container>
-    )
+    );
   }
 
-  const isRegistered = status?.isRegistered ?? false
+  const isRegistered = status?.isRegistered ?? false;
 
   return (
     <>
@@ -422,12 +426,12 @@ export default function PersonalPage() {
                 <Select
                   value={selectedRepo}
                   onChange={(e) => {
-                    setSelectedRepo(e.target.value)
-                    setWorkflows([])
-                    setSelectedWorkflow(null)
+                    setSelectedRepo(e.target.value);
+                    setWorkflows([]);
+                    setSelectedWorkflow(null);
                     if (token && e.target.value) {
-                      const [owner, name] = e.target.value.split('/')
-                      fetchWorkflows(token, owner, name)
+                      const [owner, name] = e.target.value.split('/');
+                      fetchWorkflows(token, owner, name);
                     }
                   }}
                   fullWidth
@@ -471,15 +475,15 @@ export default function PersonalPage() {
                   variant="contained"
                   onClick={() => {
                     if (selectedRepo && selectedWorkflow) {
-                      const [owner, name] = selectedRepo.split('/')
-                      const workflow = workflows.find((w) => w.id === selectedWorkflow)
+                      const [owner, name] = selectedRepo.split('/');
+                      const workflow = workflows.find((w) => w.id === selectedWorkflow);
                       setPendingRegistration({
                         owner,
                         name,
                         workflowId: selectedWorkflow,
                         workflowName: workflow?.name || 'Unknown',
-                      })
-                      setShowConsent(true)
+                      });
+                      setShowConsent(true);
                     }
                   }}
                   disabled={!selectedRepo || !selectedWorkflow || saving}
@@ -493,8 +497,8 @@ export default function PersonalPage() {
                   <Button
                     variant="outlined"
                     onClick={() => {
-                      setShowConsent(false)
-                      setPendingRegistration(null)
+                      setShowConsent(false);
+                      setPendingRegistration(null);
                     }}
                     fullWidth
                     sx={{ mb: 2 }}
@@ -509,11 +513,11 @@ export default function PersonalPage() {
                       isLoading={saving}
                       onAgree={handleRegister}
                       onReset={() => {
-                        setShowConsent(false)
-                        setPendingRegistration(null)
-                        setSelectedRepo('')
-                        setSelectedWorkflow(null)
-                        setWorkflows([])
+                        setShowConsent(false);
+                        setPendingRegistration(null);
+                        setSelectedRepo('');
+                        setSelectedWorkflow(null);
+                        setWorkflows([]);
                       }}
                     />
                   )}
@@ -554,5 +558,5 @@ export default function PersonalPage() {
         workflow={status?.workflow || null}
       />
     </>
-  )
+  );
 }

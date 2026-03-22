@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
+import { useState } from 'react';
 import {
   Button,
   CircularProgress,
@@ -9,14 +9,14 @@ import {
   DialogContent,
   DialogTitle,
   Typography,
-} from '@mui/material'
+} from '@mui/material';
 
 interface SettingsDialogProps {
-  open: boolean
-  onClose: () => void
-  onUnregister: () => Promise<void>
-  repo: { owner: string; name: string } | null
-  workflow: { name: string } | null
+  open: boolean;
+  onClose: () => void;
+  onUnregister: () => Promise<void>;
+  repo: { owner: string; name: string } | null;
+  workflow: { name: string } | null;
 }
 
 export function SettingsDialog({
@@ -26,17 +26,17 @@ export function SettingsDialog({
   repo,
   workflow,
 }: SettingsDialogProps) {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const handleUnregister = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
-      await onUnregister()
+      await onUnregister();
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-    onClose()
-  }
+    onClose();
+  };
 
   return (
     <Dialog open={open} onClose={onClose}>
@@ -64,5 +64,5 @@ export function SettingsDialog({
         </Button>
       </DialogActions>
     </Dialog>
-  )
+  );
 }
