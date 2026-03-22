@@ -4,8 +4,6 @@ import {
   Alert,
   Box,
   Button,
-  Card,
-  CardContent,
   CircularProgress,
   Container,
   FormControlLabel,
@@ -18,7 +16,6 @@ import {
   Typography,
   Stack,
 } from '@mui/material'
-import Link from 'next/link'
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { Header } from '@/components/Header'
@@ -80,6 +77,7 @@ export default function PersonalPage() {
   const [attemptsCount, setAttemptsCount] = useState(3)
   const [showConsent, setShowConsent] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
+  const [urlCopied, setUrlCopied] = useState(false)
   const [pendingRegistration, setPendingRegistration] = useState<{
     owner: string
     name: string
@@ -290,6 +288,8 @@ export default function PersonalPage() {
     const url = `${window.location.origin}/status/${auth?.login}`
     try {
       await navigator.clipboard.writeText(url)
+      setUrlCopied(true)
+      setTimeout(() => setUrlCopied(false), 2000)
     } catch {
       // ignore
     }
@@ -355,6 +355,27 @@ export default function PersonalPage() {
           />
 
           {status && <UserStatus isAlive={status.isAlive} />}
+
+          <Stack direction="row" alignItems="center" gap={1}>
+            {status && (
+              <FormControlLabel
+                control={
+                  <Switch size="small" checked={status.isPublic} onChange={handleTogglePublic} />
+                }
+                label={<span>Public status</span>}
+              />
+            )}
+
+            {status?.isPublic && (
+              <Tooltip title={urlCopied ? 'Copied!' : 'Copy Public URL'} arrow>
+                <IconButton size="small" onClick={handleCopyUrl}>
+                  <Icon className="material-symbols-outlined">
+                    {urlCopied ? 'check' : 'content_copy'}
+                  </Icon>
+                </IconButton>
+              </Tooltip>
+            )}
+          </Stack>
 
           {!isRegistered && (
             <>
@@ -489,43 +510,6 @@ export default function PersonalPage() {
                 }}
                 onDisconnectTelegram={handleDisconnectTelegram}
               />
-
-              <Card sx={{ width: '100%' }}>
-                <CardContent>
-                  <Box
-                    sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
-                  >
-                    <Typography variant="h6" gutterBottom sx={{ mb: 0 }}>
-                      Public Status
-                    </Typography>
-                    {status.isPublic && (
-                      <Tooltip title="Copy URL" placement="right" arrow>
-                        <IconButton onClick={handleCopyUrl} size="small">
-                          <Icon className="material-symbols-outlined">content_copy</Icon>
-                        </IconButton>
-                      </Tooltip>
-                    )}
-                  </Box>
-                  <FormControlLabel
-                    control={
-                      <Switch
-                        checked={status.isPublic}
-                        onChange={handleTogglePublic}
-                        disabled={saving}
-                      />
-                    }
-                    label="Make my status public"
-                  />
-                  {status.isPublic && (
-                    <Typography variant="body2" color="text.secondary">
-                      View at:{' '}
-                      <Link href={`/status/${status.repo?.owner}`}>
-                        /status/{status.repo?.owner}
-                      </Link>
-                    </Typography>
-                  )}
-                </CardContent>
-              </Card>
             </>
           )}
 
