@@ -9,12 +9,17 @@ import {
   Chip,
   CircularProgress,
   Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
   FormControlLabel,
   Icon,
+  IconButton,
   Select,
   MenuItem,
   Switch,
-  TextField,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import Link from "next/link";
@@ -24,6 +29,7 @@ import { Header } from "@/components/Header";
 import { Person } from "@/components/Person";
 import { UserStatus } from "@/components/UserStatus";
 import { Consent } from "@/components/Consent";
+import { TimeSliders } from "@/components/TimeSliders";
 
 interface AuthData {
   id: number;
@@ -75,6 +81,7 @@ export default function PersonalPage() {
   const [deadlineDays, setDeadlineDays] = useState(5);
   const [attemptsCount, setAttemptsCount] = useState(3);
   const [showConsent, setShowConsent] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
   const [pendingRegistration, setPendingRegistration] = useState<{
     owner: string;
     name: string;
@@ -236,9 +243,12 @@ export default function PersonalPage() {
     }
   }
 
-  async function handleUpdateSettings() {
+  async function handleUpdateSettings(
+    newCheckFreq: string,
+    newDeadlineDays: number,
+    newAttemptsCount: number
+  ) {
     if (!token) return;
-    setSaving(true);
     try {
       await fetch("/api/time", {
         method: "PATCH",
@@ -247,15 +257,16 @@ export default function PersonalPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          checkFreq,
-          deadlineDays,
-          attemptsCount,
+          checkFreq: newCheckFreq,
+          deadlineDays: newDeadlineDays,
+          attemptsCount: newAttemptsCount,
         }),
       });
+      setCheckFreq(newCheckFreq);
+      setDeadlineDays(newDeadlineDays);
+      setAttemptsCount(newAttemptsCount);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to update settings");
-    } finally {
-      setSaving(false);
     }
   }
 
@@ -283,6 +294,15 @@ export default function PersonalPage() {
       "github_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     router.push("/");
   }
+
+  const handleCopyUrl = async () => {
+    const url = `${window.location.origin}/status/${auth?.login}`;
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      // ignore
+    }
+  };
 
   if (loading) {
     return (
@@ -341,6 +361,7 @@ export default function PersonalPage() {
             avatarUrl={auth?.avatarUrl}
             login={auth?.login}
             name={auth?.name}
+            onSettingsClick={() => setSettingsOpen(true)}
           />
 
           {status && <UserStatus isAlive={status.isAlive} />}
@@ -504,72 +525,13 @@ export default function PersonalPage() {
                 </CardContent>
               </Card>
 
-              <Card sx={{ width: "100%", mb: 2 }}>
-                <CardContent>
-                  <Typography variant="h6" gutterBottom>
-                    Settings
-                  </Typography>
-
-                  <Box sx={{ mb: 2 }}>
-                    <Typography variant="body2" gutterBottom>
-                      Check Frequency:
-                    </Typography>
-                    <Select
-                      value={checkFreq}
-                      onChange={(e) => setCheckFreq(e.target.value)}
-                      fullWidth
-                      size="small"
-                    >
-                      <MenuItem value="day">Daily</MenuItem>
-                      <MenuItem value="week">Weekly</MenuItem>
-                      <MenuItem value="month">Monthly</MenuItem>
-                      <MenuItem value="quarter">Quarterly</MenuItem>
-                      <MenuItem value="year">Yearly</MenuItem>
-                    </Select>
-                  </Box>
-
-                  <Box sx={{ mb: 2 }}>
-                    <Typography variant="body2" gutterBottom>
-                      Deadline (days): {deadlineDays}
-                    </Typography>
-                    <TextField
-                      type="number"
-                      value={deadlineDays}
-                      onChange={(e) => setDeadlineDays(Number(e.target.value))}
-                      inputProps={{ min: 1, max: 30 }}
-                      fullWidth
-                      size="small"
-                    />
-                  </Box>
-
-                  <Box sx={{ mb: 2 }}>
-                    <Typography variant="body2" gutterBottom>
-                      Attempts: {attemptsCount}
-                    </Typography>
-                    <TextField
-                      type="number"
-                      value={attemptsCount}
-                      onChange={(e) => setAttemptsCount(Number(e.target.value))}
-                      inputProps={{ min: 1, max: 10 }}
-                      fullWidth
-                      size="small"
-                    />
-                  </Box>
-
-                  <Button
-                    variant="outlined"
-                    onClick={handleUpdateSettings}
-                    disabled={saving}
-                    fullWidth
-                  >
-                    {saving ? (
-                      <CircularProgress size={24} />
-                    ) : (
-                      "Update Settings"
-                    )}
-                  </Button>
-                </CardContent>
-              </Card>
+              <TimeSliders
+                checkFreqCode={checkFreq as "day" | "week" | "month" | "quarter" | "year"}
+                deadlineDays={deadlineDays}
+                attemptsCount={attemptsCount}
+                nextCheck={status?.nextCheck ? new Date(status.nextCheck) : new Date()}
+                onUpdate={handleUpdateSettings}
+              />
 
               <Card sx={{ width: "100%", mb: 2 }}>
                 <CardContent>
@@ -619,9 +581,18 @@ export default function PersonalPage() {
 
               <Card sx={{ width: "100%", mb: 2 }}>
                 <CardContent>
-                  <Typography variant="h6" gutterBottom>
-                    Public Status
-                  </Typography>
+                  <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <Typography variant="h6" gutterBottom sx={{ mb: 0 }}>
+                      Public Status
+                    </Typography>
+                    {status.isPublic && (
+                      <Tooltip title="Copy URL" placement="right" arrow>
+                        <IconButton onClick={handleCopyUrl} size="small">
+                          <Icon className="material-symbols-outlined">content_copy</Icon>
+                        </IconButton>
+                      </Tooltip>
+                    )}
+                  </Box>
                   <FormControlLabel
                     control={
                       <Switch
@@ -650,6 +621,36 @@ export default function PersonalPage() {
           </Button>
         </Box>
       </Container>
+
+      <Dialog open={settingsOpen} onClose={() => setSettingsOpen(false)}>
+        <DialogTitle>Settings</DialogTitle>
+        <DialogContent>
+          {status?.repo && (
+            <>
+              <Typography gutterBottom>Your last will is set.</Typography>
+              <Typography>Repo: {status.repo.name}</Typography>
+              <Typography>Owner: {status.repo.owner}</Typography>
+              {status.workflow && <Typography>Workflow: {status.workflow.name}</Typography>}
+            </>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button
+            variant="outlined"
+            color="error"
+            onClick={async () => {
+              await handleUnregister();
+              setSettingsOpen(false);
+            }}
+            disabled={saving}
+          >
+            Unregister workflow
+          </Button>
+          <Button variant="contained" onClick={() => setSettingsOpen(false)}>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 }
