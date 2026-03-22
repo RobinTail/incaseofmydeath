@@ -13,13 +13,20 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const code = searchParams.get("code");
   const state = searchParams.get("state");
+  const setupAction = searchParams.get("setup_action");
+
+  const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+
+  if (setupAction === "install") {
+    const response = NextResponse.redirect(`${frontendUrl}/api/auth/begin`);
+    response.cookies.delete("oauth_state");
+    return response;
+  }
 
   const storedState = request.cookies.get("oauth_state")?.value;
 
   if (!code || !state || state !== storedState) {
-    return NextResponse.redirect(
-      `${process.env.FRONTEND_URL}/?error=invalid_state`,
-    );
+    return NextResponse.redirect(`${frontendUrl}/?error=invalid_state`);
   }
 
   try {
@@ -61,22 +68,18 @@ export async function GET(request: NextRequest) {
 
     const token = createUserToken(user.id);
 
-    const response = NextResponse.redirect(
-      `${process.env.FRONTEND_URL}/personal`,
-    );
+    const response = NextResponse.redirect(`${frontendUrl}/personal`);
     response.cookies.delete("oauth_state");
     response.cookies.set("auth_token", token, {
       httpOnly: false, // @todo use a server component for reading this instead
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
-      maxAge: 60 * 60 * 24 * 30, // 30 days
+      maxAge: 60 * 60 * 24 * 30,
     });
 
     return response;
   } catch (error) {
     console.error("OAuth finish error:", error);
-    return NextResponse.redirect(
-      `${process.env.FRONTEND_URL}/?error=oauth_failed`,
-    );
+    return NextResponse.redirect(`${frontendUrl}/?error=oauth_failed`);
   }
 }
