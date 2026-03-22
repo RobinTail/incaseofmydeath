@@ -9,10 +9,6 @@ import {
   Chip,
   CircularProgress,
   Container,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
   FormControlLabel,
   Icon,
   IconButton,
@@ -30,6 +26,7 @@ import { Person } from "@/components/Person";
 import { UserStatus } from "@/components/UserStatus";
 import { Consent } from "@/components/Consent";
 import { TimeSliders } from "@/components/TimeSliders";
+import { SettingsDialog } from "@/components/SettingsDialog";
 
 interface AuthData {
   id: number;
@@ -490,41 +487,6 @@ export default function PersonalPage() {
 
           {isRegistered && status && (
             <>
-              <Card sx={{ width: "100%", mb: 2 }}>
-                <CardContent>
-                  <Typography variant="h6" gutterBottom>
-                    Registered Workflow
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Repository: {status.repo?.owner}/{status.repo?.name}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Check Frequency: {status.checkFreq}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Deadline: {status.deadlineDays} days
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Attempts: {status.attemptsCount}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Next Check:{" "}
-                    {new Date(status.nextCheck).toLocaleDateString()}
-                  </Typography>
-                  <Button
-                    variant="outlined"
-                    color="error"
-                    size="small"
-                    onClick={handleUnregister}
-                    disabled={saving}
-                    sx={{ mt: 2 }}
-                    fullWidth
-                  >
-                    {saving ? <CircularProgress size={24} /> : "Unregister Workflow"}
-                  </Button>
-                </CardContent>
-              </Card>
-
               <TimeSliders
                 checkFreqCode={checkFreq as "day" | "week" | "month" | "quarter" | "year"}
                 deadlineDays={deadlineDays}
@@ -622,35 +584,14 @@ export default function PersonalPage() {
         </Box>
       </Container>
 
-      <Dialog open={settingsOpen} onClose={() => setSettingsOpen(false)}>
-        <DialogTitle>Settings</DialogTitle>
-        <DialogContent>
-          {status?.repo && (
-            <>
-              <Typography gutterBottom>Your last will is set.</Typography>
-              <Typography>Repo: {status.repo.name}</Typography>
-              <Typography>Owner: {status.repo.owner}</Typography>
-              {status.workflow && <Typography>Workflow: {status.workflow.name}</Typography>}
-            </>
-          )}
-        </DialogContent>
-        <DialogActions>
-          <Button
-            variant="outlined"
-            color="error"
-            onClick={async () => {
-              await handleUnregister();
-              setSettingsOpen(false);
-            }}
-            disabled={saving}
-          >
-            Unregister workflow
-          </Button>
-          <Button variant="contained" onClick={() => setSettingsOpen(false)}>
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <SettingsDialog
+        open={settingsOpen}
+        onClose={() => setSettingsOpen(false)}
+        onUnregister={handleUnregister}
+        isLoading={saving}
+        repo={status?.repo || null}
+        workflow={status?.workflow || null}
+      />
     </>
   );
 }
