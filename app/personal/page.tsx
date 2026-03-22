@@ -183,6 +183,7 @@ export default function PersonalPage() {
           owner: pendingRegistration.owner,
           repo: pendingRegistration.name,
           workflowId: pendingRegistration.workflowId,
+          workflowName: pendingRegistration.workflowName,
         }),
       });
       if (!res.ok) throw new Error("Failed to register");

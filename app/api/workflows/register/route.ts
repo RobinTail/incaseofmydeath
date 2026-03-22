@@ -9,6 +9,7 @@ const bodySchema = z.object({
   owner: z.string(),
   repo: z.string(),
   workflowId: z.number(),
+  workflowName: z.string(),
   branch: z.string().optional(),
 });
 
@@ -30,7 +31,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid body" }, { status: 400 });
   }
 
-  const { owner, repo, workflowId, branch = "main" } = parsed.data;
+  const { owner, repo, workflowId, workflowName, branch = "main" } = parsed.data;
 
   const user = await db.user.findUnique({
     where: { id: decoded.userId },
@@ -63,6 +64,7 @@ export async function POST(request: NextRequest) {
       repoName: repo,
       repoBranch: branch,
       workflowId,
+      workflowName,
       nextCheck: getDefaultNextCheck(user.checkFreq),
       lastConfirmation: new Date(),
       isAlive: true,

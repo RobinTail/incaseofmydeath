@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
     attemptsCount: user.attemptsCount,
     nextCheck: user.nextCheck,
     repo: isRegistered ? { owner: user.repoOwner, name: user.repoName } : null,
-    workflow: isRegistered ? { id: user.workflowId, name: "" } : null,
+    workflow: isRegistered ? { id: user.workflowId, name: user.workflowName } : null,
     channels: {
       telegram: { connected: !!user.telegramChatId },
     },

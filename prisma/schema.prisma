@@ -13,6 +13,7 @@ model User {
   repoName        String
   repoBranch      String    @default("main")
   workflowId      Int
+  workflowName    String    @default("")
   isAlive         Boolean   @default(true)
   isPublic        Boolean   @default(false)
   isCountdown     Boolean   @default(false)
