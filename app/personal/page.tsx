@@ -234,6 +234,35 @@ export default function PersonalPage() {
     }
   }
 
+  async function handleConnectTelegram(user: { id: number; hash: string; dataCheckString: string }) {
+    if (!token) return
+    setSaving(true)
+    try {
+      await fetch('/api/channels/telegram/connect', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chatId: `${user.id}`,
+          hash: user.hash,
+          dataCheckString: user.dataCheckString,
+        }),
+      })
+      if (status) {
+        setStatus({
+          ...status,
+          channels: { telegram: { connected: true } },
+        })
+      }
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Failed to connect')
+    } finally {
+      setSaving(false)
+    }
+  }
+
   async function handleUpdateSettings(
     newCheckFreq: string,
     newDeadlineDays: number,
@@ -505,9 +534,7 @@ export default function PersonalPage() {
 
               <Channels
                 telegramConnected={status.channels.telegram.connected}
-                onConnectTelegram={() => {
-                  window.open('https://t.me/YourBot', '_blank')
-                }}
+                onConnectTelegram={handleConnectTelegram}
                 onDisconnectTelegram={handleDisconnectTelegram}
               />
             </>
