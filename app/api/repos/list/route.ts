@@ -30,13 +30,16 @@ export async function GET(request: NextRequest) {
   const octokit = getUserOctokit(iToken);
 
   try {
-    const { data } = await octokit.request("GET /user/repos", {
-      per_page: 5,
-      page,
-      sort: "updated",
-    });
+    const { data } = await octokit.request(
+      "GET /user/installations/{installation_id}/repositories",
+      {
+        installation_id: user.installationId,
+        per_page: 5,
+        page,
+      },
+    );
 
-    const repos = data.map(
+    const repos = data.repositories.map(
       (repo: { owner: { login: string }; name: string; private: boolean }) => ({
         owner: repo.owner.login,
         name: repo.name,
@@ -47,7 +50,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       repos,
       page,
-      hasMore: data.length === 5,
+      hasMore: data.repositories.length === 5,
     });
   } catch (error) {
     console.error("Error fetching repos:", error);
