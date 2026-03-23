@@ -1,5 +1,6 @@
 import { Octokit } from '@octokit/core';
 import { createAppAuth } from '@octokit/auth-app';
+import { getBaseUrl } from './url';
 
 function getPrivateKey() {
   const key = process.env.GITHUB_PRIVATE_KEY;
@@ -111,7 +112,7 @@ export async function triggerWorkflow(
 }
 
 export function getOAuthUrl(state: string) {
-  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
-  const redirectUri = `${frontendUrl}/api/auth/callback`;
+  const baseUrl = getBaseUrl();
+  const redirectUri = `${baseUrl}/api/auth/callback`;
   return `https://github.com/login/oauth/authorize?client_id=${getClientId()}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=repo&state=${state}`;
 }

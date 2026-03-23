@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { checkFreqToDays } from '@/lib/utils';
 import { msInDay } from '@/lib/utils';
+import { getBaseUrl } from '@/lib/url';
 
 const debounceMap = new Map<string, number>();
 const DEBOUNCE_SECONDS = 60;
@@ -37,12 +38,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: true });
   }
 
-  const frontendUrl = process.env.FRONTEND_URL || 'https://incaseofmy.de';
+  const baseUrl = getBaseUrl();
 
   if (text === '/start' || text === '/help') {
     await sendMessage(
       chatId,
-      `Please go to the [application website](${frontendUrl}) for registration and setup`,
+      `Please go to the [application website](${baseUrl}) for registration and setup`,
       'MarkdownV2'
     );
     await markUserAlive(chatId);

@@ -1,10 +1,12 @@
 import { NextResponse } from 'next/server';
 import { createOAuthState } from '@/lib/auth';
+import { getBaseUrl } from '@/lib/url';
 
 export async function GET() {
   const state = createOAuthState();
+  const baseUrl = getBaseUrl();
 
-  const url = `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(`${process.env.FRONTEND_URL}/api/auth/callback`)}&scope=repo&state=${state}`;
+  const url = `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(`${baseUrl}/api/auth/callback`)}&scope=repo&state=${state}`;
 
   const response = NextResponse.redirect(url);
 
@@ -12,7 +14,7 @@ export async function GET() {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
-    maxAge: 60 * 10, // 10 minutes
+    maxAge: 60 * 10,
   });
 
   return response;

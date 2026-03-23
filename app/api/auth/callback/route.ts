@@ -3,17 +3,17 @@ import { getOAuthAccessToken, getGitHubUser, findAppInstallation, getAppSlug } f
 import { createUserToken } from '@/lib/auth';
 import { getDefaultNextCheck } from '@/lib/utils';
 import { db } from '@/lib/db';
+import { getBaseUrl } from '@/lib/url';
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const code = searchParams.get('code');
   const state = searchParams.get('state');
   const setupAction = searchParams.get('setup_action');
-
-  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+  const baseUrl = getBaseUrl();
 
   if (setupAction === 'install') {
-    const response = NextResponse.redirect(`${frontendUrl}/api/auth/begin`);
+    const response = NextResponse.redirect(`${baseUrl}/api/auth/begin`);
     response.cookies.delete('oauth_state');
     return response;
   }
@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
   const storedState = request.cookies.get('oauth_state')?.value;
 
   if (!code || !state || state !== storedState) {
-    return NextResponse.redirect(`${frontendUrl}/?error=invalid_state`);
+    return NextResponse.redirect(`${baseUrl}/?error=invalid_state`);
   }
 
   try {
@@ -70,7 +70,7 @@ export async function GET(request: NextRequest) {
       name: githubUser.name,
     };
 
-    const response = NextResponse.redirect(`${frontendUrl}/personal`);
+    const response = NextResponse.redirect(`${baseUrl}/personal`);
     response.cookies.delete('oauth_state');
     response.cookies.set('auth_token', token, {
       httpOnly: false, // @todo use a server component for reading this instead
@@ -93,7 +93,10 @@ export async function GET(request: NextRequest) {
 
     return response;
   } catch (error) {
-    console.error('OAuth finish error:', error);
-    return NextResponse.redirect(`${frontendUrl}/?error=oauth_failed`);
+    console.error(
+      'OAuth callback error:',
+      error instanceof Error ? error.message : 'Unknown error'
+    );
+    return NextResponse.redirect(`${baseUrl}/?error=oauth_failed`);
   }
 }

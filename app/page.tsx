@@ -52,7 +52,14 @@ export default function Home() {
   const isXS = useMediaQuery(theme.breakpoints.only('xs'));
 
   const startButton = (
-    <Button variant="contained" component={Link} href="/api/auth/begin" fullWidth sx={{ mb: 2 }} prefetch={false}>
+    <Button
+      variant="contained"
+      component={Link}
+      href="/api/auth/begin"
+      fullWidth
+      sx={{ mb: 2 }}
+      prefetch={false}
+    >
       Let&apos;s start
     </Button>
   );
