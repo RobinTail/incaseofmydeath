@@ -1,25 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyUserToken } from '@/lib/auth';
-import { db } from '@/lib/db';
+import { getUserFromCookies } from '@/lib/auth';
 
 export async function GET(request: NextRequest) {
-  const authHeader = request.headers.get('Authorization');
-  if (!authHeader?.startsWith('Bearer ')) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
-
-  const token = authHeader.slice(7);
-  const decoded = verifyUserToken(token);
-  if (!decoded) {
-    return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
-  }
-
-  const user = await db.user.findUnique({
-    where: { id: decoded.userId },
-  });
+  const user = await getUserFromCookies(request);
 
   if (!user) {
-    return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   const isRegistered = !!user.repoOwner && !!user.repoName && !!user.workflowId;

@@ -1,21 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyUserToken } from '@/lib/auth';
+import { getUserFromCookies } from '@/lib/auth';
 import { db } from '@/lib/db';
 
 export async function DELETE(request: NextRequest) {
-  const authHeader = request.headers.get('Authorization');
-  if (!authHeader?.startsWith('Bearer ')) {
+  const user = await getUserFromCookies(request);
+
+  if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const token = authHeader.slice(7);
-  const decoded = verifyUserToken(token);
-  if (!decoded) {
-    return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
-  }
-
   await db.user.update({
-    where: { id: decoded.userId },
+    where: { id: user.id },
     data: {
       repoOwner: '',
       repoName: '',

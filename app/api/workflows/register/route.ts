@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyUserToken } from '@/lib/auth';
+import { getUserFromCookies } from '@/lib/auth';
 import { getUserOctokit, getInstallationToken } from '@/lib/github';
 import { db } from '@/lib/db';
 import { z } from 'zod';
@@ -14,15 +14,10 @@ const bodySchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
-  const authHeader = request.headers.get('Authorization');
-  if (!authHeader?.startsWith('Bearer ')) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+  const user = await getUserFromCookies(request);
 
-  const token = authHeader.slice(7);
-  const decoded = verifyUserToken(token);
-  if (!decoded) {
-    return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
+  if (!user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   const body = await request.json();
@@ -32,14 +27,6 @@ export async function POST(request: NextRequest) {
   }
 
   const { owner, repo, workflowId, workflowName, branch = 'main' } = parsed.data;
-
-  const user = await db.user.findUnique({
-    where: { id: decoded.userId },
-  });
-
-  if (!user) {
-    return NextResponse.json({ error: 'User not found' }, { status: 404 });
-  }
 
   const iToken = await getInstallationToken(user.installationId);
   const octokit = getUserOctokit(iToken);
@@ -55,7 +42,7 @@ export async function POST(request: NextRequest) {
   }
 
   await db.user.update({
-    where: { id: decoded.userId },
+    where: { id: user.id },
     data: {
       repoOwner: owner,
       repoName: repo,

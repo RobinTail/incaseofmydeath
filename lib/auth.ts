@@ -73,13 +73,24 @@ export function verifyUserToken(token: string): { userId: number } | null {
   }
 }
 
-export async function getUserFromRequest(request: Request): Promise<User | null> {
-  const authHeader = request.headers.get('Authorization');
-  if (!authHeader?.startsWith('Bearer ')) {
+export async function getUserFromCookies(request: Request): Promise<User | null> {
+  const cookieHeader = request.headers.get('cookie');
+  if (!cookieHeader) {
     return null;
   }
 
-  const token = authHeader.slice(7);
+  const cookies = Object.fromEntries(
+    cookieHeader.split('; ').map((c) => {
+      const [key, ...value] = c.split('=');
+      return [key, value.join('=')];
+    })
+  );
+
+  const token = cookies['auth_token'];
+  if (!token) {
+    return null;
+  }
+
   const decoded = verifyUserToken(token);
   if (!decoded) {
     return null;
@@ -90,6 +101,22 @@ export async function getUserFromRequest(request: Request): Promise<User | null>
   });
 
   return user;
+}
+
+export function getGithubTokenFromCookies(request: Request): string | null {
+  const cookieHeader = request.headers.get('cookie');
+  if (!cookieHeader) {
+    return null;
+  }
+
+  const cookies = Object.fromEntries(
+    cookieHeader.split('; ').map((c) => {
+      const [key, ...value] = c.split('=');
+      return [key, value.join('=')];
+    })
+  );
+
+  return cookies['github_token'] || null;
 }
 
 export function createOAuthState(): string {

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyUserToken } from '@/lib/auth';
+import { getUserFromCookies } from '@/lib/auth';
 import { db } from '@/lib/db';
 import { z } from 'zod';
 
@@ -8,15 +8,10 @@ const bodySchema = z.object({
 });
 
 export async function PATCH(request: NextRequest) {
-  const authHeader = request.headers.get('Authorization');
-  if (!authHeader?.startsWith('Bearer ')) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+  const user = await getUserFromCookies(request);
 
-  const token = authHeader.slice(7);
-  const decoded = verifyUserToken(token);
-  if (!decoded) {
-    return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
+  if (!user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   const body = await request.json();
@@ -26,7 +21,7 @@ export async function PATCH(request: NextRequest) {
   }
 
   await db.user.update({
-    where: { id: decoded.userId },
+    where: { id: user.id },
     data: { isPublic: parsed.data.isPublic },
   });
 

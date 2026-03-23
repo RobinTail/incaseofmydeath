@@ -6,7 +6,7 @@ import Icon from '@mui/material/Icon';
 interface PersonProps {
   isAuthorized: boolean;
   isRegistered: boolean;
-  avatarUrl?: string;
+  avatarUrl?: string | null;
   login?: string;
   name?: string | null;
   onSettingsClick?: () => void;
@@ -42,7 +42,7 @@ export function Person({
             )
           }
         >
-          <Avatar src={avatarUrl} alt={login} sx={{ width: 100, height: 100 }}>
+          <Avatar src={avatarUrl ?? undefined} alt={login} sx={{ width: 100, height: 100 }}>
             {login}
           </Avatar>
         </Badge>
