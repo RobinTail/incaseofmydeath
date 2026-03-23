@@ -51,6 +51,12 @@ export default function Home() {
   const theme = useTheme();
   const isXS = useMediaQuery(theme.breakpoints.only('xs'));
 
+  const startButton = (
+    <Button variant="contained" component={Link} href="/api/auth/begin" fullWidth sx={{ mb: 2 }} prefetch={false}>
+      Let&apos;s start
+    </Button>
+  );
+
   return (
     <>
       <Header showHomeButton={false} />
@@ -78,15 +84,7 @@ export default function Home() {
             cold-blooded as machine code.
           </Typography>
 
-          <Button
-            variant="contained"
-            component={Link}
-            href="/api/auth/begin"
-            fullWidth
-            sx={{ mb: 2 }}
-          >
-            Let&apos;s start
-          </Button>
+          {startButton}
 
           <Typography variant={isXS ? 'h6' : 'h5'} component="h2" align="center" gutterBottom>
             Who is it for
@@ -184,15 +182,7 @@ export default function Home() {
             counseling service in your city that can help you cope with a crisis.
           </Typography>
 
-          <Button
-            variant="contained"
-            component={Link}
-            href="/api/auth/begin"
-            fullWidth
-            sx={{ mb: 2 }}
-          >
-            Let&apos;s start
-          </Button>
+          {startButton}
 
           <WorkflowExample mt={4} />
 
