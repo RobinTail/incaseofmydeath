@@ -2,7 +2,13 @@ import { createHmac, randomBytes } from 'crypto';
 import { db } from './db';
 import type { User } from '@prisma/client';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-change-me';
+function getJwtSecret(): string {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    throw new Error('JWT_SECRET environment variable is not set');
+  }
+  return secret;
+}
 
 function base64UrlEncode(str: string) {
   return Buffer.from(str)
@@ -29,7 +35,7 @@ export function createUserToken(userId: number): string {
   const base64Payload = base64UrlEncode(JSON.stringify(payload));
 
   const signature = base64UrlEncode(
-    createHmac('sha256', JWT_SECRET)
+    createHmac('sha256', getJwtSecret())
       .update(`${base64Header}.${base64Payload}`)
       .digest('base64')
       .replace(/\+/g, '-')
@@ -44,7 +50,7 @@ export function verifyUserToken(token: string): { userId: number } | null {
   try {
     const [header, payload, signature] = token.split('.');
     const expectedSignature = base64UrlEncode(
-      createHmac('sha256', JWT_SECRET)
+      createHmac('sha256', getJwtSecret())
         .update(`${header}.${payload}`)
         .digest('base64')
         .replace(/\+/g, '-')
